@@ -35,7 +35,7 @@
 **Base Energy Unit: Watt-hours (Wh)**
 - **1 Energy Unit = 100 Wh** (convenient scaling for gameplay)
 - **Real-world reference**: Standard residential solar panel = ~400W peak
-- **Alien planet scaling**: 25% efficiency due to different star spectrum and atmospheric conditions
+- **Unknown planet scaling**: 25% efficiency due to different star spectrum and atmospheric conditions
 
 #### Real-World Solar Panel Baseline
 ```
@@ -192,9 +192,12 @@ Night                | 12 hours | 0W    | 0W    | 0W    | 0W    | 0 EU/min
 
 | Component | Basic Fabrication | Advanced Fabrication | Batch Production |
 |-----------|-------------------|---------------------|------------------|
-| **Basic Circuit** | 45 seconds | 30 seconds | 20 seconds each |
-| **Advanced Circuit** | 90 seconds | 60 seconds | 40 seconds each |
-| **Quantum Circuit** | 180 seconds | 120 seconds | 80 seconds each |
+| **FOUNDATION Circuit** | 35 seconds | 25 seconds | 18 seconds each |
+| **RELIABLE Circuit** | 45 seconds | 30 seconds | 22 seconds each |
+| **PRECISION Circuit** | 60 seconds | 40 seconds | 30 seconds each |
+| **ADVANCED Circuit** | 90 seconds | 60 seconds | 45 seconds each |
+| **QUANTUM Circuit** | 120 seconds | 80 seconds | 60 seconds each |
+| **TRANSCENDENT Circuit** | 180 seconds | 120 seconds | 90 seconds each |
 | **Equipment Component** | 60 seconds | 40 seconds | 30 seconds each |
 | **Probe Component** | 300 seconds | 200 seconds | 150 seconds each |
 

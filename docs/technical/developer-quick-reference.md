@@ -37,7 +37,7 @@ Real-World Context:
 | **Advanced Solar Panel** | 200W | 2.0 | 8 Silicon + 2 Rare Metal | Equipment Bay |
 | **Industrial Solar Panel** | 250W | 2.5 | 12 Silicon + 4 Rare Metal + 2 Alloy | Circuit Technology |
 
-**Alien Planet Efficiency**: 25% of Earth efficiency due to star spectrum and atmospheric conditions
+**Unknown Planet Efficiency**: 25% of Earth efficiency due to star spectrum and atmospheric conditions
 
 #### Battery System Reference
 
@@ -63,9 +63,12 @@ Real-World Context:
 
 | Component | Materials Required | Manufacturing Time | Energy Cost (kWh) | Equipment Required |
 |-----------|-------------------|-------------------|-------------------|-------------------|
-| **Basic Circuit** | 3 Silicon + 1 Rare Metal | 45 seconds | 2.625 kWh (26.25 EU) | Circuit Assembler |
-| **Advanced Circuit** | 5 Silicon + 3 Rare Metal | 90 seconds | 5.25 kWh (52.5 EU) | Circuit Assembler |
-| **Quantum Circuit** | 8 Silicon + 6 Rare Metal + 2 Alloy | 180 seconds | 13.5 kWh (135 EU) | Circuit Assembler |
+| **FOUNDATION Circuit** | 2 Silicon + 1 Copper | 30 seconds | 1.8 kWh (18 EU) | Circuit Assembler |
+| **RELIABLE Circuit** | 3 Silicon + 1 Copper + 1 Rare Metal | 45 seconds | 2.625 kWh (26.25 EU) | Circuit Assembler |
+| **PRECISION Circuit** | 4 Silicon + 2 Copper + 2 Rare Metal | 60 seconds | 3.5 kWh (35 EU) | Circuit Assembler |
+| **ADVANCED Circuit** | 5 Silicon + 3 Copper + 3 Rare Metal | 90 seconds | 5.25 kWh (52.5 EU) | Circuit Assembler |
+| **QUANTUM Circuit** | 6 Silicon + 4 Copper + 4 Rare Metal + 1 Alloy | 120 seconds | 7.2 kWh (72 EU) | Circuit Assembler |
+| **TRANSCENDENT Circuit** | 8 Silicon + 6 Copper + 6 Rare Metal + 2 Alloy | 180 seconds | 13.5 kWh (135 EU) | Circuit Assembler |
 
 #### Critical Path Analysis
 ```

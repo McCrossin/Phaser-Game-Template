@@ -5,7 +5,14 @@
 **New Eden Project** is a 2D automation-strategy hybrid where you control von Neumann probes exploring diverse planets. As an intelligent probe consciousness, you gather resources, adapt to environmental challenges, and build self-sustaining civilizations through strategic engineering.
 
 ### Core Vision
-Transform unexplored planets into thriving worlds through intelligent probe engineering and environmental adaptation. Each planet presents unique challenges requiring specialized equipment and strategic resource management.
+Transform unexplored planets into thriving worlds through intelligent probe engineering and environmental adaptation. Each planet presents unique challenges requiring specialized equipment and strategic resource management. In a vast, seemingly empty universe where Earth appears to be the only world that has ever produced life, you carry the profound responsibility of ensuring that intelligence and consciousness survive beyond humanity's dying homeworld.
+
+### Cosmic Context & Narrative Weight
+**The Universe's Only Intelligence**: Through centuries of observation and exploration, humanity has found no evidence of life beyond Earth
+- **Silent Cosmos**: Radio telescopes, deep space probes, and advanced scanning have revealed only empty worlds and dead systems
+- **Unique Burden**: Earth's biosphere represents the universe's sole known experiment in consciousness and intelligence
+- **Existential Stakes**: Your mission success determines whether the universe remains forever silent or continues to host thinking beings
+- **Profound Isolation**: Every decision carries the weight of being potentially the last intelligent action in an otherwise lifeless cosmos
 
 ### Key Experience
 - **Direct Probe Control**: WASD movement with context-sensitive tool usage
@@ -45,7 +52,7 @@ You experience the world as an intelligent probe consciousness:
 - **Knowledge Transfer**: When building new probes, transfer your learned strategies
 
 ### 1.3 Victory Experience
-Success means creating systems that work without you - building infrastructure that will serve humanity for generations when the hibernation ships arrive. Your legacy: a thriving world ready for millions of sleeping colonists.
+Success means creating systems that work without you - building infrastructure that will serve humanity for generations when the hibernation ships arrive. In a vast, empty universe where Earth appears to be the only source of life, your mission carries the weight of preserving the only known intelligence in existence. Your legacy: a thriving world ready for millions of sleeping colonists, ensuring that life and consciousness continue in an otherwise barren cosmos.
 
 ---
 
@@ -74,36 +81,55 @@ New systems unlock only after mastering prerequisites, preventing overwhelming c
 - **Gradual Revelation**: Start with 1 slot, naturally progress to 4-slot specialization
 - **Emotional Progression**: Frustration → Relief → Challenge → Victory
 
-### 2.5 Core Tutorial Flow (15 minutes)
+### 2.5 Core Tutorial Flow (45-60 minutes)
 
-#### Phase 1: Consciousness Awakening (2-3 minutes)
+#### Phase 1: Consciousness Awakening (8-10 minutes)
 **Opening**: Probe Unit 7 activates with single equipment slot and depleting power
-- **Natural Discovery**: WASD movement, basic scanner operation
+- **Natural Discovery**: WASD movement, basic scanner operation, terrain familiarization
 - **Immediate Pressure**: "WARNING: Power decreasing, solar panels required"
 - **Equipment Limitation**: Scanner OR mining laser, constant swapping required
+- **Extended Learning**: Multiple resource types introduction, scanning technique mastery
+- **Power Management**: Learning energy efficiency, solar panel positioning optimization
 
-#### Phase 2: Single-Slot Struggle (4-5 minutes)
+#### Phase 2: Single-Slot Resource Mastery (12-15 minutes)
 **The Juggling Challenge**: Find iron deposits but need mining laser; scan for silicon but need scanner
 - **Learning Moment**: Equipment slots are precious, every choice has trade-offs
-- **Resource Gathering**: Collect Iron + Silicon + Carbon for 3D printer construction
-- **Circuit Production**: Basic transistor fabrication using Silicon + Gold wiring
+- **Extended Resource Gathering**: Collect Iron + Silicon + Carbon + Copper for comprehensive 3D printer construction
+- **Circuit Theory Introduction**: Understanding transistor fundamentals, copper wiring basics
+- **Quality Learning**: Resource purity mechanics, refining techniques, extraction optimization
+- **Strategic Planning**: Route optimization, energy conservation, equipment cycling mastery
 
-#### Phase 3: 3D Printer Achievement (3-4 minutes)
+#### Phase 3: Basic Circuit Production (10-12 minutes)
+**Circuit Manufacturing Deep Dive**: Comprehensive introduction to electronic fabrication
+- **Copper Infrastructure**: Basic wiring systems, power distribution, signal transmission
+- **Silicon Processing**: Wafer preparation, doping techniques, crystal growth fundamentals
+- **Gold Integration**: Precision connectors, corrosion resistance, high-frequency applications
+- **Circuit Assembly**: Component integration, testing procedures, quality assurance
+- **First Functional Circuit**: FOUNDATION-tier control unit (28nm fabrication) for basic equipment coordination
+
+#### Phase 4: 3D Printer Construction & Mastery (8-10 minutes)
 **Major Milestone**: Construct 3D printer with advanced circuit brain
-- **First Print Job**: Equipment Bay Expansion (immediate relief from 1-slot limitation)
+- **Component Integration**: Mechanical systems, circuit brain installation, calibration
+- **First Print Jobs**: Equipment Bay Expansion, specialized tool components
 - **Capability Unlock**: Scanner + Mining Laser equipped simultaneously
-- **New Challenge**: Advanced materials (Titanium, Lithium) required for probe replication
+- **Advanced Materials Introduction**: Titanium, Lithium, rare earth elements
+- **Manufacturing Efficiency**: Print queue management, resource optimization
 
-#### Phase 4: Environmental Barriers (4-5 minutes)
-**Specialized Requirements**: Underwater carbon deposits need Pressure Hull (2-slot equipment)
-- **Strategic Choices**: Environmental protection vs. operational capability
-- **Equipment Planning**: Balancing scanning, extraction, and environmental protection
+#### Phase 5: Environmental Challenges & Specialization (10-12 minutes)
+**Specialized Requirements**: Multiple environmental barriers requiring strategic planning
+- **Underwater Operations**: Pressure hull systems, waterproof electronics, depth management
+- **Thermal Extremes**: Heat shielding, cooling systems, volcanic resource access
+- **Radiation Zones**: Lead shielding, contamination protocols, rare material extraction
+- **Strategic Equipment Planning**: Multi-environment loadout optimization
+- **Advanced Circuit Applications**: Environmental sensor integration, automated protection systems
 
-#### Phase 5: First Replication Victory (1-2 minutes)
+#### Phase 6: First Replication Achievement (7-10 minutes)
 **Transformation Moment**: From individual survival to multi-probe strategy
+- **Advanced Material Collection**: Comprehensive resource stockpiling, quality requirements
+- **Complex Circuit Fabrication**: Multi-stage transistor production, advanced testing protocols
 - **Consciousness Transfer**: "Transfer successful. You now control TWO specialized units."
-- **Immediate Specialization**: Scout probe vs. processor probe configurations
-- **Strategic Hook**: Environmental challenges still require specialized protection gear
+- **Fleet Specialization**: Dedicated roles, coordination protocols, efficiency optimization
+- **Automation Introduction**: Basic task delegation, routine operation management
 
 ### Post-Tutorial Replication Incentives
 - **Resource Depletion**: Surface deposits exhaust quickly, require constant miner repositioning
@@ -127,19 +153,31 @@ New systems unlock only after mastering prerequisites, preventing overwhelming c
 ### 3.2 Replication Material Chain
 
 #### Circuit Production Progression
-1. **Silicon Wafer Preparation**: Ultra-pure silicon processing and crystal growth
-2. **Advanced Lithography**: Extreme UV and quantum-precision etching (scale determines automation capability)
-   - **BASIC Circuit Fabrication (7nm)**: Modern flagship technology - iPhone M-series/AMD Ryzen level processing
-   - **ADVANCED Circuit Fabrication (3nm)**: Experimental fabrication - beyond current production capabilities  
+1. **Copper Infrastructure Foundation**: Essential base-layer wiring and power distribution systems
+   - **Power Distribution**: Primary electrical pathways, transformer windings, motor components
+   - **Signal Transmission**: Basic data pathways, analog circuit foundations, electromagnetic compatibility
+   - **Thermal Management**: Heat dissipation systems, cooling infrastructure, thermal interface materials
+2. **Silicon Wafer Preparation**: Ultra-pure silicon processing and crystal growth
+3. **Advanced Lithography**: Extreme UV and quantum-precision etching (scale determines automation capability)
+   - **FOUNDATION Circuit Fabrication (28nm)**: Basic automation technology - essential probe coordination
+   - **IMPROVED Circuit Fabrication (14nm)**: Enhanced processing - multi-probe fleet management
+   - **PRECISION Circuit Fabrication (7nm)**: Modern flagship technology - iPhone M-series/AMD Ryzen level processing
+   - **ADVANCED Circuit Fabrication (5nm)**: Cutting-edge performance - beyond current consumer technology
+   - **EXPERIMENTAL Circuit Fabrication (3nm)**: Laboratory-grade technology - beyond current mass production capabilities  
    - **QUANTUM Circuit Fabrication (1nm)**: Theoretical quantum-precision manufacturing - requires exotic materials and perfect control
-3. **Gold Circuit Integration**: Precision wiring for reliable signal transmission at nanometer scales
-4. **Quantum Assembly**: Combining transistors into revolutionary processing units
+   - **TRANSCENDENT Circuit Fabrication (Sub-nm)**: Beyond known physics - theoretical consciousness enhancement
+4. **Copper-Gold Circuit Integration**: Precision wiring combining copper power delivery with gold signal pathways
+   - **Copper Layer**: Primary power distribution, high-current pathways, thermal management
+   - **Gold Layer**: Critical signal transmission, corrosion-resistant connectors, high-frequency applications
+   - **Hybrid Architecture**: Multi-layer systems combining copper efficiency with gold reliability
+5. **Quantum Assembly**: Combining transistors into revolutionary processing units
 
 #### Advanced Material Requirements
+- **Copper Infrastructure**: Essential base wiring, power distribution, thermal management systems
 - **Titanium Frame**: Structural integrity, requires Advanced Mining Drill
 - **Lithium Battery**: Energy storage, found in mountain salt deposits
 - **Silicon Circuits**: Computing brain, transistor size determines capability level
-- **Gold Wiring**: Essential for circuit conductivity and corrosion resistance
+- **Gold Wiring**: Critical signal transmission, corrosion resistance, high-frequency applications
 - **Carbon Composites**: Lightweight structural components
 
 ### 3.3 Replication Stages (5-7 minutes)
@@ -187,7 +225,7 @@ You now command a specialized probe fleet."
 - **Capability**: Advanced material processing and inter-probe coordination
 
 #### Automation Unlocks Through Advanced Circuits
-**Smart Resource Management**: ADVANCED Circuit technology enables automated behaviors
+**Smart Resource Management**: PRECISION Circuit technology (Tier 3, 7nm fabrication) enables automated behaviors
 - **Depletion Detection**: Automatic identification when resource deposits exhaust
 - **Adaptive Pathfinding**: AI-driven movement to nearest detected resources
 - **Efficiency Optimization**: Smart coordination between multiple mining probes
@@ -222,10 +260,11 @@ Each world feels unique through simple generation rules:
 - *[Biome Design & Planetary Diversity](world-design/biome-design-detailed.md)*
 
 ### 4.3 Humanity's Backup Plan
-- **Hibernation Ships**: Earth has already launched generation ships with millions in stasis
-- **Your Mission**: Prepare New Eden before they arrive in 200+ years
-- **No Time Pressure**: Focus on thorough exploration and optimal world development
-- **Quality Over Speed**: Build sustainable, efficient systems for long-term success
+- **Hibernation Ships**: Earth has already launched generation ships with millions in stasis - humanity's final hope
+- **Cosmic Isolation**: In a vast universe seemingly devoid of life, Earth represents the only known source of intelligence
+- **Critical Mission**: Prepare New Eden before they arrive in 200+ years - failure means the end of consciousness in the universe
+- **No Time Pressure**: Focus on thorough exploration and optimal world development, but carry the weight of being life's sole guardian
+- **Quality Over Speed**: Build sustainable, efficient systems for long-term success - the universe depends on it
 
 **Pre-Generated Scenarios:**
 - **Darwin's Garden** - Balanced personality, optimal learning conditions, guided experience
@@ -247,10 +286,15 @@ Each world feels unique through simple generation rules:
 ### 4.5 New Gameplay Mechanics for Long-Term Development
 
 #### Interplanetary & Interstellar Expansion
-- **Probe Transmission**: Send probe consciousness to nearby planets/moons via communication array
-- **Resource Networks**: Establish supply chains between multiple worlds
-- **Specialized Worlds**: Ice mining from moons, rare materials from asteroid belts
-- **Journey Time**: Realistic travel distances create natural pacing (weeks/months for planetary travel)
+- **Probe Consciousness Transmission**: Send probe intelligence to nearby planets/moons via quantum communication arrays
+- **Warp Gate Network Technology**: Revolutionary faster-than-light infrastructure enabling instant travel
+  - **Initial Exploration**: First probe must travel via conventional propulsion (5-20 years depending on distance)
+  - **Gate Construction**: Successful probe establishes quantum entanglement beacon and gate infrastructure
+  - **Instant Network Access**: Once established, gates enable immediate consciousness transfer and resource coordination
+  - **Network Expansion**: Each new system adds to interconnected faster-than-light transportation network
+- **Resource Networks**: Establish supply chains between multiple worlds through warp gate infrastructure
+- **Specialized Worlds**: Ice mining from moons, rare materials from asteroid belts, research stations on unique planets
+- **Journey Realism**: Initial exploration takes years (5-20 years interplanetary, 50-200 years interstellar), but warp gates enable instant subsequent access
 
 #### Infrastructure Legacy Systems
 - **Hibernation Ship Landing Pads**: Massive construction projects requiring thousands of resources
@@ -259,10 +303,11 @@ Each world feels unique through simple generation rules:
 - **Automated Maintenance**: Self-repairing systems that function for centuries
 
 #### Discovery & Knowledge Progression
-- **Scientific Research**: Study alien artifacts, unique planetary phenomena, exotic materials
-- **Technology Advancement**: Unlock new capabilities through environmental challenges
+- **Scientific Research**: Study unique planetary phenomena, exotic geological formations, rare material compositions
+- **Ancient Geology**: Investigate planetary formation processes, cosmic impact sites, primordial chemical signatures
+- **Technology Advancement**: Unlock new capabilities through environmental challenges and material discoveries
 - **Probe Evolution**: Consciousness upgrades enabling greater autonomy and decision-making
-- **Legacy Documentation**: Build knowledge bases for arriving human colonists
+- **Legacy Documentation**: Build comprehensive knowledge bases for arriving human colonists
 
 ---
 
@@ -301,17 +346,73 @@ Every probe has exactly 4 equipment slots. Strategic loadout choices define prob
 ### 6.3 Progression Experience
 Equipment unlocks through discovery and technological advancement. Finding titanium deposits teaches titanium drill construction. Surviving volcanic heat reveals thermal protection blueprints. Advanced circuit fabrication enables intelligent automation systems.
 
-### 6.4 Circuit Technology Progression
-**Three-Tier Automation System**: Progressive circuit capabilities unlock advanced probe behaviors
-- **BASIC Circuits (7nm fabrication)**: Modern flagship CPU technology - single-probe automation, resource depletion detection
-- **ADVANCED Circuits (3nm fabrication)**: Beyond current production limits - multi-probe coordination, smart resource management, adaptive pathfinding  
-- **QUANTUM Circuits (1nm fabrication)**: Theoretical quantum-precision manufacturing - planetary AI systems, consciousness enhancement, predictive resource discovery
+### 6.4 Circuit Technology Progression & Research Tree
+**Seven-Tier Adaptive Circuit System**: Progressive circuit research unlocks specialized capabilities based on player needs and environmental challenges
 
-### 6.5 Gold Integration Requirements
-**Critical Circuit Component**: Gold wiring essential for reliable signal transmission
-- **Circuit Conductivity**: Gold's corrosion resistance ensures long-term circuit reliability
-- **Precision Manufacturing**: Gold wiring enables nanometer-scale transistor connections
-- **3D Printer Brain**: Advanced circuits require gold-integrated processing units
+#### Tier 1: FOUNDATION Circuits (28nm fabrication)
+**Foundation Technology**: Essential automation and coordination
+- **Capabilities**: Single-probe task automation, basic resource detection, simple equipment coordination
+- **Research Unlocks**: Equipment efficiency optimization, basic pathfinding algorithms
+- **Applications**: Automated mining sequences, equipment wear monitoring, energy efficiency tracking
+
+#### Tier 2: IMPROVED Circuits (14nm fabrication) 
+**Enhanced Processing**: Multi-probe coordination and environmental adaptation
+- **Capabilities**: Fleet coordination, environmental hazard detection, adaptive equipment selection
+- **Research Unlocks**: Smart resource prioritization, hazard avoidance protocols, equipment recommendation systems
+- **Applications**: Coordinated mining operations, automated safety protocols, efficiency optimization
+
+#### Tier 3: PRECISION Circuits (7nm fabrication)
+**Modern Flagship Technology**: iPhone M-series/AMD Ryzen level processing capability
+- **Capabilities**: Predictive resource mapping, complex automation sequences, learning from player behavior
+- **Research Unlocks**: Resource depletion prediction, optimal route planning, behavioral pattern recognition
+- **Applications**: Intelligent resource allocation, predictive maintenance, strategy optimization
+
+#### Tier 4: ADVANCED Circuits (5nm fabrication)
+**Cutting-Edge Performance**: Beyond current consumer technology
+- **Capabilities**: Planetary-scale optimization, advanced AI decision-making, complex multi-system coordination
+- **Research Unlocks**: Planetary resource modeling, climate adaptation systems, advanced logistics optimization
+- **Applications**: Ecosystem management, large-scale automation, intelligent resource networks
+
+#### Tier 5: EXPERIMENTAL Circuits (3nm fabrication)
+**Laboratory-Grade Technology**: Beyond current mass production capabilities
+- **Capabilities**: Quantum-assisted computation, advanced consciousness simulation, predictive environmental modeling
+- **Research Unlocks**: Consciousness expansion protocols, quantum sensing systems, predictive geology
+- **Applications**: Enhanced probe intelligence, quantum communication arrays, advanced terraforming systems
+
+#### Tier 6: QUANTUM Circuits (1nm fabrication)
+**Theoretical Quantum-Precision Manufacturing**: Revolutionary processing capabilities
+- **Capabilities**: Quantum entanglement communication, consciousness networking, reality simulation
+- **Research Unlocks**: Interplanetary consciousness transfer, quantum resource detection, reality modeling
+- **Applications**: Instantaneous interplanetary coordination, quantum tunneling sensors, consciousness backup systems
+
+#### Tier 7: TRANSCENDENT Circuits (Sub-nanometer)
+**Beyond Known Physics**: Theoretical consciousness enhancement technology
+- **Capabilities**: Consciousness evolution, dimensional analysis, space-time manipulation research
+- **Research Unlocks**: Consciousness merger protocols, dimensional scanning, temporal analysis systems
+- **Applications**: Multi-dimensional resource detection, consciousness evolution, advanced physics research
+
+#### Adaptive Research Branches
+**Player-Driven Specialization**: Research paths adapt based on gameplay focus and environmental challenges
+- **Environmental Focus**: Enhanced hazard protection, specialized terrain adaptation, extreme environment systems
+- **Automation Focus**: Advanced AI behaviors, fleet coordination, optimization algorithms
+- **Exploration Focus**: Long-range sensing, interplanetary communication, discovery enhancement systems
+- **Resource Focus**: Advanced processing techniques, efficiency optimization, rare material detection
+- **Infrastructure Focus**: Large-scale construction, terraforming systems, colonization preparation
+
+### 6.5 Copper-Gold Integration Requirements
+**Dual-Metal Circuit Architecture**: Modern electronic systems require both copper and gold for optimal performance
+- **Copper Applications**: Primary power delivery, high-current pathways, electromagnetic shielding, thermal dissipation
+  - **Cost Efficiency**: Copper provides 97% of gold's conductivity at fraction of the cost
+  - **Power Distribution**: Essential for high-current applications, motor windings, power supply systems
+  - **Thermal Management**: Superior heat dissipation compared to gold, critical for high-performance circuits
+- **Gold Applications**: Critical signal transmission, corrosion-resistant connectors, high-frequency pathways
+  - **Corrosion Resistance**: Gold's immunity to oxidation ensures long-term circuit reliability
+  - **Signal Integrity**: Superior performance for high-frequency and precision signal transmission
+  - **Contact Reliability**: Essential for connectors, switches, and precision electronic interfaces
+- **Hybrid Architecture**: Real-world circuit design combines copper infrastructure with gold signal pathways
+  - **Multi-Layer Design**: Copper power planes with gold-plated signal traces and contact points
+  - **Cost Optimization**: Strategic use of expensive gold only where performance demands require it
+  - **Manufacturing Efficiency**: Copper base layers with selective gold plating for critical applications
 
 ### 6.6 Equipment Swapping Mechanics
 *[Complete specifications in docs/gameplay/mechanics/equipment-swapping-detailed.md]*
@@ -363,10 +464,10 @@ Resource information improves as you upgrade scanning equipment:
 4. **Predictive**: "Platinum likely northwest" - AI-assisted discovery
 
 ### 8.2 Resource Categories
-- **Basic Materials**: Abundant, easy extraction (Iron, Silicon, Carbon)
-- **Specialized Elements**: Moderate rarity, specific uses (Titanium, Lithium)
-- **Rare Components**: High value, difficult access (Platinum, Rare earths)
-- **Exotic Materials**: Extreme challenges, unique sources (Radioactive elements)
+- **Basic Materials**: Abundant, easy extraction (Iron, Silicon, Carbon, Copper)
+- **Specialized Elements**: Moderate rarity, specific uses (Titanium, Lithium, Aluminum)
+- **Rare Components**: High value, difficult access (Platinum, Rare earth elements, Gold)
+- **Exotic Materials**: Extreme challenges, unique geological sources (Radioactive elements, Cosmic impact materials)
 
 **Complete Resource System Documentation**:
 - *[Periodic Table Implementation](systems/periodic-table-detailed.md)*
@@ -408,7 +509,7 @@ Automation assists rather than replaces player decision-making. You set goals an
 - **Equipment Cycling**: Scanner needed for detection, mining laser for extraction
 - **Automation Solution**: Advanced circuits enable smart resource management
 
-**Smart Mining Automation** (Unlocked via ADVANCED Circuits):
+**Smart Mining Automation** (Unlocked via PRECISION Circuits - Tier 3, 7nm fabrication):
 - **Depletion Detection**: Probes automatically recognize when deposits are exhausted
 - **Adaptive Scanning**: Automated search for nearest resources of required type
 - **Intelligent Pathfinding**: AI-driven movement optimization and obstacle avoidance
@@ -426,10 +527,15 @@ Win by creating lasting infrastructure for incoming colonists:
 - **Expansion Networks**: Multi-world resource and communication networks
 
 ### Interplanetary Progression
-- **System Exploration**: Send probe consciousness to moons, asteroids, neighboring planets
-- **Specialized Worlds**: Ice mining operations, rare material extraction, research stations
-- **Communication Networks**: Quantum entanglement arrays for instant interplanetary coordination
-- **Journey Realism**: Weeks/months travel time creates natural gameplay pacing
+- **System Exploration**: Send probe consciousness to moons, asteroids, neighboring planets via quantum communication
+- **Warp Gate Technology**: Revolutionary faster-than-light travel infrastructure
+  - **Pioneer Phase**: Initial probe travels 5-20 years via conventional propulsion to establish first presence
+  - **Gate Construction**: Successful probe builds quantum entanglement beacon and warp gate infrastructure
+  - **Network Integration**: Completed gates enable instant consciousness transfer and resource coordination
+  - **Expansion Acceleration**: Each new gate adds to interconnected FTL transportation network
+- **Specialized Worlds**: Ice mining operations, rare material extraction, research stations on unique planets
+- **Communication Networks**: Quantum entanglement arrays for instantaneous interplanetary coordination
+- **Journey Realism**: Years-long initial exploration (5-20 years interplanetary, 50-200 years interstellar) followed by instant warp gate access
 
 ### Legacy Building
 - **Hibernation Infrastructure**: Landing pads, awakening facilities, initial habitation domes

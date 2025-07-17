@@ -13,7 +13,7 @@ Never explain systems before players encounter the need. Let natural consequence
 
 ## Phase-by-Phase Implementation
 
-### Phase 1: Consciousness Awakening (2-3 minutes)
+### Phase 1: Consciousness Awakening (8-10 minutes)
 
 #### Opening Narrative Experience
 ```
@@ -41,7 +41,7 @@ Estimated survival time: 47 minutes
 - **Solar Panel Requirements**: Iron + Silicon + Carbon
 - **Urgency Creation**: Real survival pressure drives exploration and resource gathering
 
-### Phase 2: Single-Slot Equipment Juggling (4-5 minutes)
+### Phase 2: Single-Slot Resource Mastery (12-15 minutes)
 
 #### The Core Learning Challenge
 **Resource Detection vs. Extraction Conflict**:
@@ -59,25 +59,51 @@ Estimated survival time: 47 minutes
 **Energy Stabilization**: First moment of non-survival gameplay
 
 #### Circuit Production Introduction
-**Gold Discovery**: Scanner reveals "Metallic signature - high conductivity"
-**Advanced Analysis**: Gold deposits require Chemical Extractor (not yet available)
-**Circuit Technology Preview**: "Gold required for cutting-edge 7nm circuit fabrication"
-**Engineering Context**: "Current-generation flagship CPU technology within reach"
+**Copper Infrastructure Discovery**: Scanner reveals "Conductive material detected - essential for power systems"
+**Gold Signal Detection**: Advanced scanning finds "High-purity metal - ideal for precision connections"
+**Dual-Metal Circuit Requirements**: "Copper provides power distribution, gold ensures signal integrity"
+**Circuit Technology Preview**: "FOUNDATION-tier circuits (28nm) enable basic probe coordination"
+**Engineering Context**: "Progressive miniaturization unlocks advanced automation capabilities"
 
-### Phase 3: 3D Printer Construction & Equipment Bay Relief (3-4 minutes)
+### Phase 3: Basic Circuit Production (10-12 minutes)
+
+#### Comprehensive Circuit Manufacturing
+**Copper Infrastructure Systems**:
+- **Power Distribution**: Basic electrical pathways and energy management
+- **Signal Transmission**: Foundation data pathways and communication protocols
+- **Thermal Management**: Heat dissipation and cooling infrastructure
+
+**Silicon Processing Fundamentals**:
+- **Wafer Preparation**: Crystal growth and atomic structure optimization
+- **Doping Techniques**: Electrical property modification for transistor function
+- **Quality Control**: Purity verification and performance testing
+
+**Gold Integration Applications**:
+- **Precision Connectors**: Corrosion-resistant signal pathways
+- **High-Frequency Transmission**: Advanced signal integrity for complex operations
+- **Contact Reliability**: Long-term connection stability
+
+**FOUNDATION Circuit Assembly**: 
+- **Transistor Integration**: Basic logic gates and processing elements
+- **Component Testing**: Functionality verification and quality assurance
+- **Circuit Brain Installation**: Control unit for basic equipment coordination
+
+### Phase 4: 3D Printer Construction & Mastery (8-10 minutes)
 
 #### 3D Printer Material Requirements
 **Advanced Materials Needed**:
+- **Copper Infrastructure**: Power distribution networks and thermal management systems
 - **Structural Frame**: 25 Iron + 10 Titanium (titanium requires advanced drill)
 - **Processing Unit**: 12 Silicon + 8 Gold (gold requires chemical extraction)
 - **Power Systems**: 15 Carbon + 6 Lithium (lithium found in mountain deposits)
-- **Circuit Integration**: Silicon wafer + Gold wiring + Transistor assembly
+- **Circuit Integration**: Copper base layer + Silicon wafer + Gold signal pathways
 
 #### The Great Equipment Shuffle
-**Challenge Intensification**: Need 3+ different extraction tools for 3D printer components
-- **Basic Mining**: Iron extraction with standard laser
+**Challenge Intensification**: Need 4+ different extraction tools for 3D printer components
+- **Basic Mining**: Iron and copper extraction with standard laser
 - **Advanced Drilling**: Titanium requires specialized equipment  
 - **Chemical Processing**: Gold and lithium need different extraction methods
+- **Resource Refinement**: Pure materials require specialized processing equipment
 - **Constant Swapping**: Single slot forces continuous equipment cycling
 
 #### Major Milestone Achievement
@@ -85,11 +111,11 @@ Estimated survival time: 47 minutes
 ```
 3D PRINTER CONSTRUCTION COMPLETE
 Advanced fabrication capabilities now available.
-Transistor manufacturing: CURRENT-GEN (7nm)
-Circuit complexity: MODERN FLAGSHIP CPU TECHNOLOGY
+Circuit manufacturing: FOUNDATION-tier (28nm)
+Processing capability: Basic automation and coordination
 
 First print job recommended: EQUIPMENT BAY EXPANSION
-Cost: 8 Iron + 4 Silicon + 2 Gold circuits
+Cost: 8 Iron + 4 Silicon + 2 Copper + FOUNDATION circuits
 Benefit: +1 Equipment Slot (Total: 2 slots)
 ```
 

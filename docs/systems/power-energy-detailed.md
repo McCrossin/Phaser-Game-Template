@@ -29,7 +29,7 @@ Energy in New Eden Project represents the **operational capacity** of probe syst
 **Real-World Context**: 
 - 100W equipment = 1 EU/min consumption (LED lightbulb equivalent)
 - 1000W equipment = 10 EU/min consumption (microwave equivalent)
-- Solar panels based on 400W residential panels scaled to 25% efficiency for alien conditions
+- Solar panels based on 400W residential panels scaled to 25% efficiency for unfamiliar stellar conditions
 
 ---
 
@@ -76,9 +76,11 @@ Energy in New Eden Project represents the **operational capacity** of probe syst
 - **Circuit Manufacturing**: 12kW - precision electronic assembly
 
 **Circuit Assembler** (15kW):
-- **BASIC Circuits (7nm)**: 10kW - modern flagship transistor assembly
-- **ADVANCED Circuits (3nm)**: 15kW - next-generation fabrication
-- **QUANTUM Circuits (1nm)**: 25kW - theoretical precision manufacturing
+- **FOUNDATION Circuits (28nm)**: 10kW - reliable foundation fabrication
+- **PRECISION Circuits (14nm)**: 15kW - enhanced precision manufacturing
+- **ADVANCED Circuits (7nm)**: 20kW - high-performance circuit assembly
+- **QUANTUM Circuits (3nm)**: 25kW - quantum-scale fabrication
+- **TRANSCENDENT Circuits (1nm)**: 30kW - ultimate precision manufacturing
 
 #### Environmental Protection Equipment
 **Pressure Hull** (4.5kW):
@@ -110,19 +112,19 @@ Energy in New Eden Project represents the **operational capacity** of probe syst
 
 #### Panel Performance Ratings
 **Basic Solar Panel** (5kW peak generation):
-- **Real-world scale**: Residential-grade solar installation adapted for alien conditions
+- **Real-world scale**: Residential-grade solar installation adapted for unfamiliar stellar conditions
 - **South Facing**: 5.0kW (Clear) / 2.5kW (Cloudy) / 1.3kW (Storm)
 - **East/West Facing**: 4.0kW (Clear) / 2.0kW (Cloudy) / 1.0kW (Storm)
 - **North Facing**: 2.5kW (Clear) / 1.3kW (Cloudy) / 0.6kW (Storm)
 
 **Advanced Solar Panel** (10kW peak generation):
-- **Enhanced efficiency**: Improved alien-environment adaptation and tracking systems
+- **Enhanced efficiency**: Improved unfamiliar-environment adaptation and tracking systems
 - **South Facing**: 10kW (Clear) / 5.0kW (Cloudy) / 2.5kW (Storm)
 - **East/West Facing**: 8.0kW (Clear) / 4.0kW (Cloudy) / 2.0kW (Storm)
 - **North Facing**: 5.0kW (Clear) / 2.5kW (Cloudy) / 1.3kW (Storm)
 
 **Industrial Solar Panel** (25kW peak generation):
-- **Maximum efficiency**: Military-grade panels optimized for alien star spectrum
+- **Maximum efficiency**: Military-grade panels optimized for unfamiliar stellar spectrum
 - **South Facing**: 25kW (Clear) / 13kW (Cloudy) / 6.0kW (Storm)
 - **East/West Facing**: 20kW (Clear) / 10kW (Cloudy) / 5.0kW (Storm)
 - **North Facing**: 13kW (Clear) / 6.0kW (Cloudy) / 3.0kW (Storm)

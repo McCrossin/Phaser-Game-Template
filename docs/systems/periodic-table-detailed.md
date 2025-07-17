@@ -173,27 +173,40 @@ interface PerformantChemicalRecipe {
   - Fe (heavy, cheap) - 100% effectiveness, high weight
   - Al (light, energy-intensive) - 95% effectiveness, 50% weight
   - Ti (optimal, rare) - 110% effectiveness, 25% weight
+- **Circuit Infrastructure**:
+  - Cu (power delivery) - 100% power efficiency, 97% conductivity, superior thermal management
+  - Ag (premium) - 105% conductivity, higher cost
+  - Au (signal paths) - 100% conductivity, perfect corrosion resistance, high cost
 - **Heat Exchangers**:
-  - Cu (standard) - 100% thermal efficiency
-  - Ag (premium) - 120% thermal efficiency
+  - Cu (standard) - 100% thermal efficiency, cost-effective
+  - Ag (premium) - 120% thermal efficiency, expensive
   - Au (exotic) - 140% thermal efficiency, corrosion immunity
 
 #### Universal Requirements (Non-Substitutable)
-- **Gold (Au)**: Always required for electronics due to corrosion resistance
+- **Copper (Cu)**: Essential for power distribution in all electronic systems due to cost-effectiveness and thermal properties
+- **Gold (Au)**: Always required for critical signal paths due to corrosion resistance
 - **Silicon (Si)**: Essential for semiconductors, no viable substitutes
 - **Carbon (C)**: Basis for organic chemistry and advanced materials
 - **Platinum Group**: Required for specific catalytic processes
 
 ### Base Elements (Starter Planet Availability)
+#### Copper (Cu) - Essential Circuit Infrastructure
+- **Abundance**: Common in rocky planet deposits, often near iron formations
+- **Applications**: Power distribution, electrical wiring, thermal management, motor windings
+- **Electrical Properties**: 97% of gold's conductivity at fraction of the cost
+- **Thermal Properties**: Superior heat dissipation compared to gold, critical for high-performance circuits
+- **Extraction**: Electrolytic refining, sulfide ore processing
+- **Circuit Integration**: Primary power delivery, electromagnetic shielding, thermal interface materials
+
 #### Silicon (Si) - Electronics Foundation
 - **Abundance**: High in rocky planet crusts
-- **Applications**: Solar panels, computer chips, fiber optics
+- **Applications**: Solar panels, computer chips, fiber optics, transistor substrates
 - **Extraction**: Thermal reduction of sand (SiO₂)
 - **Purity Requirements**: 99.999% for semiconductor applications
 
 #### Iron (Fe) - Structural Backbone
 - **Abundance**: Primary component of planetary cores
-- **Applications**: Steel production, magnetic components, tools
+- **Applications**: Steel production, magnetic components, tools, structural frameworks
 - **Extraction**: Thermal reduction with carbon (blast furnace)
 - **Alloy Options**: Carbon steel, stainless steel, specialized alloys
 

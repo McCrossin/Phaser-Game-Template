@@ -7,7 +7,7 @@
 #### Basic Mining Laser
 - **Battery Life**: 2-3 hours of continuous operation
 - **Mining Rate**: 1 unit per 5 seconds (slow but functional)
-- **Material Limitations**: Can only extract soft ores (iron, silicon, carbon)
+- **Material Limitations**: Can only extract soft ores (iron, silicon, carbon, copper)
 - **Durability**: Efficiency decreases as battery depletes
 - **Range**: 2-3 grid units maximum effective distance
 - **Power Consumption**: High drain during active mining operations
@@ -39,11 +39,11 @@
 - **Automated Mining Station**: 
   - Continuous operation, no battery drain
   - 5x faster than manual mining
-  - Can process harder materials (copper, nickel)
-  - Requires steel construction materials
+  - Can process harder materials (copper, nickel, aluminum)
+  - Requires steel construction materials and FOUNDATION circuits
 - **Industrial Smelter**: 
   - Higher temperatures (1800°C capable)
-  - 95% purity achievement
+  - 95% purity achievement for copper and gold processing
   - 3x faster processing than portable
   - Multi-queue processing capability
 - **Assembly Line**: 

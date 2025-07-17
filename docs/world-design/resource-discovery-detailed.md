@@ -106,15 +106,15 @@
 
 ### Elevation-Based Distribution (Algorithm)
 - **High Altitude (Mountains/Plateaus)**: Exposed metallic ores from geological uplift
-  - Primary: Iron, Aluminum, Titanium
+  - Primary: Iron, Aluminum, Titanium, Copper
   - Processing: Surface mining, mechanical extraction
   - Accessibility: High - no special equipment required
 - **Medium Altitude (Hills/Slopes)**: Mixed deposits from erosion and weathering
-  - Primary: Silicon, Carbon compounds, Copper
+  - Primary: Silicon, Carbon compounds, Lithium deposits
   - Processing: Standard mining with basic purification
   - Accessibility: Medium - moderate extraction complexity
 - **Low Altitude (Valleys/Basins)**: Sedimentary accumulations and water-deposited minerals
-  - Primary: Rare earths, Organic compounds, Precious metals
+  - Primary: Gold, Silver, Rare earth elements, Organic compounds
   - Processing: Chemical extraction, advanced purification
   - Accessibility: Low - requires advanced processing equipment
 

@@ -153,17 +153,29 @@ class CircuitFabricationScene extends Phaser.Scene {
     const achievement = this.createAchievementDisplay(tier);
     
     switch(tier) {
-      case CircuitTier.CURRENT_GEN:
-        this.displayAchievement("7nm Fabrication Achieved!", "Modern flagship CPU technology!");
-        this.playSound('achievement_current');
+      case CircuitTier.FOUNDATION:
+        this.displayAchievement("28nm FOUNDATION Fabrication!", "Reliable foundation technology!");
+        this.playSound('achievement_foundation');
         break;
-      case CircuitTier.NEXT_GEN:
-        this.displayAchievement("3nm Breakthrough!", "Beyond current production limits!");
-        this.playSound('achievement_nextgen');
+      case CircuitTier.RELIABLE:
+        this.displayAchievement("14nm RELIABLE Circuits!", "Dependable manufacturing achieved!");
+        this.playSound('achievement_reliable');
         break;
-      case CircuitTier.THEORETICAL:
-        this.displayAchievement("1nm Quantum Precision!", "Theoretical manufacturing achieved!");
+      case CircuitTier.PRECISION:
+        this.displayAchievement("7nm PRECISION Breakthrough!", "High-precision fabrication!");
+        this.playSound('achievement_precision');
+        break;
+      case CircuitTier.ADVANCED:
+        this.displayAchievement("3nm ADVANCED Technology!", "Beyond current production limits!");
+        this.playSound('achievement_advanced');
+        break;
+      case CircuitTier.QUANTUM:
+        this.displayAchievement("1nm QUANTUM Precision!", "Quantum-scale manufacturing!");
         this.playSound('achievement_quantum');
+        break;
+      case CircuitTier.TRANSCENDENT:
+        this.displayAchievement("Sub-nm TRANSCENDENT!", "Theoretical perfection achieved!");
+        this.playSound('achievement_transcendent');
         break;
     }
   }

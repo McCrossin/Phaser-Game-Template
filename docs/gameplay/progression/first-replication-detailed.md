@@ -27,11 +27,22 @@ Replication transforms the game from "individual probe survival" to "specialized
 - **High-Purity Silicon**: Advanced refinement for transistor manufacturing
 
 ### Technology Progression Prerequisites
-**Current-Gen Transistor Mastery** (7nm fabrication):
-- **Modern Processing**: Flagship CPU-level automation logic and smart decision trees
-- **Advanced Power Management**: Efficient energy distribution with predictive optimization
-- **Communication Protocols**: High-bandwidth probe-to-probe data transmission
-- **Smart Process Control**: Automated fabrication with adaptive sequence management
+**FOUNDATION Circuit Mastery** (28nm fabrication):
+- **Basic Automation Logic**: Single-probe task automation and resource detection
+- **Simple Coordination**: Equipment monitoring and basic pathfinding algorithms
+- **Energy Management**: Basic efficiency tracking and power optimization
+- **Process Control**: Automated mining sequences and equipment wear monitoring
+
+**IMPROVED Circuit Capability** (14nm fabrication):
+- **Fleet Coordination**: Multi-probe resource prioritization and hazard avoidance
+- **Environmental Adaptation**: Automated safety protocols and equipment recommendations
+- **Smart Resource Management**: Coordinated mining operations and efficiency optimization
+
+**PRECISION Circuit Integration** (7nm fabrication):
+- **Advanced Processing**: Flagship CPU-level automation logic and predictive resource mapping
+- **Behavioral Learning**: Pattern recognition and player behavior adaptation
+- **Predictive Systems**: Resource depletion prediction and optimal route planning
+- **Smart Decision Trees**: Intelligent resource allocation and strategy optimization
 
 **Advanced Tool Unlocks** (Through 3D Printer Completion):
 - **Advanced Mining Drill**: Titanium extraction and deep geological access
@@ -64,22 +75,31 @@ Replication transforms the game from "individual probe survival" to "specialized
 4. **Exotic Dopant Integration**: Precise quantum impurity addition for electrical properties
 
 **Fabrication Scale Progression**:
-- **Current-Gen (7nm)**: Modern flagship CPU technology - smart automation, single-probe optimization
-- **Next-Gen (3nm)**: Beyond current production limits - multi-probe coordination, fleet intelligence  
-- **Theoretical (1nm)**: Quantum-precision fabrication - planetary AI systems, consciousness enhancement
+- **FOUNDATION (28nm)**: Basic automation technology - essential probe coordination and simple task automation
+- **IMPROVED (14nm)**: Enhanced processing - multi-probe fleet management and environmental adaptation
+- **PRECISION (7nm)**: Modern flagship CPU technology - iPhone M-series/AMD Ryzen level processing capability
+- **ADVANCED (5nm)**: Cutting-edge performance - beyond current consumer technology, planetary-scale optimization
+- **EXPERIMENTAL (3nm)**: Laboratory-grade technology - beyond current mass production capabilities, quantum-assisted computation
+- **QUANTUM (1nm)**: Theoretical quantum-precision fabrication - revolutionary processing capabilities, consciousness networking
+- **TRANSCENDENT (Sub-nm)**: Beyond known physics - theoretical consciousness enhancement technology
 
-#### Gold Circuit Integration
-**Quantum-Scale Wiring Requirements**:
-- **Ultra-Pure Gold**: 99.99% pure gold for optimal conductivity at nanometer scales
-- **Atomic Wire Bonding**: Molecular-level connections between transistors
-- **Quantum Corrosion Resistance**: Long-term reliability in extreme environments
-- **Signal Coherence**: Minimal resistance for quantum-frequency operations
+#### Copper-Gold Circuit Integration
+**Dual-Metal Wiring Architecture**: Essential for optimal performance and reliability
+- **Copper Infrastructure**: Primary power distribution, high-current pathways, thermal management
+  - **Power Delivery**: Essential for motor windings and high-current applications
+  - **Thermal Dissipation**: Superior heat management compared to gold
+  - **Cost Efficiency**: 97% of gold's conductivity at fraction of the cost
+- **Gold Signal Pathways**: Critical signal transmission and corrosion resistance
+  - **Ultra-Pure Gold**: 99.99% pure gold for optimal conductivity at nanometer scales
+  - **Corrosion Resistance**: Long-term reliability in extreme environments
+  - **Signal Integrity**: Superior performance for high-frequency operations
 
 **Integration Process**:
-1. **Quantum Wire Drawing**: Atomic-scale wire production from ultra-refined gold
-2. **Molecular Bonding Pattern**: Precise quantum connection layout for advanced functionality
-3. **Quantum Electrical Testing**: Signal coherence verification and performance validation
-4. **Exotic Environmental Sealing**: Protection against quantum decoherence and contamination
+1. **Copper Base Layer Installation**: Primary power distribution network construction
+2. **Gold Signal Layer Application**: Precision signal pathways and connector plating
+3. **Multi-Layer Integration**: Hybrid architecture combining copper efficiency with gold reliability
+4. **Electrical Testing**: Signal coherence verification and performance validation
+5. **Environmental Sealing**: Protection against contamination and corrosion
 
 ### Advanced Material Acquisition Challenges
 
