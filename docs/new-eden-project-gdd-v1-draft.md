@@ -128,10 +128,10 @@ New systems unlock only after mastering prerequisites, preventing overwhelming c
 
 #### Circuit Production Progression
 1. **Silicon Wafer Preparation**: Ultra-pure silicon processing and crystal growth
-2. **Advanced Lithography**: Extreme UV and quantum-precision etching (scale determines computing capability)
-   - **Current-Gen (7nm)**: Modern flagship technology - iPhone M-series/AMD Ryzen level processing
-   - **Next-Gen (3nm)**: Experimental fabrication - beyond current production capabilities  
-   - **Theoretical (1nm)**: Quantum-precision manufacturing - requires exotic materials and perfect control
+2. **Advanced Lithography**: Extreme UV and quantum-precision etching (scale determines automation capability)
+   - **BASIC Circuit Fabrication (7nm)**: Modern flagship technology - iPhone M-series/AMD Ryzen level processing
+   - **ADVANCED Circuit Fabrication (3nm)**: Experimental fabrication - beyond current production capabilities  
+   - **QUANTUM Circuit Fabrication (1nm)**: Theoretical quantum-precision manufacturing - requires exotic materials and perfect control
 3. **Gold Circuit Integration**: Precision wiring for reliable signal transmission at nanometer scales
 4. **Quantum Assembly**: Combining transistors into revolutionary processing units
 
@@ -187,7 +187,7 @@ You now command a specialized probe fleet."
 - **Capability**: Advanced material processing and inter-probe coordination
 
 #### Automation Unlocks Through Advanced Circuits
-**Smart Resource Management**: Next-generation transistors enable automated behaviors
+**Smart Resource Management**: ADVANCED Circuit technology enables automated behaviors
 - **Depletion Detection**: Automatic identification when resource deposits exhaust
 - **Adaptive Pathfinding**: AI-driven movement to nearest detected resources
 - **Efficiency Optimization**: Smart coordination between multiple mining probes
@@ -302,10 +302,10 @@ Every probe has exactly 4 equipment slots. Strategic loadout choices define prob
 Equipment unlocks through discovery and technological advancement. Finding titanium deposits teaches titanium drill construction. Surviving volcanic heat reveals thermal protection blueprints. Advanced circuit fabrication enables intelligent automation systems.
 
 ### 6.4 Circuit Technology Progression
-**Cutting-Edge to Theoretical Miniaturization**: Achieve real-world and beyond fabrication milestones
-- **Current-Gen (7nm)**: Modern flagship CPU technology - basic automation logic, single-probe optimization
-- **Next-Gen (3nm)**: Beyond current production limits - multi-probe coordination, smart resource management  
-- **Theoretical (1nm)**: Quantum-precision fabrication - planetary AI systems, consciousness enhancement
+**Three-Tier Automation System**: Progressive circuit capabilities unlock advanced probe behaviors
+- **BASIC Circuits (7nm fabrication)**: Modern flagship CPU technology - single-probe automation, resource depletion detection
+- **ADVANCED Circuits (3nm fabrication)**: Beyond current production limits - multi-probe coordination, smart resource management, adaptive pathfinding  
+- **QUANTUM Circuits (1nm fabrication)**: Theoretical quantum-precision manufacturing - planetary AI systems, consciousness enhancement, predictive resource discovery
 
 ### 6.5 Gold Integration Requirements
 **Critical Circuit Component**: Gold wiring essential for reliable signal transmission
@@ -408,7 +408,7 @@ Automation assists rather than replaces player decision-making. You set goals an
 - **Equipment Cycling**: Scanner needed for detection, mining laser for extraction
 - **Automation Solution**: Advanced circuits enable smart resource management
 
-**Smart Mining Automation** (Unlocked via Next-Gen Transistors):
+**Smart Mining Automation** (Unlocked via ADVANCED Circuits):
 - **Depletion Detection**: Probes automatically recognize when deposits are exhausted
 - **Adaptive Scanning**: Automated search for nearest resources of required type
 - **Intelligent Pathfinding**: AI-driven movement optimization and obstacle avoidance

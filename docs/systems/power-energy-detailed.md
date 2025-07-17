@@ -35,119 +35,129 @@ Energy in New Eden Project represents the **operational capacity** of probe syst
 
 ## Energy Consumption Systems
 
-### Equipment Power Requirements
+### Equipment Power Requirements (Kilowatt-Based)
 
 #### Analysis & Detection Equipment
-**Basic Scanner** (10-30W / 0.1-0.3 EU/min):
-- **Passive Mode**: 10W (0.1 EU/min) - idle environmental monitoring (smartphone equivalent)
-- **Active Scanning**: 30W (0.3 EU/min) - directed resource detection (tablet equivalent)
-- **Deep Analysis**: 50W (0.5 EU/min) - detailed composition analysis
+**Basic Scanner** (0.3kW):
+- **Passive Mode**: 0.1kW - idle environmental monitoring 
+- **Active Scanning**: 0.3kW - directed resource detection
+- **Deep Analysis**: 0.5kW - detailed composition analysis
 
-**Ground Penetrator** (20-80W / 0.2-0.8 EU/min):
-- **Surface Scanning**: 20W (0.2 EU/min) - basic subsurface detection
-- **Deep Penetration**: 80W (0.8 EU/min) - deep geological analysis (laptop equivalent)
-- **Continuous Monitoring**: 40W (0.4 EU/min) - ongoing subsurface tracking
+**Ground Penetrator** (0.8kW):
+- **Surface Scanning**: 0.4kW - basic subsurface detection
+- **Deep Penetration**: 0.8kW - deep geological analysis
+- **Continuous Monitoring**: 0.6kW - ongoing subsurface tracking
 
-**Advanced Scanner** (120-300W / 1.2-3.0 EU/min):
-- **Passive Mode**: 120W (1.2 EU/min) - enhanced environmental awareness (desktop PC)
-- **Active Scanning**: 200W (2.0 EU/min) - detailed resource analysis
-- **Predictive Analysis**: 300W (3.0 EU/min) - AI-assisted resource prediction
+**Advanced Scanner** (1.5kW):
+- **Passive Mode**: 1.0kW - enhanced environmental awareness
+- **Active Scanning**: 1.5kW - detailed resource analysis
+- **Predictive Analysis**: 2.0kW - AI-assisted resource prediction
 
 #### Extraction & Processing Equipment
-**Mining Laser** (300-800W / 3-8 EU/min):
-- **Surface Extraction**: 400W (4 EU/min) - basic surface mining (power drill equivalent)
-- **Precision Cutting**: 800W (8 EU/min) - precise material extraction (industrial cutter)
-- **Continuous Operation**: 600W (6 EU/min) - sustained mining operations
+**Mining Laser** (2.5kW):
+- **Surface Extraction**: 2.0kW - basic surface mining
+- **Precision Cutting**: 2.5kW - precise material extraction
+- **Continuous Operation**: 2.2kW - sustained mining operations
 
-**Advanced Drill** (800-1500W / 8-15 EU/min):
-- **Subsurface Drilling**: 1000W (10 EU/min) - deep deposit access (industrial drill)
-- **Precision Boring**: 1500W (15 EU/min) - targeted vein extraction (jackhammer equivalent)
-- **Continuous Drilling**: 1200W (12 EU/min) - sustained deep extraction
+**Advanced Drill** (6.0kW):
+- **Subsurface Drilling**: 5.0kW - deep deposit access
+- **Precision Boring**: 6.0kW - targeted vein extraction
+- **Continuous Drilling**: 5.5kW - sustained deep extraction
 
-**Chemical Processor** (600-1200W / 6-12 EU/min):
-- **Basic Refinement**: 600W (6 EU/min) - simple material purification (microwave equivalent)
-- **Complex Processing**: 1200W (12 EU/min) - multi-stage chemical reactions (industrial oven)
-- **Continuous Processing**: 800W (8 EU/min) - ongoing material conversion
+**Chemical Processor** (3.5kW):
+- **Basic Refinement**: 2.5kW - simple material purification
+- **Complex Processing**: 3.5kW - multi-stage chemical reactions
+- **Continuous Processing**: 3.0kW - ongoing material conversion
 
 #### Manufacturing & Fabrication Equipment
-**3D Printer** (1500-2500W / 15-25 EU/min):
-- **Simple Components**: 1500W (15 EU/min) - basic part fabrication (industrial 3D printer)
-- **Complex Assembly**: 2500W (25 EU/min) - multi-material construction
-- **Circuit Manufacturing**: 3500W (35 EU/min) - precision electronic assembly
+**3D Printer** (7.5kW):
+- **Simple Components**: 5.0kW - basic part fabrication
+- **Complex Assembly**: 7.5kW - multi-material construction
+- **Circuit Manufacturing**: 12kW - precision electronic assembly
 
-**Circuit Assembler** (2000-4500W / 20-45 EU/min):
-- **Macro-Scale Circuits**: 2000W (20 EU/min) - 10μm transistor assembly (pick-and-place machine)
-- **Micro-Scale Circuits**: 3000W (30 EU/min) - 1μm transistor fabrication
-- **Nano-Scale Circuits**: 4500W (45 EU/min) - 100nm precision manufacturing (semiconductor fab equivalent)
+**Circuit Assembler** (15kW):
+- **BASIC Circuits (7nm)**: 10kW - modern flagship transistor assembly
+- **ADVANCED Circuits (3nm)**: 15kW - next-generation fabrication
+- **QUANTUM Circuits (1nm)**: 25kW - theoretical precision manufacturing
 
 #### Environmental Protection Equipment
-**Pressure Hull** (300-1200W / 3-12 EU/min):
-- **Environmental Sealing**: 300W (3 EU/min) - atmospheric pressure management (HVAC system)
-- **Deep Water Operations**: 800W (8 EU/min) - high-pressure environment operation
-- **Emergency Protocols**: 1200W (12 EU/min) - crisis response systems (submarine life support)
+**Pressure Hull** (4.5kW):
+- **Environmental Sealing**: 3.0kW - atmospheric pressure management
+- **Deep Water Operations**: 4.5kW - high-pressure environment operation
+- **Emergency Protocols**: 6.0kW - crisis response systems
 
-**Thermal Protection** (500-1500W / 5-15 EU/min):
-- **Temperature Regulation**: 500W (5 EU/min) - basic thermal management (space heater)
-- **Extreme Heat Resistance**: 1000W (10 EU/min) - volcanic environment operation
-- **Active Cooling**: 1500W (15 EU/min) - intensive thermal regulation (industrial HVAC)
+**Thermal Protection** (5.5kW):
+- **Temperature Regulation**: 4.0kW - basic thermal management
+- **Extreme Heat Resistance**: 5.5kW - volcanic environment operation
+- **Active Cooling**: 7.0kW - intensive thermal regulation
 
 ### Movement & Mobility Costs
-**Standard Movement** (50-200W / 0.5-2.0 EU/min):
-- **Optimal Terrain**: 50W (0.5 EU/min) - flat, clear surfaces (electric scooter)
-- **Moderate Terrain**: 100W (1 EU/min) - hills, light vegetation (electric bike)
-- **Difficult Terrain**: 200W (2 EU/min) - rocky, dense forest (ATV equivalent)
+**Standard Movement** (0.5kW):
+- **Optimal Terrain**: 0.3kW - flat, clear surfaces
+- **Moderate Terrain**: 0.5kW - hills, light vegetation
+- **Difficult Terrain**: 0.8kW - rocky, dense forest
 
-**Enhanced Mobility Equipment** (+100-300W / +1-3 EU/min):
-- **Terrain Adaptation**: +100W (+1 EU/min) - adaptive movement systems
-- **High-Speed Travel**: +300W (+3 EU/min) - rapid movement capability
-- **All-Terrain Access**: +200W (+2 EU/min) - specialized environment navigation
+**Enhanced Mobility Equipment** (+1.0kW):
+- **Terrain Adaptation**: +0.8kW - adaptive movement systems
+- **High-Speed Travel**: +1.5kW - rapid movement capability
+- **All-Terrain Access**: +1.0kW - specialized environment navigation
 
 ---
 
 ## Solar Power Generation Systems
 
-### Solar Panel Specifications (Real-World Based)
+### Solar Panel Specifications (Kilowatt-Based Performance)
 
 #### Panel Performance Ratings
-**Basic Solar Panel** (100W peak, 1.0 EU/min optimal):
-- **Real-world baseline**: 400W residential panel scaled to 25% efficiency for alien conditions
-- **Peak Generation**: 100W (perfect conditions, optimal sun angle)
-- **Average Generation**: 40W (accounting for day/night/weather cycles)
-- **Minimum Generation**: 10W (heavy clouds, suboptimal positioning)
+**Basic Solar Panel** (5kW peak generation):
+- **Real-world scale**: Residential-grade solar installation adapted for alien conditions
+- **South Facing**: 5.0kW (Clear) / 2.5kW (Cloudy) / 1.3kW (Storm)
+- **East/West Facing**: 4.0kW (Clear) / 2.0kW (Cloudy) / 1.0kW (Storm)
+- **North Facing**: 2.5kW (Clear) / 1.3kW (Cloudy) / 0.6kW (Storm)
 
-**Advanced Solar Panel** (200W peak, 2.0 EU/min optimal):
-- **Enhanced efficiency**: Improved alien-environment adaptation
-- **Peak Generation**: 200W (perfect conditions)
-- **Average Generation**: 80W (day/night/weather averaged)
-- **Minimum Generation**: 20W (adverse conditions)
+**Advanced Solar Panel** (10kW peak generation):
+- **Enhanced efficiency**: Improved alien-environment adaptation and tracking systems
+- **South Facing**: 10kW (Clear) / 5.0kW (Cloudy) / 2.5kW (Storm)
+- **East/West Facing**: 8.0kW (Clear) / 4.0kW (Cloudy) / 2.0kW (Storm)
+- **North Facing**: 5.0kW (Clear) / 2.5kW (Cloudy) / 1.3kW (Storm)
 
-**Industrial Solar Panel** (250W peak, 2.5 EU/min optimal):
-- **Maximum efficiency**: Optimized for alien star spectrum
-- **Peak Generation**: 250W (perfect conditions)
-- **Average Generation**: 100W (day/night/weather averaged)
-- **Minimum Generation**: 25W (adverse conditions)
+**Industrial Solar Panel** (25kW peak generation):
+- **Maximum efficiency**: Military-grade panels optimized for alien star spectrum
+- **South Facing**: 25kW (Clear) / 13kW (Cloudy) / 6.0kW (Storm)
+- **East/West Facing**: 20kW (Clear) / 10kW (Cloudy) / 5.0kW (Storm)
+- **North Facing**: 13kW (Clear) / 6.0kW (Cloudy) / 3.0kW (Storm)
 
-#### Environmental Efficiency Modifiers
-| Condition | Efficiency Multiplier | Duration Pattern |
-|-----------|----------------------|------------------|
-| **Perfect Sun** | 100% | 6-8 hours/day |
-| **Partial Clouds** | 60-80% | 4-6 hours/day |
-| **Heavy Clouds** | 20-40% | 2-4 hours/day |
-| **Dust Storm** | 10-30% | 1-12 hours |
-| **Night Cycle** | 0% | 8-12 hours/day |
+#### Environmental Power Generation (Performance Optimized)
+| Panel Type | Clear Weather | Cloudy | Storm | Night |
+|------------|---------------|--------|-------|-------|
+| **Basic (South)** | 5.0kW | 2.5kW | 1.3kW | 0kW |
+| **Advanced (South)** | 10kW | 5.0kW | 2.5kW | 0kW |
+| **Industrial (South)** | 25kW | 13kW | 6.0kW | 0kW |
 
-### Battery Storage Systems (kWh Specifications)
+**Update System**: Discrete 100ms intervals (10 updates/second)
+**Weather Effects**: Simple multipliers applied to base generation
+**Strategic Planning**: Panel placement and weather awareness critical for power budget
+
+### Battery Storage Systems (Kilowatt-Hour Specifications)
 
 #### Battery Performance Specifications
-**Basic Battery** (10 kWh capacity, 100 EU):
-- **Charge Rate**: 50W (0.5 EU/min) - 200 minutes full charge
-- **Discharge Rate**: Unlimited (equipment-limited)
+**Basic Battery** (50kWh capacity):
+- **Charge Rate**: 5kW maximum (10 hours full charge from empty)
+- **Discharge Rate**: Equipment-limited (can power any single high-draw item)
 - **Efficiency**: 90% charge/discharge efficiency
-- **Real-world equivalent**: Tesla Powerwall scaled down
+- **Real-world equivalent**: Tesla Model S battery pack
 
-**Advanced Battery** (20 kWh capacity, 200 EU):
-- **Charge Rate**: 100W (1.0 EU/min) - 200 minutes full charge
-- **Discharge Rate**: Unlimited (equipment-limited)
+**Advanced Battery** (150kWh capacity):
+- **Charge Rate**: 15kW maximum (10 hours full charge from empty)
+- **Discharge Rate**: Equipment-limited (can power multiple high-draw items simultaneously)
+- **Efficiency**: 95% charge/discharge efficiency
+- **Real-world equivalent**: Small commercial battery bank
+
+**Industrial Battery** (500kWh capacity):
+- **Charge Rate**: 50kW maximum (10 hours full charge from empty)
+- **Discharge Rate**: Equipment-limited (unlimited simultaneous equipment operation)
+- **Efficiency**: 98% charge/discharge efficiency
+- **Real-world equivalent**: Grid-scale battery storage system
 - **Efficiency**: 92% charge/discharge efficiency
 - **Real-world equivalent**: Commercial lithium battery system
 
@@ -235,6 +245,48 @@ class FleetEnergyManager {
     }
 }
 ```
+
+---
+
+## Strategic Power Balance Analysis
+
+### Game Design Balance Philosophy
+Power generation vs consumption creates meaningful equipment choices without creating frustrating energy poverty. Players must plan their loadouts and solar placement strategically.
+
+#### Basic Probe Power Budget (Single Basic Solar Panel)
+**Clear Weather Generation**: 5.0kW
+**Sustainable Equipment Loadouts**:
+- Scanner (0.3kW) + Mining Laser (2.5kW) + Movement (0.5kW) = 3.3kW ✅ **Comfortable**
+- Scanner (0.3kW) + Drill (6.0kW) + Movement (0.5kW) = 6.8kW ❌ **Requires advanced solar**
+- 3D Printer (7.5kW) = ❌ **Requires advanced solar or battery backup**
+
+#### Advanced Probe Power Budget (Single Advanced Solar Panel)
+**Clear Weather Generation**: 10kW
+**Sustainable Equipment Loadouts**:
+- Advanced Scanner (1.5kW) + Drill (6.0kW) + Pressure Hull (4.5kW) = 12kW ❌ **Requires careful timing**
+- Scanner (0.3kW) + Drill (6.0kW) + Chemical Processor (3.5kW) = 9.8kW ✅ **Just sustainable**
+- 3D Printer (7.5kW) + Scanner (0.3kW) + Movement (0.5kW) = 8.3kW ✅ **Manufacturing focused**
+
+#### Industrial Operations (Multiple Panels + Battery Storage)
+**Industrial Solar Panel**: 25kW peak
+**Circuit Fabrication**: 15-25kW requirements
+**Strategic Decisions**:
+- **Weather Dependency**: Storm conditions (6kW) cannot sustain high-power manufacturing
+- **Battery Investment**: 150kWh battery provides 10 hours of 15kW circuit fabrication
+- **Multi-Panel Setup**: 2x Advanced panels (20kW) enable weather-independent operation
+
+### Strategic Depth Created
+1. **Early Game**: Single basic panel forces equipment slot trade-offs
+2. **Mid Game**: Advanced panels enable specialized high-power equipment
+3. **Late Game**: Industrial operations require infrastructure investment and planning
+4. **Weather Planning**: Storm periods require battery backup or reduced operations
+5. **Specialization Rewards**: Dedicated power-generation probes become valuable
+
+**Balance Assessment**: ✅ **Well-Balanced**
+- Power scarcity creates meaningful choices without being punitive
+- Clear progression path from constraint to abundance
+- Weather and equipment interactions create strategic depth
+- Infrastructure investment feels rewarding and necessary
 
 ---
 

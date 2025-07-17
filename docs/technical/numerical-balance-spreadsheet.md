@@ -514,71 +514,321 @@ class BalanceOptimizedEnergySystem {
 ```
 
 #### Balance Value Storage
-```javascript
-// Centralized balance configuration
-const GAME_BALANCE = {
+```typescript
+// Comprehensive TypeScript implementation-ready balance configuration
+interface EquipmentConfig {
+  powerConsumption: {
+    idle: number;
+    active: number;
+    peak: number;
+  };
+  realWorldReference: string;
+  materialCost: Record<string, number>;
+  manufacturingEnergyCost: number;
+}
+
+interface CircuitTierConfig {
+  name: string;
+  fabricationNode: string;
+  powerMultiplier: number;
+  manufacturingCost: number;
+  automationCapabilities: string[];
+}
+
+interface GameBalanceConfig {
   ENERGY: {
-    SOLAR_BASE_OUTPUT: 10, // units/minute
-    BATTERY_BASE_CAPACITY: 100, // units
-    UPDATE_INTERVAL: 100 // milliseconds
+    SOLAR_BASE_OUTPUT: number;
+    BATTERY_BASE_CAPACITY: number;
+    UPDATE_INTERVAL: number;
+    ENERGY_UNITS_PER_KWH: number;
+  };
+  EQUIPMENT: Record<string, EquipmentConfig>;
+  CIRCUITS: Record<string, CircuitTierConfig>;
+  PROGRESSION: {
+    TUTORIAL_TARGET: number;
+    FIRST_CIRCUIT_TARGET: number;
+    FIRST_REPLICATION_TARGET: number;
+  };
+  MATERIALS: Record<string, {
+    rarity: number;
+    discoveryDifficulty: number;
+    processingEnergy: number;
+  }>;
+}
+
+// Implementation-ready balance constants
+const GAME_BALANCE: GameBalanceConfig = {
+  ENERGY: {
+    SOLAR_BASE_OUTPUT: 10,     // units/minute baseline
+    BATTERY_BASE_CAPACITY: 100, // units storage
+    UPDATE_INTERVAL: 100,       // milliseconds (60 FPS compatible)
+    ENERGY_UNITS_PER_KWH: 10    // 1 kWh = 10 energy units
   },
-  EQUIPMENT_POWER: {
-    SCANNER_PASSIVE: 1,
-    SCANNER_ACTIVE: 3,
-    MINING_LASER: 4,
-    ADVANCED_DRILL: 10,
-    CIRCUIT_FABRICATION: 35
+  
+  EQUIPMENT: {
+    basic_scanner: {
+      powerConsumption: { idle: 1, active: 3, peak: 5 },
+      realWorldReference: "Tablet computer",
+      materialCost: { silicon: 2, iron: 1 },
+      manufacturingEnergyCost: 10
+    },
+    mining_laser: {
+      powerConsumption: { idle: 2, active: 8, peak: 12 },
+      realWorldReference: "Industrial laser cutter",
+      materialCost: { silicon: 3, iron: 2, titanium: 1 },
+      manufacturingEnergyCost: 25
+    },
+    advanced_drill: {
+      powerConsumption: { idle: 5, active: 15, peak: 25 },
+      realWorldReference: "Mining equipment",
+      materialCost: { titanium: 3, iron: 5, silicon: 2 },
+      manufacturingEnergyCost: 50
+    },
+    circuit_fabricator: {
+      powerConsumption: { idle: 10, active: 35, peak: 50 },
+      realWorldReference: "Semiconductor fab equipment",
+      materialCost: { silicon: 10, titanium: 5, rare_metals: 2 },
+      manufacturingEnergyCost: 100
+    },
+    solar_panel_basic: {
+      powerConsumption: { idle: 0, active: 0, peak: 0 },
+      realWorldReference: "Residential solar panel",
+      materialCost: { silicon: 5, iron: 3 },
+      manufacturingEnergyCost: 15
+    },
+    solar_panel_advanced: {
+      powerConsumption: { idle: 0, active: 0, peak: 0 },
+      realWorldReference: "High-efficiency solar panel",
+      materialCost: { silicon: 8, titanium: 2, rare_metals: 1 },
+      manufacturingEnergyCost: 30
+    }
   },
-  PROGRESSION_TIMING: {
-    TUTORIAL_TARGET: 900, // 15 minutes in seconds
-    FIRST_CIRCUIT_TARGET: 2700, // 45 minutes
+  
+  CIRCUITS: {
+    basic: {
+      name: "BASIC",
+      fabricationNode: "7nm",
+      powerMultiplier: 1.0,
+      manufacturingCost: 25,
+      automationCapabilities: ["simple_mining", "basic_fabrication"]
+    },
+    advanced: {
+      name: "ADVANCED", 
+      fabricationNode: "3nm",
+      powerMultiplier: 0.7,
+      manufacturingCost: 50,
+      automationCapabilities: ["complex_mining", "advanced_fabrication", "resource_processing"]
+    },
+    quantum: {
+      name: "QUANTUM",
+      fabricationNode: "1nm",
+      powerMultiplier: 0.4,
+      manufacturingCost: 100,
+      automationCapabilities: ["autonomous_operations", "multi_probe_coordination", "advanced_analysis"]
+    }
+  },
+  
+  PROGRESSION: {
+    TUTORIAL_TARGET: 900,        // 15 minutes in seconds
+    FIRST_CIRCUIT_TARGET: 2700,  // 45 minutes
     FIRST_REPLICATION_TARGET: 14400 // 4 hours
+  },
+  
+  MATERIALS: {
+    iron: { rarity: 0.8, discoveryDifficulty: 1, processingEnergy: 2 },
+    silicon: { rarity: 0.6, discoveryDifficulty: 2, processingEnergy: 3 },
+    titanium: { rarity: 0.3, discoveryDifficulty: 3, processingEnergy: 5 },
+    lithium: { rarity: 0.4, discoveryDifficulty: 3, processingEnergy: 4 },
+    cobalt: { rarity: 0.2, discoveryDifficulty: 4, processingEnergy: 6 },
+    rare_metals: { rarity: 0.1, discoveryDifficulty: 5, processingEnergy: 10 }
   }
+};
+
+// Utility functions for balance calculations
+class BalanceCalculator {
+  static getEquipmentPowerDraw(equipmentType: string, operationMode: 'idle' | 'active' | 'peak'): number {
+    const equipment = GAME_BALANCE.EQUIPMENT[equipmentType];
+    return equipment ? equipment.powerConsumption[operationMode] : 0;
+  }
+  
+  static calculateSolarGeneration(panelType: 'basic' | 'advanced', conditions: number = 1.0): number {
+    const baseGeneration = GAME_BALANCE.ENERGY.SOLAR_BASE_OUTPUT;
+    const multiplier = panelType === 'advanced' ? 2.0 : 1.0;
+    return baseGeneration * multiplier * conditions;
+  }
+  
+  static getCircuitEfficiency(circuitType: string): number {
+    const circuit = GAME_BALANCE.CIRCUITS[circuitType];
+    return circuit ? circuit.powerMultiplier : 1.0;
+  }
+  
+  static calculateManufacturingTime(itemType: string): number {
+    const equipment = GAME_BALANCE.EQUIPMENT[itemType];
+    if (!equipment) return 0;
+    
+    // Base manufacturing time calculation (energy cost / solar generation)
+    const energyCost = equipment.manufacturingEnergyCost;
+    const solarGeneration = GAME_BALANCE.ENERGY.SOLAR_BASE_OUTPUT;
+    return (energyCost / solarGeneration) * 60; // Convert to seconds
+  }
+  
+  static validateProgressionTiming(): boolean {
+    // Verify tutorial can be completed within energy constraints
+    const tutorialEnergyCost = this.calculateTutorialEnergyRequirement();
+    const availableEnergy = GAME_BALANCE.ENERGY.BATTERY_BASE_CAPACITY * 0.5; // Start at 50%
+    const solarGeneration = GAME_BALANCE.ENERGY.SOLAR_BASE_OUTPUT * 15; // 15 minutes of generation
+    
+    return (tutorialEnergyCost <= availableEnergy + solarGeneration);
+  }
+  
+  private static calculateTutorialEnergyRequirement(): number {
+    // Sum of tutorial actions: scanning + basic mining + first component
+    return 5 + 15 + 25; // Scanner active + mining operations + fabrication
+  }
+}
+
+// Lookup tables for quick runtime access
+const EQUIPMENT_POWER_LOOKUP = new Map<string, { idle: number; active: number; peak: number }>();
+const MATERIAL_PROCESSING_LOOKUP = new Map<string, number>();
+const CIRCUIT_AUTOMATION_LOOKUP = new Map<string, string[]>();
+
+// Initialize lookup tables for performance
+Object.entries(GAME_BALANCE.EQUIPMENT).forEach(([key, config]) => {
+  EQUIPMENT_POWER_LOOKUP.set(key, config.powerConsumption);
+});
+
+Object.entries(GAME_BALANCE.MATERIALS).forEach(([key, config]) => {
+  MATERIAL_PROCESSING_LOOKUP.set(key, config.processingEnergy);
+});
+
+Object.entries(GAME_BALANCE.CIRCUITS).forEach(([key, config]) => {
+  CIRCUIT_AUTOMATION_LOOKUP.set(key, config.automationCapabilities);
+});
+
+// Export for game engine integration
+export { 
+  GAME_BALANCE, 
+  BalanceCalculator, 
+  EQUIPMENT_POWER_LOOKUP, 
+  MATERIAL_PROCESSING_LOOKUP, 
+  CIRCUIT_AUTOMATION_LOOKUP,
+  type GameBalanceConfig,
+  type EquipmentConfig,
+  type CircuitTierConfig
 };
 ```
 
-### Balance Monitoring & Analytics
+### Real-Time Balance Monitoring System
 
-#### Key Performance Indicators
-1. **Tutorial Completion Rate**: Target 90%+ completion
-2. **Average Tutorial Duration**: Target 15 ± 5 minutes
-3. **Energy Depletion Incidents**: Target <2 per hour average
-4. **First Replication Time**: Target 2-6 hours (90% of players)
-5. **Player Retention at Milestones**: Track drop-off points
+```typescript
+class BalanceMonitor {
+  private playerMetrics: Map<string, PlayerMetrics> = new Map();
+  private aggregateStats: AggregateGameStats = {
+    tutorialCompletionRate: 0,
+    averageTutorialDuration: 0,
+    energyDepletionIncidents: 0,
+    firstReplicationTimes: [],
+    commonProgressionBlocks: []
+  };
+  
+  recordPlayerAction(playerId: string, action: GameAction): void {
+    const metrics = this.getPlayerMetrics(playerId);
+    
+    switch (action.type) {
+      case 'tutorial_complete':
+        metrics.tutorialCompleted = true;
+        metrics.tutorialDuration = action.timestamp - metrics.sessionStart;
+        break;
+      case 'energy_depleted':
+        metrics.energyDepletions++;
+        break;
+      case 'first_replication':
+        metrics.firstReplicationTime = action.timestamp - metrics.sessionStart;
+        break;
+    }
+    
+    this.updateAggregateStats();
+  }
+  
+  getBalanceAdjustmentRecommendations(): BalanceAdjustment[] {
+    const recommendations: BalanceAdjustment[] = [];
+    
+    // Tutorial completion rate analysis
+    if (this.aggregateStats.tutorialCompletionRate < 0.8) {
+      recommendations.push({
+        component: 'tutorial_energy',
+        adjustment: 'reduce_requirements',
+        magnitude: 0.15,
+        reason: 'Low tutorial completion rate'
+      });
+    }
+    
+    // Energy depletion frequency analysis
+    if (this.aggregateStats.energyDepletionIncidents > 3) {
+      recommendations.push({
+        component: 'solar_generation',
+        adjustment: 'increase_output',
+        magnitude: 0.1,
+        reason: 'High energy depletion incidents'
+      });
+    }
+    
+    return recommendations;
+  }
+  
+  private updateAggregateStats(): void {
+    const allMetrics = Array.from(this.playerMetrics.values());
+    
+    this.aggregateStats.tutorialCompletionRate = 
+      allMetrics.filter(m => m.tutorialCompleted).length / allMetrics.length;
+    
+    this.aggregateStats.averageTutorialDuration = 
+      allMetrics
+        .filter(m => m.tutorialDuration > 0)
+        .reduce((sum, m) => sum + m.tutorialDuration, 0) / 
+      allMetrics.filter(m => m.tutorialDuration > 0).length;
+  }
+  
+  private getPlayerMetrics(playerId: string): PlayerMetrics {
+    if (!this.playerMetrics.has(playerId)) {
+      this.playerMetrics.set(playerId, {
+        sessionStart: Date.now(),
+        tutorialCompleted: false,
+        tutorialDuration: 0,
+        energyDepletions: 0,
+        firstReplicationTime: 0
+      });
+    }
+    return this.playerMetrics.get(playerId)!;
+  }
+}
 
-#### Balance Adjustment Triggers
-- **Tutorial completion <80%**: Reduce energy requirements by 15%
-- **Average energy depletion >3/hour**: Increase solar generation by 10%
-- **First replication >8 hours average**: Reduce manufacturing costs by 20%
-- **Expert players completing <2 hours**: Increase complexity/costs by 25%
+interface PlayerMetrics {
+  sessionStart: number;
+  tutorialCompleted: boolean;
+  tutorialDuration: number;
+  energyDepletions: number;
+  firstReplicationTime: number;
+}
 
----
+interface AggregateGameStats {
+  tutorialCompletionRate: number;
+  averageTutorialDuration: number;
+  energyDepletionIncidents: number;
+  firstReplicationTimes: number[];
+  commonProgressionBlocks: string[];
+}
 
-## Future Balance Considerations
+interface GameAction {
+  type: string;
+  timestamp: number;
+  data?: any;
+}
 
-### Post-Launch Balance Evolution
-
-#### Planned Balance Updates
-1. **Month 1**: Tutorial optimization based on new player data
-2. **Month 3**: Mid-game progression refinement
-3. **Month 6**: Endgame content and advanced automation balance
-4. **Month 12**: New content integration and power creep management
-
-#### Expansion Content Balance
-- **New Equipment**: Must fit within existing power tier system
-- **Advanced Circuits**: Cannot exceed 50 units/min manufacturing cost
-- **Alternative Energy**: Geothermal/nuclear must complement, not replace solar
-- **New Resources**: Maintain scarcity hierarchy and processing complexity
-
-#### Community Balance Feedback Integration
-- **Player Surveys**: Monthly balance satisfaction surveys
-- **Gameplay Analytics**: Automated progression tracking and bottleneck identification
-- **Expert Community**: Dedicated balance feedback from experienced players
-- **Speedrun Community**: Competitive optimization insights for balance refinement
-
----
-
-**Document Status**: Complete Balance Framework  
-**Next Phase**: Implementation & Testing  
-**Validation**: All values tested for 60 FPS performance and progression timing  
-**Risk Level**: Low (based on proven game design patterns and technical feasibility analysis)
+interface BalanceAdjustment {
+  component: string;
+  adjustment: string;
+  magnitude: number;
+  reason: string;
+}
+```

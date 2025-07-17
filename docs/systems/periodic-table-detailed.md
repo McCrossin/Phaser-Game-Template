@@ -1,13 +1,63 @@
-# Periodic Table & Resource Systems - Detailed Design Ideas
+# Periodic Table & Resource Systems - Unified Design
 
-# Periodic Table & Discovery-Based Chemistry System
+## QA RESOLVED: Discovery-Based Chemistry with Discrete Processing
 
-## Discovery-Driven Chemical Processing (Performance-Optimized)
+### Chemical System Philosophy (Final Implementation)
+**QA RESOLUTION**: Combines discovery-based recipe system with discrete processing for optimal player experience and 60 FPS performance.
 
-### Chemical System Philosophy
-**Design Goal**: Maintain engineering satisfaction through experimentation and discovery while ensuring 60 FPS performance through discrete recipe processing.
+**Core Principle**: Players discover chemical combinations through strategic experimentation, while processing uses efficient discrete calculations optimized for performance.
 
-**Core Principle**: Players discover chemical combinations through strategic experimentation, but processing uses efficient discrete calculations rather than real-time chemical simulation.
+### Unified Discovery + Discrete Processing System
+
+#### Discovery-Based Recipe Learning
+```typescript
+interface ChemicalDiscovery {
+  inputs: ResourceType[];           // Required materials for experiment
+  outputs: ResourceType[];          // Resulting products
+  discoveryMethod: 'experimentation' | 'analysis' | 'environmental';
+  engineeringInsight: string;       // Educational explanation of why it works
+  processingData: DiscreteRecipe;   // Performance-optimized processing
+}
+
+interface DiscreteRecipe {
+  energyRequirement: number;        // kW consumption (discrete levels)
+  processingTime: number;           // Seconds (discrete timing)
+  efficiency: number;               // 0-100% conversion rate
+  equipmentRequired: EquipmentType[];
+}
+
+class UnifiedChemicalSystem {
+  private discoveredRecipes: Map<string, ChemicalDiscovery> = new Map();
+  
+  // DISCOVERY PHASE: Player experimentation (engaging)
+  experimentWithCombination(materials: ResourceType[]): ChemicalDiscovery | null {
+    const combination = this.getCombinationKey(materials);
+    
+    if (this.isValidChemistry(materials)) {
+      const discovery = this.createDiscovery(materials);
+      this.discoveredRecipes.set(combination, discovery);
+      return discovery;
+    }
+    return null; // Failed experiment teaches through failure
+  }
+  
+  // PROCESSING PHASE: Discrete calculations (performant)
+  processRecipe(recipe: ChemicalDiscovery, quantity: number): ProcessingResult {
+    return {
+      energyConsumed: recipe.processingData.energyRequirement * quantity,
+      timeRequired: recipe.processingData.processingTime,
+      outputMaterials: this.calculateDiscreteOutputs(recipe, quantity),
+      efficiency: recipe.processingData.efficiency
+    };
+  }
+}
+```
+
+**Best of Both Worlds**:
+- ✅ **Discovery Engagement**: Players experiment and learn through trial
+- ✅ **Performance Optimized**: All processing uses discrete, efficient calculations
+- ✅ **Educational Value**: Chemical insights maintain engineering authenticity
+- ✅ **60 FPS Guaranteed**: No real-time chemical simulation overhead
 
 ### Discovery-Based Recipe System
 

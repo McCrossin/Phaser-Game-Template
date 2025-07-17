@@ -275,19 +275,195 @@
 **Audio Manager System**
 ```typescript
 class AudioManager {
+  private scene: Phaser.Scene;
   private audioSprites: Map<string, Phaser.Sound.WebAudioSound>;
   private ambientSystem: AmbientAudioSystem;
   private musicSystem: AdaptiveMusicSystem;
   private effectsPool: AudioEffectPool;
+  private spatialAudio: SpatialAudioManager;
   
-  // Performance-optimized audio loading
-  preloadAudioAssets(): void;
+  // Master volume controls
+  private masterVolume = 1.0;
+  private musicVolume = 0.7;
+  private effectsVolume = 0.8;
+  private ambientVolume = 0.6;
   
-  // Efficient audio playback with pooling
-  playEffect(soundId: string, options?: AudioOptions): void;
+  constructor(scene: Phaser.Scene) {
+    this.scene = scene;
+    this.initializeAudioSystems();
+  }
   
-  // Dynamic volume and spatial audio management
-  updateSpatialAudio(probePositions: Vector2[]): void;
+  // Performance-optimized audio loading with Phaser 3 integration
+  preloadAudioAssets(): void {
+    // Load audio sprites for equipment sounds
+    this.scene.load.audioSprite('equipment_sounds', 'audio/equipment_sprite.json', 'audio/equipment_sprite.ogg');
+    
+    // Load ambient audio streams
+    this.scene.load.audio('ambient_base', 'audio/ambient/planetary_base.ogg');
+    this.scene.load.audio('ambient_storm', 'audio/ambient/storm_weather.ogg');
+    
+    // Load music stems for adaptive system
+    this.scene.load.audio('music_exploration', 'audio/music/exploration_stem.ogg');
+    this.scene.load.audio('music_tension', 'audio/music/tension_stem.ogg');
+  }
+  
+  // Efficient audio playback with pooling and spatial positioning
+  playEffect(soundId: string, options?: AudioOptions): Phaser.Sound.WebAudioSound {
+    const sound = this.scene.sound.add(soundId, {
+      volume: (options?.volume || 1.0) * this.effectsVolume * this.masterVolume,
+      loop: options?.loop || false,
+      delay: options?.delay || 0
+    }) as Phaser.Sound.WebAudioSound;
+    
+    // Apply spatial audio if position provided
+    if (options?.position && this.spatialAudio) {
+      this.spatialAudio.applyPositionalAudio(sound, options.position);
+    }
+    
+    sound.play();
+    return sound;
+  }
+  
+  // Dynamic volume and spatial audio management for multi-probe system
+  updateSpatialAudio(probePositions: Vector2[], activeProbeIndex: number): void {
+    const activeProbePosition = probePositions[activeProbeIndex];
+    
+    // Update 3D audio listener position to active probe
+    this.spatialAudio.setListenerPosition(activeProbePosition);
+    
+    // Update spatial audio for all sound sources based on probe positions
+    this.spatialAudio.updateAllSources(probePositions);
+  }
+  
+  // Equipment-specific audio integration
+  playEquipmentSound(equipmentType: string, action: string, position?: Vector2): void {
+    const soundKey = `${equipmentType}_${action}`;
+    
+    // Apply equipment-specific audio processing
+    const options: AudioOptions = {
+      volume: this.getEquipmentVolumeMultiplier(equipmentType),
+      position: position
+    };
+    
+    // Add material-specific frequency modulation for mining sounds
+    if (equipmentType === 'mining_laser' && action === 'extract') {
+      this.applyMaterialSpecificAudio(soundKey, options);
+    }
+    
+    this.playEffect(soundKey, options);
+  }
+}
+
+// Spatial audio system for multi-probe coordination
+class SpatialAudioManager {
+  private context: AudioContext;
+  private listener: AudioListener;
+  private activeSources: Map<string, PannerNode> = new Map();
+  
+  constructor(audioContext: AudioContext) {
+    this.context = audioContext;
+    this.listener = audioContext.listener;
+  }
+  
+  setListenerPosition(position: Vector2): void {
+    if (this.listener.positionX) {
+      // Modern Web Audio API
+      this.listener.positionX.setValueAtTime(position.x, this.context.currentTime);
+      this.listener.positionZ.setValueAtTime(position.y, this.context.currentTime);
+    } else {
+      // Fallback for older browsers
+      this.listener.setPosition(position.x, 0, position.y);
+    }
+  }
+  
+  applyPositionalAudio(sound: Phaser.Sound.WebAudioSound, position: Vector2): void {
+    if (sound.source && sound.source.context) {
+      const panner = sound.source.context.createPanner();
+      panner.panningModel = 'HRTF';
+      panner.distanceModel = 'inverse';
+      panner.refDistance = 10;
+      panner.maxDistance = 1000;
+      
+      // Position the audio source
+      if (panner.positionX) {
+        panner.positionX.setValueAtTime(position.x, sound.source.context.currentTime);
+        panner.positionZ.setValueAtTime(position.y, sound.source.context.currentTime);
+      } else {
+        panner.setPosition(position.x, 0, position.y);
+      }
+      
+      // Connect panner to audio graph
+      sound.source.connect(panner);
+      panner.connect(sound.source.context.destination);
+    }
+  }
+}
+
+// Adaptive music system for consciousness expansion narrative
+class AdaptiveMusicSystem {
+  private scene: Phaser.Scene;
+  private currentStems: Map<string, Phaser.Sound.WebAudioSound> = new Map();
+  private targetVolumes: Map<string, number> = new Map();
+  private transitionSpeed = 0.02; // Volume transition per frame
+  
+  constructor(scene: Phaser.Scene) {
+    this.scene = scene;
+    this.initializeStems();
+  }
+  
+  updateMusicForGameState(gameState: GameState): void {
+    // Determine music mood based on game state
+    const musicMood = this.calculateMusicMood(gameState);
+    
+    // Set target volumes for different music stems
+    this.targetVolumes.set('exploration', musicMood.exploration);
+    this.targetVolumes.set('tension', musicMood.tension);
+    this.targetVolumes.set('achievement', musicMood.achievement);
+    this.targetVolumes.set('consciousness', musicMood.consciousness);
+  }
+  
+  update(): void {
+    // Smoothly transition music stem volumes
+    this.currentStems.forEach((stem, key) => {
+      const currentVolume = stem.volume;
+      const targetVolume = this.targetVolumes.get(key) || 0;
+      
+      if (Math.abs(currentVolume - targetVolume) > 0.01) {
+        const newVolume = Phaser.Math.Linear(currentVolume, targetVolume, this.transitionSpeed);
+        stem.setVolume(newVolume);
+      }
+    });
+  }
+  
+  private calculateMusicMood(gameState: GameState): MusicMood {
+    return {
+      exploration: gameState.discoveredResourcePercent * 0.8,
+      tension: gameState.powerCrisisLevel * 1.0,
+      achievement: gameState.recentAchievements ? 1.0 : 0.0,
+      consciousness: Math.min(gameState.probeCount / 5, 1.0) * 0.6
+    };
+  }
+}
+
+interface AudioOptions {
+  volume?: number;
+  loop?: boolean;
+  delay?: number;
+  position?: Vector2;
+}
+
+interface GameState {
+  discoveredResourcePercent: number;
+  powerCrisisLevel: number;
+  recentAchievements: boolean;
+  probeCount: number;
+}
+
+interface MusicMood {
+  exploration: number;
+  tension: number;
+  achievement: number;
+  consciousness: number;
 }
 ```
 
@@ -298,21 +474,200 @@ class AudioManager {
 - **Fallback Support**: Graceful degradation for older browsers
 - **Memory Management**: Intelligent audio loading and unloading
 
-### Performance Optimization
+### Performance Optimization & Phaser 3 Integration
 
 **Audio Processing Efficiency**
-- **Maximum Concurrent Sounds**: 16 simultaneous audio sources
+- **Maximum Concurrent Sounds**: 16 simultaneous audio sources (Phaser 3 default)
 - **Audio Update Frequency**: 60 Hz for critical audio, 30 Hz for ambient
 - **Memory Budget**: 50MB maximum audio memory allocation
 - **CPU Usage Target**: <5% CPU for audio processing
 - **Latency Requirements**: <50ms for interactive audio feedback
 
+**Phaser 3 Performance Implementation**
+```typescript
+class AudioPerformanceManager {
+  private readonly MAX_CONCURRENT_SOUNDS = 16;
+  private readonly AUDIO_MEMORY_LIMIT = 50 * 1024 * 1024; // 50MB
+  private activeSounds: Set<Phaser.Sound.WebAudioSound> = new Set();
+  private audioMemoryUsage = 0;
+  
+  // Intelligent sound pooling to prevent memory leaks
+  createSoundPool(scene: Phaser.Scene): void {
+    scene.sound.on('complete', (sound: Phaser.Sound.WebAudioSound) => {
+      this.activeSounds.delete(sound);
+      if (!sound.config.loop) {
+        sound.destroy(); // Clean up completed sounds
+      }
+    });
+  }
+  
+  // Performance-optimized sound playing with limit enforcement
+  playSoundWithLimits(scene: Phaser.Scene, key: string, config?: Phaser.Types.Sound.SoundConfig): boolean {
+    // Enforce concurrent sound limit
+    if (this.activeSounds.size >= this.MAX_CONCURRENT_SOUNDS) {
+      this.stopOldestSound();
+    }
+    
+    // Check memory budget before creating new sound
+    if (this.audioMemoryUsage > this.AUDIO_MEMORY_LIMIT) {
+      this.unloadUnusedAudio(scene);
+    }
+    
+    const sound = scene.sound.add(key, config) as Phaser.Sound.WebAudioSound;
+    this.activeSounds.add(sound);
+    sound.play();
+    
+    return true;
+  }
+  
+  // Adaptive quality based on performance
+  adjustAudioQuality(frameTime: number): void {
+    if (frameTime > 16.67) { // Above 60 FPS budget
+      this.reduceAudioQuality();
+    } else if (frameTime < 10 && this.audioQuality < 1.0) {
+      this.increaseAudioQuality();
+    }
+  }
+  
+  private stopOldestSound(): void {
+    let oldestSound: Phaser.Sound.WebAudioSound | null = null;
+    let oldestTime = Date.now();
+    
+    this.activeSounds.forEach(sound => {
+      if (sound.config.delay < oldestTime) {
+        oldestTime = sound.config.delay;
+        oldestSound = sound;
+      }
+    });
+    
+    if (oldestSound) {
+      oldestSound.stop();
+      this.activeSounds.delete(oldestSound);
+    }
+  }
+}
+
+// Memory-efficient audio asset management
+class AudioAssetManager {
+  private loadedAssets: Map<string, boolean> = new Map();
+  private assetUsageCount: Map<string, number> = new Map();
+  
+  // Progressive loading system for large audio libraries
+  loadEssentialAudio(scene: Phaser.Scene): void {
+    // Priority 1: Essential UI and equipment sounds
+    scene.load.audioSprite('essential_ui', 'audio/ui_sounds.json', 'audio/ui_sounds.ogg');
+    scene.load.audioSprite('basic_equipment', 'audio/basic_equipment.json', 'audio/basic_equipment.ogg');
+    
+    // Priority 2: Basic ambient audio
+    scene.load.audio('base_ambient', 'audio/ambient/base.ogg');
+  }
+  
+  loadContextualAudio(scene: Phaser.Scene, context: string): void {
+    switch (context) {
+      case 'mining':
+        if (!this.loadedAssets.get('mining_sounds')) {
+          scene.load.audioSprite('mining_equipment', 'audio/mining_sounds.json', 'audio/mining_sounds.ogg');
+          this.loadedAssets.set('mining_sounds', true);
+        }
+        break;
+      case 'fabrication':
+        if (!this.loadedAssets.get('fabrication_sounds')) {
+          scene.load.audioSprite('fabrication_equipment', 'audio/fabrication_sounds.json', 'audio/fabrication_sounds.ogg');
+          this.loadedAssets.set('fabrication_sounds', true);
+        }
+        break;
+      case 'exploration':
+        if (!this.loadedAssets.get('exploration_sounds')) {
+          scene.load.audio('exploration_ambient', 'audio/ambient/exploration.ogg');
+          this.loadedAssets.set('exploration_sounds', true);
+        }
+        break;
+    }
+  }
+  
+  // Intelligent memory management
+  unloadUnusedAudio(scene: Phaser.Scene): void {
+    this.assetUsageCount.forEach((count, assetKey) => {
+      if (count === 0 && this.loadedAssets.get(assetKey)) {
+        scene.cache.audio.remove(assetKey);
+        this.loadedAssets.set(assetKey, false);
+      }
+    });
+  }
+}
+```
+
 **Mobile & Web Optimization**
-- **Compressed Audio**: OGG Vorbis primary, MP3 fallback
-- **Progressive Loading**: Essential audio loads first, ambient audio streams
-- **Touch Activation**: Audio context activation handling for mobile
-- **Bandwidth Adaptation**: Audio quality adaptation based on connection
-- **Battery Optimization**: Efficient audio processing for mobile devices
+- **Audio Context Management**: Proper mobile audio context activation
+- **Compressed Audio**: OGG Vorbis primary, MP3 fallback for broader support
+- **Progressive Loading**: Essential audio loads first, ambient streams on demand
+- **Touch Activation**: Intelligent audio unlock for mobile browsers
+- **Bandwidth Adaptation**: Quality scaling based on network conditions
+- **Battery Optimization**: Reduced audio processing for mobile battery life
+
+**Web Browser Compatibility**
+```typescript
+class AudioCompatibilityManager {
+  private audioContext: AudioContext | null = null;
+  private isAudioUnlocked = false;
+  
+  // Handle mobile audio context activation
+  unlockAudioContext(): Promise<void> {
+    return new Promise((resolve) => {
+      if (this.isAudioUnlocked) {
+        resolve();
+        return;
+      }
+      
+      const unlock = () => {
+        if (this.audioContext) {
+          this.audioContext.resume().then(() => {
+            this.isAudioUnlocked = true;
+            document.removeEventListener('touchstart', unlock);
+            document.removeEventListener('click', unlock);
+            resolve();
+          });
+        }
+      };
+      
+      document.addEventListener('touchstart', unlock, { once: true });
+      document.addEventListener('click', unlock, { once: true });
+    });
+  }
+  
+  // Feature detection and fallback handling
+  detectAudioCapabilities(): AudioCapabilities {
+    const capabilities: AudioCapabilities = {
+      webAudio: !!window.AudioContext || !!(window as any).webkitAudioContext,
+      audioSprites: true, // Phaser 3 handles this
+      compression: {
+        ogg: this.canPlayOgg(),
+        mp3: this.canPlayMp3(),
+        webm: this.canPlayWebM()
+      },
+      spatialAudio: !!window.AudioContext && 'createPanner' in AudioContext.prototype
+    };
+    
+    return capabilities;
+  }
+  
+  private canPlayOgg(): boolean {
+    const audio = new Audio();
+    return audio.canPlayType('audio/ogg; codecs="vorbis"') !== '';
+  }
+}
+
+interface AudioCapabilities {
+  webAudio: boolean;
+  audioSprites: boolean;
+  compression: {
+    ogg: boolean;
+    mp3: boolean;
+    webm: boolean;
+  };
+  spatialAudio: boolean;
+}
+```
 
 ### Audio Assets Requirements
 

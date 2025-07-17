@@ -205,18 +205,31 @@ AVAILABLE EQUIPMENT:                protection recommended"
 - **Fleet Coordination**: Multi-probe equipment management and resource allocation
 - **Predictive Analysis**: Environmental challenge prediction and preparation recommendations
 
-##### Industrial Equipment Center (Late Game/Fleet Scale)
-**Comprehensive Infrastructure**:
-- **Capacity**: Service 4+ probes simultaneously + 32+ equipment storage slots
-- **Equipment Types**: All equipment including experimental and quantum-scale technologies
-- **Functionality**: Automated optimization, fleet-wide coordination, predictive logistics
-- **Construction Requirements**: Advanced materials + Nano-scale circuits + Industrial fabrication complex
+##### Advanced Equipment Center (Post-Replication/Fleet Operations)
+**Enhanced Infrastructure**:
+- **Capacity**: Service 2-3 probes simultaneously + 16+ equipment storage slots
+- **Equipment Types**: All standard and advanced equipment, including environmental protection
+- **Functionality**: Smart recommendations, preset management, multi-probe coordination
+- **Construction Requirements**: Titanium reinforcement + ADVANCED circuits + Enhanced fabrication systems
 
-**Elite Capabilities**:
-- **Automated Fleet Management**: Intelligent equipment distribution and role optimization
-- **Predictive Maintenance**: Equipment lifecycle management and replacement scheduling
-- **Advanced Manufacturing Integration**: Direct equipment fabrication and upgrade capabilities
-- **Strategic Planning AI**: Comprehensive mission planning and resource optimization
+**Advanced Capabilities**:
+- **Smart Recommendations**: AI-assisted loadout optimization based on mission analysis
+- **Preset System**: Save/load equipment configurations with custom names and descriptions
+- **Multi-Probe Management**: Coordinate equipment allocation across fleet
+- **Predictive Analysis**: Environmental challenge prediction and preparation recommendations
+
+---
+
+## QA SIMPLIFICATION: Two-Tier Equipment Facility System
+
+### Simplified Progression (QA Recommendation Implemented)
+**Decision**: Remove "Industrial Equipment Center" tier to reduce complexity and focus on core progression
+
+**Two-Tier System Benefits**:
+- **Clearer Progression**: Basic → Advanced feels natural and achievable
+- **Reduced Complexity**: Fewer upgrade paths prevent overwhelming choices
+- **Faster Implementation**: Less system complexity for development team
+- **Better Balance**: Two tiers easier to balance than three-tier progression
 
 ## Quality of Life Features
 
