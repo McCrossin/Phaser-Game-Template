@@ -1,0 +1,1 @@
+Open designed and use create-docs architecture after finalising game docs.
