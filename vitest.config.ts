@@ -12,6 +12,9 @@ export default defineConfig({
             '**/dist/**',
             '**/tests/e2e/**' // Exclude e2e tests from unit testing
         ],
+        // CI-specific configuration
+        reporters: process.env['CI'] ? ['basic'] : ['verbose'],
+        silent: process.env['CI'] === 'true',
         coverage: {
             provider: 'v8',
             reporter: ['text', 'json', 'html'],

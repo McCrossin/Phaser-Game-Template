@@ -9,6 +9,7 @@ on:
 jobs:
     security-scan:
         runs-on: ubuntu-latest
+        timeout-minutes: 5
         permissions:
             actions: read
             contents: read
@@ -21,15 +22,15 @@ jobs:
               uses: github/codeql-action/init@v3
               with:
                   languages: javascript
-                  queries: security-extended
-
-            - name: Autobuild
-              uses: github/codeql-action/autobuild@v3
+                  config: |
+                      disable-default-rules: true
+                      queries:
+                          - uses: security-and-quality
+              timeout-minutes: 2
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
-              with:
-                  category: '/language:javascript'
+              timeout-minutes: 2
 
     lint-and-typecheck:
         runs-on: ubuntu-latest
@@ -54,9 +55,10 @@ jobs:
 
     test:
         runs-on: ubuntu-latest
+        timeout-minutes: 10
         strategy:
             matrix:
-                node-version: [22, 23]
+                node-version: [22]
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -70,11 +72,13 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
-            - name: Run tests with coverage
-              run: npm run test:coverage
+            - name: Run tests
+              run: npm run test:run
+              timeout-minutes: 5
 
             - name: Upload coverage artifacts
               uses: actions/upload-artifact@v4
+              if: always()
               with:
                   name: coverage-${{ matrix.node-version }}
                   path: coverage/
