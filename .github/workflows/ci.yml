@@ -29,7 +29,7 @@ jobs:
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
               with:
-                  category: "/language:javascript"
+                  category: '/language:javascript'
 
     lint-and-typecheck:
         runs-on: ubuntu-latest
@@ -157,6 +157,6 @@ jobs:
               run: |
                   npm run build
                   echo "Build completed successfully"
-                  
+
             - name: Run performance check script
               run: npm run performance:check

@@ -19,12 +19,12 @@ function getDirectorySize(dirPath) {
     if (!existsSync(dirPath)) {
         return 0;
     }
-    
+
     let totalSize = 0;
-    
+
     function calculateSize(currentPath) {
         const stats = statSync(currentPath);
-        
+
         if (stats.isFile()) {
             // Exclude source maps from bundle size calculation
             if (!currentPath.endsWith('.map')) {
@@ -37,7 +37,7 @@ function getDirectorySize(dirPath) {
             });
         }
     }
-    
+
     calculateSize(dirPath);
     return totalSize;
 }
