@@ -65,7 +65,7 @@ function deploy() {
     try {
         // Deploy new version (green)
         runCommand(
-            `docker pull ghcr.io/mccrossin/galactic-automation:${version}`,
+            `docker pull ghcr.io/mccrossin/new-eden-project:${version}`,
             'Pulling new image'
         );
         runCommand(
