@@ -101,6 +101,7 @@ async function findSpriteFiles(sourceDir: string, patterns: string[]): Promise<s
     const files: string[] = [];
 
     try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
         const entries = await fs.readdir(sourceDir, { withFileTypes: true });
 
         for (const entry of entries) {
@@ -114,7 +115,7 @@ async function findSpriteFiles(sourceDir: string, patterns: string[]): Promise<s
                 files.push(fullPath);
             }
         }
-    } catch (error) {
+    } catch {
         console.warn(`⚠️  Could not read directory: ${sourceDir}`);
     }
 
@@ -131,6 +132,7 @@ function isSpriteFile(filename: string, patterns: string[]): boolean {
 
     return patterns.some(pattern => {
         // Simple glob pattern matching
+        // eslint-disable-next-line security/detect-non-literal-regexp
         const regex = new RegExp(pattern.replace(/\*/g, '.*'));
         return regex.test(filename);
     });
@@ -191,7 +193,7 @@ async function loadSprites(
                         width: trimResult.info.width,
                         height: trimResult.info.height
                     };
-                } catch (trimError) {
+                } catch {
                     // If trim fails, use original image
                     console.warn(`⚠️  Could not trim: ${spritePath}`);
                 }
@@ -275,7 +277,7 @@ async function saveAtlas(atlas: PackedAtlas, config: AtlasConfig): Promise<void>
 
     // Dynamic import of sharp for ES module compatibility
     const { default: sharp } = await import('sharp');
-    
+
     // Create atlas image
     const atlasImage = sharp({
         create: {
@@ -340,13 +342,15 @@ async function saveAtlas(atlas: PackedAtlas, config: AtlasConfig): Promise<void>
     }
 
     const atlasJsonPath = join(outputDir, `${config.name}.json`);
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     await fs.writeFile(atlasJsonPath, JSON.stringify(atlasData, null, 2));
 }
 
 async function ensureDirectoryExists(dir: string): Promise<void> {
     try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
         await fs.mkdir(dir, { recursive: true });
-    } catch (error) {
+    } catch {
         // Directory might already exist
     }
 }

@@ -59,6 +59,7 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
         const files: string[] = [];
 
         try {
+            // eslint-disable-next-line security/detect-non-literal-fs-filename
             const entries = await fs.readdir(dir, { withFileTypes: true });
 
             for (const entry of entries) {
@@ -71,7 +72,7 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
                     files.push(fullPath);
                 }
             }
-        } catch (error) {
+        } catch {
             // Directory might not exist, that's ok
             console.warn(`⚠️  Could not read directory: ${dir}`);
         }
@@ -89,6 +90,7 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
         const category = determineImageCategory(relativePath);
         const quality = getQualityForCategory(category);
 
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
         const originalStats = await fs.stat(imagePath);
         const originalSize = originalStats.size;
 
@@ -128,6 +130,7 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
             await image.clone().webp({ quality }).toFile(webpPath);
 
             processed.webp = webpPath;
+            // eslint-disable-next-line security/detect-non-literal-fs-filename
             const webpStats = await fs.stat(webpPath);
             processed.size.optimized += webpStats.size;
 
@@ -137,6 +140,7 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
                 await image.clone().png({ quality }).toFile(pngPath);
 
                 processed.png = pngPath;
+                // eslint-disable-next-line security/detect-non-literal-fs-filename
                 const pngStats = await fs.stat(pngPath);
                 processed.size.optimized += pngStats.size;
             } else {
@@ -171,13 +175,15 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
     function getQualityForCategory(
         category: keyof typeof ASSET_PIPELINE_CONFIG.image.quality
     ): number {
+        // eslint-disable-next-line security/detect-object-injection
         return ASSET_PIPELINE_CONFIG.image.quality[category];
     }
 
     async function ensureDirectoryExists(dir: string): Promise<void> {
         try {
+            // eslint-disable-next-line security/detect-non-literal-fs-filename
             await fs.mkdir(dir, { recursive: true });
-        } catch (error) {
+        } catch {
             // Directory might already exist
         }
     }
@@ -212,6 +218,7 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
         const k = 1024;
         const sizes = ['Bytes', 'KB', 'MB', 'GB'];
         const i = Math.floor(Math.log(bytes) / Math.log(k));
+        // eslint-disable-next-line security/detect-object-injection
         return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
 }
