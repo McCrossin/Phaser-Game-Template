@@ -30,10 +30,8 @@ RUN echo "add_header X-Frame-Options SAMEORIGIN always;" >> /etc/nginx/conf.d/se
     echo "add_header X-XSS-Protection '1; mode=block' always;" >> /etc/nginx/conf.d/security.conf && \
     echo "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';\" always;" >> /etc/nginx/conf.d/security.conf
 
-# Add non-root user for security
-RUN addgroup -g 1001 -S nginx && \
-    adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx && \
-    chown -R nginx:nginx /usr/share/nginx/html
+# Set proper ownership for existing nginx user
+RUN chown -R nginx:nginx /usr/share/nginx/html
 
 USER nginx
 EXPOSE 80

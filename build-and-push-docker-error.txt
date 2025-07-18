@@ -1,0 +1,280 @@
+
+Run docker/build-push-action@v6
+GitHub Actions runtime token ACs
+Docker info
+Proxy configuration
+Buildx version
+Builder info
+/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /home/runner/work/_temp/docker-actions-toolkit-69YiID/build-iidfile-6caf9eac51.txt --label org.opencontainers.image.created=2025-07-18T07:45:07.369Z --label org.opencontainers.image.description= --label org.opencontainers.image.licenses= --label org.opencontainers.image.revision=ea6a954e2aebfbd3c5a02db38c5d19fd3487463d --label org.opencontainers.image.source=https://github.com/McCrossin/New-Eden-Project --label org.opencontainers.image.title=New-Eden-Project --label org.opencontainers.image.url=https://github.com/McCrossin/New-Eden-Project --label org.opencontainers.image.version=main --platform linux/amd64,linux/arm64 --attest type=provenance,mode=min,inline-only=true,builder-id=https://github.com/McCrossin/New-Eden-Project/actions/runs/16365128623/attempts/1 --tag ghcr.io/mccrossin/new-eden-project:main --tag ghcr.io/mccrossin/new-eden-project:sha-ea6a954 --metadata-file /home/runner/work/_temp/docker-actions-toolkit-69YiID/build-metadata-5d2806c750.json --push .
+#0 building with "builder-146212cf-2178-47cd-94cb-cfc364a08200" instance using docker-container driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.78kB done
+#1 DONE 0.0s
+
+#2 [auth] library/node:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [auth] library/nginx:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [linux/amd64 internal] load metadata for docker.io/library/node:22-alpine
+#4 ...
+
+#5 [linux/arm64 internal] load metadata for docker.io/library/nginx:alpine
+#5 DONE 0.5s
+
+#4 [linux/amd64 internal] load metadata for docker.io/library/node:22-alpine
+#4 DONE 0.5s
+
+#6 [linux/amd64 internal] load metadata for docker.io/library/nginx:alpine
+#6 DONE 0.5s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 673B done
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 DONE 0.0s
+
+#9 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#9 resolve docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59 0.0s done
+#9 DONE 0.0s
+
+#10 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#10 resolve docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22 0.0s done
+#10 DONE 0.0s
+
+#11 [linux/amd64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#11 resolve docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22 0.0s done
+#11 DONE 0.0s
+
+#12 importing cache manifest from gha:1715904348729183159
+#12 DONE 0.1s
+
+#9 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#9 sha256:4f24e34311a053509408982697361a542fa36438d7203b25084c93609ad786c7 446B / 446B 0.1s done
+#9 sha256:79a0252b29f675f95c0a6a239aee5f33aadcc8fd0e98a3d9812ac2f5310eb3a1 1.26MB / 1.26MB 0.1s done
+#9 ...
+
+#8 [internal] load build context
+#8 transferring context: 6.32MB 0.2s done
+#8 DONE 0.2s
+
+#9 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#9 sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 3.80MB / 3.80MB 0.1s done
+#9 sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b 12.58MB / 51.05MB 0.2s
+#9 extracting sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8
+#9 sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b 26.21MB / 51.05MB 0.3s
+#9 extracting sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 0.2s done
+#9 sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b 46.14MB / 51.05MB 0.5s
+#9 ...
+
+#11 [linux/amd64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#11 sha256:f23865b38cc69ad61d7a272610d411a4e66c2ed6ab2f374ff8e7f947ecfffb28 16.78MB / 16.78MB 0.2s done
+#11 sha256:bdaad27fd04a102fe15f473a31a82321c0625a6a3603bd9522bf058eb8a194e2 1.40kB / 1.40kB 0.0s done
+#11 sha256:828fa206d77bc99972844d67b1a617a841c74f15e71c71e656d1437bd26c15b8 1.21kB / 1.21kB 0.0s done
+#11 sha256:c1d2dc189e3831ffcb9a19138df97d141f3bd13a13a1513b137cc7ca6e94fa09 405B / 405B 0.1s done
+#11 sha256:958a74d6a238e799e7819c7408602b9c5481fa5eda0ee5bcbe1932f685d9d3b9 956B / 956B 0.1s done
+#11 sha256:fd372c3c84a23422bc07489867f8c2e7e99774680380ccf89c0a269b71b5690f 628B / 628B 0.1s done
+#11 sha256:a5585638209eba93a3af07035d353e512187e9884e402ded45565e264bedb7e1 1.81MB / 1.81MB 0.1s done
+#11 extracting sha256:a5585638209eba93a3af07035d353e512187e9884e402ded45565e264bedb7e1 0.2s done
+#11 DONE 0.9s
+
+#9 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#9 sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b 51.05MB / 51.05MB 0.5s done
+#9 extracting sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b
+#9 ...
+
+#10 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#10 sha256:37c699686bc84a1a024b03ec8372a78c8df83161e39f2de56bbd41159641b0cf 1.40kB / 1.40kB 0.1s done
+#10 sha256:9d51f8bf5f2b501c2c3b4df9ea08846aa5102eb92012c304e9db6cbc8e012da5 1.21kB / 1.21kB 0.0s done
+#10 sha256:36f61153929d54ee8fb2cf94ecf693d27b1db4870982592ae7a4779e4259ecbe 16.92MB / 16.92MB 0.2s done
+#10 sha256:ded4450e05847b33ef1fedd8d09aee29f395013b012e3b1e318b37b1ad82732f 404B / 404B 0.1s done
+#10 sha256:1c81249bdabba0496b6c9537b6642d10232138a6f51d426b92ccfef6c35c4e21 954B / 954B 0.1s done
+#10 sha256:f6bd92514b6f356d636a730d2c374892a63db0ba16205c9a4cd9bc7000863196 626B / 626B 0.0s done
+#10 sha256:ab753f997c88636c549e74dd1fc1f7990eb45392644b3fbc7cc6637131a5ce0a 1.80MB / 1.80MB 0.1s done
+#10 sha256:6e174226ea690ced550e5641249a412cdbefd2d09871f3e64ab52137a54ba606 4.13MB / 4.13MB 0.1s done
+#10 extracting sha256:6e174226ea690ced550e5641249a412cdbefd2d09871f3e64ab52137a54ba606 0.2s done
+#10 extracting sha256:ab753f997c88636c549e74dd1fc1f7990eb45392644b3fbc7cc6637131a5ce0a 0.2s done
+#10 extracting sha256:f6bd92514b6f356d636a730d2c374892a63db0ba16205c9a4cd9bc7000863196 0.0s done
+#10 extracting sha256:1c81249bdabba0496b6c9537b6642d10232138a6f51d426b92ccfef6c35c4e21 done
+#10 DONE 1.0s
+
+#10 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#10 extracting sha256:ded4450e05847b33ef1fedd8d09aee29f395013b012e3b1e318b37b1ad82732f done
+#10 extracting sha256:9d51f8bf5f2b501c2c3b4df9ea08846aa5102eb92012c304e9db6cbc8e012da5 done
+#10 extracting sha256:37c699686bc84a1a024b03ec8372a78c8df83161e39f2de56bbd41159641b0cf done
+#10 extracting sha256:36f61153929d54ee8fb2cf94ecf693d27b1db4870982592ae7a4779e4259ecbe
+#10 ...
+
+#11 [linux/amd64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#11 extracting sha256:fd372c3c84a23422bc07489867f8c2e7e99774680380ccf89c0a269b71b5690f 0.0s done
+#11 extracting sha256:958a74d6a238e799e7819c7408602b9c5481fa5eda0ee5bcbe1932f685d9d3b9 0.0s done
+#11 extracting sha256:c1d2dc189e3831ffcb9a19138df97d141f3bd13a13a1513b137cc7ca6e94fa09 0.0s done
+#11 extracting sha256:828fa206d77bc99972844d67b1a617a841c74f15e71c71e656d1437bd26c15b8 0.0s done
+#11 extracting sha256:bdaad27fd04a102fe15f473a31a82321c0625a6a3603bd9522bf058eb8a194e2 0.0s done
+#11 extracting sha256:f23865b38cc69ad61d7a272610d411a4e66c2ed6ab2f374ff8e7f947ecfffb28 0.8s done
+#11 DONE 1.7s
+
+#10 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#10 extracting sha256:36f61153929d54ee8fb2cf94ecf693d27b1db4870982592ae7a4779e4259ecbe 0.8s done
+#10 DONE 1.8s
+
+#9 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#9 extracting sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b 2.0s done
+#9 DONE 2.7s
+
+#9 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#9 extracting sha256:79a0252b29f675f95c0a6a239aee5f33aadcc8fd0e98a3d9812ac2f5310eb3a1 0.0s done
+#9 extracting sha256:4f24e34311a053509408982697361a542fa36438d7203b25084c93609ad786c7 done
+#9 DONE 2.7s
+
+#13 [linux/amd64->arm64 builder 2/7] WORKDIR /app
+#13 DONE 1.1s
+
+#14 [linux/amd64->arm64 builder 3/7] COPY package*.json ./
+#14 DONE 0.0s
+
+#15 [linux/amd64->arm64 builder 4/7] RUN npm ci --ignore-scripts
+#15 ...
+
+#16 [linux/amd64 builder 4/7] RUN npm ci --ignore-scripts
+#16 ...
+
+#15 [linux/amd64->arm64 builder 4/7] RUN npm ci --ignore-scripts
+#15 11.07 
+#15 11.07 added 342 packages, and audited 343 packages in 11s
+#15 11.07 
+#15 11.07 108 packages are looking for funding
+#15 11.07   run `npm fund` for details
+#15 11.07 
+#15 11.07 found 0 vulnerabilities
+#15 11.07 npm notice
+#15 11.07 npm notice New major version of npm available! 10.9.2 -> 11.4.2
+#15 11.07 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.2
+#15 11.07 npm notice To update run: npm install -g npm@11.4.2
+#15 11.07 npm notice
+#15 DONE 14.2s
+
+#16 [linux/amd64 builder 4/7] RUN npm ci --ignore-scripts
+#16 11.25 
+#16 11.25 added 342 packages, and audited 343 packages in 11s
+#16 11.25 
+#16 11.25 108 packages are looking for funding
+#16 11.25   run `npm fund` for details
+#16 11.25 
+#16 11.25 found 0 vulnerabilities
+#16 11.25 npm notice
+#16 11.25 npm notice New major version of npm available! 10.9.2 -> 11.4.2
+#16 11.25 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.2
+#16 11.25 npm notice To update run: npm install -g npm@11.4.2
+#16 11.25 npm notice
+#16 DONE 14.2s
+
+#17 [linux/amd64 builder 5/7] COPY . .
+#17 DONE 0.3s
+
+#18 [linux/amd64->arm64 builder 5/7] COPY . .
+#18 DONE 0.3s
+
+#19 [linux/amd64->arm64 builder 6/7] RUN npm run build
+#19 0.310 
+#19 0.310 > new-eden-project@0.1.0 build
+#19 0.310 > tsc && vite build
+#19 0.310 
+#19 7.330 vite v7.0.5 building for production...
+#19 7.454 transforming...
+#19 ...
+
+#20 [linux/amd64 builder 6/7] RUN npm run build
+#20 0.311 
+#20 0.311 > new-eden-project@0.1.0 build
+#20 0.311 > tsc && vite build
+#20 0.311 
+#20 7.236 vite v7.0.5 building for production...
+#20 7.360 transforming...
+#20 ...
+
+#19 [linux/amd64->arm64 builder 6/7] RUN npm run build
+#19 18.80 ✓ 19 modules transformed.
+#19 20.44 rendering chunks...
+#19 20.47 computing gzip size...
+#19 20.52 dist/index.html                   2.70 kB │ gzip:   0.98 kB
+#19 20.53 dist/assets/main-Ce5lRaPZ.js  1,496.34 kB │ gzip: 345.11 kB
+#19 20.53 
+#19 20.53 (!) Some chunks are larger than 500 kB after minification. Consider:
+#19 20.53 - Using dynamic import() to code-split the application
+#19 20.53 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#19 20.53 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#19 20.53 ✓ built in 13.14s
+#19 DONE 20.7s
+
+#21 [linux/amd64->arm64 builder 7/7] RUN echo '{"version":"docker-build","buildTime":"'$(date -Iseconds)'","gitCommit":"docker","gitBranch":"docker","nodeVersion":"'$(node --version)'","npmVersion":"'$(npm --version)'","environment":"production"}' > dist/build-info.json
+#21 ...
+
+#20 [linux/amd64 builder 6/7] RUN npm run build
+#20 19.08 ✓ 19 modules transformed.
+#20 20.58 rendering chunks...
+#20 20.61 computing gzip size...
+#20 20.67 dist/index.html                   2.70 kB │ gzip:   0.98 kB
+#20 20.67 dist/assets/main-Ce5lRaPZ.js  1,496.34 kB │ gzip: 345.11 kB
+#20 20.67 
+#20 20.67 (!) Some chunks are larger than 500 kB after minification. Consider:
+#20 20.67 - Using dynamic import() to code-split the application
+#20 20.67 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#20 20.67 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#20 20.67 ✓ built in 13.38s
+#20 DONE 20.8s
+
+#21 [linux/amd64->arm64 builder 7/7] RUN echo '{"version":"docker-build","buildTime":"'$(date -Iseconds)'","gitCommit":"docker","gitBranch":"docker","nodeVersion":"'$(node --version)'","npmVersion":"'$(npm --version)'","environment":"production"}' > dist/build-info.json
+#21 DONE 0.3s
+
+#22 [linux/amd64 builder 7/7] RUN echo '{"version":"docker-build","buildTime":"'$(date -Iseconds)'","gitCommit":"docker","gitBranch":"docker","nodeVersion":"'$(node --version)'","npmVersion":"'$(npm --version)'","environment":"production"}' > dist/build-info.json
+#22 DONE 0.3s
+
+#23 [linux/arm64 stage-1 2/5] COPY --from=builder /app/dist /usr/share/nginx/html
+#23 DONE 0.0s
+
+#24 [linux/arm64 stage-1 3/5] COPY nginx.conf /etc/nginx/nginx.conf
+#24 DONE 0.0s
+
+#25 [linux/amd64 stage-1 2/5] COPY --from=builder /app/dist /usr/share/nginx/html
+#25 DONE 0.0s
+
+#26 [linux/amd64 stage-1 3/5] COPY nginx.conf /etc/nginx/nginx.conf
+#26 DONE 0.0s
+
+#27 [linux/arm64 stage-1 4/5] RUN echo "add_header X-Frame-Options SAMEORIGIN always;" >> /etc/nginx/conf.d/security.conf &&     echo "add_header X-Content-Type-Options nosniff always;" >> /etc/nginx/conf.d/security.conf &&     echo "add_header X-XSS-Protection '1; mode=block' always;" >> /etc/nginx/conf.d/security.conf &&     echo "add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';" always;" >> /etc/nginx/conf.d/security.conf
+#27 DONE 0.1s
+
+#28 [linux/amd64 stage-1 4/5] RUN echo "add_header X-Frame-Options SAMEORIGIN always;" >> /etc/nginx/conf.d/security.conf &&     echo "add_header X-Content-Type-Options nosniff always;" >> /etc/nginx/conf.d/security.conf &&     echo "add_header X-XSS-Protection '1; mode=block' always;" >> /etc/nginx/conf.d/security.conf &&     echo "add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';" always;" >> /etc/nginx/conf.d/security.conf
+#28 DONE 0.1s
+
+#29 [linux/arm64 stage-1 5/5] RUN addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html
+#29 0.159 addgroup: group 'nginx' in use
+#29 ERROR: process "/dev/.buildkit_qemu_emulator /bin/sh -c addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html" did not complete successfully: exit code: 1
+
+#30 [linux/amd64 stage-1 5/5] RUN addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html
+#30 0.084 addgroup: group 'nginx' in use
+#30 ERROR: process "/bin/sh -c addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html" did not complete successfully: exit code: 1
+------
+ > [linux/arm64 stage-1 5/5] RUN addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html:
+0.159 addgroup: group 'nginx' in use
+------
+------
+ > [linux/amd64 stage-1 5/5] RUN addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html:
+0.084 addgroup: group 'nginx' in use
+------
+Dockerfile:34
+--------------------
+  33 |     # Add non-root user for security
+  34 | >>> RUN addgroup -g 1001 -S nginx && \
+  35 | >>>     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx && \
+  36 | >>>     chown -R nginx:nginx /usr/share/nginx/html
+  37 |     
+--------------------
+ERROR: failed to build: failed to solve: process "/dev/.buildkit_qemu_emulator /bin/sh -c addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html" did not complete successfully: exit code: 1
+Reference
+Check build summary support
+Error: buildx failed with: ERROR: failed to build: failed to solve: process "/dev/.buildkit_qemu_emulator /bin/sh -c addgroup -g 1001 -S nginx &&     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx &&     chown -R nginx:nginx /usr/share/nginx/html" did not complete successfully: exit code: 1
