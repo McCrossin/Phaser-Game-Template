@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
+import security from 'eslint-plugin-security';
 
 export default tseslint.config(
     {
@@ -17,6 +18,7 @@ export default tseslint.config(
     },
     prettierRecommended,
     eslint.configs.recommended,
+    security.configs.recommended,
     {
         files: ['**/*.ts', '**/*.tsx'],
         extends: [tseslint.configs.recommended],
