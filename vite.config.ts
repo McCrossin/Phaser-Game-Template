@@ -7,7 +7,9 @@ export default defineConfig({
     build: {
         outDir: 'dist',
         assetsDir: 'assets',
-        sourcemap: true,
+        sourcemap: process.env.NODE_ENV !== 'production',
+        minify: 'esbuild',
+        target: 'es2020',
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html')
@@ -32,5 +34,8 @@ export default defineConfig({
     },
     optimizeDeps: {
         include: ['phaser']
+    },
+    esbuild: {
+        target: 'es2020'
     }
 });
