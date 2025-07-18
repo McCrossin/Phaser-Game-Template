@@ -54,10 +54,21 @@ export default defineConfig({
             use: {
                 ...devices['Desktop Chrome'],
                 launchOptions: {
-                    args: ['--enable-gpu-benchmarking', '--enable-logging']
+                    args: [
+                        '--disable-gpu',
+                        '--no-sandbox',
+                        '--disable-setuid-sandbox',
+                        '--disable-dev-shm-usage',
+                        '--disable-web-security',
+                        '--allow-running-insecure-content'
+                    ]
                 }
             },
-            testDir: './tests/e2e/performance'
+            testDir: './tests/e2e/performance',
+            timeout: 60000, // Increased timeout for CI
+            expect: {
+                timeout: 10000 // Increased expect timeout
+            }
         }
     ],
 

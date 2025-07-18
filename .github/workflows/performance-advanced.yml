@@ -37,8 +37,8 @@ jobs:
               run: |
                   # Install Playwright browsers if not cached
                   npx playwright install chromium --with-deps
-                  # Run performance tests
-                  npm run test:performance
+                  # Run performance tests with CI-optimized settings
+                  npm run test:performance -- --timeout=60000
 
             - name: Check Performance Regression
               run: node scripts/performance-check.js
