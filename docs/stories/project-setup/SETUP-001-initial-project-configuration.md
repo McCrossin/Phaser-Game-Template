@@ -7,7 +7,7 @@
 
 ## Description
 
-Set up the foundational development environment for New Eden Project using Phaser 3.70+, TypeScript 5.0+ with strict mode, and Vite as the build tool. This story establishes the core project structure, configuration files, and development tooling that all subsequent development will build upon.
+Set up the foundational development environment for New Eden Project using Phaser 3.85+, TypeScript 5.8+ with strict mode, and Vite 7.0+ as the build tool. This story establishes the core project structure, configuration files, and development tooling that all subsequent development will build upon.
 
 ### Player Experience Goal
 While this is a technical setup story, it directly impacts the player experience by ensuring the game will run at a consistent 60 FPS, load quickly, and work reliably across different browsers and devices.
@@ -25,8 +25,8 @@ Create a modern web game development environment using Vite for fast builds and 
 - [ ] Production build generates optimized bundles
 
 ### Technical Requirements
-- [ ] TypeScript 5.0+ configured with strict mode settings
-- [ ] Phaser 3.70+ properly integrated with TypeScript types
+- [ ] TypeScript 5.8+ configured with strict mode settings
+- [ ] Phaser 3.85+ properly integrated with TypeScript types
 - [ ] Vite configured for optimal Phaser development
 - [ ] ESLint and Prettier configured for code quality
 - [ ] Git hooks set up for pre-commit checks
@@ -145,7 +145,7 @@ Create the base project with required dependencies and folder structure.
 **Estimated Time**: 2 hours
 **Technical Details**:
 - Run `npm create vite@latest new-eden-project -- --template vanilla-ts`
-- Install core dependencies: `phaser@3.70.0`, `typescript@5.0.0`
+- Install core dependencies: `phaser@3.85.2`, `typescript@5.8.3`
 - Create folder structure per architecture document
 - Set up Git repository with .gitignore
 
@@ -244,7 +244,7 @@ const PERFORMANCE_CONFIG = {
 - [ ] Game window resizes properly without breaking layout
 - [ ] FPS counter displays in development mode
 - [ ] No console errors on startup
-- [ ] Phaser version correctly reports 3.70.0
+- [ ] Phaser version correctly reports 3.85.2
 
 ## Dependencies
 
@@ -252,8 +252,8 @@ const PERFORMANCE_CONFIG = {
 - None (this is the first story)
 
 ### System Dependencies
-- Node.js: Version 18+ required
-- npm: Version 8+ required
+- Node.js: Version 22 LTS (v22.17.1+) required
+- npm: Version 10+ required
 - Git: For version control
 
 ### Asset Dependencies
