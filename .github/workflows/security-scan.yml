@@ -90,6 +90,22 @@ jobs:
               uses: aquasecurity/trivy-action@master
               with:
                   image-ref: 'security-scan:latest'
+                  format: 'table'
+                  output: 'trivy-results.txt'
+                  severity: 'CRITICAL,HIGH,MEDIUM'
+                  ignore-unfixed: false
+
+            - name: Display Trivy scan results
+              if: always()
+              run: |
+                  echo "=== Container Security Scan Results ==="
+                  cat trivy-results.txt || echo "No vulnerabilities found"
+
+            - name: Generate SARIF for Security tab (if enabled)
+              if: always()
+              uses: aquasecurity/trivy-action@master
+              with:
+                  image-ref: 'security-scan:latest'
                   format: 'sarif'
                   output: 'trivy-results.sarif'
                   severity: 'CRITICAL,HIGH,MEDIUM'
@@ -98,8 +114,26 @@ jobs:
             - name: Upload Trivy scan results to GitHub Security tab
               uses: github/codeql-action/upload-sarif@v3
               if: always()
+              continue-on-error: true
               with:
                   sarif_file: 'trivy-results.sarif'
+
+            - name: Code scanning setup info
+              if: failure()
+              run: |
+                  echo "⚠️  Code scanning is not enabled for this repository."
+                  echo "To enable it, go to: Settings > Security & analysis > Code scanning"
+                  echo "Or visit: https://github.com/${{ github.repository }}/settings/security_analysis"
+                  echo "Container security results are available in the workflow artifacts."
+
+            - name: Upload security scan artifacts
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: container-security-results
+                  path: |
+                      trivy-results.txt
+                      trivy-results.sarif
 
     dependency-check:
         name: Dependency Security Check
