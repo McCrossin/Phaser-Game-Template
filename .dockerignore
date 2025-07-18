@@ -37,13 +37,10 @@ docs/
 *.md
 !README.md
 
-# Build artifacts (keep only dist)
-src/
-tsconfig.json
-vite.config.ts
-vitest.config.ts
-playwright.config.ts
-eslint.config.mjs
+# Build artifacts (exclude only final dist from runtime)
+# src/ - KEEP for Docker builds
+# tsconfig.json - KEEP for Docker builds  
+# vite.config.ts - KEEP for Docker builds
 
 # CI/CD files
 .github/

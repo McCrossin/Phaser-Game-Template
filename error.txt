@@ -1,0 +1,209 @@
+Run docker/build-push-action@v6
+GitHub Actions runtime token ACs
+Docker info
+Proxy configuration
+Buildx version
+Builder info
+/usr/bin/docker buildx build --cache-from type=gha --cache-to type=gha,mode=max --iidfile /home/runner/work/_temp/docker-actions-toolkit-ZeT7Y3/build-iidfile-5e7bb36925.txt --label org.opencontainers.image.created=2025-07-18T07:25:58.551Z --label org.opencontainers.image.description= --label org.opencontainers.image.licenses= --label org.opencontainers.image.revision=bcfc5f40130ca4a89f11ed7f1ec6b469af5b3c6a --label org.opencontainers.image.source=https://github.com/McCrossin/New-Eden-Project --label org.opencontainers.image.title=New-Eden-Project --label org.opencontainers.image.url=https://github.com/McCrossin/New-Eden-Project --label org.opencontainers.image.version=main --platform linux/amd64,linux/arm64 --attest type=provenance,mode=min,inline-only=true,builder-id=https://github.com/McCrossin/New-Eden-Project/actions/runs/16364782308/attempts/1 --tag ghcr.io/mccrossin/new-eden-project:main --tag ghcr.io/mccrossin/new-eden-project:sha-bcfc5f4 --metadata-file /home/runner/work/_temp/docker-actions-
+#0 building with "builder-a00b88c2-dbc4-479a-be20-3788992653f2" instance using docker-container driver
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.55kB done
+#1 DONE 0.0s
+#2 [auth] library/nginx:pull token for registry-1.docker.io
+#2 DONE 0.0s
+#3 [auth] library/node:pull token for registry-1.docker.io
+#3 DONE 0.0s
+#4 [linux/amd64 internal] load metadata for docker.io/library/nginx:alpine
+#4 ...
+#5 [linux/amd64 internal] load metadata for docker.io/library/node:22-alpine
+#5 DONE 0.4s
+#6 [linux/arm64 internal] load metadata for docker.io/library/nginx:alpine
+#6 DONE 0.4s
+#4 [linux/amd64 internal] load metadata for docker.io/library/nginx:alpine
+#4 DONE 0.4s
+#7 [internal] load .dockerignore
+#7 transferring context: 624B done
+#7 DONE 0.0s
+#8 importing cache manifest from gha:14134229970089611683
+#8 DONE 0.1s
+#9 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#9 resolve docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22 done
+#9 ...
+#10 [internal] load build context
+#10 transferring context: 6.23MB 0.2s done
+#10 DONE 0.2s
+#9 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#9 sha256:37c699686bc84a1a024b03ec8372a78c8df83161e39f2de56bbd41159641b0cf 1.40kB / 1.40kB 0.0s done
+#9 sha256:9d51f8bf5f2b501c2c3b4df9ea08846aa5102eb92012c304e9db6cbc8e012da5 1.21kB / 1.21kB 0.0s done
+#9 sha256:ded4450e05847b33ef1fedd8d09aee29f395013b012e3b1e318b37b1ad82732f 404B / 404B 0.0s done
+#9 sha256:36f61153929d54ee8fb2cf94ecf693d27b1db4870982592ae7a4779e4259ecbe 16.92MB / 16.92MB 0.2s done
+#9 sha256:f6bd92514b6f356d636a730d2c374892a63db0ba16205c9a4cd9bc7000863196 626B / 626B 0.0s done
+#9 sha256:1c81249bdabba0496b6c9537b6642d10232138a6f51d426b92ccfef6c35c4e21 954B / 954B 0.1s done
+#9 sha256:ab753f997c88636c549e74dd1fc1f7990eb45392644b3fbc7cc6637131a5ce0a 1.80MB / 1.80MB 0.0s done
+#9 sha256:6e174226ea690ced550e5641249a412cdbefd2d09871f3e64ab52137a54ba606 4.13MB / 4.13MB 0.1s done
+#9 ...
+#11 [linux/amd64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#11 resolve docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22 0.0s done
+#11 sha256:bdaad27fd04a102fe15f473a31a82321c0625a6a3603bd9522bf058eb8a194e2 1.40kB / 1.40kB 0.1s done
+#11 sha256:828fa206d77bc99972844d67b1a617a841c74f15e71c71e656d1437bd26c15b8 1.21kB / 1.21kB 0.0s done
+#11 sha256:c1d2dc189e3831ffcb9a19138df97d141f3bd13a13a1513b137cc7ca6e94fa09 405B / 405B 0.1s done
+#11 sha256:fd372c3c84a23422bc07489867f8c2e7e99774680380ccf89c0a269b71b5690f 628B / 628B 0.1s done
+#11 sha256:f23865b38cc69ad61d7a272610d411a4e66c2ed6ab2f374ff8e7f947ecfffb28 16.78MB / 16.78MB 0.2s done
+#11 sha256:958a74d6a238e799e7819c7408602b9c5481fa5eda0ee5bcbe1932f685d9d3b9 956B / 956B 0.0s done
+#11 sha256:a5585638209eba93a3af07035d353e512187e9884e402ded45565e264bedb7e1 1.81MB / 1.81MB 0.1s done
+#11 extracting sha256:a5585638209eba93a3af07035d353e512187e9884e402ded45565e264bedb7e1 0.3s done
+#11 DONE 0.8s
+#9 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#9 extracting sha256:6e174226ea690ced550e5641249a412cdbefd2d09871f3e64ab52137a54ba606
+#9 extracting sha256:6e174226ea690ced550e5641249a412cdbefd2d09871f3e64ab52137a54ba606 0.2s done
+#9 extracting sha256:ab753f997c88636c549e74dd1fc1f7990eb45392644b3fbc7cc6637131a5ce0a
+#9 extracting sha256:ab753f997c88636c549e74dd1fc1f7990eb45392644b3fbc7cc6637131a5ce0a 0.2s done
+#9 DONE 1.1s
+#11 [linux/amd64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#11 extracting sha256:fd372c3c84a23422bc07489867f8c2e7e99774680380ccf89c0a269b71b5690f 0.0s done
+#11 extracting sha256:958a74d6a238e799e7819c7408602b9c5481fa5eda0ee5bcbe1932f685d9d3b9 0.0s done
+#11 extracting sha256:c1d2dc189e3831ffcb9a19138df97d141f3bd13a13a1513b137cc7ca6e94fa09 0.0s done
+#11 extracting sha256:828fa206d77bc99972844d67b1a617a841c74f15e71c71e656d1437bd26c15b8 done
+#11 extracting sha256:bdaad27fd04a102fe15f473a31a82321c0625a6a3603bd9522bf058eb8a194e2 0.0s done
+#11 extracting sha256:f23865b38cc69ad61d7a272610d411a4e66c2ed6ab2f374ff8e7f947ecfffb28
+#11 extracting sha256:f23865b38cc69ad61d7a272610d411a4e66c2ed6ab2f374ff8e7f947ecfffb28 0.8s done
+#11 DONE 1.7s
+#9 [linux/arm64 stage-1 1/5] FROM docker.io/library/nginx:alpine@sha256:f741b7f2e82ec8e3daa163b089d48ec163ad0b015d859a1e4f0f2a6202e8cc22
+#9 extracting sha256:f6bd92514b6f356d636a730d2c374892a63db0ba16205c9a4cd9bc7000863196 0.0s done
+#9 extracting sha256:1c81249bdabba0496b6c9537b6642d10232138a6f51d426b92ccfef6c35c4e21 done
+#9 extracting sha256:ded4450e05847b33ef1fedd8d09aee29f395013b012e3b1e318b37b1ad82732f 0.0s done
+#9 extracting sha256:9d51f8bf5f2b501c2c3b4df9ea08846aa5102eb92012c304e9db6cbc8e012da5 0.0s done
+#9 extracting sha256:37c699686bc84a1a024b03ec8372a78c8df83161e39f2de56bbd41159641b0cf 0.0s done
+#9 extracting sha256:36f61153929d54ee8fb2cf94ecf693d27b1db4870982592ae7a4779e4259ecbe
+#9 extracting sha256:36f61153929d54ee8fb2cf94ecf693d27b1db4870982592ae7a4779e4259ecbe 0.7s done
+#9 DONE 1.9s
+#12 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#12 resolve docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59 0.0s done
+#12 sha256:4f24e34311a053509408982697361a542fa36438d7203b25084c93609ad786c7 446B / 446B 0.1s done
+#12 sha256:79a0252b29f675f95c0a6a239aee5f33aadcc8fd0e98a3d9812ac2f5310eb3a1 1.26MB / 1.26MB 0.1s done
+#12 sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 3.80MB / 3.80MB 0.1s done
+#12 extracting sha256:9824c27679d3b27c5e1cb00a73adb6f4f8d556994111c12db3c5d61a0c843df8 0.2s done
+#12 sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b 51.05MB / 51.05MB 0.5s done
+#12 extracting sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b
+#12 extracting sha256:ccf5d6e6ff24e9c9ed711b95e9d910eab00d79142b0d9875d985aa1ee13e4f5b 2.1s done
+#12 DONE 2.7s
+#12 [linux/amd64 builder 1/7] FROM docker.io/library/node:22-alpine@sha256:5539840ce9d013fa13e3b9814c9353024be7ac75aca5db6d039504a56c04ea59
+#12 extracting sha256:79a0252b29f675f95c0a6a239aee5f33aadcc8fd0e98a3d9812ac2f5310eb3a1 0.0s done
+#12 extracting sha256:4f24e34311a053509408982697361a542fa36438d7203b25084c93609ad786c7 done
+#12 DONE 2.7s
+#13 [linux/amd64 builder 2/7] WORKDIR /app
+#13 DONE 1.2s
+#14 [linux/amd64 builder 3/7] COPY package*.json ./
+#14 DONE 0.0s
+#15 [linux/amd64->arm64 builder 4/7] RUN npm ci --ignore-scripts
+#15 ...
+#16 [linux/amd64 builder 4/7] RUN npm ci --ignore-scripts
+#16 ...
+#15 [linux/amd64->arm64 builder 4/7] RUN npm ci --ignore-scripts
+#15 10.90 
+#15 10.90 added 342 packages, and audited 343 packages in 11s
+#15 10.90 
+#15 10.90 108 packages are looking for funding
+#15 10.90   run `npm fund` for details
+#15 10.90 
+#15 10.90 found 0 vulnerabilities
+#15 10.90 npm notice
+#15 10.90 npm notice New major version of npm available! 10.9.2 -> 11.4.2
+#15 10.90 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.2
+#15 10.90 npm notice To update run: npm install -g npm@11.4.2
+#15 10.90 npm notice
+#15 ...
+#16 [linux/amd64 builder 4/7] RUN npm ci --ignore-scripts
+#16 11.09 
+#16 11.09 added 342 packages, and audited 343 packages in 11s
+#16 11.09 
+#16 11.09 108 packages are looking for funding
+#16 11.09   run `npm fund` for details
+#16 11.09 
+#16 11.09 found 0 vulnerabilities
+#16 11.09 npm notice
+#16 11.09 npm notice New major version of npm available! 10.9.2 -> 11.4.2
+#16 11.09 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.2
+#16 11.09 npm notice To update run: npm install -g npm@11.4.2
+#16 11.09 npm notice
+#16 DONE 13.8s
+#15 [linux/amd64->arm64 builder 4/7] RUN npm ci --ignore-scripts
+#15 DONE 13.8s
+#17 [linux/amd64->arm64 builder 5/7] COPY . .
+#17 ...
+#18 [linux/amd64 builder 5/7] COPY . .
+#18 DONE 0.3s
+#17 [linux/amd64->arm64 builder 5/7] COPY . .
+#17 DONE 0.3s
+#19 [linux/amd64->arm64 builder 6/7] RUN npm run build:docker
+#19 0.299 
+#19 0.299 > new-eden-project@0.1.0 build:docker
+#19 0.299 > vite build
+#19 0.299 
+#19 0.735 vite v7.0.5 building for production...
+#19 0.845 ✓ 0 modules transformed.
+#19 0.854 ✗ Build failed in 67ms
+#19 0.854 error during build:
+#19 0.854 [vite:build-html] Failed to resolve ./src/main.ts from /app/index.html
+#19 0.854 file: /app/index.html
+#19 0.854     at file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:26899:64
+#19 0.854     at async Promise.all (index 0)
+#19 0.854     at async Object.handler (file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:27000:5)
+#19 0.854     at async transform (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21020:16)
+#19 0.854     at async ModuleLoader.addModuleSource (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21233:36)
+#19 ERROR: process "/bin/sh -c npm run build:docker" did not complete successfully: exit code: 1
+#20 [linux/amd64 builder 6/7] RUN npm run build:docker
+#20 0.310 
+#20 0.310 > new-eden-project@0.1.0 build:docker
+#20 0.310 > vite build
+#20 0.310 
+#20 0.739 vite v7.0.5 building for production...
+#20 0.846 ✓ 0 modules transformed.
+#20 0.853 ✗ Build failed in 65ms
+#20 0.853 error during build:
+#20 0.853 [vite:build-html] Failed to resolve ./src/main.ts from /app/index.html
+#20 0.853 file: /app/index.html
+#20 0.853     at file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:26899:64
+#20 0.853     at async Promise.all (index 0)
+#20 0.853     at async Object.handler (file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:27000:5)
+#20 0.853     at async transform (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21020:16)
+#20 0.853     at async ModuleLoader.addModuleSource (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21233:36)
+#20 ERROR: process "/bin/sh -c npm run build:docker" did not complete successfully: exit code: 1
+------
+ > [linux/amd64 builder 6/7] RUN npm run build:docker:
+0.846 ✓ 0 modules transformed.
+0.853 ✗ Build failed in 65ms
+0.853 error during build:
+0.853 [vite:build-html] Failed to resolve ./src/main.ts from /app/index.html
+0.853 file: /app/index.html
+0.853     at file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:26899:64
+0.853     at async Promise.all (index 0)
+0.853     at async Object.handler (file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:27000:5)
+0.853     at async transform (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21020:16)
+0.853     at async ModuleLoader.addModuleSource (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21233:36)
+------
+------
+ > [linux/amd64->arm64 builder 6/7] RUN npm run build:docker:
+0.845 ✓ 0 modules transformed.
+0.854 ✗ Build failed in 67ms
+0.854 error during build:
+0.854 [vite:build-html] Failed to resolve ./src/main.ts from /app/index.html
+0.854 file: /app/index.html
+0.854     at file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:26899:64
+0.854     at async Promise.all (index 0)
+0.854     at async Object.handler (file:///app/node_modules/vite/dist/node/chunks/dep-Bg4HVnP5.js:27000:5)
+0.854     at async transform (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21020:16)
+0.854     at async ModuleLoader.addModuleSource (file:///app/node_modules/rollup/dist/es/shared/node-entry.js:21233:36)
+------
+Dockerfile:15
+--------------------
+  13 |     
+  14 |     # Build application for Docker
+  15 | >>> RUN npm run build:docker
+  16 |     
+  17 |     # Generate build info
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build:docker" did not complete successfully: exit code: 1
+Reference
+Check build summary support
+Error: buildx failed with: ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build:docker" did not complete successfully: exit code: 1

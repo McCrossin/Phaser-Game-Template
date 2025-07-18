@@ -6,13 +6,13 @@ WORKDIR /app
 
 # Cache dependencies
 COPY package*.json ./
-RUN npm ci --ignore-scripts
+RUN npm ci
 
 # Copy source code
 COPY . .
 
 # Build application for Docker
-RUN npm run build:docker
+RUN npm run build
 
 # Generate build info
 RUN node scripts/build-info.js
