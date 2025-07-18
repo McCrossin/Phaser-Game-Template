@@ -1,0 +1,232 @@
+workflow:
+  mode: interactive
+  output_dir: stories/{{epic_name}}/
+  output_file: "{{story_id}}-{{story_title_slug}}.md"
+
+sections:
+  - name: story_header
+    template: |
+      # Story: {{story_title}}
+      **ID**: {{story_id}}  
+      **Epic**: {{epic_name}}  
+      **Priority**: {{priority}}  
+      **Estimated Points**: {{story_points}}  
+      **Dependencies**: {{dependencies}}
+    instructions: |
+      Provide story metadata:
+      - story_id: Format as EPIC-XXX (e.g., UI-001)
+      - story_title: Clear, specific feature name
+      - epic_name: Parent epic name
+      - priority: High/Medium/Low
+      - story_points: 1-8 points (1-3 days work)
+      - dependencies: List story IDs or "None"
+
+  - name: description
+    template: |
+      ## Description
+      
+      {{story_description}}
+      
+      ### Player Experience Goal
+      {{player_experience}}
+      
+      ### Technical Overview
+      {{technical_overview}}
+    instructions: |
+      Write comprehensive description:
+      - story_description: What feature/system to implement
+      - player_experience: How this impacts gameplay
+      - technical_overview: High-level technical approach
+
+  - name: acceptance_criteria
+    template: |
+      ## Acceptance Criteria
+      
+      ### Functional Requirements
+      {{#each functional_requirements}}
+      - [ ] {{this}}
+      {{/each}}
+      
+      ### Technical Requirements
+      {{#each technical_requirements}}
+      - [ ] {{this}}
+      {{/each}}
+      
+      ### Game Design Requirements
+      {{#each game_design_requirements}}
+      - [ ] {{this}}
+      {{/each}}
+    instructions: |
+      Define specific acceptance criteria:
+      - functional_requirements: User-facing features
+      - technical_requirements: Code/architecture requirements
+      - game_design_requirements: GDD alignment requirements
+
+  - name: technical_specifications
+    template: |
+      ## Technical Specifications
+      
+      ### Architecture Context
+      {{architecture_context}}
+      
+      ### Files to Create/Modify
+      {{#each files}}
+      - `{{path}}`: {{description}}
+      {{/each}}
+      
+      ### Key Classes and Interfaces
+      ```typescript
+      {{type_definitions}}
+      ```
+      
+      ### Integration Points
+      {{#each integrations}}
+      - **{{system}}**: {{description}}
+      {{/each}}
+      
+      ### Performance Requirements
+      {{#each performance_requirements}}
+      - {{this}}
+      {{/each}}
+    instructions: |
+      Provide detailed technical specifications:
+      - architecture_context: How this fits in overall architecture
+      - files: List of files with their purposes
+      - type_definitions: TypeScript interfaces/classes
+      - integrations: Systems this interacts with
+      - performance_requirements: FPS, memory, load time targets
+
+  - name: implementation_tasks
+    template: |
+      ## Implementation Tasks
+      
+      {{#each tasks}}
+      ### {{@index}}. {{title}}
+      {{description}}
+      
+      **Estimated Time**: {{estimated_time}}
+      **Technical Details**:
+      {{#each technical_details}}
+      - {{this}}
+      {{/each}}
+      
+      {{/each}}
+    instructions: |
+      Break down implementation into ordered tasks:
+      - title: Clear task name
+      - description: What to implement
+      - estimated_time: Hours estimate
+      - technical_details: Specific implementation notes
+
+  - name: game_design_context
+    template: |
+      ## Game Design Context
+      
+      ### GDD References
+      {{#each gdd_references}}
+      - {{section}}: {{description}}
+      {{/each}}
+      
+      ### Balance Parameters
+      ```typescript
+      {{balance_parameters}}
+      ```
+      
+      ### Visual/Audio Requirements
+      {{#each assets}}
+      - **{{type}}**: {{description}}
+      {{/each}}
+    instructions: |
+      Link to game design requirements:
+      - gdd_references: Specific GDD sections
+      - balance_parameters: Game balance constants
+      - assets: Required visual/audio assets
+
+  - name: testing_requirements
+    template: |
+      ## Testing Requirements
+      
+      ### Unit Tests
+      {{#each unit_tests}}
+      - {{file}}: {{description}}
+      {{/each}}
+      
+      ### Integration Tests
+      {{#each integration_tests}}
+      - {{scenario}}: {{expected_result}}
+      {{/each}}
+      
+      ### Performance Tests
+      {{#each performance_tests}}
+      - {{metric}}: {{target}}
+      {{/each}}
+      
+      ### Gameplay Testing
+      {{#each gameplay_tests}}
+      - [ ] {{this}}
+      {{/each}}
+    instructions: |
+      Define comprehensive testing:
+      - unit_tests: Specific test files and coverage
+      - integration_tests: System interaction tests
+      - performance_tests: FPS, memory benchmarks
+      - gameplay_tests: Player experience validation
+
+  - name: dependencies_section
+    template: |
+      ## Dependencies
+      
+      ### Prerequisite Stories
+      {{#each prerequisite_stories}}
+      - {{story_id}}: {{reason}}
+      {{/each}}
+      
+      ### System Dependencies
+      {{#each system_dependencies}}
+      - {{system}}: {{requirement}}
+      {{/each}}
+      
+      ### Asset Dependencies
+      {{#each asset_dependencies}}
+      - {{asset}}: {{status}}
+      {{/each}}
+    instructions: |
+      Identify all dependencies:
+      - prerequisite_stories: Stories that must complete first
+      - system_dependencies: Required systems/frameworks
+      - asset_dependencies: Required assets and their status
+
+  - name: definition_of_done
+    template: |
+      ## Definition of Done
+      
+      - [ ] All acceptance criteria met
+      - [ ] Code follows TypeScript strict mode standards
+      - [ ] Unit test coverage >80% for new code
+      - [ ] Integration tests passing
+      - [ ] Performance targets met (60 FPS maintained)
+      - [ ] Code review completed
+      - [ ] Documentation updated
+      - [ ] No console errors or warnings
+      - [ ] Feature works on all target platforms
+      - [ ] Save/load compatibility maintained
+    instructions: |
+      This is the standard DoD - modify if story needs specific criteria
+
+prompts:
+  elicit: true
+  confirmation: |
+    Story creation complete! 
+    
+    Please review the generated story and confirm:
+    1. All technical specifications are complete
+    2. Implementation tasks are clear and ordered
+    3. Testing requirements are comprehensive
+    4. Story is ready for developer handoff
+    
+    Save location: {{output_dir}}{{output_file}}
+
+output:
+  format: markdown
+  include_metadata: true
+  validate_before_save: true
