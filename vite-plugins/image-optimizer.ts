@@ -1,5 +1,4 @@
 import { Plugin } from 'vite';
-const sharp = require('sharp');
 import { promises as fs } from 'fs';
 import { join, dirname, basename, extname } from 'path';
 import { ASSET_PIPELINE_CONFIG } from '../src/config/AssetConfig';
@@ -108,6 +107,8 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
         };
 
         try {
+            // Dynamic import of sharp for ES module compatibility
+            const { default: sharp } = await import('sharp');
             const image = sharp(imagePath);
             const metadata = await image.metadata();
 

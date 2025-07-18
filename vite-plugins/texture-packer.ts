@@ -2,7 +2,6 @@ import { Plugin } from 'vite';
 import { promises as fs } from 'fs';
 import { join, basename, extname } from 'path';
 import { MaxRectsPacker, Rectangle } from 'maxrects-packer';
-const sharp = require('sharp');
 
 export interface AtlasConfig {
     name: string;
@@ -161,6 +160,8 @@ async function loadSprites(
 
     for (const spritePath of spriteFiles) {
         try {
+            // Dynamic import of sharp for ES module compatibility
+            const { default: sharp } = await import('sharp');
             const image = sharp(spritePath);
             const metadata = await image.metadata();
 
@@ -272,6 +273,9 @@ async function saveAtlas(atlas: PackedAtlas, config: AtlasConfig): Promise<void>
     const outputDir = 'assets/processed/atlases';
     await ensureDirectoryExists(outputDir);
 
+    // Dynamic import of sharp for ES module compatibility
+    const { default: sharp } = await import('sharp');
+    
     // Create atlas image
     const atlasImage = sharp({
         create: {
