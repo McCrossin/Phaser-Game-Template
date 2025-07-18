@@ -1,5 +1,34 @@
 import { vi } from 'vitest';
-import 'jest-canvas-mock';
+
+// Mock Canvas for Phaser tests
+Object.defineProperty(window, 'HTMLCanvasElement', {
+    value: class HTMLCanvasElement {
+        private mockContext = {
+            fillRect: vi.fn(),
+            clearRect: vi.fn(),
+            getImageData: vi.fn(),
+            putImageData: vi.fn(),
+            createImageData: vi.fn(),
+            setTransform: vi.fn(),
+            drawImage: vi.fn(),
+            save: vi.fn(),
+            restore: vi.fn(),
+            beginPath: vi.fn(),
+            moveTo: vi.fn(),
+            lineTo: vi.fn(),
+            closePath: vi.fn(),
+            stroke: vi.fn(),
+            fill: vi.fn()
+        };
+
+        getContext(): any {
+            return this.mockContext;
+        }
+        toDataURL(): string {
+            return 'data:image/png;base64,';
+        }
+    }
+});
 
 // Mock Phaser for unit tests
 vi.mock('phaser', () => ({
