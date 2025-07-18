@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    game:
+        build: .
+        ports:
+            - '3000:80'
+        environment:
+            - NODE_ENV=development
+        volumes:
+            - ./dist:/usr/share/nginx/html
+        networks:
+            - game-network
+
+    game-dev:
+        build:
+            context: .
+            target: builder
+        ports:
+            - '3001:3000'
+        environment:
+            - NODE_ENV=development
+        volumes:
+            - .:/app
+            - /app/node_modules
+        command: npm run dev
+        networks:
+            - game-network
+
+networks:
+    game-network:
+        driver: bridge

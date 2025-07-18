@@ -46,6 +46,18 @@ export default defineConfig({
         {
             name: 'Mobile Safari',
             use: { ...devices['iPhone 12'] }
+        },
+
+        /* Performance testing project */
+        {
+            name: 'performance',
+            use: {
+                ...devices['Desktop Chrome'],
+                launchOptions: {
+                    args: ['--enable-gpu-benchmarking', '--enable-logging']
+                }
+            },
+            testDir: './tests/e2e/performance'
         }
     ],
 

@@ -1,0 +1,24 @@
+# Code owners for New Eden Project
+# Global ownership
+* @McCrossin
+
+# CI/CD and DevOps
+/.github/ @McCrossin
+/scripts/ @McCrossin
+/Dockerfile @McCrossin
+/docker-compose.yml @McCrossin
+/nginx.conf @McCrossin
+
+# Core game development
+/src/ @McCrossin
+/tests/ @McCrossin
+
+# Documentation
+/docs/ @McCrossin
+*.md @McCrossin
+
+# Configuration files
+package.json @McCrossin
+tsconfig.json @McCrossin
+vite.config.ts @McCrossin
+eslint.config.mjs @McCrossin

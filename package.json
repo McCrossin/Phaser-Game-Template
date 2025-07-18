@@ -20,7 +20,13 @@
         "typecheck": "tsc --noEmit",
         "docs": "typedoc src/main.ts",
         "prepare": "husky",
-        "validate": "npm run typecheck && npm run lint && npm run test:run"
+        "validate": "npm run typecheck && npm run lint && npm run test:run",
+        "test:performance": "playwright test --project=performance",
+        "build:info": "node scripts/build-info.js",
+        "deploy:staging": "node scripts/deploy.js --environment=staging",
+        "deploy:production": "node scripts/deploy.js --environment=production",
+        "rollback": "node scripts/rollback.js",
+        "performance:check": "node scripts/performance-check.js"
     },
     "keywords": [
         "game",
