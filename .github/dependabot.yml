@@ -23,6 +23,11 @@ updates:
               patterns:
                   - 'eslint*'
                   - 'eslint-*'
+          build-tools:
+              patterns:
+                  - 'vite*'
+                  - '@vitejs/*'
+                  - 'typedoc*'
 
     # Enable version updates for GitHub Actions
     - package-ecosystem: 'github-actions'
