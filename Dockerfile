@@ -14,8 +14,8 @@ COPY . .
 # Create asset directories if they don't exist
 RUN mkdir -p assets/raw/sprites assets/raw/ui assets/processed
 
-# Build application for Docker
-RUN npm run build:docker
+# Build application for Docker (with TypeScript compilation)
+RUN npm run build
 
 # Generate build info (skip git commands in Docker)
 RUN echo '{"version":"docker-build","buildTime":"'$(date -Iseconds)'","gitCommit":"docker","gitBranch":"docker","nodeVersion":"'$(node --version)'","npmVersion":"'$(npm --version)'","environment":"production"}' > dist/build-info.json

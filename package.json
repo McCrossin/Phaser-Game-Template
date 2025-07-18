@@ -7,7 +7,6 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "build:docker": "NODE_ENV=production tsc && vite build",
         "preview": "vite preview",
         "test": "vitest",
         "test:run": "vitest run",
@@ -27,7 +26,9 @@
         "deploy:staging": "node scripts/deploy.js --environment=staging",
         "deploy:production": "node scripts/deploy.js --environment=production",
         "rollback": "node scripts/rollback.js",
-        "performance:check": "node scripts/performance-check.js"
+        "performance:check": "node scripts/performance-check.js",
+        "test:github-actions": "node scripts/test-github-actions.js",
+        "test:github-actions:quick": "node scripts/test-github-actions.js --quick"
     },
     "keywords": [
         "game",
