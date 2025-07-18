@@ -14,8 +14,8 @@ COPY . .
 # Build application for Docker
 RUN npm run build
 
-# Generate build info
-RUN node scripts/build-info.js
+# Generate build info (skip git commands in Docker)
+RUN echo '{"version":"docker-build","buildTime":"'$(date -Iseconds)'","gitCommit":"docker","gitBranch":"docker","nodeVersion":"'$(node --version)'","npmVersion":"'$(npm --version)'","environment":"production"}' > dist/build-info.json
 
 # Production stage
 FROM nginx:alpine
