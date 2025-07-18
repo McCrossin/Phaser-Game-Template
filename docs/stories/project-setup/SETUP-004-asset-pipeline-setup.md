@@ -375,9 +375,10 @@ const ASSET_CATEGORIES = {
 - `package.json` - Removed vulnerable dependencies
 
 ### GitHub Actions Status
-- ✅ **deploy-staging**: Build Application - PASSING
+- ✅ **deploy-staging**: Build Application - PASSING (Fixed TypeScript imports)
 - ✅ **security-scan**: Check for known vulnerabilities - PASSING (0 vulnerabilities)
-- ✅ **Performance-advanced**: Build application - PASSING
+- ✅ **Performance-advanced**: Build application - PASSING (Fixed TypeScript imports)
+- ✅ **Game CI Pipeline 2025**: Build step - PASSING (Fixed TypeScript imports)
 
 ### Notes
 - FFmpeg integration provides secure audio processing without vulnerable dependencies
@@ -385,3 +386,7 @@ const ASSET_CATEGORIES = {
 - Security linting rules addressed with proper imports
 - Asset categories support future expansion for level-based loading
 - All CI/CD workflows now execute successfully
+- **RESOLVED**: GitHub Actions build failures fixed by:
+  - Removing `.js` extensions from plugin imports in `vite.config.ts`
+  - Adding `build/**/*.ts` to `tsconfig.build.json` include paths
+  - Ensuring TypeScript compiles plugins before Vite build process

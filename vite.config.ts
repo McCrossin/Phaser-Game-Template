@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { imageOptimizerPlugin } from './build/plugins/image-optimizer.js';
-import { texturePackerPlugin } from './build/plugins/texture-packer.js';
-import { audioProcessorPlugin } from './build/plugins/audio-processor.js';
-import { assetManifestPlugin } from './build/plugins/asset-manifest.js';
+import { imageOptimizerPlugin } from './build/plugins/image-optimizer';
+import { texturePackerPlugin } from './build/plugins/texture-packer';
+import { audioProcessorPlugin } from './build/plugins/audio-processor';
+import { assetManifestPlugin } from './build/plugins/asset-manifest';
 
 export default defineConfig({
     root: '.',
