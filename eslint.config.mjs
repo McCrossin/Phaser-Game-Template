@@ -13,7 +13,8 @@ export default tseslint.config(
             'docs/',
             'tests/e2e/**/*',
             'playwright.config.ts',
-            'vite.config.ts'
+            'vite.config.ts',
+            'build/plugins/**/*'
         ]
     },
     prettierRecommended,
