@@ -93,10 +93,10 @@ Features planned for post-launch updates and expansions.
 |----------------|-------------------|---------------|-----------------|--------------|
 | **Movement & Control** | WASD movement, mouse interaction | Hotkey shortcuts, equipment presets | Advanced movement modes | Customizable controls |
 | **Energy Management** | Solar panels, battery storage, consumption | Weather effects, efficiency bonuses | Advanced batteries | Geothermal/nuclear power |
-| **Equipment System** | 4-slot management, basic tools | Advanced tools, specialization | Equipment durability | Modular upgrade system |
+| **Equipment System** | 4-slot management, basic tools | Advanced tools, specialization, efficiency metrics | Equipment durability, optimization challenges | Modular upgrade system |
 | **Manufacturing** | 3D printer, circuit assembler | Advanced fabrication | Quality variations | Custom blueprints |
 | **World Systems** | Basic terrain, resource spawns | Environmental hazards | Dynamic weather | Seasonal changes |
-| **UI/UX** | Core interfaces, energy display | Equipment tooltips, help system | Advanced analytics | Customizable interface |
+| **UI/UX** | Core interfaces, energy display | Equipment tooltips, optimization metrics, performance analytics | Advanced analytics, community features | Customizable interface, sharing systems |
 
 ### Technical Implementation Priority
 
@@ -154,19 +154,27 @@ Success Metrics:
 
 **Weeks 7-8: Manufacturing & Progression**
 ```
-Priority: ESSENTIAL
+Priority: ESSENTIAL (ENHANCED BY USER RESEARCH)
 Deliverables:
 - Circuit Assembler implementation
 - Circuit manufacturing with timing/energy requirements
-- Tutorial system implementation
-- Progress tracking and unlocks
-- Equipment specialization paths
+- Tutorial system implementation with immediate feedback systems
+- Progress tracking and unlocks with persona-specific metrics
+- Equipment specialization paths with optimization analytics
 
 Success Metrics:
 - Circuit manufacturing achievable within energy constraints
-- Tutorial completion rate >80% in internal testing
-- Player progression feels rewarding and clear
-- Equipment choices create meaningful trade-offs
+- Tutorial completion rate >75% (research-based target)
+- Player progression feels rewarding with immediate positive feedback
+- Equipment choices create meaningful trade-offs with performance metrics
+- Systems Engineer persona (35%) receives detailed efficiency analytics
+- Flow state triggers implemented in first 2 minutes of tutorial
+
+Research-Based Enhancements:
+- Immediate success validation (visual/audio celebration for first actions)
+- Real-time efficiency percentages during equipment swapping
+- Optimization tips and performance comparisons
+- Persona-specific feedback systems throughout tutorial
 ```
 
 **Weeks 9-10: Replication & Fleet**

@@ -86,6 +86,37 @@ The Equipment Interface allows players to manage their probe's 4-slot modular eq
 - **Icons**: Shield symbols, armor plates
 - Examples: Pressure Hull, Thermal Shield, Radiation Shielding
 
+## Performance Metrics & Optimization Interface (RESEARCH-BASED ENHANCEMENT)
+
+### Real-Time Efficiency Display
+**Systems Engineer Persona Support**: Critical analytics for optimization-focused players (35% of audience)
+
+#### Equipment Efficiency Panel
+- **Position**: Bottom section of equipment interface
+- **Live Metrics Display**:
+  - "Energy Efficiency: 87%" with color-coded bar (green/yellow/red)
+  - "Extraction Rate: 3.2 units/sec" with comparison to optimal
+  - "Power Consumption: 45W / 60W available" with usage visualization
+  - "Equipment Synergy: +12% bonus" highlighting beneficial combinations
+
+#### Optimization Recommendations
+- **Smart Suggestions**: "Try Solar Panel + Advanced Scanner for +15% efficiency"
+- **Performance Warnings**: "Environmental hazard reduces mining efficiency by 20%"
+- **Achievement Tracking**: "Optimization Master: Achieve 95% efficiency in 3 different configurations"
+- **Comparative Analytics**: Side-by-side efficiency comparison when hovering different equipment
+
+#### Performance Analytics Dashboard
+- **Efficiency Trends**: Graph showing performance over time
+- **Configuration History**: Track and compare previous loadout performances
+- **Challenge Scoring**: Optional optimization targets with community leaderboards
+- **Export Features**: Generate efficiency reports for community sharing
+
+### Visual Performance Indicators
+- **Efficiency Halo**: Equipment slots glow with intensity based on current performance
+- **Synergy Connections**: Visual lines connecting equipment with positive interactions
+- **Performance Badges**: Icons showing "Optimal," "Good," or "Suboptimal" status
+- **Real-time Updates**: All metrics update instantly during equipment configuration
+
 ## Mobile/Touch Adaptations
 
 ### Touch Controls

@@ -91,6 +91,21 @@ New systems unlock only after mastering prerequisites, preventing overwhelming c
 - **Extended Learning**: Multiple resource types introduction, scanning technique mastery
 - **Power Management**: Learning energy efficiency, solar panel positioning optimization
 
+### 2.6 Immediate Feedback Systems (RESEARCH-BASED ENHANCEMENT)
+**Flow State Triggers**: Based on player psychology research, the tutorial implements critical early engagement systems:
+
+#### Instant Success Validation (First 2 Minutes)
+- **Movement Celebration**: Subtle visual effect when probe first responds to WASD input
+- **Energy Recovery Feedback**: Power bar visually "breathes" and brightens when moving to sunlight
+- **Discovery Notifications**: "DISCOVERY: Iron deposit detected!" with satisfying audio chime and visual highlight
+- **Progress Indicators**: Clear visual progress toward first equipment swap and solar panel deployment
+
+#### Real-Time Performance Analytics (Systems Engineer Persona - 35% of players)
+- **Energy Efficiency Display**: Live percentage showing tool power consumption vs. generation
+- **Extraction Speed Metrics**: "Mining Rate: 2.3 units/second" with green/yellow/red efficiency indicators
+- **Optimization Tips**: Context-sensitive suggestions like "TIP: Scanner + Drill combination reduces travel time by 40%"
+- **Comparative Analytics**: "Current configuration: 67% efficiency. Try Solar Panel + Advanced Scanner for 85%"
+
 #### Phase 2: Single-Slot Resource Mastery (12-15 minutes)
 **The Juggling Challenge**: Find iron deposits but need mining laser; scan for silicon but need scanner
 - **Learning Moment**: Equipment slots are precious, every choice has trade-offs
@@ -99,6 +114,13 @@ New systems unlock only after mastering prerequisites, preventing overwhelming c
 - **Quality Learning**: Resource purity mechanics, refining techniques, extraction optimization
 - **Strategic Planning**: Route optimization, energy conservation, equipment cycling mastery
 
+#### Optimization Metrics Integration (RESEARCH-BASED)
+**Performance Tracking for Multiple Player Types**:
+- **Creative Builders**: "Base Aesthetics Score" and "Unique Solution Bonus" recognition
+- **Explorer-Experimenters**: "Discovery Rate" and "Unexplored Territory" progress tracking  
+- **Completionist Achievers**: Clear milestone checklist with percentage completion indicators
+- **Systems Engineers**: Detailed efficiency analytics with optimization challenge scoring
+
 #### Phase 3: Basic Circuit Production (10-12 minutes)
 **Circuit Manufacturing Deep Dive**: Comprehensive introduction to electronic fabrication
 - **Copper Infrastructure**: Basic wiring systems, power distribution, signal transmission
@@ -106,6 +128,22 @@ New systems unlock only after mastering prerequisites, preventing overwhelming c
 - **Gold Integration**: Precision connectors, corrosion resistance, high-frequency applications
 - **Circuit Assembly**: Component integration, testing procedures, quality assurance
 - **First Functional Circuit**: FOUNDATION-tier control unit (28nm fabrication) for basic equipment coordination
+
+#### Persona-Specific Phase 3 Enhancements (RESEARCH-BASED)
+**Systems Engineer Feedback** (35% of players):
+- **Live Efficiency Metrics**: "Copper purity: 98.3% | Silicon crystal quality: Grade A | Processing efficiency: 94%"
+- **Technical Achievement Recognition**: "BREAKTHROUGH: First successful 28nm fabrication achieved!"
+- **Optimization Challenges**: "Can you achieve >95% fabrication efficiency?" with leaderboard tracking
+
+**Creative Builder Recognition** (25% of players):
+- **Aesthetic Choice Points**: Allow probe color customization during circuit installation
+- **Unique Solution Rewards**: "DISCOVERY: Novel copper-gold hybrid approach" for creative manufacturing methods
+- **Visual Customization Unlocks**: Circuit manufacturing success unlocks probe visual modifications
+
+**Explorer-Experimenter Engagement** (20% of players):
+- **Hidden Discovery Opportunities**: Optional advanced materials experimentation with rare outcomes
+- **Failure Learning**: "Interesting! Silicon contamination taught you about purification protocols" 
+- **Experimentation Rewards**: Bonus materials or blueprints for trying unconventional approaches
 
 #### Phase 4: 3D Printer Construction & Mastery (8-10 minutes)
 **Major Milestone**: Construct 3D printer with advanced circuit brain
@@ -434,6 +472,27 @@ Visual indicators show equipment compatibility with current environment and prob
 #### Strategic Planning Focus
 Equipment Bay requirement encourages pre-mission planning and creates meaningful decisions about probe specialization versus adaptability.
 
+### 6.7 Performance Metrics & Optimization (RESEARCH-BASED ENHANCEMENT)
+**Systems Engineer Persona Support**: Detailed analytics for the largest player segment (35%) who crave optimization challenges
+
+#### Real-Time Efficiency Analytics
+- **Energy Efficiency Percentages**: Live display of power consumption vs. generation for current equipment loadout
+- **Extraction Speed Comparisons**: "Mining Laser: 2.1 units/sec vs. Advanced Drill: 3.7 units/sec" 
+- **Equipment Synergy Scores**: Visual indicators showing how equipment combinations enhance overall performance
+- **Optimization Scoring**: "Current configuration: 73% optimal. Suggested improvement: +22% with Solar Panel swap"
+
+#### Performance Visualization Systems
+- **Efficiency Indicators**: Green/Yellow/Red color coding for equipment performance in current environment
+- **Comparative Analytics**: Side-by-side efficiency comparisons when selecting different equipment
+- **Trend Analysis**: Track performance improvements over time as player develops better strategies
+- **Challenge Scoring**: Optional efficiency competitions for players who want optimization targets
+
+#### Optimization Discovery Features
+- **Performance Tips**: Context-sensitive suggestions like "Environmental hazard reduces drill efficiency by 15%"
+- **Efficiency Achievements**: Recognition for discovering optimal equipment combinations
+- **Community Leaderboards**: Optional sharing of optimization discoveries with other players
+- **Strategy Documentation**: Export performance data and strategies for community knowledge sharing
+
 ---
 
 ## 7. Environmental Challenges
@@ -548,9 +607,44 @@ Completed worlds contribute to an expanding human civilization network. Each suc
 
 ---
 
-## 10. Technical Foundation
+## 10. Community & Social Features (RESEARCH-BASED ADDITION)
+**Missing Critical System**: Research revealed 15% of players become influential content creators, driving word-of-mouth marketing
 
-### 10.1 Technology Stack
+### 10.1 Base Showcase System
+**Creative Builder Support**: Enable sharing and inspiration between players
+- **Screenshot Capture**: High-quality export tool for probe configurations and base layouts
+- **Discovery Gallery**: Curated showcase of unique player solutions and creative builds
+- **Configuration Sharing**: Export/import probe loadout blueprints with efficiency metrics
+- **Community Voting**: Rating system for innovative solutions and aesthetic designs
+
+### 10.2 Achievement Sharing & Social Features
+**Progress Celebration**: Connect player milestones to community engagement
+- **Milestone Broadcasting**: "Probe Unit 7 just achieved first replication!" automated social posts
+- **Achievement Galleries**: Personal and community achievement showcases
+- **Progress Comparison**: Optional statistics sharing with friends and community
+- **Discovery Announcements**: "First platinum deposit discovered on Kepler-442b" community notifications
+
+### 10.3 Knowledge Base Integration
+**Systems Engineer Persona Support**: Enable technical knowledge sharing and optimization discovery
+- **Strategy Documentation Export**: Generate efficiency reports and optimization guides
+- **Technical Blueprints**: Share probe configurations with performance metrics
+- **Community Wiki Integration**: Player-contributed optimization strategies and tips
+- **Performance Leaderboards**: Optional efficiency competitions and challenge rankings
+
+### 10.4 Player-Generated Content Support
+**Long-term Engagement**: Support community creativity and content creation
+- **Scenario Creation**: Tools for community challenges and custom exploration scenarios
+- **Mod Framework**: Equipment and probe customization support for advanced players
+- **Content Creator Tools**: Video capture, time-lapse, and streaming integration features
+- **Community Events**: Developer-supported challenges and competitions
+
+**Implementation Priority**: Medium (Alpha phase) - Important for retention but not MVP-critical
+
+---
+
+## 11. Technical Foundation
+
+### 11.1 Technology Stack
 - **Phaser 3 + TypeScript**: Robust 2D development with strong typing
 - **Modular Architecture**: Component system supporting equipment customization
 - **Persistent State**: World and progress data maintained across sessions
