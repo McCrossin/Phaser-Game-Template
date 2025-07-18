@@ -1,4 +1,4 @@
-import type { AssetManifest, AssetEntry } from '../../build/plugins/asset-manifest';
+import type { AssetManifest, AssetEntry } from '../types/AssetTypes';
 
 export interface SupportedFormats {
     image: string[];
