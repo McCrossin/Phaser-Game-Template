@@ -11,6 +11,9 @@ RUN npm ci --ignore-scripts
 # Copy source code
 COPY . .
 
+# Create asset directories if they don't exist
+RUN mkdir -p assets/raw/sprites assets/raw/ui assets/processed
+
 # Build application for Docker
 RUN npm run build:docker
 

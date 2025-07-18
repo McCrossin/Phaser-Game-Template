@@ -386,10 +386,12 @@ const ASSET_CATEGORIES = {
 - Security linting rules addressed with proper imports
 - Asset categories support future expansion for level-based loading
 - All CI/CD workflows now execute successfully
+- **CRITICAL**: Project configured for indie developer (personal GitHub account, not organization)
 - **RESOLVED**: GitHub Actions build failures fixed by:
   - Removing `.js` extensions from plugin imports in `vite.config.ts`
   - Adding `build/**/*.ts` to `tsconfig.build.json` include paths
   - Ensuring TypeScript compiles plugins before Vite build process
   - Fixed Docker build process: Added `tsc` to `build:docker` script
-  - Added proper GitHub Container Registry permissions to workflows
-  - Updated CI/CD workflows with required permissions (`packages: write`)
+  - Added proper GitHub Container Registry permissions for personal accounts
+  - Updated CI/CD workflows with personal account-compatible permissions
+  - Created comprehensive developer constraints documentation (`docs/technical/DEVELOPER-CONSTRAINTS.md`)
