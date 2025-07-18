@@ -247,12 +247,17 @@ export class AssetLoader {
         const formats: string[] = ['png', 'jpg']; // Always supported
 
         // Test WebP support
-        const canvas = document.createElement('canvas');
-        canvas.width = 1;
-        canvas.height = 1;
-        const webpSupported = canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-        if (webpSupported) {
-            formats.unshift('webp'); // Prefer WebP if supported
+        try {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1;
+            canvas.height = 1;
+            const dataUrl = canvas.toDataURL('image/webp');
+            const webpSupported = dataUrl && dataUrl.indexOf('data:image/webp') === 0;
+            if (webpSupported) {
+                formats.unshift('webp'); // Prefer WebP if supported
+            }
+        } catch {
+            // WebP detection failed, continue with fallbacks
         }
 
         // Test AVIF support (future enhancement)
@@ -262,22 +267,28 @@ export class AssetLoader {
     }
 
     private detectAudioSupport(): string[] {
-        const audio = document.createElement('audio');
         const formats: string[] = [];
 
-        // Test WebM support (Opus codec)
-        if (audio.canPlayType('audio/webm; codecs="opus"')) {
-            formats.push('webm');
-        }
+        try {
+            const audio = document.createElement('audio');
 
-        // Test MP3 support
-        if (audio.canPlayType('audio/mpeg')) {
+            // Test WebM support (Opus codec)
+            if (audio.canPlayType && audio.canPlayType('audio/webm; codecs="opus"')) {
+                formats.push('webm');
+            }
+
+            // Test MP3 support
+            if (audio.canPlayType && audio.canPlayType('audio/mpeg')) {
+                formats.push('mp3');
+            }
+
+            // Test OGG support
+            if (audio.canPlayType && audio.canPlayType('audio/ogg')) {
+                formats.push('ogg');
+            }
+        } catch {
+            // Audio detection failed, fallback to MP3
             formats.push('mp3');
-        }
-
-        // Test OGG support
-        if (audio.canPlayType('audio/ogg')) {
-            formats.push('ogg');
         }
 
         return formats;

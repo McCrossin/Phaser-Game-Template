@@ -47,22 +47,24 @@ describe('AssetLoader', () => {
         const mockCanvas = {
             width: 1,
             height: 1,
-            toDataURL: vi.fn().mockReturnValue('data:image/webp')
+            toDataURL: vi
+                .fn()
+                .mockReturnValue(
+                    'data:image/webp;base64,UklGRiQAAABXRUJQVlA4TBgAAAAvAAAAEAcQERGIiP4HAA=='
+                )
         };
-        vi.stubGlobal('document', {
-            createElement: vi.fn().mockReturnValue(mockCanvas)
-        });
 
         // Mock audio for format detection
         const mockAudio = {
             canPlayType: vi.fn((type: string) => {
                 if (type.includes('webm')) return 'probably';
                 if (type.includes('mpeg')) return 'maybe';
+                if (type.includes('ogg')) return '';
                 return '';
             })
         };
+
         vi.stubGlobal('document', {
-            ...document,
             createElement: vi.fn((tag: string) => {
                 if (tag === 'canvas') return mockCanvas;
                 if (tag === 'audio') return mockAudio;
@@ -109,6 +111,15 @@ describe('AssetLoader', () => {
             (global.fetch as any).mockResolvedValueOnce({
                 ok: true,
                 json: vi.fn().mockResolvedValueOnce(mockManifest)
+            });
+
+            // Mock Phaser load events to resolve immediately
+            const mockOn = mockScene.load.on as any;
+            mockOn.mockImplementation((event: string, callback: () => void) => {
+                if (event === 'filecomplete') {
+                    // Resolve the load promise immediately
+                    setTimeout(callback, 0);
+                }
             });
 
             await assetLoader.preloadEssential();
