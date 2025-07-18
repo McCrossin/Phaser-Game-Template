@@ -12,7 +12,7 @@ RUN npm ci --ignore-scripts
 COPY . .
 
 # Build application for Docker
-RUN npm run build
+RUN npm run build:docker
 
 # Generate build info (skip git commands in Docker)
 RUN echo '{"version":"docker-build","buildTime":"'$(date -Iseconds)'","gitCommit":"docker","gitBranch":"docker","nodeVersion":"'$(node --version)'","npmVersion":"'$(npm --version)'","environment":"production"}' > dist/build-info.json
