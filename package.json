@@ -41,11 +41,13 @@
     "author": "New Eden Project Team",
     "license": "MIT",
     "devDependencies": {
+        "@playwright/test": "^1.54.1",
         "@types/node": "^24.0.14",
         "@typescript-eslint/eslint-plugin": "^8.0.0",
         "@typescript-eslint/parser": "^8.0.0",
         "@vitest/coverage-v8": "^3.2.4",
         "@vitest/ui": "^3.2.4",
+        "better-npm-audit": "^3.11.0",
         "eslint": "^9.0.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-prettier": "^5.1.0",

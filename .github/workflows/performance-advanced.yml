@@ -35,7 +35,10 @@ jobs:
 
             - name: Run FPS Benchmarks
               run: |
-                  npm run test:performance || echo "Performance tests not yet implemented"
+                  # Install Playwright browsers if not cached
+                  npx playwright install chromium --with-deps
+                  # Run performance tests
+                  npm run test:performance
 
             - name: Check Performance Regression
               run: node scripts/performance-check.js
@@ -45,9 +48,9 @@ jobs:
               if: always()
               with:
                   name: performance-results-${{ matrix.device-profile.name }}
-                  path: performance-results.json
+                  path: test-results/
 
             - name: Check for microfreezes
               run: |
-                  echo "Checking for microfreezes (100-1000ms UI freezes)..."
-                  echo "Microfreeze detection not yet implemented"
+                  echo "Microfreeze detection implemented in performance tests"
+                  echo "Results available in performance test artifacts"
