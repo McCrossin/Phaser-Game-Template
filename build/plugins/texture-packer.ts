@@ -2,7 +2,7 @@ import { Plugin } from 'vite';
 import { promises as fs } from 'fs';
 import { join, basename, extname } from 'path';
 import { MaxRectsPacker, Rectangle } from 'maxrects-packer';
-import sharp from 'sharp';
+const sharp = require('sharp');
 
 export interface AtlasConfig {
     name: string;

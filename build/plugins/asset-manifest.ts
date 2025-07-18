@@ -1,7 +1,7 @@
 import { Plugin } from 'vite';
 import { promises as fs } from 'fs';
 import { join, basename, extname, relative } from 'path';
-import crypto from 'crypto';
+import { createHash } from 'crypto';
 import type { AssetEntry, AssetManifest } from '../../src/types/AssetTypes';
 
 export interface AssetManifestOptions {
@@ -89,7 +89,7 @@ export function assetManifestPlugin(options: AssetManifestOptions): Plugin {
         try {
             const stats = await fs.stat(filePath);
             const content = await fs.readFile(filePath);
-            const hash = crypto.createHash('md5').update(content).digest('hex');
+            const hash = createHash('md5').update(content).digest('hex');
 
             const relativePath = relative(outputDir, filePath);
             const normalizedPath = relativePath.replace(/\\/g, '/');
@@ -198,7 +198,7 @@ export function assetManifestPlugin(options: AssetManifestOptions): Plugin {
         };
 
         // Categorize assets
-        for (const [key, entry] of assetEntries) {
+        for (const [key, entry] of Array.from(assetEntries.entries())) {
             manifest.totalSize += entry.size;
 
             switch (entry.category) {

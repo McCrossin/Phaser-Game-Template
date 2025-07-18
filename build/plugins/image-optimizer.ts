@@ -1,5 +1,5 @@
 import { Plugin } from 'vite';
-import sharp from 'sharp';
+const sharp = require('sharp');
 import { promises as fs } from 'fs';
 import { join, dirname, basename, extname } from 'path';
 import { ASSET_PIPELINE_CONFIG } from '../../src/config/AssetConfig';
@@ -186,7 +186,7 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
         let totalOptimized = 0;
         let fileCount = 0;
 
-        for (const processed of processedImages.values()) {
+        for (const processed of Array.from(processedImages.values())) {
             totalOriginal += processed.size.original;
             totalOptimized += processed.size.optimized;
             fileCount++;

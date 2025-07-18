@@ -229,7 +229,7 @@ export function audioProcessorPlugin(options: AudioProcessorOptions): Plugin {
         let totalOptimized = 0;
         let fileCount = 0;
 
-        for (const processed of processedAudio.values()) {
+        for (const processed of Array.from(processedAudio.values())) {
             totalOriginal += processed.size.original;
             totalOptimized += processed.size.optimized;
             fileCount++;
