@@ -5,15 +5,42 @@
  * Detects FPS degradation and monitors game performance
  */
 
-import { execSync } from 'child_process';
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'fs';
+import { join } from 'path';
 
 const PERFORMANCE_THRESHOLDS = {
     minFPS: 55,
     degradationTolerance: 0.03, // 3%
-    maxBundleSize: 2 * 1024 * 1024, // 2MB
+    maxBundleSize: 2 * 1024 * 1024, // 2MB (excluding source maps)
     maxLoadTime: 3000 // 3 seconds
 };
+
+function getDirectorySize(dirPath) {
+    if (!existsSync(dirPath)) {
+        return 0;
+    }
+    
+    let totalSize = 0;
+    
+    function calculateSize(currentPath) {
+        const stats = statSync(currentPath);
+        
+        if (stats.isFile()) {
+            // Exclude source maps from bundle size calculation
+            if (!currentPath.endsWith('.map')) {
+                totalSize += stats.size;
+            }
+        } else if (stats.isDirectory()) {
+            const files = readdirSync(currentPath);
+            files.forEach(file => {
+                calculateSize(join(currentPath, file));
+            });
+        }
+    }
+    
+    calculateSize(dirPath);
+    return totalSize;
+}
 
 function checkBundleSize() {
     console.log('📦 Checking bundle size...');
@@ -24,8 +51,7 @@ function checkBundleSize() {
     }
 
     try {
-        const sizeOutput = execSync('du -sb dist/', { encoding: 'utf8' });
-        const bundleSize = parseInt(sizeOutput.split('\t')[0]);
+        const bundleSize = getDirectorySize('dist');
 
         console.log(`Bundle size: ${(bundleSize / 1024 / 1024).toFixed(2)}MB`);
 
