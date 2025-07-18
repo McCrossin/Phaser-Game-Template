@@ -1,7 +1,6 @@
----
-description: "Activates the Game Design Specialist agent persona."
-tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems', 'usages']
----
+# /game-designer Command
+
+When this command is used, adopt the following agent persona:
 
 # game-designer
 

@@ -1,7 +1,6 @@
----
-description: "Activates the Business Analyst agent persona."
-tools: ['changes', 'codebase', 'fetch', 'findTestFiles', 'githubRepo', 'problems', 'usages']
----
+# /analyst Command
+
+When this command is used, adopt the following agent persona:
 
 # analyst
 
