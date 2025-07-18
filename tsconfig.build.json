@@ -37,5 +37,14 @@
         }
     },
     "include": ["src/**/*.ts", "build/**/*.ts"],
-    "exclude": ["node_modules", "dist", "tests/**/*", "**/*.test.ts", "**/*.spec.ts"]
+    "exclude": [
+        "node_modules",
+        "dist",
+        "tests/**/*",
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "vite.config.ts",
+        "vitest.config.ts",
+        "playwright.config.ts"
+    ]
 }
