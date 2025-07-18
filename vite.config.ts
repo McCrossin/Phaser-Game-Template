@@ -1,5 +1,9 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
+import { imageOptimizerPlugin } from './build/plugins/image-optimizer.js';
+import { texturePackerPlugin } from './build/plugins/texture-packer.js';
+import { audioProcessorPlugin } from './build/plugins/audio-processor.js';
+import { assetManifestPlugin } from './build/plugins/asset-manifest.js';
 
 export default defineConfig({
     root: '.',
@@ -37,5 +41,47 @@ export default defineConfig({
     },
     esbuild: {
         target: 'es2020'
-    }
+    },
+    plugins: [
+        // Asset Pipeline Plugins
+        imageOptimizerPlugin({
+            sourceDir: resolve(__dirname, 'assets/raw'),
+            outputDir: resolve(__dirname, 'assets/processed'),
+            isDev: process.env.NODE_ENV === 'development'
+        }),
+        texturePackerPlugin([
+            {
+                name: 'sprites',
+                source: resolve(__dirname, 'assets/raw/sprites'),
+                files: ['*.png', '*.jpg'],
+                options: {
+                    maxSize: 2048,
+                    padding: 2,
+                    trim: true,
+                    extrude: 1
+                }
+            },
+            {
+                name: 'ui',
+                source: resolve(__dirname, 'assets/raw/ui'),
+                files: ['*.png'],
+                options: {
+                    maxSize: 1024,
+                    padding: 1,
+                    trim: false,
+                    extrude: 0
+                }
+            }
+        ]),
+        audioProcessorPlugin({
+            sourceDir: resolve(__dirname, 'assets/raw'),
+            outputDir: resolve(__dirname, 'assets/processed'),
+            isDev: process.env.NODE_ENV === 'development'
+        }),
+        assetManifestPlugin({
+            outputDir: resolve(__dirname, 'assets/processed'),
+            publicPath: './assets/processed/',
+            isDev: process.env.NODE_ENV === 'development'
+        })
+    ]
 });

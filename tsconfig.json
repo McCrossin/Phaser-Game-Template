@@ -40,6 +40,7 @@
     "include": [
         "src/**/*.ts",
         "src/**/*.d.ts",
+        "build/**/*.ts",
         "tests/unit/**/*.ts",
         "tests/setup.ts",
         "tests/helpers/**/*.ts",
