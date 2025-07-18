@@ -1,584 +1,251 @@
-# Story: Performance Monitoring Infrastructure
+# Story: Basic Performance Monitoring (MVP)
 **ID**: SETUP-005  
 **Epic**: Project Setup and Configuration  
-**Priority**: High  
-**Estimated Points**: 5  
-**Dependencies**: SETUP-001 (Initial Project Configuration), SETUP-002 (Development Workflow Setup), SETUP-003 (CI/CD Pipeline Configuration)
+**Priority**: Medium  
+**Estimated Points**: 1  
+**Dependencies**: SETUP-001 (Initial Project Configuration)
 
 ## Description
 
-Implement comprehensive performance monitoring and profiling infrastructure that tracks FPS, memory usage, draw calls, and other critical metrics during development and production. This story establishes automated performance regression detection, real-time monitoring dashboards, and detailed profiling tools to ensure the game maintains its 60 FPS target across all devices and scenarios.
+Implement minimal performance monitoring to ensure the game runs at acceptable frame rates during development. This story establishes a simple FPS display and basic performance verification process to catch major performance issues before MVP release.
 
 ### Player Experience Goal
-Players enjoy smooth, consistent gameplay at 60 FPS without stuttering, memory leaks, or performance degradation over time. The monitoring infrastructure catches performance issues before release, ensuring optimal performance on both high-end and mid-range devices, resulting in a premium gaming experience regardless of hardware.
+Players enjoy smooth gameplay at 60 FPS on target devices. Basic monitoring ensures we catch major performance problems during development.
 
 ### Technical Overview
-Integrate performance monitoring using the Performance Observer API, Core Web Vitals (LCP, INP, CLS), custom FPS counters using DOM elements for efficiency, and Phaser's built-in metrics (game.loop.actualFps). Set up automated performance benchmarking with Playwright, real-time monitoring dashboards, and alerts for performance regressions. All metrics integrate with the development workflow from SETUP-002 and CI pipeline from SETUP-003.
+Add a simple FPS counter using Phaser's built-in metrics and establish a manual performance testing checklist for pre-release verification.
 
 ## Acceptance Criteria
 
 ### Functional Requirements
-- [ ] FPS counter displays using DOM elements (not canvas text)
-- [ ] Memory usage tracked via performance.measureUserAgentSpecificMemory()
-- [ ] Core Web Vitals (LCP, INP, CLS) monitored
-- [ ] Draw call monitoring via Phaser's renderer.drawCount
-- [ ] Performance metrics logged to dashboard
-- [ ] Automated alerts for performance regressions
-- [ ] Performance profiling tools integrated
+- [ ] FPS counter displays in development builds
+- [ ] Performance testing checklist created
+- [ ] Basic performance logging to console
 
 ### Technical Requirements
-- [ ] Performance monitoring service configured
-- [ ] Custom performance metrics collection
-- [ ] Integration with GitHub Actions for CI benchmarking
-- [ ] Real-time dashboard for metrics visualization
-- [ ] Performance budgets enforced in builds
-- [ ] Client-side performance data collection
+- [ ] Simple FPS display implementation
+- [ ] Development-only performance metrics
+- [ ] No production overhead
 
 ### Game Design Requirements
 - [ ] 60 FPS maintained in typical gameplay
-- [ ] Memory usage stays under 500MB
-- [ ] Load times tracked and optimized
-- [ ] Scene transition performance monitored
-- [ ] Particle system performance tracked
+- [ ] Smooth scene transitions
+- [ ] No visible stuttering or lag
 
 ## Technical Specifications
 
 ### Architecture Context
-The performance monitoring infrastructure provides visibility into game performance across development, testing, and production environments. It integrates with Phaser's systems to track game-specific metrics and feeds data into both development tools and production monitoring systems.
+A lightweight performance monitoring solution that provides just enough visibility during development without adding complexity or overhead.
 
 ### Files to Create/Modify
-- `src/systems/PerformanceMonitor.ts`: Core performance monitoring system
-- `src/systems/FPSCounter.ts`: Advanced FPS tracking
-- `src/systems/MemoryProfiler.ts`: Memory usage tracking
-- `src/systems/DrawCallCounter.ts`: Render performance monitoring
-- `src/config/PerformanceConfig.ts`: Performance thresholds and settings
-- `src/plugins/PerformancePlugin.ts`: Phaser plugin for monitoring
-- `scripts/performance-benchmark.js`: CI performance testing
-- `.github/workflows/performance.yml`: Updated performance workflow
-- `public/debug-panel.html`: Development debug interface
-- `src/utils/PerformanceReporter.ts`: Metrics reporting utility
-- `tests/performance/`: Performance test suite
-- `performance-budgets.json`: Performance budget configuration
+- `src/utils/SimpleFPSCounter.ts`: Basic FPS display
+- `docs/checklists/performance-testing.md`: Manual testing checklist
+- `src/config/config.ts`: Add debug flag for FPS display
 
 ### Key Classes and Interfaces
 ```typescript
-// src/systems/PerformanceMonitor.ts
-export class PerformanceMonitor {
-    private metrics: PerformanceMetrics;
-    private observers: PerformanceObserver[] = [];
-    private frameTimeBuffer: CircularBuffer<number>;
+// src/utils/SimpleFPSCounter.ts
+export class SimpleFPSCounter {
+    private fpsText: Phaser.GameObjects.Text;
+    private isVisible: boolean = false;
     
     constructor(private scene: Phaser.Scene) {
-        this.frameTimeBuffer = new CircularBuffer(120); // 2 seconds at 60fps
-        this.setupObservers();
-        this.initializeMetrics();
+        // Only create in development
+        if (import.meta.env.DEV) {
+            this.createFPSDisplay();
+            this.setupToggleKey();
+        }
     }
     
-    private setupObservers(): void {
-        // Monitor long tasks and Core Web Vitals
-        const longTaskObserver = new PerformanceObserver((list) => {
-            for (const entry of list.getEntries()) {
-                if (entry.duration > 50) { // Tasks longer than 50ms
-                    this.recordLongTask(entry);
-                }
+    private createFPSDisplay(): void {
+        this.fpsText = this.scene.add.text(10, 10, 'FPS: 0', {
+            font: '16px monospace',
+            color: '#00ff00',
+            backgroundColor: '#000000',
+            padding: { x: 5, y: 5 }
+        });
+        
+        this.fpsText.setScrollFactor(0);
+        this.fpsText.setDepth(999999);
+        this.fpsText.setVisible(false);
+    }
+    
+    private setupToggleKey(): void {
+        // Press F3 to toggle FPS display
+        this.scene.input.keyboard.on('keydown-F3', () => {
+            this.isVisible = !this.isVisible;
+            this.fpsText.setVisible(this.isVisible);
+            
+            if (this.isVisible) {
+                console.log('Performance Monitoring Enabled');
+                console.log('Target FPS: 60');
+                console.log('Press F3 to hide');
             }
         });
-        longTaskObserver.observe({ entryTypes: ['longtask'] });
-        
-        // Monitor INP (Interaction to Next Paint)
-        const inpObserver = new PerformanceObserver((list) => {
-            for (const entry of list.getEntries()) {
-                if (entry.interactionId) {
-                    this.recordINP(entry);
-                }
+    }
+    
+    update(): void {
+        if (this.isVisible && this.fpsText) {
+            const fps = Math.round(this.scene.game.loop.actualFps);
+            
+            // Update text
+            this.fpsText.setText(`FPS: ${fps}`);
+            
+            // Color code based on performance
+            if (fps >= 55) {
+                this.fpsText.setColor('#00ff00'); // Green
+            } else if (fps >= 30) {
+                this.fpsText.setColor('#ffff00'); // Yellow  
+            } else {
+                this.fpsText.setColor('#ff0000'); // Red
             }
-        });
-        inpObserver.observe({ entryTypes: ['event'] });
-        
-        // Monitor LCP (Largest Contentful Paint)
-        const lcpObserver = new PerformanceObserver((list) => {
-            const entries = list.getEntries();
-            const lastEntry = entries[entries.length - 1];
-            this.metrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
-        });
-        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-        
-        // Monitor memory if available
-        if ('memory' in performance) {
-            this.startMemoryMonitoring();
-        }
-    }
-    
-    update(time: number, delta: number): void {
-        this.frameTimeBuffer.push(delta);
-        
-        // Use Phaser's built-in FPS for accuracy
-        this.metrics.fps = this.scene.game.loop.actualFps;
-        this.metrics.frameTime = delta;
-        this.metrics.drawCalls = this.scene.renderer.drawCount;
-        
-        // Update CLS (Cumulative Layout Shift)
-        this.updateCLS();
-        
-        // Check performance budgets
-        this.checkPerformanceBudgets();
-        
-        // Report metrics every second
-        if (time - this.lastReportTime > 1000) {
-            this.reportMetrics();
-            this.lastReportTime = time;
-        }
-    }
-}
-
-// src/systems/FPSCounter.ts
-export class FPSCounter {
-    private fpsElement: HTMLDivElement;
-    private metricsElement: HTMLDivElement;
-    private scene: Phaser.Scene;
-    
-    constructor(scene: Phaser.Scene) {
-        this.scene = scene;
-        
-        // Create DOM elements for better performance (as per 2025 best practices)
-        this.createDOMElements();
-    }
-    
-    private createDOMElements(): void {
-        // Create container
-        const container = document.createElement('div');
-        container.id = 'performance-monitor';
-        container.style.cssText = `
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            font-family: monospace;
-            font-size: 14px;
-            z-index: 9999;
-            border-radius: 5px;
-        `;
-        
-        // FPS display
-        this.fpsElement = document.createElement('div');
-        this.fpsElement.id = 'fps';
-        container.appendChild(this.fpsElement);
-        
-        // Additional metrics
-        this.metricsElement = document.createElement('div');
-        this.metricsElement.id = 'metrics';
-        container.appendChild(this.metricsElement);
-        
-        document.body.appendChild(container);
-    }
-    
-    update(metrics: PerformanceMetrics): void {
-        const fps = Math.floor(this.scene.game.loop.actualFps);
-        
-        // Update DOM elements (better performance than canvas text)
-        this.fpsElement.innerHTML = `FPS: ${fps}`;
-        
-        // Color coding based on performance
-        if (fps >= 55) {
-            this.fpsElement.style.color = '#00ff00'; // Green
-        } else if (fps >= 30) {
-            this.fpsElement.style.color = '#ffff00'; // Yellow
-        } else {
-            this.fpsElement.style.color = '#ff0000'; // Red
-        }
-        
-        // Update additional metrics
-        this.metricsElement.innerHTML = `
-            Draw Calls: ${metrics.drawCalls}<br>
-            Memory: ${Math.round(metrics.memory / 1048576)}MB<br>
-            INP: ${metrics.inp?.toFixed(0) || 'N/A'}ms<br>
-            LCP: ${metrics.lcp?.toFixed(0) || 'N/A'}ms
-        `;
-    }
-}
-
-// src/config/PerformanceConfig.ts
-export interface PerformanceConfig {
-    monitoring: {
-        enabled: boolean;
-        sampleRate: number; // Percentage of users to monitor in production
-        reportingInterval: number; // Milliseconds
-    };
-    budgets: {
-        fps: {
-            target: number;
-            minimum: number;
-            warningThreshold: number;
-        };
-        memory: {
-            maxHeapSize: number; // MB
-            warningThreshold: number; // MB
-        };
-        drawCalls: {
-            maximum: number;
-            warningThreshold: number;
-        };
-        loadTime: {
-            initial: number; // Seconds
-            scene: number; // Seconds
-        };
-    };
-    alerts: {
-        enabled: boolean;
-        channels: string[]; // console, remote, slack
-        thresholds: AlertThreshold[];
-    };
-}
-
-export const PERFORMANCE_CONFIG: PerformanceConfig = {
-    monitoring: {
-        enabled: true,
-        sampleRate: process.env.NODE_ENV === 'production' ? 10 : 100,
-        reportingInterval: 5000
-    },
-    budgets: {
-        fps: {
-            target: 60,
-            minimum: 30,
-            warningThreshold: 55
-        },
-        memory: {
-            maxHeapSize: 500,
-            warningThreshold: 400
-        },
-        drawCalls: {
-            maximum: 100,
-            warningThreshold: 80
-        },
-        loadTime: {
-            initial: 3,
-            scene: 0.5
-        },
-        // Core Web Vitals thresholds (2025 standards)
-        webVitals: {
-            lcp: { good: 2500, needsImprovement: 4000 }, // milliseconds
-            inp: { good: 200, needsImprovement: 500 },   // milliseconds
-            cls: { good: 0.1, needsImprovement: 0.25 }   // score
-        }
-    },
-    alerts: {
-        enabled: true,
-        channels: ['console', 'remote'],
-        thresholds: [
-            { metric: 'fps', condition: 'below', value: 30, severity: 'critical' },
-            { metric: 'fps', condition: 'below', value: 55, severity: 'warning' },
-            { metric: 'memory', condition: 'above', value: 500, severity: 'critical' }
-        ]
-    }
-};
-
-// src/plugins/PerformancePlugin.ts
-export class PerformancePlugin extends Phaser.Plugins.BasePlugin {
-    private monitor: PerformanceMonitor;
-    private debugPanel?: DebugPanel;
-    private isRecording: boolean = false;
-    private performanceData: PerformanceData[] = [];
-    
-    init(data?: any): void {
-        console.log('Performance Plugin Initialized');
-        
-        // Add console commands for debugging
-        this.addConsoleCommands();
-        
-        // Initialize based on environment
-        if (this.game.config.physics?.arcade?.debug || 
-            process.env.NODE_ENV === 'development') {
-            this.enableDebugMode();
-        }
-    }
-    
-    start(): void {
-        this.monitor = new PerformanceMonitor(this.game.scene.getScenes()[0]);
-        
-        // Hook into game update loop
-        this.game.events.on('step', this.update, this);
-        
-        // Listen for performance events
-        this.setupPerformanceListeners();
-    }
-    
-    private addConsoleCommands(): void {
-        // @ts-ignore - Adding to window for debugging
-        window.performancePlugin = {
-            startRecording: () => this.startRecording(),
-            stopRecording: () => this.stopRecording(),
-            getReport: () => this.generateReport(),
-            showDebugPanel: () => this.showDebugPanel(),
-            runBenchmark: () => this.runBenchmark()
-        };
-    }
-    
-    private runBenchmark(): BenchmarkResult {
-        const results: BenchmarkResult = {
-            fps: { min: Infinity, max: 0, avg: 0 },
-            memory: { min: Infinity, max: 0, avg: 0 },
-            drawCalls: { min: Infinity, max: 0, avg: 0 }
-        };
-        
-        // Run performance intensive scenarios
-        const scenarios = [
-            () => this.spawnParticles(1000),
-            () => this.createSprites(500),
-            () => this.runPhysicsStressTest()
-        ];
-        
-        scenarios.forEach(scenario => {
-            this.measureScenario(scenario, results);
-        });
-        
-        return results;
-    }
-}
-
-// scripts/performance-benchmark.js
-import { chromium } from 'playwright';
-import { writeFileSync } from 'fs';
-
-async function runPerformanceBenchmark() {
-    const browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    
-    // Enable performance metrics collection
-    await context.addInitScript(() => {
-        window.performanceMetrics = [];
-        
-        // Use Phaser's built-in FPS and Core Web Vitals
-        const { onLCP, onINP, onCLS } = await import('web-vitals');
-        
-        window.coreWebVitals = {
-            lcp: null,
-            inp: null,
-            cls: null
-        };
-        
-        onLCP((metric) => { window.coreWebVitals.lcp = metric.value; });
-        onINP((metric) => { window.coreWebVitals.inp = metric.value; });
-        onCLS((metric) => { window.coreWebVitals.cls = metric.value; });
-        
-        // Monitor game performance
-        setInterval(() => {
-            if (window.game) {
-                window.performanceMetrics.push({
-                    timestamp: performance.now(),
-                    fps: Math.floor(window.game.loop.actualFps),
-                    memory: performance.memory?.usedJSHeapSize || 0,
-                    drawCalls: window.game.renderer.drawCount,
-                    ...window.coreWebVitals
-                });
+            
+            // Log warnings for consistently bad performance
+            if (fps < 30) {
+                console.warn(`Low FPS detected: ${fps}`);
             }
-        }, 1000);
-    });
+        }
+    }
+}
+
+// Usage in scenes
+export class GameScene extends Phaser.Scene {
+    private fpsCounter?: SimpleFPSCounter;
     
-    // Navigate to game
-    await page.goto('http://localhost:5173');
+    create() {
+        // ... scene setup ...
+        
+        // Add FPS counter in development
+        if (import.meta.env.DEV) {
+            this.fpsCounter = new SimpleFPSCounter(this);
+        }
+    }
     
-    // Wait for game to load
-    await page.waitForFunction(() => window.game?.scene?.scenes?.length > 0);
-    
-    // Run benchmark scenarios
-    const results = await runScenarios(page);
-    
-    // Generate report
-    const report = generatePerformanceReport(results);
-    writeFileSync('performance-report.json', JSON.stringify(report, null, 2));
-    
-    await browser.close();
-    
-    // Check against budgets
-    checkPerformanceBudgets(report);
+    update(time: number, delta: number) {
+        // ... game logic ...
+        
+        this.fpsCounter?.update();
+    }
 }
 ```
 
 ### Integration Points
-- **Phaser Game Loop**: Hooks into update cycle for metrics
-- **Browser Performance API**: Uses native performance monitoring
-- **CI/CD Pipeline**: Automated benchmarking in builds
-- **Development Tools**: Debug panel and console commands
-- **Production Monitoring**: Sampled data collection
+- **Phaser Game Loop**: Simple update call
+- **Development Builds**: Only active in dev mode
+- **Manual Testing**: Checklist for pre-release
 
 ### Performance Requirements
-- Monitoring overhead: <2% performance impact
-- Data collection: <1KB/second bandwidth
-- Dashboard updates: Real-time (<100ms latency)
-- Benchmark runs: Complete in <5 minutes
-- Alert latency: <30 seconds for critical issues
+- Zero impact on production builds
+- Minimal overhead in development (<0.1%)
+- No external dependencies
 
 ## Implementation Tasks
 
-### 1. Create Core Performance Monitor
-Build the central performance monitoring system.
+### 1. Create Simple FPS Counter
+Build a basic FPS display for development.
 
-**Estimated Time**: 5 hours
+**Estimated Time**: 1 hour
 **Technical Details**:
-- Implement PerformanceMonitor class
-- Create circular buffer for frame times
-- Set up Performance Observer API usage
-- Implement metric collection and aggregation
-- Create performance budget checking
-- Add extensible reporter system
+- Implement SimpleFPSCounter class
+- Use Phaser's built-in actualFps
+- Add toggle key (F3) for visibility
+- Color coding for performance levels
+- Console warnings for low FPS
 
-### 2. Implement FPS Counter and Debug UI
-Create visual performance monitoring tools.
+### 2. Create Performance Testing Checklist
+Document manual testing procedures.
 
-**Estimated Time**: 4 hours
+**Estimated Time**: 30 minutes
 **Technical Details**:
-- Build FPS counter with color coding
-- Create mini performance graph
-- Add memory usage display
-- Implement draw call counter
-- Create collapsible debug panel
-- Add hotkeys for toggle visibility
+- Create markdown checklist
+- Define test scenarios
+- List target devices
+- Set performance thresholds
+- Include common problem areas
 
-### 3. Set Up Memory Profiling
-Implement memory usage tracking and leak detection.
+### 3. Add Development Logging
+Basic performance logging for debugging.
 
-**Estimated Time**: 3 hours
+**Estimated Time**: 30 minutes  
 **Technical Details**:
-- Use Performance.memory API where available
-- Track object creation and disposal
-- Monitor texture memory usage
-- Implement garbage collection tracking
-- Create memory leak detection
-- Add memory snapshot capabilities
-
-### 4. Configure CI Performance Testing
-Integrate performance testing into CI pipeline.
-
-**Estimated Time**: 4 hours
-**Technical Details**:
-- Create Playwright-based benchmark runner
-- Implement scenario-based testing
-- Add performance regression detection
-- Generate performance reports
-- Create GitHub Action for benchmarking
-- Set up performance badge generation
-
-### 5. Build Performance Dashboard
-Create real-time monitoring dashboard.
-
-**Estimated Time**: 4 hours
-**Technical Details**:
-- Design dashboard UI layout
-- Implement real-time data streaming
-- Create historical trend graphs
-- Add alert configuration interface
-- Build performance comparison tools
-- Create exportable reports
-
-### 6. Implement Production Monitoring
-Set up performance monitoring for production.
-
-**Estimated Time**: 3 hours
-**Technical Details**:
-- Implement sampling logic (10% of users)
-- Create anonymous data collection
-- Set up data aggregation endpoints
-- Configure alert thresholds
-- Add performance analytics
-- Create monitoring documentation
+- Log scene load times
+- Track major performance events
+- Add console commands for debugging
+- Document usage for team
 
 ## Game Design Context
 
 ### GDD References
 - Performance: 60 FPS target on mid-range hardware
-- Optimization: Smooth gameplay across all devices
-- Quality: Premium gaming experience maintained
+- MVP Scope: Basic functionality first
 
 ### Performance Targets
-```typescript
-const PERFORMANCE_TARGETS = {
-    scenes: {
-        menu: { fps: 60, memory: 100, drawCalls: 20 },
-        gameplay: { fps: 60, memory: 300, drawCalls: 80 },
-        battle: { fps: 55, memory: 400, drawCalls: 100 }
-    },
-    devices: {
-        desktop: { minFPS: 60, targetFPS: 120 },
-        mobile: { minFPS: 30, targetFPS: 60 },
-        tablet: { minFPS: 45, targetFPS: 60 }
-    },
-    operations: {
-        sceneTransition: 500, // ms
-        assetLoading: 100, // ms per asset
-        saveGame: 200, // ms
-        loadGame: 300 // ms
-    }
-};
-```
-
-### Monitoring Points
-- Game initialization and loading
-- Scene transitions and setup
-- Combat system performance
-- Particle effects and animations
-- UI responsiveness
-- Network operations (if any)
+- Desktop: 60 FPS consistent
+- Mobile: 30 FPS minimum (if supporting mobile)
+- Scene transitions: Under 1 second
+- Initial load: Under 5 seconds
 
 ## Testing Requirements
 
-### Unit Tests
-- `tests/performance/PerformanceMonitor.test.ts`: Core monitoring logic
-- `tests/performance/FPSCounter.test.ts`: FPS calculation accuracy
-- `tests/performance/MemoryProfiler.test.ts`: Memory tracking
+### Manual Testing Checklist
+```markdown
+# Performance Testing Checklist
 
-### Integration Tests
-- Performance monitoring doesn't impact game performance
-- Metrics are accurately collected and reported
-- Alerts fire at correct thresholds
-- Dashboard displays real-time data
+## Pre-Release Performance Verification
 
-### Performance Tests
-- Monitoring overhead stays under 2%
-- Benchmark scenarios complete successfully
-- Performance budgets are enforced
-- Regression detection works accurately
+### Test Devices
+- [ ] Development machine (specify specs)
+- [ ] Mid-range laptop/desktop
+- [ ] Low-end device (if available)
 
-### Manual Testing
-- [ ] FPS counter displays correctly
-- [ ] Debug panel shows all metrics
-- [ ] Performance alerts trigger properly
-- [ ] CI benchmarks run successfully
-- [ ] Production monitoring works
+### Test Scenarios
+1. **Main Menu**
+   - [ ] Verify 60 FPS
+   - [ ] Check memory usage in dev tools
+   
+2. **Gameplay**
+   - [ ] Play for 5 minutes continuously
+   - [ ] Monitor FPS during normal play
+   - [ ] Check for memory leaks (increasing memory)
+   
+3. **Scene Transitions**
+   - [ ] Test all scene changes
+   - [ ] Verify smooth transitions
+   - [ ] No freezing or stuttering
+
+4. **Stress Test**
+   - [ ] Create maximum expected game objects
+   - [ ] Verify FPS stays above 30
+   - [ ] Check for crashes
+
+### Performance Thresholds
+- ✅ Pass: Consistent 55-60 FPS
+- ⚠️ Warning: 30-55 FPS (investigate)
+- ❌ Fail: Below 30 FPS (must fix)
+
+### Common Issues to Check
+- [ ] Particle effects causing lag
+- [ ] Too many active sprites
+- [ ] Memory leaks from not cleaning up
+- [ ] Large texture atlases
+- [ ] Unnecessary update loops
+```
 
 ## Dependencies
 
 ### Prerequisite Stories
 - SETUP-001: Initial Project Configuration (completed)
-- SETUP-002: Development Workflow Setup (completed)
-- SETUP-003: CI/CD Pipeline Configuration (completed)
 
 ### NPM Dependencies
-- playwright: ^1.45.0 - For automated performance testing
-- web-vitals: ^4.0.0 - Core Web Vitals monitoring (official Google library)
-- @sentry/browser: ^8.0.0 - Error and performance monitoring with INP support
-- perfume.js: ^9.0.0 - Web performance monitoring library
-- circular-buffer: ^1.0.3 - Efficient data structure
-
-### Browser APIs
-- Performance Observer API (with 2025 entry types)
-- User Timing API (with metadata support)
-- Core Web Vitals APIs (LCP, INP, CLS)
-- performance.measureUserAgentSpecificMemory() API
-- Element Timing API
-- Event Timing API
+None - uses only Phaser's built-in functionality
 
 ## Definition of Done
 
-- [ ] All acceptance criteria met
-- [ ] Performance monitoring integrated into game
-- [ ] FPS counter and debug UI functional
-- [ ] CI performance benchmarks running
-- [ ] Production monitoring configured
-- [ ] Performance budgets enforced
+- [ ] FPS counter implemented and working
+- [ ] Toggle key (F3) functioning
+- [ ] Performance checklist created
+- [ ] Basic logging implemented
+- [ ] Tested on multiple devices
+- [ ] Zero impact on production builds
+- [ ] Team knows how to use tools
 - [ ] Documentation complete
-- [ ] No performance overhead from monitoring
-- [ ] Alerts configured and tested
-- [ ] Team trained on performance tools
