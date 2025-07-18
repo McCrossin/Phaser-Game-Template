@@ -1,138 +1,167 @@
+/**
+ * GameScene - Main gameplay scene using ECS architecture
+ * Handles the core game loop with Entity-Component-System patterns
+ */
+
 import Phaser from 'phaser';
-import { GAME_CONFIG } from '@/main';
+import { GAME_CONSTANTS } from '../utils/Constants';
+import { World } from '../ecs/World';
+import {
+    MovementSystem,
+    InputSystem,
+    RenderingSystem,
+    EnergySystem,
+    DebugSystem
+} from '../systems/CoreSystems';
+import {
+    PositionComponent,
+    VelocityComponent,
+    SpriteComponent,
+    InputComponent,
+    ProbeComponent,
+    InventoryComponent
+} from '../components/CoreComponents';
 
 export class GameScene extends Phaser.Scene {
-  private worldBackground!: Phaser.GameObjects.TileSprite;
-  private probe!: Phaser.GameObjects.Sprite;
-  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
-  private debugText!: Phaser.GameObjects.Text;
+    private world!: World;
+    private playerProbeId!: number;
 
-  constructor() {
-    super({ key: 'GameScene' });
-  }
-
-  preload(): void {
-    // Temporary assets - will be replaced with proper game assets
-    this.load.image('world-bg', 'assets/space.png');
-    this.load.image('probe', 'assets/spaceship.png');
-  }
-
-  create(): void {
-    // World background
-    this.worldBackground = this.add.tileSprite(
-      0, 0, 
-      GAME_CONFIG.WORLD_WIDTH, 
-      GAME_CONFIG.WORLD_HEIGHT, 
-      'world-bg'
-    ).setOrigin(0, 0);
-
-    // Probe (player character)
-    this.probe = this.add.sprite(640, 360, 'probe');
-    this.probe.setScale(0.5);
-
-    // Camera setup
-    this.cameras.main.setBounds(0, 0, GAME_CONFIG.WORLD_WIDTH, GAME_CONFIG.WORLD_HEIGHT);
-    this.cameras.main.startFollow(this.probe);
-    this.cameras.main.setZoom(1);
-
-    // Input setup
-    this.setupInput();
-
-    // Debug information
-    this.createDebugDisplay();
-
-    // Initialize game systems
-    this.initializeGameSystems();
-  }
-
-  update(time: number, delta: number): void {
-    this.handleInput(delta);
-    this.updateDebugDisplay();
-  }
-
-  private setupInput(): void {
-    // Keyboard input
-    this.cursors = this.input.keyboard?.createCursorKeys() as Phaser.Types.Input.Keyboard.CursorKeys;
-    
-    // WASD keys
-    const wasdKeys = this.input.keyboard?.addKeys('W,S,A,D') as Record<string, Phaser.Input.Keyboard.Key>;
-    
-    // Add WASD to cursors for convenience
-    if (wasdKeys) {
-      this.cursors.up = wasdKeys.W;
-      this.cursors.down = wasdKeys.S;
-      this.cursors.left = wasdKeys.A;
-      this.cursors.right = wasdKeys.D;
+    constructor() {
+        super({ key: 'GameScene' });
     }
 
-    // Escape key to return to menu
-    const escKey = this.input.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-    escKey?.on('down', () => {
-      this.returnToMenu();
-    });
-  }
-
-  private handleInput(delta: number): void {
-    const speed = 200; // pixels per second
-    const moveDistance = (speed * delta) / 1000;
-
-    if (this.cursors.left?.isDown) {
-      this.probe.x -= moveDistance;
-    }
-    if (this.cursors.right?.isDown) {
-      this.probe.x += moveDistance;
-    }
-    if (this.cursors.up?.isDown) {
-      this.probe.y -= moveDistance;
-    }
-    if (this.cursors.down?.isDown) {
-      this.probe.y += moveDistance;
+    preload(): void {
+        // Load assets if not already loaded
+        if (!this.textures.exists('space')) {
+            this.load.image('space', 'assets/space.png');
+        }
+        if (!this.textures.exists('spaceship')) {
+            this.load.image('spaceship', 'assets/spaceship.png');
+        }
+        if (!this.textures.exists('phaser')) {
+            this.load.image('phaser', 'assets/phaser.png');
+        }
     }
 
-    // Keep probe within world bounds
-    this.probe.x = Phaser.Math.Clamp(this.probe.x, 0, GAME_CONFIG.WORLD_WIDTH);
-    this.probe.y = Phaser.Math.Clamp(this.probe.y, 0, GAME_CONFIG.WORLD_HEIGHT);
-  }
+    create(): void {
+        console.log('GameScene: Starting with ECS architecture');
 
-  private createDebugDisplay(): void {
-    this.debugText = this.add.text(10, 10, '', {
-      fontSize: '14px',
-      color: '#00ff00',
-      backgroundColor: '#000000',
-      padding: { x: 8, y: 4 }
-    });
-    this.debugText.setScrollFactor(0); // Fixed to camera
-    this.debugText.setDepth(1000); // Always on top
-  }
+        // Initialize ECS World
+        this.world = new World();
 
-  private updateDebugDisplay(): void {
-    const probeX = Math.round(this.probe.x);
-    const probeY = Math.round(this.probe.y);
-    const fps = Math.round(this.game.loop.actualFps);
-    
-    this.debugText.setText([
-      `New Eden Project - Development Build`,
-      `Probe Position: (${probeX}, ${probeY})`,
-      `FPS: ${fps}`,
-      `Target: ${GAME_CONFIG.TARGET_FPS}`,
-      ``,
-      `Controls:`,
-      `WASD/Arrow Keys: Move`,
-      `ESC: Return to menu`
-    ]);
-  }
+        // Add core systems
+        this.setupSystems();
 
-  private initializeGameSystems(): void {
-    // Placeholder for game systems initialization
-    // TODO: Initialize ECS systems, energy management, equipment, etc.
-    console.log('Game systems initialized');
-  }
+        // Create game entities
+        this.createPlayerProbe();
+        this.createEnvironment();
 
-  private returnToMenu(): void {
-    this.cameras.main.fadeOut(300, 0, 0, 0);
-    
-    this.cameras.main.once('camerafadeoutcomplete', () => {
-      this.scene.start('StartScene');
-    });
-  }
+        // Setup camera
+        this.setupCamera();
+
+        // Setup ESC key to return to menu
+        const escKey = this.input.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+        escKey?.on('down', () => {
+            this.returnToMenu();
+        });
+
+        console.log('GameScene: ECS initialization complete');
+    }
+
+    private setupSystems(): void {
+        // Add systems in priority order
+        this.world.addSystem(new InputSystem(this.world.getEntityManager(), this));
+        this.world.addSystem(new MovementSystem(this.world.getEntityManager()));
+        this.world.addSystem(new EnergySystem(this.world.getEntityManager()));
+        this.world.addSystem(new RenderingSystem(this.world.getEntityManager(), this));
+        this.world.addSystem(new DebugSystem(this.world.getEntityManager(), this));
+    }
+
+    private createPlayerProbe(): void {
+        // Create probe entity
+        const probeEntity = this.world.createEntity();
+        this.playerProbeId = probeEntity.id;
+
+        // Add components
+        probeEntity
+            .addComponent(new PositionComponent(640, 360))
+            .addComponent(new VelocityComponent(0, 0, 0, 200))
+            .addComponent(new SpriteComponent('spaceship'))
+            .addComponent(new InputComponent(true)) // Player controlled
+            .addComponent(new ProbeComponent())
+            .addComponent(new InventoryComponent(1000));
+
+        console.log(`Created player probe with ID: ${probeEntity.id}`);
+    }
+
+    private createEnvironment(): void {
+        // Set world bounds
+        this.physics.world.setBounds(0, 0, GAME_CONSTANTS.WORLD_WIDTH, GAME_CONSTANTS.WORLD_HEIGHT);
+
+        // Create background
+        this.add
+            .tileSprite(0, 0, GAME_CONSTANTS.WORLD_WIDTH, GAME_CONSTANTS.WORLD_HEIGHT, 'space')
+            .setOrigin(0, 0)
+            .setDepth(-1);
+
+        // Add some static entities for testing (resource nodes)
+        for (let i = 0; i < 5; i++) {
+            const x = Phaser.Math.Between(100, GAME_CONSTANTS.WORLD_WIDTH - 100);
+            const y = Phaser.Math.Between(100, GAME_CONSTANTS.WORLD_HEIGHT - 100);
+
+            const resource = this.world.createEntity();
+            resource
+                .addComponent(new PositionComponent(x, y))
+                .addComponent(new SpriteComponent('phaser')); // Using phaser logo as placeholder
+        }
+    }
+
+    private setupCamera(): void {
+        // Setup camera bounds
+        this.cameras.main.setBounds(0, 0, GAME_CONSTANTS.WORLD_WIDTH, GAME_CONSTANTS.WORLD_HEIGHT);
+
+        // Camera will follow the player probe sprite (handled in update)
+        const playerProbe = this.world.getEntity(this.playerProbeId);
+        if (playerProbe) {
+            const position = playerProbe.getComponent(PositionComponent);
+            if (position) {
+                this.cameras.main.centerOn(position.x, position.y);
+                this.cameras.main.setZoom(1);
+            }
+        }
+    }
+
+    override update(_time: number, delta: number): void {
+        // Update ECS world
+        this.world.update(delta);
+
+        // Update camera to follow player probe
+        this.updateCameraFollow();
+    }
+
+    private updateCameraFollow(): void {
+        const playerProbe = this.world.getEntity(this.playerProbeId);
+        if (playerProbe) {
+            const position = playerProbe.getComponent(PositionComponent);
+            const sprite = playerProbe.getComponent(SpriteComponent);
+
+            if (position && sprite?.sprite) {
+                // Update camera to follow sprite
+                this.cameras.main.startFollow(sprite.sprite);
+            }
+        }
+    }
+
+    private returnToMenu(): void {
+        this.cameras.main.fadeOut(300, 0, 0, 0);
+
+        this.cameras.main.once('camerafadeoutcomplete', () => {
+            this.scene.start('StartScene');
+        });
+    }
+
+    shutdown(): void {
+        console.log('GameScene: Shutting down ECS world');
+        this.world.clear();
+    }
 }
