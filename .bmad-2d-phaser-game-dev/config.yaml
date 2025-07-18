@@ -6,3 +6,6 @@ description: >-
   focused
 author: Brian (BMad)
 slashPrefix: bmad2dp
+Important context rules for working within this game project:
+- VERY IMPORTANT: Ensure any changes to the directory structure such as adding files is updated within the brownfield-architecture.md file accordingly.
+- VERY IMPORTANT: If you make any changes to game design documents, ensure you update the documentation changelog file accordingly.
