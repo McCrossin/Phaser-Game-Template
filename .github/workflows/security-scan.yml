@@ -57,7 +57,7 @@ jobs:
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
               with:
-                  category: "/language:${{matrix.language}}"
+                  category: '/language:${{matrix.language}}'
 
     secret-scanning:
         name: Secret Detection
@@ -123,4 +123,4 @@ jobs:
             - name: Check for known vulnerabilities in game dependencies
               run: |
                   echo "Checking Phaser.js and game-specific dependencies..."
-                  npx better-npm-audit --level moderate
+                  npx better-npm-audit audit --level moderate
