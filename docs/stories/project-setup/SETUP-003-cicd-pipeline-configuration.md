@@ -2,7 +2,7 @@
 **ID**: SETUP-003  
 **Epic**: Project Setup and Configuration  
 **Priority**: High  
-**Estimated Points**: 8  
+**Estimated Points**: 3 (MVP) / 8 (Full Implementation)  
 **Dependencies**: SETUP-001 (Initial Project Configuration), SETUP-002 (Development Workflow Setup)
 
 ## Description
@@ -15,9 +15,19 @@ Players benefit from more frequent, stable releases with fewer bugs. The automat
 ### Technical Overview
 Configure GitHub Actions workflows for automated testing, building, and deployment. Implement branch protection rules, automated version tagging, performance benchmarking, and multi-environment deployments. Integrate with the testing framework from SETUP-002 and build configuration from SETUP-001.
 
+**MVP Approach**: Start with essential CI/CD features (test, build, basic deploy) and progressively enhance with advanced monitoring and optimization features as the game matures. Focus on rapid iteration for core gameplay loop refinement.
+
 ## Acceptance Criteria
 
-### Functional Requirements
+### MVP Requirements (Phase 1-2)
+- [ ] Basic CI runs on every PR (lint, test, build)
+- [ ] Main branch protected with CI checks
+- [ ] Docker image builds successfully
+- [ ] Manual deployment process documented
+- [ ] Basic performance check (30 FPS minimum)
+- [ ] Bundle size under 5MB
+
+### Full Implementation Requirements (Post-MVP)
 - [ ] Pull requests automatically run full test suite
 - [ ] Builds fail if tests, linting, or type checking fails
 - [ ] Main branch protected with required checks
@@ -296,77 +306,92 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ## Implementation Tasks
 
-### 1. Create Core CI Workflow
-Set up the main continuous integration workflow.
+### MVP Phase 1 (Week 1)
 
-**Estimated Time**: 4 hours
-**Technical Details**:
-- Create `.github/workflows/ci.yml`
-- Configure matrix testing for Node 22 and 23
-- Set up parallel jobs for linting, testing, building
-- Add caching for npm dependencies
-- Configure artifact uploads for builds
-- Set up status checks for PRs
-
-### 2. Implement Build and Release Automation
-Create workflows for automated building and releasing.
-
-**Estimated Time**: 5 hours
-**Technical Details**:
-- Create release workflow with semantic versioning
-- Implement changelog generation
-- Set up automated tagging
-- Configure build metadata injection
-- Create release artifacts with source maps
-- Add release notes automation
-
-### 3. Configure Deployment Pipelines
-Set up automated deployment workflows.
-
-**Estimated Time**: 6 hours
-**Technical Details**:
-- Create staging deployment workflow
-- Configure production deployment with approvals
-- Set up environment secrets in GitHub
-- Implement blue-green deployment strategy
-- Add deployment status notifications
-- Create rollback mechanisms
-
-### 4. Add Performance Monitoring
-Implement performance benchmarking in CI.
-
-**Estimated Time**: 4 hours
-**Technical Details**:
-- Create performance test workflow
-- Set up Lighthouse CI for web vitals
-- Add bundle size tracking
-- Implement FPS benchmarking
-- Configure performance regression alerts
-- Create performance dashboards
-
-### 5. Set Up Branch Protection
-Configure repository settings for code quality.
+#### 1. Create Basic CI Workflow
+Set up minimal continuous integration for rapid development.
 
 **Estimated Time**: 2 hours
 **Technical Details**:
-- Enable branch protection for main
-- Require PR reviews (1 minimum)
-- Require status checks to pass
-- Dismiss stale reviews on new commits
-- Restrict who can merge
-- Set up CODEOWNERS file
+- Create `.github/workflows/ci.yml` with essential jobs
+- Single Node version (22) for speed
+- Sequential jobs: lint → test → build
+- Basic npm caching
+- Simple artifact uploads
+- Essential status checks only
 
-### 6. Create Docker Configuration
-Containerize the application for consistent deployments.
+**MVP Focus**: Get automated testing running quickly to support gameplay iteration
+
+#### 2. Simple Docker Setup
+Create basic containerization for deployment.
+
+**Estimated Time**: 2 hours
+**Technical Details**:
+- Simple single-stage Dockerfile
+- Basic nginx configuration
+- Manual deployment process initially
+- Document deployment steps
+
+**MVP Focus**: Get deployable artifact quickly
+
+#### 3. Basic Branch Protection
+Minimal repository protection rules.
+
+**Estimated Time**: 1 hour
+**Technical Details**:
+- Protect main branch
+- Require CI to pass
+- No PR reviews initially (speed over process)
+
+**MVP Focus**: Prevent broken builds while maintaining velocity
+
+### MVP Phase 2 (Week 2-3)
+
+#### 4. Add Staging Deployment
+Automate deployment to test environment.
 
 **Estimated Time**: 3 hours
 **Technical Details**:
-- Create multi-stage Dockerfile
-- Optimize for minimal image size
-- Configure nginx for SPA routing
-- Add security headers
-- Create docker-compose for local testing
-- Document container usage
+- Create `.github/workflows/deploy-staging.yml`
+- Deploy on push to main
+- Basic health checks
+- Simple rollback script
+
+**MVP Focus**: Test game builds in realistic environment
+
+#### 5. Basic Performance Monitoring
+Add minimal FPS tracking.
+
+**Estimated Time**: 2 hours
+**Technical Details**:
+- Simple FPS threshold check (30 FPS minimum)
+- Bundle size limit (5MB)
+- Basic performance test in CI
+
+**MVP Focus**: Ensure game remains playable during rapid development
+
+### Future Enhancements (Post-MVP)
+
+#### Phase 3: Production Readiness (Month 2)
+- Production deployment with approvals
+- Enhanced security scanning (CodeQL)
+- Advanced FPS monitoring (55 FPS target, 3% degradation detection)
+- Multi-platform Docker builds
+- Release automation with changelogs
+
+#### Phase 4: Scale & Optimize (Month 3+)
+- Blue-green deployment strategy
+- Microfreeze detection (100-1000ms)
+- Cost optimization (35% reduction target)
+- Performance dashboards
+- Device-tier specific testing
+- Advanced caching strategies
+
+### 2025 Best Practices Integration Timeline
+- **MVP**: Focus on core CI/CD functionality
+- **Month 1-2**: Add security and basic performance monitoring
+- **Month 3+**: Implement advanced monitoring and optimization
+- **Production**: Full 2025 best practices implementation
 
 ## Game Design Context
 
@@ -447,12 +472,17 @@ const DEPLOYMENT_CONFIG = {
 ## Definition of Done
 
 - [ ] All acceptance criteria met
-- [ ] CI pipeline runs on every PR
-- [ ] Builds complete in <10 minutes
-- [ ] Deployments automated for staging
-- [ ] Production deployments require approval
-- [ ] Performance benchmarks tracked
-- [ ] Branch protection enabled
-- [ ] Documentation complete
-- [ ] Team trained on pipeline usage
-- [ ] Rollback procedures tested
+- [ ] CI pipeline runs on every PR with security scanning
+- [ ] Builds complete in <10 minutes (targeting 37 minutes benchmark)
+- [ ] Blue-green deployments automated for staging
+- [ ] Production deployments require approval with cost analysis
+- [ ] Advanced performance benchmarks tracked (FPS, microfreezes)
+- [ ] Branch protection enabled with security gates
+- [ ] Documentation complete with 2025 best practices
+- [ ] Team trained on pipeline usage and cost optimization
+- [ ] 2-minute rollback procedures tested and verified
+- [ ] 35% infrastructure cost reduction achieved
+- [ ] FPS degradation detection at 3% operational
+- [ ] Security scanning (CodeQL, container) integrated
+- [ ] Multi-platform Docker builds functional
+- [ ] Performance dashboards showing real-time metrics
