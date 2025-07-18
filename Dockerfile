@@ -11,8 +11,8 @@ RUN npm ci --ignore-scripts
 # Copy source code
 COPY . .
 
-# Build application
-RUN npm run build
+# Build application using simplified TypeScript config for Docker
+RUN npm run build:docker
 
 # Generate build info
 RUN node scripts/build-info.js

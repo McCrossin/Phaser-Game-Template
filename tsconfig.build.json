@@ -1,0 +1,23 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": false,
+        "declaration": false,
+        "declarationMap": false,
+        "sourceMap": false,
+        "outDir": "./dist",
+        "moduleResolution": "bundler",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@/scenes/*": ["src/scenes/*"],
+            "@/systems/*": ["src/systems/*"],
+            "@/components/*": ["src/components/*"],
+            "@/entities/*": ["src/entities/*"],
+            "@/utils/*": ["src/utils/*"],
+            "@/types/*": ["src/types/*"]
+        }
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "dist", "tests/**/*", "**/*.test.ts", "**/*.spec.ts"]
+}
