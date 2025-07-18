@@ -10,6 +10,19 @@ updates:
           - 'McCrossin'
       labels:
           - 'dependencies'
+      groups:
+          vitest:
+              patterns:
+                  - 'vitest*'
+                  - '@vitest/*'
+          typescript:
+              patterns:
+                  - 'typescript*'
+                  - '@typescript-eslint/*'
+          eslint:
+              patterns:
+                  - 'eslint*'
+                  - 'eslint-*'
 
     # Enable version updates for GitHub Actions
     - package-ecosystem: 'github-actions'
