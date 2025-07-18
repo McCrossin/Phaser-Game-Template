@@ -9,6 +9,7 @@
         "build": "tsc && vite build",
         "preview": "vite preview",
         "test": "vitest",
+        "test:run": "vitest run",
         "test:ui": "vitest --ui",
         "test:coverage": "vitest --coverage",
         "test:e2e": "playwright test",
@@ -19,7 +20,7 @@
         "typecheck": "tsc --noEmit",
         "docs": "typedoc src/main.ts",
         "prepare": "husky",
-        "validate": "npm run typecheck && npm run lint && npm run test"
+        "validate": "npm run typecheck && npm run lint && npm run test:run"
     },
     "keywords": [
         "game",
