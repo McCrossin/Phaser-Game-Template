@@ -2,7 +2,7 @@ import { Plugin } from 'vite';
 const sharp = require('sharp');
 import { promises as fs } from 'fs';
 import { join, dirname, basename, extname } from 'path';
-import { ASSET_PIPELINE_CONFIG } from '../../src/config/AssetConfig';
+import { ASSET_PIPELINE_CONFIG } from '../src/config/AssetConfig';
 
 export interface ImageOptimizerOptions {
     sourceDir: string;

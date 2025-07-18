@@ -2,7 +2,7 @@ import { Plugin } from 'vite';
 import { promises as fs } from 'fs';
 import { join, basename, extname, relative } from 'path';
 import { createHash } from 'crypto';
-import type { AssetEntry, AssetManifest } from '../../src/types/AssetTypes';
+import type { AssetEntry, AssetManifest } from '../src/types/AssetTypes';
 
 export interface AssetManifestOptions {
     outputDir: string;

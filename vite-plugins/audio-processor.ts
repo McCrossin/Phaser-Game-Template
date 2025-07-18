@@ -2,7 +2,7 @@ import { Plugin } from 'vite';
 import { promises as fs } from 'fs';
 import { join, dirname, basename, extname } from 'path';
 import { spawn } from 'child_process';
-import { ASSET_PIPELINE_CONFIG } from '../../src/config/AssetConfig';
+import { ASSET_PIPELINE_CONFIG } from '../src/config/AssetConfig';
 
 export interface AudioProcessorOptions {
     sourceDir: string;

@@ -41,6 +41,7 @@
         "src/**/*.ts",
         "src/**/*.d.ts",
         "build/**/*.ts",
+        "vite-plugins/**/*.ts",
         "tests/unit/**/*.ts",
         "tests/setup.ts",
         "tests/helpers/**/*.ts",
