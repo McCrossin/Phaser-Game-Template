@@ -30,7 +30,7 @@ jobs:
               run: npm audit --audit-level moderate
 
             - name: Enhanced dependency security check
-              run: npx better-npm-audit --level moderate
+              run: npx better-npm-audit audit --level moderate
 
     lint-and-typecheck:
         runs-on: ubuntu-latest
