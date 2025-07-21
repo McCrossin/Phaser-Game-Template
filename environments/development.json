@@ -1,0 +1,23 @@
+{
+    "environment": "development",
+    "debug": {
+        "enabled": true,
+        "showFPS": true,
+        "showBounds": true,
+        "logLevel": "debug"
+    },
+    "performance": {
+        "targetFPS": 60,
+        "enableProfiling": true,
+        "maxEntities": 500
+    },
+    "assets": {
+        "baseUrl": "./assets/",
+        "useCompression": false,
+        "enableHotReload": true
+    },
+    "api": {
+        "baseUrl": "http://localhost:3000",
+        "timeout": 5000
+    }
+}

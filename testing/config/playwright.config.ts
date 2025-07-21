@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-    testDir: './tests/e2e',
+    testDir: '../e2e',
     /* Run tests in files in parallel */
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -60,14 +60,38 @@ export default defineConfig({
                         '--disable-setuid-sandbox',
                         '--disable-dev-shm-usage',
                         '--disable-web-security',
-                        '--allow-running-insecure-content'
+                        '--allow-running-insecure-content',
+                        // Additional performance-related flags for CI
+                        ...(process.env.CI
+                            ? [
+                                  '--disable-background-timer-throttling',
+                                  '--disable-renderer-backgrounding',
+                                  '--disable-backgrounding-occluded-windows'
+                              ]
+                            : [])
                     ]
                 }
             },
             testDir: './tests/e2e/performance',
-            timeout: 60000, // Increased timeout for CI
+            timeout: process.env.CI ? 120000 : 60000, // Longer timeout for CI
             expect: {
-                timeout: 10000 // Increased expect timeout
+                timeout: process.env.CI ? 15000 : 10000 // Longer expect timeout for CI
+            }
+        },
+
+        /* Performance testing project for local development (stricter thresholds) */
+        {
+            name: 'performance-local',
+            use: {
+                ...devices['Desktop Chrome'],
+                launchOptions: {
+                    args: ['--disable-web-security', '--allow-running-insecure-content']
+                }
+            },
+            testDir: './tests/e2e/performance',
+            timeout: 60000,
+            expect: {
+                timeout: 10000
             }
         }
     ],

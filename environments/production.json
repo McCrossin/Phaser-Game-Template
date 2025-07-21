@@ -1,0 +1,23 @@
+{
+    "environment": "production",
+    "debug": {
+        "enabled": false,
+        "showFPS": false,
+        "showBounds": false,
+        "logLevel": "error"
+    },
+    "performance": {
+        "targetFPS": 60,
+        "enableProfiling": false,
+        "maxEntities": 2000
+    },
+    "assets": {
+        "baseUrl": "./assets/",
+        "useCompression": true,
+        "enableHotReload": false
+    },
+    "api": {
+        "baseUrl": "https://api.neweden.game",
+        "timeout": 10000
+    }
+}

@@ -2,12 +2,12 @@
  * Simple test to verify ECS architecture is working
  */
 
-import { World } from '../ecs/World';
+import { World } from '../../src/ecs/World';
 import {
     PositionComponent,
     VelocityComponent,
     SpriteComponent
-} from '../components/CoreComponents';
+} from '../../src/components/CoreComponents';
 
 // Simple test function
 export function testECS(): boolean {

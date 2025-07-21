@@ -5,12 +5,12 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
-        setupFiles: ['./tests/setup.ts'],
+        setupFiles: [resolve(__dirname, '../setup.ts')],
         retry: 2, // Automatic retry for flaky tests
         exclude: [
             '**/node_modules/**',
             '**/dist/**',
-            '**/tests/e2e/**' // Exclude e2e tests from unit testing
+            '**/testing/e2e/**' // Exclude e2e tests from unit testing
         ],
         // CI-specific configuration
         reporters: process.env['CI'] ? [['default', { summary: false }]] : ['verbose'],
@@ -18,7 +18,7 @@ export default defineConfig({
         coverage: {
             provider: 'v8',
             reporter: ['text', 'json', 'html'],
-            exclude: ['node_modules/', 'tests/', '**/*.d.ts', '**/*.config.*', '**/mockData/*'],
+            exclude: ['node_modules/', 'testing/', '**/*.d.ts', '**/*.config.*', '**/mockData/*'],
             thresholds: {
                 lines: 80,
                 functions: 80,
@@ -29,10 +29,10 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': resolve(__dirname, './src'),
-            '@assets': resolve(__dirname, './assets'),
-            '@tests': resolve(__dirname, './tests'),
-            phaser: resolve(__dirname, './node_modules/phaser/dist/phaser.js')
+            '@': resolve(__dirname, '../../src'),
+            '@assets': resolve(__dirname, '../../assets'),
+            '@testing': resolve(__dirname, '../'),
+            phaser: resolve(__dirname, '../../node_modules/phaser/dist/phaser.js')
         }
     }
 });

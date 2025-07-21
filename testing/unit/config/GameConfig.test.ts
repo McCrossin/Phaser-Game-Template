@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { GameTestHarness } from '../../helpers/gameTestUtils';
+import { GameTestHarness } from '../../fixtures/gameTestUtils';
 
 describe('Game Configuration', () => {
     let testHarness: GameTestHarness;

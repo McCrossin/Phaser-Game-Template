@@ -8,7 +8,38 @@ This changelog tracks all changes to design documentation, research files, and n
 
 **Repository**: New Eden Project  
 **Maintainer**: Game Scrum Master (Jordan)  
-**Last Updated**: July 18, 2025
+**Last Updated**: July 21, 2025
+
+---
+
+## July 21, 2025
+
+### Documentation Reorganization and Structure Optimization
+
+**Summary**: Reorganized brownfield architecture document by extracting business strategy and market research content into dedicated files. This improves document focus and maintainability while preserving all strategic content.
+
+#### Documentation Structure Improvements
+
+- **[PLANNING] NEW**: `docs/business-strategy.md` (Comprehensive business and monetization strategy)
+    - **EXTRACTED**: Complete monetization strategy and revenue projections from brownfield architecture
+    - **ADDED**: Premium Early Access model with 3-phase implementation plan
+    - **ADDED**: Revenue projections ($8M-$25M over 3 years) and market positioning
+    - **ADDED**: Marketing strategy integration with development roadmap
+    - **ADDED**: Success metrics and KPIs for business validation
+
+- **[RESEARCH] NEW**: `docs/market-research.md` (Market opportunities and competitive analysis)
+    - **EXTRACTED**: Complete market research findings from brownfield architecture
+    - **ADDED**: 5 key market opportunities with competitive positioning analysis
+    - **ADDED**: Target audience profiling and cross-genre appeal assessment
+    - **ADDED**: Strategic design enhancement recommendations
+    - **ADDED**: Market sizing and revenue potential analysis
+
+- **[TECH] UPDATE**: `docs/brownfield-architecture.md` (Streamlined technical focus)
+    - **REMOVED**: Business strategy and monetization sections (moved to dedicated files)
+    - **REMOVED**: Market research content (moved to dedicated files)
+    - **ADDED**: References to new business strategy and market research documents
+    - **IMPROVED**: Document focus on technical architecture and implementation status
+    - **MAINTAINED**: All technical debt analysis and development readiness information
 
 ---
 

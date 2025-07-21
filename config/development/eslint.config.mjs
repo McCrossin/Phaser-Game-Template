@@ -11,10 +11,11 @@ export default tseslint.config(
             '**/*.d.ts',
             'coverage/',
             'docs/',
-            'tests/e2e/**/*',
-            'playwright.config.ts',
-            'vite.config.ts',
-            'build/plugins/**/*'
+            'testing/e2e/**/*',
+            'testing/config/playwright.config.ts',
+            'config/build/vite.config.ts',
+            'build/plugins/**/*',
+            'tools/**/*'
         ]
     },
     prettierRecommended,
@@ -26,7 +27,7 @@ export default tseslint.config(
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                project: './tsconfig.json'
+                project: '../build/tsconfig.json'
             }
         },
         rules: {
@@ -47,7 +48,7 @@ export default tseslint.config(
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                project: './tsconfig.json'
+                project: '../build/tsconfig.json'
             }
         },
         rules: {
@@ -63,12 +64,12 @@ export default tseslint.config(
         }
     },
     {
-        files: ['tests/**/*.ts', '**/*.test.ts', '**/*.config.ts'],
+        files: ['testing/**/*.ts', '**/*.test.ts', '**/*.config.ts'],
         extends: [tseslint.configs.recommended],
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                project: './tsconfig.json'
+                project: '../build/tsconfig.json'
             }
         },
         rules: {
@@ -81,7 +82,7 @@ export default tseslint.config(
         extends: [tseslint.configs.disableTypeChecked]
     },
     {
-        files: ['scripts/**/*.js'],
+        files: ['tools/**/*.js'],
         extends: [tseslint.configs.disableTypeChecked],
         languageOptions: {
             globals: {
