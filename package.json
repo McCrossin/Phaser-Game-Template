@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "vite --config config/build/vite.config.ts",
         "build": "tsc --project config/build/tsconfig.build.json && vite build --config config/build/vite.config.ts",
-        "preview": "vite preview --config config/build/vite.config.ts",
+        "preview": "vite preview --host --port 4173",
         "test": "vitest --config testing/config/vitest.config.ts",
         "test:run": "vitest run --config testing/config/vitest.config.ts",
         "test:ui": "vitest --ui --config testing/config/vitest.config.ts",
@@ -21,7 +21,7 @@
         "docs": "typedoc src/main.ts --options config/build/typedoc.json",
         "prepare": "is-ci || husky",
         "validate": "npm run typecheck && npm run lint && npm run test:run",
-        "test:performance": "playwright test --project=performance --config testing/config/playwright.config.ts",
+        "test:performance": "./scripts/test-performance.sh",
         "build:info": "node tools/build/build-info.js",
         "deploy:staging": "node tools/deployment/deploy.js --environment=staging",
         "deploy:production": "node tools/deployment/deploy.js --environment=production",

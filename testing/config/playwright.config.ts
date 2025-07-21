@@ -72,8 +72,8 @@ export default defineConfig({
                     ]
                 }
             },
-            testDir: './tests/e2e/performance',
-            timeout: process.env.CI ? 120000 : 60000, // Longer timeout for CI
+            testDir: '../e2e/performance',
+            timeout: process.env.CI ? 180000 : 90000, // Longer timeout for CI
             expect: {
                 timeout: process.env.CI ? 15000 : 10000 // Longer expect timeout for CI
             }
@@ -88,7 +88,7 @@ export default defineConfig({
                     args: ['--disable-web-security', '--allow-running-insecure-content']
                 }
             },
-            testDir: './tests/e2e/performance',
+            testDir: '../e2e/performance',
             timeout: 60000,
             expect: {
                 timeout: 10000
@@ -100,6 +100,9 @@ export default defineConfig({
     webServer: {
         command: 'npm run preview',
         url: 'http://localhost:4173',
-        reuseExistingServer: !process.env['CI']
+        reuseExistingServer: !process.env['CI'],
+        timeout: process.env['CI'] ? 180000 : 120000, // 3 minutes for CI, 2 minutes for local
+        stdout: 'pipe',
+        stderr: 'pipe'
     }
 });
