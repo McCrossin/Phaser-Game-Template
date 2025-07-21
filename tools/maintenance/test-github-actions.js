@@ -42,7 +42,8 @@ class GitHubActionsLocalTester {
 
         try {
             // Test the Docker build that GitHub Actions uses
-            const buildCommand = 'docker build --platform linux/amd64 -t new-eden-project:test .';
+            const buildCommand =
+                'docker build --platform linux/amd64 -t phaser-game-template:test .';
             this.log(`Running: ${buildCommand}`);
 
             execSync(buildCommand, {
@@ -136,7 +137,7 @@ class GitHubActionsLocalTester {
         try {
             // Check if we can build and tag properly
             const tagCommand =
-                'docker build --platform linux/amd64 -t ghcr.io/mccrossin/new-eden-project:test .';
+                'docker build --platform linux/amd64 -t ghcr.io/template-author/phaser-game-template:test .';
             execSync(tagCommand, {
                 stdio: 'pipe',
                 cwd: PROJECT_ROOT

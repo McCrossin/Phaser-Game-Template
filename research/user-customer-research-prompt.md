@@ -1,12 +1,13 @@
-# User & Customer Research: New Eden Project Player Psychology & Behavior
+# User & Customer Research: Phaser Game Template Player Psychology & Behavior
 
 ## Research Objective
 
-Conduct deep user and customer research to understand automation-strategy player personas, behaviors, motivations, and engagement patterns that drive 100+ hour gameplay sessions. This research will inform game design decisions, tutorial progression, retention mechanics, and marketing messaging for New Eden Project's unique "probe consciousness" experience.
+Conduct deep user and customer research to understand automation-strategy player personas, behaviors, motivations, and engagement patterns that drive 100+ hour gameplay sessions. This research will inform game design decisions, tutorial progression, retention mechanics, and marketing messaging for game projects built with this Phaser Game Template.
 
 ## Background Context
 
-**New Eden Project** targets automation-strategy enthusiasts with a unique value proposition:
+**Phaser Game Template** provides a foundation for automation-strategy games with:
+
 - **Consciousness Transfer**: Player embodies a von Neumann probe rather than commanding from above
 - **Progressive Complexity**: 45-60 minute tutorial scaling to 100+ hour strategic depth
 - **Scientific Realism**: 118-element periodic table, 7-tier circuit fabrication (28nm to sub-nanometer)
@@ -14,6 +15,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - **Modular Strategy**: 4-slot equipment system enabling tactical specialization
 
 **Key User Experience Questions:**
+
 - How do players transition from manual WASD control to fleet automation?
 - What drives sustained engagement in complex engineering systems?
 - How does the "last guardian of consciousness" narrative resonate emotionally?
@@ -50,6 +52,7 @@ Conduct deep user and customer research to understand automation-strategy player
 ### Information Sources
 
 **Primary Research Sources:**
+
 - Player interviews with automation-strategy enthusiasts (target: 20-30 in-depth interviews)
 - Survey research across automation gaming communities (target: 500+ responses)
 - Behavioral analysis from Steam reviews, Reddit discussions, Discord conversations
@@ -57,6 +60,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - Developer interviews from successful automation games (Factorio, Satisfactory teams)
 
 **Secondary Research Sources:**
+
 - Academic research on gaming psychology and flow states
 - Player motivation frameworks (Bartle taxonomy, Self-Determination Theory applied to gaming)
 - Retention and engagement studies from mobile and PC gaming
@@ -64,6 +68,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - Player journey mapping from comparable complex strategy games
 
 **Data Collection Methods:**
+
 - Semi-structured interviews focusing on gaming history, motivation, and emotional experiences
 - Quantitative surveys measuring engagement drivers, learning preferences, and demographic factors
 - Observational research through gameplay videos and live streams
@@ -73,12 +78,14 @@ Conduct deep user and customer research to understand automation-strategy player
 ### Analysis Frameworks
 
 **Player Motivation Framework:**
+
 - **Intrinsic Motivations**: Mastery, autonomy, purpose in automation contexts
 - **Achievement Patterns**: Completion, optimization, creative expression, social recognition
 - **Flow State Analysis**: When players enter deep engagement vs. frustration/boredom zones
 - **Progression Psychology**: How players experience growth from novice to expert
 
 **User Experience Journey Framework:**
+
 - **Discovery Phase**: How players find and evaluate automation games
 - **Onboarding Phase**: Learning curve navigation and early engagement hooks
 - **Mastery Phase**: Skill development and deepening complexity engagement
@@ -86,6 +93,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - **Advocacy Phase**: What transforms players into evangelists and content creators
 
 **Player Persona Segmentation Framework:**
+
 - **The Engineer**: Loves optimization, systems thinking, technical challenges
 - **The Creator**: Driven by building, aesthetic expression, sharing creations
 - **The Explorer**: Motivated by discovery, experimentation, pushing boundaries
@@ -95,12 +103,14 @@ Conduct deep user and customer research to understand automation-strategy player
 ### Data Requirements
 
 **Quantitative Metrics:**
+
 - Player session lengths, return rates, and progression milestones across automation games
 - Survey data on motivation drivers, learning preferences, and demographic profiles
 - Community engagement metrics (post frequency, upvotes, content creation)
 - Purchase behavior data (price sensitivity, time from discovery to purchase)
 
 **Qualitative Insights:**
+
 - Rich player narratives about automation gaming experiences and emotional connections
 - Detailed learning journey descriptions and friction points
 - Community culture analysis and social dynamics
@@ -119,6 +129,7 @@ Conduct deep user and customer research to understand automation-strategy player
 ### Detailed Analysis
 
 #### 1. Player Persona Deep Dive
+
 - **Demographic & Psychographic Profiles**: Age, background, gaming history, lifestyle factors
 - **Motivation Mapping**: Primary and secondary drivers for each persona type
 - **Behavior Patterns**: How each persona approaches learning, progression, and community engagement
@@ -126,6 +137,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - **Success Factors**: What creates satisfying experiences for each persona
 
 #### 2. Engagement Psychology Analysis
+
 - **Flow State Triggers**: Game elements that create deep engagement and time distortion
 - **Mastery Progression**: How players experience skill development and complexity scaling
 - **Creative Expression**: Role of building, optimization, and personal style in retention
@@ -133,6 +145,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - **Emotional Resonance**: Impact of narrative themes on player connection and advocacy
 
 #### 3. Learning & Onboarding Insights
+
 - **Tutorial Effectiveness**: Optimal pacing, complexity introduction, and guidance styles
 - **Learning Curve Tolerance**: How much complexity players can absorb and when
 - **Knowledge Transfer**: How players share knowledge and learn from community
@@ -140,6 +153,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - **Progression Feedback**: What signals help players understand their advancement
 
 #### 4. Retention & Lifecycle Analysis
+
 - **Engagement Milestones**: Critical moments that predict long-term retention
 - **Drop-off Analysis**: Common abandonment points and underlying causes
 - **Re-engagement Triggers**: What brings lapsed players back to automation games
@@ -147,6 +161,7 @@ Conduct deep user and customer research to understand automation-strategy player
 - **Community Integration**: Role of social elements in retention and advocacy
 
 #### 5. Narrative & Emotional Connection
+
 - **Theme Resonance**: How existential/sci-fi narratives impact different player types
 - **Emotional Journey**: Player emotional experiences throughout game progression
 - **Meaning & Purpose**: How "last guardian" theme affects motivation and connection
@@ -164,18 +179,21 @@ Conduct deep user and customer research to understand automation-strategy player
 ## Success Criteria
 
 **Research Quality Indicators:**
+
 - Representative sample across automation player segments and experience levels
 - Rich qualitative insights validated through multiple research methods
 - Actionable persona profiles with specific design and marketing implications
 - Clear correlation between player motivations and engagement behaviors
 
 **Actionable Insights Requirements:**
+
 - Specific game design recommendations based on player psychology insights
 - Tutorial and onboarding strategy informed by learning preference research
 - Marketing messaging that resonates with core player motivations
 - Retention strategy addressing identified drop-off patterns and engagement drivers
 
 **Decision Support Elements:**
+
 - Player-centered design priorities for development resource allocation
 - Risk mitigation strategies for potential player experience friction points
 - Community building approach aligned with player social behaviors
@@ -184,21 +202,25 @@ Conduct deep user and customer research to understand automation-strategy player
 ## Timeline and Priority
 
 **Phase 1 (Week 1-2): Player Interview & Survey Design**
+
 - Develop interview guides and survey instruments
 - Recruit automation player participants across experience levels
 - Begin initial interviews with core automation enthusiasts
 
 **Phase 2 (Week 3-4): Primary Data Collection**
+
 - Conduct player interviews and deploy community surveys
 - Analyze behavioral data from reviews, forums, and streaming content
 - Gather developer insights from automation game creators
 
 **Phase 3 (Week 5): Analysis & Persona Development**
+
 - Synthesize qualitative and quantitative findings
 - Develop detailed player persona profiles and journey maps
 - Create actionable design and marketing recommendations
 
 **High Priority Research Areas:**
+
 1. Understanding the transition from manual control to automation preferences
 2. Identifying optimal tutorial pacing for complex engineering systems
 3. Validating emotional resonance of "probe consciousness" narrative concept

@@ -81,7 +81,7 @@ export class StartScene extends Phaser.Scene {
     private createTitle(): void {
         // Main title
         this.titleText = this.add
-            .text(640, 150, 'NEW EDEN PROJECT', {
+            .text(640, 150, 'PHASER GAME TEMPLATE', {
                 fontSize: '48px',
                 color: '#00ff88',
                 fontFamily: 'Arial, sans-serif',

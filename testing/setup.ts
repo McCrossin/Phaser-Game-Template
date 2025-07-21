@@ -7,29 +7,35 @@ if (
 ) {
     try {
         // Try to import canvas package if available - using dynamic import for optional dependency
-        import('canvas').then(({ createCanvas }) => {
-            const originalCreateElement = document.createElement.bind(document);
+        // @ts-expect-error - Canvas is an optional dependency for testing
+        import('canvas')
+            .then(({ createCanvas }) => {
+                const originalCreateElement = document.createElement.bind(document);
 
-            // Override createElement with a simpler approach
+                // Override createElement with a simpler approach
 
-            (document as any).createElement = function (
-                tagName: string,
-                options?: ElementCreationOptions
-            ) {
-                if (tagName.toLowerCase() === 'canvas') {
-                    const canvas = createCanvas(800, 600);
-                    // Add missing properties that Phaser might expect
-                    Object.defineProperties(canvas, {
-                        style: { value: {} },
-                        addEventListener: { value: vi.fn() },
-                        removeEventListener: { value: vi.fn() },
-                        dispatchEvent: { value: vi.fn() }
-                    });
-                    return canvas;
-                }
-                return originalCreateElement(tagName, options);
-            };
-        });
+                (document as any).createElement = function (
+                    tagName: string,
+                    options?: ElementCreationOptions
+                ) {
+                    if (tagName.toLowerCase() === 'canvas') {
+                        const canvas = createCanvas(800, 600);
+                        // Add missing properties that Phaser might expect
+                        Object.defineProperties(canvas, {
+                            style: { value: {} },
+                            addEventListener: { value: vi.fn() },
+                            removeEventListener: { value: vi.fn() },
+                            dispatchEvent: { value: vi.fn() }
+                        });
+                        return canvas;
+                    }
+                    return originalCreateElement(tagName, options);
+                };
+            })
+            .catch(() => {
+                // Canvas package not available, use mock implementation
+                console.warn('Canvas package not available, using mock canvas for tests');
+            });
     } catch (error) {
         console.warn('Canvas package not available, using basic mock');
         // Fallback to basic mock

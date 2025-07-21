@@ -7,7 +7,7 @@ updates:
           interval: 'weekly'
       open-pull-requests-limit: 10
       reviewers:
-          - 'McCrossin'
+          - 'TEMPLATE-OWNER'
       labels:
           - 'dependencies'
       groups:
@@ -36,7 +36,7 @@ updates:
           interval: 'weekly'
       open-pull-requests-limit: 5
       reviewers:
-          - 'McCrossin'
+          - 'TEMPLATE-OWNER'
       labels:
           - 'github-actions'
           - 'dependencies'

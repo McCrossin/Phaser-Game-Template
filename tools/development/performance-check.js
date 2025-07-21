@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Performance Check Script for New Eden Project
- * Detects FPS degradation and monitors game performance
+ * Performance Check Script for Phaser Game Template
+ * Validates game performance and provides optimization recommendations
  */
 
 import { readFileSync, existsSync, statSync, readdirSync } from 'fs';

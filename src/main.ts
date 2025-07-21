@@ -15,8 +15,8 @@ export const GAME_CONFIG: GameConfig = {
 
 const phaserConfig: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
-    title: 'New Eden Project',
-    version: '0.1.0',
+    title: 'Phaser Game Template',
+    version: '1.0.0',
     parent: 'game-container',
     width: 1280,
     height: 720,

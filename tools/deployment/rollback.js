@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Rollback Script for New Eden Project
- * Provides 2-minute rollback capability for failed deployments
+ * Rollback Script for Phaser Game Template
+ * Provides blue-green deployment rollback capabilities
  */
 
 import { execSync } from 'child_process';

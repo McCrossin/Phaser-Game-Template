@@ -1,5 +1,5 @@
 #!/bin/bash
-# Performance Testing Script for New Eden Project
+# Performance Testing Script for Phaser Game Template
 # Ensures clean environment and proper build before running tests
 
 set -e

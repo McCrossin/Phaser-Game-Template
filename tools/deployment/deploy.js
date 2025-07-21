@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Blue-Green Deployment Script for New Eden Project
- * Implements zero-downtime deployment with 2-minute rollback capability
+ * Blue-Green Deployment Script for Phaser Game Template
+ * Implements zero-downtime deployments with automatic rollback
  */
 
 import { execSync } from 'child_process';
@@ -65,7 +65,7 @@ function deploy() {
     try {
         // Deploy new version (green)
         runCommand(
-            `docker pull ghcr.io/mccrossin/new-eden-project:${version}`,
+            `docker pull ghcr.io/template-author/phaser-game-template:${version}`,
             'Pulling new image'
         );
         runCommand(

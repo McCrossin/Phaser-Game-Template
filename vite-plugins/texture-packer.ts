@@ -302,7 +302,7 @@ async function saveAtlas(atlas: PackedAtlas, config: AtlasConfig): Promise<void>
     const atlasData: AtlasData = {
         frames: {},
         meta: {
-            app: 'New Eden Project Asset Pipeline',
+            app: 'Phaser Game Template Asset Pipeline',
             version: '1.0.0',
             image: `${config.name}.png`,
             format: 'RGBA8888',

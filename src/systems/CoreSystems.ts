@@ -1,6 +1,6 @@
 /**
- * Core game systems for the New Eden Project
- * These systems handle the main game logic and entity processing
+ * Core game systems for the Phaser Game Template
+ * Provides foundational ECS architecture and system management
  */
 
 import { System } from '../ecs/System';

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * Performance tests for New Eden Project
+ * Performance tests for Phaser Game Template
  * Tests FPS, load times, and detects microfreezes
  * Environment-aware thresholds for CI vs local testing
  */

@@ -1,5 +1,5 @@
 /**
- * Core game components for the New Eden Project
+ * Core game components for the Phaser Game Template
  * These components define the basic properties and behaviors of game entities
  */
 

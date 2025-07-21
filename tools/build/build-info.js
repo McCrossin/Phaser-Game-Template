@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Enhanced Build Info Generator for New Eden Project
- * Generates comprehensive build metadata with 2025 standards
+ * Enhanced Build Info Generator for Phaser Game Template
+ * Generates comprehensive build metadata and version information
  */
 
 import { writeFileSync } from 'fs';

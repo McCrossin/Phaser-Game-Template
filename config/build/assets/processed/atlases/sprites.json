@@ -65,7 +65,7 @@
         }
     },
     "meta": {
-        "app": "New Eden Project Asset Pipeline",
+        "app": "Phaser Game Template Asset Pipeline",
         "version": "1.0.0",
         "image": "sprites.png",
         "format": "RGBA8888",

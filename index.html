@@ -1,103 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Eden Project - Last Guardian of Consciousness</title>
-    <meta name="description" content="2D automation-strategy game with probe consciousness gameplay, authentic science education, and meaningful narrative purpose.">
-    <style>
-        /* Reset CSS */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Phaser Game Template - Professional 2D Game Development</title>
+        <meta
+            name="description"
+            content="Professional 2D game template built with Phaser 3, TypeScript, and modern development tools. Perfect starting point for your next game project."
+        />
+        <style>
+            /* Reset CSS */
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-        html, body {
-            width: 100%;
-            height: 100%;
-        }
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+            }
 
-        body {
-            line-height: 1;
-            font-family: 'Arial', sans-serif;
-            background-color: #040218;
-            overflow: hidden;
-        }
+            body {
+                line-height: 1;
+                font-family: 'Arial', sans-serif;
+                background-color: #040218;
+                overflow: hidden;
+            }
 
-        ol, ul {
-            list-style: none;
-        }
-    
-        img, video {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+            ol,
+            ul {
+                list-style: none;
+            }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+            img,
+            video {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
 
-        /* Game container styles */
-        #game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%);
-        }
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
 
-        /* Loading screen styles */
-        .loading-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #040218;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease-out;
-        }
+            /* Game container styles */
+            #game-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                height: 100vh;
+                background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%);
+            }
 
-        .loading-text {
-            color: #00ff88;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+            /* Loading screen styles */
+            .loading-screen {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #040218;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                transition: opacity 0.5s ease-out;
+            }
 
-        .loading-bar {
-            width: 300px;
-            height: 4px;
-            background-color: #333;
-            border-radius: 2px;
-            overflow: hidden;
-        }
+            .loading-text {
+                color: #00ff88;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
 
-        .loading-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #00ff88, #88ffaa);
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-    </style>
-</head>
-<body>
-    <div id="loading" class="loading-screen">
-        <div class="loading-text">Initializing New Eden Project...</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
+            .loading-bar {
+                width: 300px;
+                height: 4px;
+                background-color: #333;
+                border-radius: 2px;
+                overflow: hidden;
+            }
+
+            .loading-progress {
+                height: 100%;
+                background: linear-gradient(90deg, #00ff88, #88ffaa);
+                transition: width 0.3s ease;
+                width: 0%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="loading" class="loading-screen">
+            <div class="loading-text">Initializing New Eden Project...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
         </div>
-    </div>
-    <div id="game-container"></div>
-    <script type="module" src="./src/main.ts"></script>
-</body>
+        <div id="game-container"></div>
+        <script type="module" src="./src/main.ts"></script>
+    </body>
 </html>

@@ -1,7 +1,7 @@
 {
-    "name": "new-eden-project",
-    "version": "0.1.0",
-    "description": "New Eden Project - 2D automation-strategy game with probe consciousness gameplay",
+    "name": "phaser-game-template",
+    "version": "1.0.0",
+    "description": "Professional 2D Phaser game template with CI/CD, health checks, and TypeScript",
     "main": "dist/main.js",
     "type": "module",
     "scripts": {
@@ -35,15 +35,16 @@
         "health:report": "./scripts/generate-health-report.sh"
     },
     "keywords": [
-        "game",
         "phaser3",
         "typescript",
-        "automation",
-        "strategy",
-        "space",
-        "education"
+        "game-template",
+        "2d-game",
+        "vite",
+        "ci-cd",
+        "game-development",
+        "template"
     ],
-    "author": "New Eden Project Team",
+    "author": "Template Author",
     "license": "MIT",
     "devDependencies": {
         "@playwright/test": "^1.54.1",

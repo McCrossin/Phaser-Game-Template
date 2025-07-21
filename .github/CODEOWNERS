@@ -1,24 +1,24 @@
-# Code owners for New Eden Project
+# Code owners for Phaser Game Template
 # Global ownership
-* @McCrossin
+* @TEMPLATE-OWNER
 
 # CI/CD and DevOps
-/.github/ @McCrossin
-/scripts/ @McCrossin
-/Dockerfile @McCrossin
-/docker-compose.yml @McCrossin
-/nginx.conf @McCrossin
+/.github/ @TEMPLATE-OWNER
+/scripts/ @TEMPLATE-OWNER
+/Dockerfile @TEMPLATE-OWNER
+/docker-compose.yml @TEMPLATE-OWNER
+/nginx.conf @TEMPLATE-OWNER
 
 # Core game development
-/src/ @McCrossin
-/tests/ @McCrossin
+/src/ @TEMPLATE-OWNER
+/tests/ @TEMPLATE-OWNER
 
 # Documentation
-/docs/ @McCrossin
-*.md @McCrossin
+/docs/ @TEMPLATE-OWNER
+*.md @TEMPLATE-OWNER
 
 # Configuration files
-package.json @McCrossin
-tsconfig.json @McCrossin
-vite.config.ts @McCrossin
-eslint.config.mjs @McCrossin
+package.json @TEMPLATE-OWNER
+tsconfig.json @TEMPLATE-OWNER
+vite.config.ts @TEMPLATE-OWNER
+eslint.config.mjs @TEMPLATE-OWNER
