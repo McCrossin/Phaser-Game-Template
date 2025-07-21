@@ -3,9 +3,6 @@ import { StartScene } from '@/scenes/StartScene';
 import { GameScene } from '@/scenes/GameScene';
 import { GameConfig } from '@/types/GameTypes';
 
-// Test ECS on startup
-import '@/test/ECSTest';
-
 // Game Configuration Constants
 export const GAME_CONFIG: GameConfig = {
     WORLD_WIDTH: 2048,
