@@ -5,41 +5,53 @@ if (
     typeof window !== 'undefined' &&
     !window.HTMLCanvasElement.prototype.toDataURL.toString().includes('[native code]')
 ) {
-    try {
-        // Try to import canvas package if available - using dynamic import for optional dependency
-        // @ts-expect-error - Canvas is an optional dependency for testing
-        import('canvas')
-            .then(({ createCanvas }) => {
-                const originalCreateElement = document.createElement.bind(document);
+    // Use a simple mock canvas implementation for testing
+    const originalCreateElement = document.createElement.bind(document);
 
-                // Override createElement with a simpler approach
+    (document as any).createElement = function (tagName: string, options?: ElementCreationOptions) {
+        if (tagName.toLowerCase() === 'canvas') {
+            // Create a basic mock canvas
+            const canvas = {
+                width: 800,
+                height: 600,
+                style: {},
+                getContext: vi.fn().mockReturnValue({
+                    fillRect: vi.fn(),
+                    clearRect: vi.fn(),
+                    getImageData: vi.fn(),
+                    putImageData: vi.fn(),
+                    createImageData: vi.fn(),
+                    setTransform: vi.fn(),
+                    drawImage: vi.fn(),
+                    save: vi.fn(),
+                    restore: vi.fn(),
+                    scale: vi.fn(),
+                    rotate: vi.fn(),
+                    translate: vi.fn(),
+                    transform: vi.fn(),
+                    setLineDash: vi.fn(),
+                    getLineDash: vi.fn(),
+                    measureText: vi.fn().mockReturnValue({ width: 0 }),
+                    canvas: null
+                }),
+                toDataURL: vi.fn().mockReturnValue('data:image/png;base64,mock'),
+                addEventListener: vi.fn(),
+                removeEventListener: vi.fn(),
+                dispatchEvent: vi.fn()
+            };
 
-                (document as any).createElement = function (
-                    tagName: string,
-                    options?: ElementCreationOptions
-                ) {
-                    if (tagName.toLowerCase() === 'canvas') {
-                        const canvas = createCanvas(800, 600);
-                        // Add missing properties that Phaser might expect
-                        Object.defineProperties(canvas, {
-                            style: { value: {} },
-                            addEventListener: { value: vi.fn() },
-                            removeEventListener: { value: vi.fn() },
-                            dispatchEvent: { value: vi.fn() }
-                        });
-                        return canvas;
-                    }
-                    return originalCreateElement(tagName, options);
-                };
-            })
-            .catch(() => {
-                // Canvas package not available, use mock implementation
-                console.warn('Canvas package not available, using mock canvas for tests');
-            });
-    } catch (error) {
-        console.warn('Canvas package not available, using basic mock');
-        // Fallback to basic mock
-    }
+            // Make getContext return a reference to itself for canvas property
+            if (canvas.getContext) {
+                const ctx = canvas.getContext();
+                if (ctx) {
+                    ctx.canvas = canvas;
+                }
+            }
+
+            return canvas as any;
+        }
+        return originalCreateElement(tagName, options);
+    };
 }
 
 // Mock Canvas for Phaser tests (fallback)
