@@ -96,7 +96,7 @@ jobs:
                   ignore-unfixed: false
 
             - name: Upload Trivy scan results to GitHub Security tab
-              if: false  # Disabled - CodeQL not available for indie developers
+              if: false # Disabled - CodeQL not available for indie developers
               uses: github/codeql-action/upload-sarif@v3
               continue-on-error: true
               with:
