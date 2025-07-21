@@ -1,0 +1,63 @@
+# Debug workflow to test performance testing in CI
+name: Performance Test Debug
+
+on:
+    workflow_dispatch: # Manual trigger for debugging
+
+jobs:
+    debug-performance:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Install Playwright
+              run: |
+                  npx playwright install --with-deps
+
+            - name: Debug environment
+              run: |
+                  echo "Current directory: $(pwd)"
+                  echo "Node version: $(node --version)"
+                  echo "NPM version: $(npm --version)"
+                  echo "CI environment: $CI"
+                  ls -la
+
+            - name: Build application
+              run: npm run build
+
+            - name: Check build output
+              run: |
+                  echo "Build output:"
+                  find dist -type f -name "*.html" | head -10
+                  ls -la dist/
+
+            - name: Test preview server manually
+              run: |
+                  echo "Starting preview server..."
+                  npm run preview &
+                  PREVIEW_PID=$!
+                  sleep 10
+
+                  echo "Testing server response..."
+                  curl -I http://localhost:4173/ || echo "Server not responding"
+
+                  echo "Killing preview server..."
+                  kill $PREVIEW_PID || true
+
+            - name: Run performance tests with debug
+              run: |
+                  export DEBUG=pw:webserver
+                  npm run test:performance
+              env:
+                  CI: true

@@ -51,6 +51,7 @@
         "../../node_modules",
         "../../dist",
         "../../testing/e2e/**/*",
-        "../../testing/config/playwright.config.ts"
+        "../../testing/config/playwright.config.ts",
+        "../../testing/config/playwright-ci.config.ts"
     ]
 }

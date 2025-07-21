@@ -13,6 +13,7 @@ export default tseslint.config(
             'docs/',
             'testing/e2e/**/*',
             'testing/config/playwright.config.ts',
+            'testing/config/playwright-ci.config.ts',
             'config/build/vite.config.ts',
             'build/plugins/**/*',
             'tools/**/*'

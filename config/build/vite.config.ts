@@ -14,6 +14,7 @@ export default defineConfig({
         sourcemap: process.env.NODE_ENV !== 'production',
         minify: 'esbuild',
         target: 'es2020',
+        emptyOutDir: true,
         rollupOptions: {
             input: {
                 main: resolve(__dirname, '../../index.html')

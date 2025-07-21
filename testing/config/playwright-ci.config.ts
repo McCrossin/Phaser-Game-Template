@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const isCI = process.env.CI === 'true';
+
 export default defineConfig({
     testDir: '../e2e',
     /* Run tests in files in parallel */
@@ -96,13 +98,17 @@ export default defineConfig({
         }
     ],
 
-    /* Run your local dev server before starting the tests */
-    webServer: {
-        command: 'npm run preview',
-        url: 'http://localhost:4173',
-        reuseExistingServer: !process.env['CI'],
-        timeout: process.env['CI'] ? 300000 : 120000, // 5 minutes for CI, 2 minutes for local
-        stdout: 'pipe',
-        stderr: 'pipe'
-    }
+    /* Conditional webServer for non-CI environments */
+    ...(isCI
+        ? {}
+        : {
+              webServer: {
+                  command: 'npm run preview',
+                  url: 'http://localhost:4173',
+                  reuseExistingServer: !process.env['CI'],
+                  timeout: process.env['CI'] ? 300000 : 120000, // 5 minutes for CI, 2 minutes for local
+                  stdout: 'pipe',
+                  stderr: 'pipe'
+              }
+          })
 });
