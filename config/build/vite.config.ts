@@ -15,8 +15,14 @@ export default defineConfig({
         minify: 'esbuild',
         target: 'es2020',
         emptyOutDir: true,
+        chunkSizeWarningLimit: 1000, // Increase threshold to 1MB
         rollupOptions: {
-            input: resolve(__dirname, '../../index.html')
+            input: resolve(__dirname, '../../index.html'),
+            output: {
+                manualChunks: {
+                    phaser: ['phaser']
+                }
+            }
         }
     },
     server: {

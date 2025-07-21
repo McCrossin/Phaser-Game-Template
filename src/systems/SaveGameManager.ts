@@ -2,6 +2,25 @@
  * Save Game Manager - Handles save/load operations and compatibility
  */
 
+// Basic type definitions for save game data
+interface ProbeData {
+    id: string;
+    position: { x: number; y: number };
+    status: string;
+}
+
+interface DiscoveredItem {
+    id: string;
+    type: string;
+    location: { x: number; y: number };
+}
+
+interface StructureData {
+    id: string;
+    type: string;
+    position: { x: number; y: number };
+}
+
 export interface SaveData {
     version: string;
     player: {
@@ -10,51 +29,60 @@ export interface SaveData {
             materials?: number;
         };
         research?: string[];
-        probes?: any[];
+        probes?: ProbeData[];
     };
     world?: {
-        discovered: any[];
-        structures?: any[];
+        discovered: DiscoveredItem[];
+        structures?: StructureData[];
     };
     timestamp?: number;
 }
 
 export class SaveGameManager {
-    async loadGame(saveData: any): Promise<SaveData> {
+    async loadGame(saveData: unknown): Promise<SaveData> {
         // Validate save data
         if (!saveData || typeof saveData !== 'object') {
-            throw new Error('Invalid save file format');
+            throw new Error('Invalid save data format');
         }
 
-        if (!saveData.player || saveData.player === null) {
+        // Type guard to ensure we have the expected structure
+        const data = saveData as Record<string, unknown>;
+
+        // Validate required fields
+        if (!data['player'] || data['player'] === null) {
             throw new Error('Invalid save file format');
         }
 
         // Create backup before migration
-        this.createBackup(saveData);
+        this.createBackup(data);
+
+        // Type guards for nested objects
+        const playerData = data['player'] as Record<string, unknown>;
+        const playerResources = (playerData?.['resources'] as Record<string, unknown>) || {};
+        const worldData = (data['world'] as Record<string, unknown>) || {};
 
         // Migrate save data to current version
         const migratedData: SaveData = {
-            version: '0.1.0', // Current version
+            version: (data['version'] as string) || '0.1.0',
             player: {
                 resources: {
-                    energy: saveData.player.resources?.energy || 0,
-                    materials: saveData.player.resources?.materials || 0
+                    energy: (playerResources['energy'] as number) || 0,
+                    materials: (playerResources['materials'] as number) || 0
                 },
-                research: saveData.player.research || [],
-                probes: saveData.player.probes || []
+                research: (playerData['research'] as string[]) || [],
+                probes: (playerData['probes'] as ProbeData[]) || []
             },
             world: {
-                discovered: saveData.world?.discovered || [],
-                structures: saveData.world?.structures || []
+                discovered: (worldData['discovered'] as DiscoveredItem[]) || [],
+                structures: (worldData['structures'] as StructureData[]) || []
             },
-            timestamp: saveData.timestamp || Date.now()
+            timestamp: (data['timestamp'] as number) || Date.now()
         };
 
         return migratedData;
     }
 
-    createBackup(saveData: any): void {
+    createBackup(saveData: Record<string, unknown>): void {
         // In real implementation, this would save to backup location
         console.log('Creating backup of save data', saveData);
     }

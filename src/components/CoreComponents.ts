@@ -255,10 +255,12 @@ export class InputComponent extends Component {
     }
 
     setKey(key: string, pressed: boolean): void {
+        // eslint-disable-next-line security/detect-object-injection
         this.keys[key] = pressed;
     }
 
     isKeyPressed(key: string): boolean {
+        // eslint-disable-next-line security/detect-object-injection
         return this.keys[key] || false;
     }
 

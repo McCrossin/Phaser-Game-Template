@@ -1,67 +1,23 @@
 {
-    "timestamp": "2025-07-21T07:44:33.913Z",
+    "timestamp": "2025-07-21T08:28:04.660Z",
     "summary": {
-        "totalItems": 1533,
+        "totalItems": 1585,
         "bySeverity": {
-            "low": 218,
-            "medium": 1307,
-            "critical": 8
+            "low": 243,
+            "medium": 1338,
+            "critical": 4
         },
         "byCategory": {
-            "maintainability": 1207,
-            "code-quality": 285,
+            "maintainability": 1253,
+            "code-quality": 295,
             "performance": 5,
             "documentation": 28,
-            "security": 8
+            "security": 4
         },
-        "filesScanned": 52,
+        "filesScanned": 53,
         "projectHealth": "critical"
     },
     "items": [
-        {
-            "file": "src/scenes/GameScene.ts",
-            "line": 33,
-            "column": 17,
-            "pattern": "Hardcoded Credentials",
-            "severity": "critical",
-            "category": "security",
-            "description": "Hardcoded credentials are a security risk",
-            "suggestion": "Move credentials to environment variables or secure configuration",
-            "context": "super({ key: 'GameScene' });"
-        },
-        {
-            "file": "src/scenes/StartScene.ts",
-            "line": 14,
-            "column": 17,
-            "pattern": "Hardcoded Credentials",
-            "severity": "critical",
-            "category": "security",
-            "description": "Hardcoded credentials are a security risk",
-            "suggestion": "Move credentials to environment variables or secure configuration",
-            "context": "super({ key: 'StartScene' });"
-        },
-        {
-            "file": "src/scenes/StartScene.ts",
-            "line": 117,
-            "column": 13,
-            "pattern": "Hardcoded Credentials",
-            "severity": "critical",
-            "category": "security",
-            "description": "Hardcoded credentials are a security risk",
-            "suggestion": "Move credentials to environment variables or secure configuration",
-            "context": "key: 'fly',"
-        },
-        {
-            "file": "testing/fixtures/gameTestUtils.ts",
-            "line": 13,
-            "column": 13,
-            "pattern": "Hardcoded Credentials",
-            "severity": "critical",
-            "category": "security",
-            "description": "Hardcoded credentials are a security risk",
-            "suggestion": "Move credentials to environment variables or secure configuration",
-            "context": "key: 'TestScene',"
-        },
         {
             "file": "tools/monitoring/compiled/technical-debt-tracker.js",
             "line": 124,
@@ -97,14 +53,14 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 165,
-            "column": 36,
+            "line": 166,
+            "column": 28,
             "pattern": "Eval Usage",
             "severity": "critical",
             "category": "security",
             "description": "eval() can execute arbitrary code and is a security risk",
             "suggestion": "Avoid eval() and use safer alternatives like JSON.parse() or proper parsing",
-            "context": "suggestion: 'Avoid eval() and use safer alternatives like JSON.parse() or proper parsing'"
+            "context": "'Avoid eval() and use safer alternatives like JSON.parse() or proper parsing'"
         },
         {
             "file": "config/deployment/config.ts",
@@ -3551,7 +3507,29 @@
         },
         {
             "file": "testing/setup.ts",
-            "line": 24,
+            "line": 25,
+            "column": 9,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.warn('Canvas package not available, using basic mock');"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 10,
+            "column": 68,
+            "pattern": "Any Type Usage",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Using \"any\" type defeats TypeScript type safety",
+            "suggestion": "Replace \"any\" with specific types or proper interfaces",
+            "context": "document.createElement = function(tagName: string, options?: any) {"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 55,
             "column": 21,
             "pattern": "Any Type Usage",
             "severity": "medium",
@@ -3562,7 +3540,117 @@
         },
         {
             "file": "testing/setup.ts",
-            "line": 60,
+            "line": 8,
+            "column": 77,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "const originalCreateElement = document.createElement.bind(document);"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 11,
+            "column": 54,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "if (tagName.toLowerCase() === 'canvas') {"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 13,
+            "column": 67,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "// Add missing properties that Phaser might expect"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 14,
+            "column": 50,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "Object.defineProperties(canvas, {"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 15,
+            "column": 42,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "style: { value: {} },"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 16,
+            "column": 58,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "addEventListener: { value: vi.fn() },"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 17,
+            "column": 61,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "removeEventListener: { value: vi.fn() },"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 19,
+            "column": 20,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "});"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 57,
+            "column": 10,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "}"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 62,
+            "column": 10,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "}"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 97,
             "column": 19,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -3573,7 +3661,7 @@
         },
         {
             "file": "testing/setup.ts",
-            "line": 61,
+            "line": 98,
             "column": 33,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -5244,6 +5332,314 @@
             "context": "console.error('Rollback failed:', error.message);"
         },
         {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 20,
+            "column": 5,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log('🎨 Generating basic UI sprites...');"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 64,
+            "column": 9,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`  ✅ Created ${name}.png`);"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 79,
+            "column": 9,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`  ✅ Created ${name}.png`);"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 94,
+            "column": 9,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`  ✅ Created ${name}.png`);"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 109,
+            "column": 9,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`  ✅ Created ${name}.png`);"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 112,
+            "column": 5,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log('🎉 UI sprites generated successfully!');"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 113,
+            "column": 5,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`📁 Output directory: ${outputDir}`);"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 114,
+            "column": 5,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log('💡 These are basic placeholder sprites - replace with proper UI assets later');"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 55,
+            "column": 22,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "create: {"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 56,
+            "column": 28,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "width: 256,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 57,
+            "column": 28,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "height: 64,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 58,
+            "column": 29,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "channels: 4,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 61,
+            "column": 12,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "});"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 70,
+            "column": 22,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "create: {"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 71,
+            "column": 28,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "width: 512,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 72,
+            "column": 29,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "height: 512,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 73,
+            "column": 29,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "channels: 4,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 76,
+            "column": 12,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "});"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 85,
+            "column": 22,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "create: {"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 86,
+            "column": 28,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "width: 200,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 87,
+            "column": 28,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "height: 20,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 88,
+            "column": 29,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "channels: 4,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 91,
+            "column": 12,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "});"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 100,
+            "column": 22,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "create: {"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 101,
+            "column": 27,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "width: 64,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 102,
+            "column": 28,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "height: 64,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 103,
+            "column": 29,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "channels: 4,"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 106,
+            "column": 12,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "});"
+        },
+        {
             "file": "tools/development/performance-check.js",
             "line": 46,
             "column": 5,
@@ -5839,7 +6235,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 282,
+            "line": 287,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5850,7 +6246,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 336,
+            "line": 341,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5861,7 +6257,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 366,
+            "line": 374,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5872,7 +6268,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 367,
+            "line": 375,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5883,7 +6279,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 368,
+            "line": 376,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5894,7 +6290,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 369,
+            "line": 377,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5905,7 +6301,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 370,
+            "line": 378,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5916,7 +6312,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 371,
+            "line": 379,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5927,7 +6323,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 372,
+            "line": 380,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5938,7 +6334,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 373,
+            "line": 381,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5949,7 +6345,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 374,
+            "line": 382,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5960,7 +6356,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 375,
+            "line": 383,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -5968,39 +6364,6 @@
             "description": "Console statements should not be in production code",
             "suggestion": "Replace with proper logging or remove debug statements",
             "context": "console.log('');"
-        },
-        {
-            "file": "tools/monitoring/compiled/health-check.js",
-            "line": 380,
-            "column": 17,
-            "pattern": "Console Statements",
-            "severity": "medium",
-            "category": "code-quality",
-            "description": "Console statements should not be in production code",
-            "suggestion": "Replace with proper logging or remove debug statements",
-            "context": "console.log(`${statusIcon} ${category.category}: ${category.score}/${category.maxScore}`);"
-        },
-        {
-            "file": "tools/monitoring/compiled/health-check.js",
-            "line": 382,
-            "column": 21,
-            "pattern": "Console Statements",
-            "severity": "medium",
-            "category": "code-quality",
-            "description": "Console statements should not be in production code",
-            "suggestion": "Replace with proper logging or remove debug statements",
-            "context": "console.log(`   ${detail}`);"
-        },
-        {
-            "file": "tools/monitoring/compiled/health-check.js",
-            "line": 385,
-            "column": 21,
-            "pattern": "Console Statements",
-            "severity": "medium",
-            "category": "code-quality",
-            "description": "Console statements should not be in production code",
-            "suggestion": "Replace with proper logging or remove debug statements",
-            "context": "console.log(`   📈 Metrics: ${JSON.stringify(category.metrics)}`);"
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
@@ -6011,11 +6374,44 @@
             "category": "code-quality",
             "description": "Console statements should not be in production code",
             "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`${statusIcon} ${category.category}: ${category.score}/${category.maxScore}`);"
+        },
+        {
+            "file": "tools/monitoring/compiled/health-check.js",
+            "line": 389,
+            "column": 21,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`   ${detail}`);"
+        },
+        {
+            "file": "tools/monitoring/compiled/health-check.js",
+            "line": 392,
+            "column": 21,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
+            "context": "console.log(`   📈 Metrics: ${JSON.stringify(category.metrics)}`);"
+        },
+        {
+            "file": "tools/monitoring/compiled/health-check.js",
+            "line": 394,
+            "column": 17,
+            "pattern": "Console Statements",
+            "severity": "medium",
+            "category": "code-quality",
+            "description": "Console statements should not be in production code",
+            "suggestion": "Replace with proper logging or remove debug statements",
             "context": "console.log('');"
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 390,
+            "line": 397,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -6026,7 +6422,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 392,
+            "line": 399,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -6037,7 +6433,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 395,
+            "line": 402,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -6048,7 +6444,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 398,
+            "line": 405,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -6059,7 +6455,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 400,
+            "line": 407,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -6070,7 +6466,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 404,
+            "line": 411,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -6081,7 +6477,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 409,
+            "line": 416,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -6752,7 +7148,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 262,
+            "line": 267,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6763,7 +7159,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 263,
+            "line": 268,
             "column": 68,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6774,7 +7170,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 264,
+            "line": 269,
             "column": 42,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6785,7 +7181,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 265,
+            "line": 270,
             "column": 73,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6796,7 +7192,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 294,
+            "line": 299,
             "column": 47,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6807,7 +7203,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 295,
+            "line": 300,
             "column": 71,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6818,7 +7214,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 296,
+            "line": 301,
             "column": 72,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6829,7 +7225,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 297,
+            "line": 302,
             "column": 69,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6840,7 +7236,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 298,
+            "line": 303,
             "column": 82,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6851,7 +7247,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 299,
+            "line": 304,
             "column": 39,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6862,7 +7258,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 301,
+            "line": 306,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6873,7 +7269,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 302,
+            "line": 307,
             "column": 23,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6884,7 +7280,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 306,
+            "line": 311,
             "column": 19,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6895,7 +7291,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 307,
+            "line": 312,
             "column": 35,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6906,7 +7302,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 312,
+            "line": 317,
             "column": 74,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6917,7 +7313,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 315,
+            "line": 320,
             "column": 19,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6928,7 +7324,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 316,
+            "line": 321,
             "column": 103,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6939,7 +7335,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 354,
+            "line": 362,
             "column": 27,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6950,7 +7346,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 355,
+            "line": 363,
             "column": 46,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6961,7 +7357,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 356,
+            "line": 364,
             "column": 77,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6972,7 +7368,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 357,
+            "line": 365,
             "column": 44,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6983,7 +7379,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 377,
+            "line": 385,
             "column": 56,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -6994,29 +7390,18 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 378,
-            "column": 70,
+            "line": 386,
+            "column": 111,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const statusIcon = category.status === 'pass' ? '✅' :"
+            "context": "const statusIcon = category.status === 'pass' ? '✅' : category.status === 'warn' ? '⚠️' : '❌';"
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 379,
-            "column": 61,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "category.status === 'warn' ? '⚠️' : '❌';"
-        },
-        {
-            "file": "tools/monitoring/compiled/health-check.js",
-            "line": 380,
+            "line": 387,
             "column": 107,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -7027,7 +7412,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 381,
+            "line": 388,
             "column": 57,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -7038,29 +7423,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 383,
-            "column": 18,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "}"
-        },
-        {
-            "file": "tools/monitoring/compiled/health-check.js",
-            "line": 384,
-            "column": 84,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "if (category.metrics && Object.keys(category.metrics).length > 0) {"
-        },
-        {
-            "file": "tools/monitoring/compiled/health-check.js",
-            "line": 386,
+            "line": 390,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -7072,6 +7435,28 @@
         {
             "file": "tools/monitoring/compiled/health-check.js",
             "line": 391,
+            "column": 84,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "if (category.metrics && Object.keys(category.metrics).length > 0) {"
+        },
+        {
+            "file": "tools/monitoring/compiled/health-check.js",
+            "line": 393,
+            "column": 18,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "}"
+        },
+        {
+            "file": "tools/monitoring/compiled/health-check.js",
+            "line": 398,
             "column": 47,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -7082,7 +7467,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 394,
+            "line": 401,
             "column": 52,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -7093,7 +7478,7 @@
         },
         {
             "file": "tools/monitoring/compiled/health-check.js",
-            "line": 397,
+            "line": 404,
             "column": 19,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -8183,13 +8568,13 @@
         {
             "file": "tools/monitoring/compiled/technical-debt-tracker.js",
             "line": 113,
-            "column": 82,
+            "column": 116,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "pattern: /(password|secret|token|key)\\s*[:=]\\s*['\"][^'\"]+['\"]/gi,"
+            "context": "pattern: /(password|secret|api[_-]?key|auth[_-]?token|access[_-]?token)\\s*[:=]\\s*['\"][^'\"]+['\"]/gi,"
         },
         {
             "file": "tools/monitoring/compiled/technical-debt-tracker.js",
@@ -9150,7 +9535,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 93,
+            "line": 96,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9161,7 +9546,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 120,
+            "line": 123,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9172,7 +9557,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 234,
+            "line": 251,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9183,7 +9568,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 279,
+            "line": 302,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9194,7 +9579,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 336,
+            "line": 368,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9205,7 +9590,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 391,
+            "line": 427,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9216,7 +9601,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 428,
+            "line": 468,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9227,7 +9612,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 429,
+            "line": 469,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9238,7 +9623,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 430,
+            "line": 470,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9249,7 +9634,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 431,
+            "line": 471,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9260,7 +9645,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 432,
+            "line": 472,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9271,7 +9656,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 433,
+            "line": 473,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9282,18 +9667,18 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 434,
+            "line": 474,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
             "category": "code-quality",
             "description": "Console statements should not be in production code",
             "suggestion": "Replace with proper logging or remove debug statements",
-            "context": "console.log(`💻 Environment: ${report.environment.platform} (${report.environment.arch})`);"
+            "context": "console.log("
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 435,
+            "line": 477,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9304,7 +9689,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 436,
+            "line": 478,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9315,7 +9700,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 437,
+            "line": 479,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9326,18 +9711,18 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 443,
+            "line": 485,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
             "category": "code-quality",
             "description": "Console statements should not be in production code",
             "suggestion": "Replace with proper logging or remove debug statements",
-            "context": "console.log(`${statusIcon} ${category.category}: ${category.score}/${category.maxScore}`);"
+            "context": "console.log("
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 446,
+            "line": 490,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9348,7 +9733,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 450,
+            "line": 494,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9359,7 +9744,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 452,
+            "line": 496,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9370,7 +9755,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 456,
+            "line": 500,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9381,7 +9766,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 458,
+            "line": 502,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9392,7 +9777,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 460,
+            "line": 504,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9403,7 +9788,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 462,
+            "line": 506,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9414,7 +9799,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 464,
+            "line": 508,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9425,7 +9810,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 469,
+            "line": 513,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9436,7 +9821,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 475,
+            "line": 518,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -9557,7 +9942,18 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 100,
+            "line": 88,
+            "column": 46,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "const thresholdsPath = path.join("
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 103,
             "column": 47,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9568,7 +9964,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 101,
+            "line": 104,
             "column": 39,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9579,7 +9975,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 102,
+            "line": 105,
             "column": 35,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9590,7 +9986,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 105,
+            "line": 108,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9601,7 +9997,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 106,
+            "line": 109,
             "column": 43,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9612,7 +10008,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 107,
+            "line": 110,
             "column": 31,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9623,7 +10019,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 111,
+            "line": 114,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9634,7 +10030,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 112,
+            "line": 115,
             "column": 82,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9645,7 +10041,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 113,
+            "line": 116,
             "column": 32,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9656,7 +10052,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 147,
+            "line": 150,
             "column": 72,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9667,7 +10063,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 148,
+            "line": 151,
             "column": 35,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9678,7 +10074,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 150,
+            "line": 155,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9689,7 +10085,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 161,
+            "line": 168,
             "column": 43,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9700,7 +10096,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 162,
+            "line": 169,
             "column": 67,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9711,7 +10107,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 163,
+            "line": 170,
             "column": 41,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9722,7 +10118,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 164,
+            "line": 171,
             "column": 87,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9733,7 +10129,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 165,
+            "line": 172,
             "column": 37,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9744,7 +10140,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 166,
+            "line": 173,
             "column": 91,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9755,7 +10151,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 197,
+            "line": 204,
             "column": 70,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9766,7 +10162,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 198,
+            "line": 205,
             "column": 35,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9777,7 +10173,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 200,
+            "line": 209,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9788,7 +10184,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 213,
+            "line": 226,
             "column": 33,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9799,7 +10195,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 214,
+            "line": 227,
             "column": 63,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9810,7 +10206,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 215,
+            "line": 228,
             "column": 53,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9821,7 +10217,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 216,
+            "line": 229,
             "column": 77,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9832,7 +10228,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 217,
+            "line": 230,
             "column": 39,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9843,7 +10239,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 219,
+            "line": 234,
             "column": 25,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9854,139 +10250,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 222,
-            "column": 21,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "} else {"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 247,
-            "column": 76,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const perfCheck = this.execCommand('npm run test:performance');"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 249,
-            "column": 37,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "if (perfCheck.success) {"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 250,
-            "column": 36,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "result.score += 15;"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 253,
-            "column": 50,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "// Try to extract FPS information"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 254,
-            "column": 86,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const fpsMatch = perfCheck.stdout.match(/FPS[:\\s]*(\\d+(?:\\.\\d+)?)/i);"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 255,
-            "column": 32,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "if (fpsMatch) {"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 256,
-            "column": 57,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const fps = parseFloat(fpsMatch[1]);"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 257,
-            "column": 47,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "result.metrics!.fps = fps;"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 258,
-            "column": 70,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "if (fps >= this.thresholds.performance.min_fps) {"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 259,
-            "column": 43,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "result.score += 5;"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 261,
-            "column": 29,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "} else {"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 265,
+            "line": 239,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -9998,6 +10262,127 @@
         {
             "file": "tools/monitoring/health-check.ts",
             "line": 266,
+            "column": 37,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "if (perfCheck.success) {"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 267,
+            "column": 36,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "result.score += 15;"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 270,
+            "column": 50,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "// Try to extract FPS information"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 271,
+            "column": 86,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "const fpsMatch = perfCheck.stdout.match(/FPS[:\\s]*(\\d+(?:\\.\\d+)?)/i);"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 272,
+            "column": 32,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "if (fpsMatch) {"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 273,
+            "column": 57,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "const fps = parseFloat(fpsMatch[1]);"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 274,
+            "column": 47,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "result.metrics!.fps = fps;"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 275,
+            "column": 70,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "if (fps >= this.thresholds.performance.min_fps) {"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 276,
+            "column": 43,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "result.score += 5;"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 280,
+            "column": 29,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "} else {"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 286,
+            "column": 21,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "} else {"
+        },
+        {
+            "file": "tools/monitoring/health-check.ts",
+            "line": 287,
             "column": 67,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10008,7 +10393,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 297,
+            "line": 320,
             "column": 29,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10019,7 +10404,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 298,
+            "line": 321,
             "column": 58,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10030,7 +10415,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 299,
+            "line": 322,
             "column": 61,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10041,7 +10426,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 300,
+            "line": 323,
             "column": 81,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10052,7 +10437,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 301,
+            "line": 324,
             "column": 39,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10063,7 +10448,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 303,
+            "line": 328,
             "column": 25,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10074,7 +10459,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 306,
+            "line": 333,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10085,7 +10470,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 315,
+            "line": 347,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10096,7 +10481,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 316,
+            "line": 348,
             "column": 68,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10107,7 +10492,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 317,
+            "line": 349,
             "column": 42,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10118,7 +10503,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 318,
+            "line": 350,
             "column": 73,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10129,7 +10514,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 349,
+            "line": 381,
             "column": 47,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10140,7 +10525,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 350,
+            "line": 382,
             "column": 71,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10151,7 +10536,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 351,
+            "line": 383,
             "column": 72,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10162,7 +10547,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 352,
+            "line": 384,
             "column": 70,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10173,7 +10558,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 354,
+            "line": 386,
             "column": 82,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10184,7 +10569,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 355,
+            "line": 387,
             "column": 39,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10195,7 +10580,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 357,
+            "line": 391,
             "column": 25,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10206,7 +10591,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 360,
+            "line": 396,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10217,7 +10602,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 361,
+            "line": 397,
             "column": 35,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10228,7 +10613,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 365,
+            "line": 401,
             "column": 74,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10239,7 +10624,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 367,
+            "line": 403,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10250,7 +10635,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 368,
+            "line": 404,
             "column": 103,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10261,18 +10646,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 404,
-            "column": 78,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const overallStatus = totalScore >= maxTotalScore * 0.8 ? 'healthy' :"
-        },
-        {
-            "file": "tools/monitoring/health-check.ts",
-            "line": 413,
+            "line": 453,
             "column": 27,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10283,7 +10657,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 414,
+            "line": 454,
             "column": 46,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10294,7 +10668,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 415,
+            "line": 455,
             "column": 77,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10305,7 +10679,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 416,
+            "line": 456,
             "column": 44,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10316,7 +10690,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 440,
+            "line": 482,
             "column": 56,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10327,40 +10701,40 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 441,
-            "column": 70,
+            "line": 483,
+            "column": 35,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const statusIcon = category.status === 'pass' ? '✅' :"
+            "context": "const statusIcon ="
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 442,
-            "column": 74,
+            "line": 484,
+            "column": 96,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "category.status === 'warn' ? '⚠️' : '❌';"
+            "context": "category.status === 'pass' ? '✅' : category.status === 'warn' ? '⚠️' : '❌';"
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 443,
-            "column": 107,
+            "line": 487,
+            "column": 19,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "console.log(`${statusIcon} ${category.category}: ${category.score}/${category.maxScore}`);"
+            "context": ");"
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 445,
+            "line": 489,
             "column": 57,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10371,7 +10745,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 447,
+            "line": 491,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10382,7 +10756,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 449,
+            "line": 493,
             "column": 84,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10393,7 +10767,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 451,
+            "line": 495,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10404,7 +10778,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 457,
+            "line": 501,
             "column": 47,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10415,7 +10789,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 459,
+            "line": 503,
             "column": 54,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10426,7 +10800,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 461,
+            "line": 505,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -10437,18 +10811,18 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 275,
+            "line": 280,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
             "category": "code-quality",
             "description": "Console statements should not be in production code",
             "suggestion": "Replace with proper logging or remove debug statements",
-            "context": "console.warn(`Warning: Could not analyze file ${filePath}:`, error instanceof Error ? error.message "
+            "context": "console.warn("
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 357,
+            "line": 380,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10459,7 +10833,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 360,
+            "line": 383,
             "column": 9,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10470,7 +10844,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 404,
+            "line": 433,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10481,7 +10855,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 405,
+            "line": 434,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10492,7 +10866,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 406,
+            "line": 435,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10503,7 +10877,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 407,
+            "line": 436,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10514,7 +10888,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 408,
+            "line": 437,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10525,7 +10899,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 409,
+            "line": 438,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10536,7 +10910,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 410,
+            "line": 439,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10547,7 +10921,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 411,
+            "line": 440,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10558,7 +10932,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 414,
+            "line": 443,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10569,7 +10943,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 418,
+            "line": 447,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10580,7 +10954,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 420,
+            "line": 449,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10591,7 +10965,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 423,
+            "line": 452,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10602,7 +10976,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 425,
+            "line": 454,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10613,7 +10987,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 427,
+            "line": 456,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10624,7 +10998,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 430,
+            "line": 459,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10635,7 +11009,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 432,
+            "line": 461,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10646,7 +11020,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 434,
+            "line": 463,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10657,7 +11031,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 438,
+            "line": 467,
             "column": 17,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10668,7 +11042,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 442,
+            "line": 471,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10679,7 +11053,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 443,
+            "line": 472,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10690,7 +11064,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 444,
+            "line": 473,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10701,7 +11075,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 445,
+            "line": 474,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10712,7 +11086,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 446,
+            "line": 475,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10723,7 +11097,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 450,
+            "line": 479,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10734,7 +11108,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 451,
+            "line": 480,
             "column": 21,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10745,7 +11119,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 455,
+            "line": 484,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10756,7 +11130,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 460,
+            "line": 489,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10767,7 +11141,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 467,
+            "line": 495,
             "column": 13,
             "pattern": "Console Statements",
             "severity": "medium",
@@ -10822,14 +11196,14 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 171,
-            "column": 114,
+            "line": 173,
+            "column": 109,
             "pattern": "Long Parameter Lists",
             "severity": "medium",
             "category": "maintainability",
             "description": "Functions with many parameters are hard to maintain",
             "suggestion": "Use object parameters or break into smaller functions",
-            "context": "pattern: /^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*function\\s+\\w+\\s*\\(|^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*const\\s+\\w+\\s*=\\s*\\(/g"
+            "context": "/^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*function\\s+\\w+\\s*\\(|^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*const\\s+\\w+\\s*=\\s*\\(/gm,"
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
@@ -11516,13 +11890,13 @@
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
             "line": 153,
-            "column": 82,
+            "column": 116,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "pattern: /(password|secret|token|key)\\s*[:=]\\s*['\"][^'\"]+['\"]/gi,"
+            "context": "pattern: /(password|secret|api[_-]?key|auth[_-]?token|access[_-]?token)\\s*[:=]\\s*['\"][^'\"]+['\"]/gi,"
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
@@ -11625,7 +11999,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 169,
+            "line": 170,
             "column": 14,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11636,7 +12010,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 170,
+            "line": 171,
             "column": 56,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11647,18 +12021,18 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 171,
-            "column": 119,
+            "line": 173,
+            "column": 114,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "pattern: /^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*function\\s+\\w+\\s*\\(|^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*const\\s+\\w+\\s*=\\s*\\(/g"
+            "context": "/^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*function\\s+\\w+\\s*\\(|^(?!\\s*\\/\\*\\*|\\s*\\/\\/).*const\\s+\\w+\\s*=\\s*\\(/gm,"
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 172,
+            "line": 174,
             "column": 33,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11669,7 +12043,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 173,
+            "line": 175,
             "column": 43,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11680,7 +12054,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 174,
+            "line": 176,
             "column": 75,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11691,7 +12065,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 179,
+            "line": 181,
             "column": 14,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11702,7 +12076,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 180,
+            "line": 182,
             "column": 46,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11713,7 +12087,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 181,
+            "line": 183,
             "column": 74,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11724,7 +12098,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 182,
+            "line": 184,
             "column": 36,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11735,7 +12109,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 183,
+            "line": 185,
             "column": 45,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11746,7 +12120,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 184,
+            "line": 186,
             "column": 84,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11757,7 +12131,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 187,
+            "line": 189,
             "column": 14,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11768,7 +12142,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 188,
+            "line": 190,
             "column": 38,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11779,7 +12153,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 189,
+            "line": 191,
             "column": 39,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11790,7 +12164,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 190,
+            "line": 192,
             "column": 36,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11801,7 +12175,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 191,
+            "line": 193,
             "column": 45,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11812,7 +12186,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 192,
+            "line": 194,
             "column": 80,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11823,7 +12197,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 195,
+            "line": 197,
             "column": 14,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11834,7 +12208,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 196,
+            "line": 198,
             "column": 40,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11845,7 +12219,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 197,
+            "line": 199,
             "column": 86,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11856,7 +12230,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 198,
+            "line": 200,
             "column": 33,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11867,7 +12241,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 199,
+            "line": 201,
             "column": 42,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11878,7 +12252,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 200,
+            "line": 202,
             "column": 69,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11889,29 +12263,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 207,
-            "column": 36,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const files: string[] = [];"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 209,
-            "column": 72,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const entries = await fs.readdir(dir, { withFileTypes: true });"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 216,
+            "line": 221,
             "column": 84,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11922,18 +12274,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 218,
-            "column": 14,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "}"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 220,
+            "line": 225,
             "column": 39,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11944,7 +12285,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 222,
+            "line": 227,
             "column": 93,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11955,40 +12296,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 225,
-            "column": 10,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "}"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 231,
-            "column": 38,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const items: DebtItem[] = [];"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 235,
-            "column": 47,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const lines = content.split('\\n');"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 237,
+            "line": 242,
             "column": 51,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -11999,7 +12307,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 240,
+            "line": 245,
             "column": 57,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12010,7 +12318,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 241,
+            "line": 246,
             "column": 47,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12021,7 +12329,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 244,
+            "line": 249,
             "column": 44,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12032,7 +12340,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 245,
+            "line": 250,
             "column": 75,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12043,7 +12351,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 246,
+            "line": 251,
             "column": 71,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12054,7 +12362,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 247,
+            "line": 252,
             "column": 73,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12065,7 +12373,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 250,
+            "line": 255,
             "column": 72,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12076,7 +12384,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 253,
+            "line": 258,
             "column": 65,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12087,7 +12395,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 254,
+            "line": 259,
             "column": 70,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12098,7 +12406,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 255,
+            "line": 260,
             "column": 37,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12109,7 +12417,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 256,
+            "line": 261,
             "column": 77,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12120,7 +12428,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 257,
+            "line": 262,
             "column": 46,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12131,7 +12439,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 258,
+            "line": 263,
             "column": 36,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12142,7 +12450,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 259,
+            "line": 264,
             "column": 51,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12153,7 +12461,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 260,
+            "line": 265,
             "column": 56,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12164,7 +12472,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 261,
+            "line": 266,
             "column": 56,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12175,7 +12483,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 262,
+            "line": 267,
             "column": 62,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12186,7 +12494,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 263,
+            "line": 268,
             "column": 60,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12197,7 +12505,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 268,
+            "line": 273,
             "column": 71,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12208,7 +12516,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 269,
+            "line": 274,
             "column": 51,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12219,18 +12527,18 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 276,
-            "column": 10,
+            "line": 281,
+            "column": 64,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "}"
+            "context": "`Warning: Could not analyze file ${filePath}:`,"
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 285,
+            "line": 293,
             "column": 64,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12241,18 +12549,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 286,
-            "column": 89,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "return !/(version|port|timeout|delay|width|height|size)/i.test(context);"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 289,
+            "line": 297,
             "column": 62,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12263,18 +12560,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 290,
-            "column": 88,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "return !/test|spec|\\.test\\.|\\.spec\\.|development|debug/i.test(context);"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 293,
+            "line": 301,
             "column": 85,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12285,7 +12571,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 294,
+            "line": 302,
             "column": 83,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12296,7 +12582,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 296,
+            "line": 304,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12307,18 +12593,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 297,
-            "column": 29,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "return true;"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 301,
+            "line": 309,
             "column": 76,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12329,18 +12604,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 302,
-            "column": 100,
-            "pattern": "Deep Nesting",
-            "severity": "medium",
-            "category": "maintainability",
-            "description": "Deeply nested code is hard to read and maintain",
-            "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "return false; // Disable this check for now as it needs more sophisticated analysis"
-        },
-        {
-            "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 304,
+            "line": 312,
             "column": 21,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12351,40 +12615,73 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 357,
-            "column": 67,
+            "line": 320,
+            "column": 29,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "console.log('🔍 Scanning for technical debt patterns...');"
+            "context": "(acc, item) => {"
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 360,
-            "column": 66,
+            "line": 321,
+            "column": 68,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "console.log(`📁 Found ${files.length} files to analyze`);"
+            "context": "acc[item.severity] = (acc[item.severity] || 0) + 1;"
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 362,
-            "column": 41,
+            "line": 394,
+            "column": 29,
             "pattern": "Deep Nesting",
             "severity": "medium",
             "category": "maintainability",
             "description": "Deeply nested code is hard to read and maintain",
             "suggestion": "Extract nested logic into separate functions or early returns",
-            "context": "const allItems: DebtItem[] = [];"
+            "context": "(acc, item) => {"
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 382,
+            "line": 395,
+            "column": 68,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "acc[item.severity] = (acc[item.severity] || 0) + 1;"
+        },
+        {
+            "file": "tools/monitoring/technical-debt-tracker.ts",
+            "line": 402,
+            "column": 29,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "(acc, item) => {"
+        },
+        {
+            "file": "tools/monitoring/technical-debt-tracker.ts",
+            "line": 403,
+            "column": 68,
+            "pattern": "Deep Nesting",
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Deeply nested code is hard to read and maintain",
+            "suggestion": "Extract nested logic into separate functions or early returns",
+            "context": "acc[item.category] = (acc[item.category] || 0) + 1;"
+        },
+        {
+            "file": "tools/monitoring/technical-debt-tracker.ts",
+            "line": 411,
             "column": 23,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12395,7 +12692,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 383,
+            "line": 412,
             "column": 45,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12406,7 +12703,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 384,
+            "line": 413,
             "column": 28,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12417,7 +12714,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 385,
+            "line": 414,
             "column": 28,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12428,7 +12725,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 386,
+            "line": 415,
             "column": 44,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12439,7 +12736,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 390,
+            "line": 419,
             "column": 69,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12450,7 +12747,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 391,
+            "line": 420,
             "column": 83,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12461,7 +12758,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 416,
+            "line": 445,
             "column": 89,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12472,7 +12769,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 417,
+            "line": 446,
             "column": 95,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12483,7 +12780,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 424,
+            "line": 453,
             "column": 89,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12494,7 +12791,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 431,
+            "line": 460,
             "column": 67,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12505,7 +12802,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 437,
+            "line": 466,
             "column": 43,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12516,7 +12813,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 438,
+            "line": 467,
             "column": 58,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12527,7 +12824,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 439,
+            "line": 468,
             "column": 60,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12538,7 +12835,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 440,
+            "line": 469,
             "column": 47,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12549,7 +12846,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 441,
+            "line": 470,
             "column": 81,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12560,7 +12857,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 442,
+            "line": 471,
             "column": 100,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12571,7 +12868,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 443,
+            "line": 472,
             "column": 65,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12582,7 +12879,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 444,
+            "line": 473,
             "column": 64,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12593,7 +12890,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 445,
+            "line": 474,
             "column": 70,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12604,7 +12901,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 447,
+            "line": 476,
             "column": 18,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12615,7 +12912,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 449,
+            "line": 478,
             "column": 48,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -12626,7 +12923,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 450,
+            "line": 479,
             "column": 86,
             "pattern": "Deep Nesting",
             "severity": "medium",
@@ -16123,6 +16420,28 @@
             "context": "expect(memoryUsage).toBeLessThan(536870912);"
         },
         {
+            "file": "testing/setup.ts",
+            "line": 12,
+            "column": 45,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "const canvas = createCanvas(800, 600);"
+        },
+        {
+            "file": "testing/setup.ts",
+            "line": 12,
+            "column": 50,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "const canvas = createCanvas(800, 600);"
+        },
+        {
             "file": "testing/unit/ECSTest.ts",
             "line": 25,
             "column": 49,
@@ -16275,6 +16594,259 @@
             "description": "Large numeric literals should be named constants",
             "suggestion": "Extract magic numbers into named constants",
             "context": "}, 30000); // Wait 30 seconds"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 24,
+            "column": 37,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-normal': { r: 0, g: 100, b: 200, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 24,
+            "column": 45,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-normal': { r: 0, g: 100, b: 200, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 25,
+            "column": 36,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-hover': { r: 0, g: 120, b: 240, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 25,
+            "column": 44,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-hover': { r: 0, g: 120, b: 240, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 26,
+            "column": 45,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-pressed': { r: 0, g: 80, b: 160, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 27,
+            "column": 33,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-disabled': { r: 100, g: 100, b: 100, alpha: 0.5 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 27,
+            "column": 41,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-disabled': { r: 100, g: 100, b: 100, alpha: 0.5 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 27,
+            "column": 49,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'button-disabled': { r: 100, g: 100, b: 100, alpha: 0.5 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 34,
+            "column": 30,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'panel-border': { r: 100, g: 150, b: 255, alpha: 1 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 34,
+            "column": 38,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'panel-border': { r: 100, g: 150, b: 255, alpha: 1 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 34,
+            "column": 46,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'panel-border': { r: 100, g: 150, b: 255, alpha: 1 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 40,
+            "column": 37,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'progress-fill': { r: 0, g: 255, b: 100, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 40,
+            "column": 45,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'progress-fill': { r: 0, g: 255, b: 100, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 41,
+            "column": 33,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'progress-border': { r: 200, g: 200, b: 200, alpha: 1 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 41,
+            "column": 41,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'progress-border': { r: 200, g: 200, b: 200, alpha: 1 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 41,
+            "column": 49,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'progress-border': { r: 200, g: 200, b: 200, alpha: 1 }"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 46,
+            "column": 31,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'icon-settings': { r: 200, g: 200, b: 200, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 46,
+            "column": 39,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'icon-settings': { r: 200, g: 200, b: 200, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 46,
+            "column": 47,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'icon-settings': { r: 200, g: 200, b: 200, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 47,
+            "column": 33,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'icon-play': { r: 0, g: 255, b: 0, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 48,
+            "column": 28,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'icon-pause': { r: 255, g: 255, b: 0, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 48,
+            "column": 36,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'icon-pause': { r: 255, g: 255, b: 0, alpha: 1 },"
+        },
+        {
+            "file": "tools/development/generate-ui-sprites.js",
+            "line": 49,
+            "column": 27,
+            "pattern": "Magic Numbers",
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Large numeric literals should be named constants",
+            "suggestion": "Extract magic numbers into named constants",
+            "context": "'icon-stop': { r: 255, g: 0, b: 0, alpha: 1 }"
         },
         {
             "file": "tools/development/performance-check.js",
@@ -16487,7 +17059,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 137,
+            "line": 140,
             "column": 71,
             "pattern": "Magic Numbers",
             "severity": "low",
@@ -16498,7 +17070,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 155,
+            "line": 162,
             "column": 73,
             "pattern": "Magic Numbers",
             "severity": "low",
@@ -16509,7 +17081,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 205,
+            "line": 216,
             "column": 73,
             "pattern": "Magic Numbers",
             "severity": "low",
@@ -16520,7 +17092,7 @@
         },
         {
             "file": "tools/monitoring/health-check.ts",
-            "line": 267,
+            "line": 288,
             "column": 77,
             "pattern": "Magic Numbers",
             "severity": "low",
@@ -16542,7 +17114,7 @@
         },
         {
             "file": "tools/monitoring/technical-debt-tracker.ts",
-            "line": 264,
+            "line": 269,
             "column": 59,
             "pattern": "Magic Numbers",
             "severity": "low",
@@ -16883,9 +17455,9 @@
         }
     ],
     "recommendations": [
-        "🚨 CRITICAL: Address 8 critical security/quality issues immediately",
-        "🟡 MEDIUM: Consider refactoring to address 1307 medium-priority issues",
-        "🟢 LOW: Schedule cleanup for 218 low-priority maintenance items",
+        "🚨 CRITICAL: Address 4 critical security/quality issues immediately",
+        "🟡 MEDIUM: Consider refactoring to address 1338 medium-priority issues",
+        "🟢 LOW: Schedule cleanup for 243 low-priority maintenance items",
         "🔴 High technical debt - prioritize cleanup efforts"
     ]
 }

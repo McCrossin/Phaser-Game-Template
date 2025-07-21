@@ -53,6 +53,7 @@
         "@vitest/coverage-v8": "^3.2.4",
         "@vitest/ui": "^3.2.4",
         "better-npm-audit": "^3.11.0",
+        "canvas": "^3.1.2",
         "eslint": "^9.0.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-prettier": "^5.1.0",

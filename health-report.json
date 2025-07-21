@@ -1,5 +1,5 @@
 {
-    "timestamp": "2025-07-21T07:48:06.146Z",
+    "timestamp": "2025-07-21T08:26:31.999Z",
     "overallScore": 68,
     "maxScore": 100,
     "status": "warning",
@@ -12,11 +12,11 @@
             "details": [
                 "✅ TypeScript compilation successful",
                 "✅ Build process successful",
-                "✅ Build time within threshold (7294ms <= 30000ms)",
+                "✅ Build time within threshold (7599ms <= 30000ms)",
                 "📦 Bundle size: 1.5M\tdist"
             ],
             "metrics": {
-                "buildTime": 7294,
+                "buildTime": 7599,
                 "bundleSize": "1.5"
             }
         },
@@ -27,11 +27,11 @@
             "status": "pass",
             "details": [
                 "✅ All tests passing",
-                "✅ Test execution within threshold (1497ms <= 60000ms)",
+                "✅ Test execution within threshold (1513ms <= 60000ms)",
                 "ℹ️ Coverage information not available"
             ],
             "metrics": {
-                "testTime": 1497
+                "testTime": 1513
             }
         },
         {
