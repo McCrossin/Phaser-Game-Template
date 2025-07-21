@@ -87,30 +87,36 @@ npm run lint:fix     # Auto-fix linting issues
 
 # Testing
 npm run test         # Run test suite (Vitest)
+
+# Performance Monitoring
+# In development builds:
+# - Press F3 to toggle FPS counter
+# - Monitor console for performance warnings
+# - Use docs/checklists/performance-testing.md for manual testing
 ```
 
 ## 🎮 Current Development Status
 
-### ✅ Completed (Story 1.1)
+### ✅ Completed (Stories 1.1-1.5)
 
 - **Production Build System**: TypeScript + Vite configuration
 - **Project Structure**: Modular architecture with path aliases
 - **Basic Scenes**: StartScene and GameScene with TypeScript
 - **Type Definitions**: Comprehensive game type system
 - **Development Workflow**: Hot reload, linting, testing setup
+- **Performance Monitoring**: FPS counter, performance logging, testing checklist
 
 ### 🚧 In Progress
 
 - **Core Game Architecture**: ECS patterns and state management
-- **Performance Monitoring**: FPS tracking and memory management
 
 ### 📋 Next Steps (Following Implementation Priority Matrix)
 
 **Week 1-2: Foundation Infrastructure**
 
-- [ ] ECS (Entity Component System) architecture
+- [x] ECS (Entity Component System) architecture
+- [x] Performance monitoring and optimization
 - [ ] Game state management with scene transitions
-- [ ] Performance monitoring and optimization
 - [ ] Basic probe movement and input handling
 
 **Week 3-4: Core Resource Loop**

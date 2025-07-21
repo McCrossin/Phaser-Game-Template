@@ -1,6 +1,34 @@
 # Developer Quick Reference
 ## New Eden Project - Essential Implementation Data
 
+### Performance Monitoring Quick Reference
+
+#### FPS Counter (Development Only)
+```
+Toggle: F3 key
+Colors: Green (≥55 FPS) | Yellow (30-55 FPS) | Red (<30 FPS)
+API: SimpleFPSCounter from '@/utils/SimpleFPSCounter'
+Location: Top-left corner (development builds only)
+```
+
+#### Performance Thresholds
+```
+Target FPS: 60 FPS (minimum 55 FPS)
+Warning Threshold: 30 FPS (console warnings logged)
+Scene Load Time: <1 second (warnings for >1s)
+Memory Usage: <100MB (monitor for leaks)
+```
+
+#### Console Commands (Development)
+```typescript
+// Available in scenes with FPS counter
+this.fpsCounter?.setVisible(true);   // Show FPS
+this.fpsCounter?.getCurrentFPS();    // Get current FPS
+PerformanceLogger.logEvent('Custom Event', 123.45);
+```
+
+---
+
 ### Power System Quick Reference (Watt-hour Based)
 
 #### Energy Conversion Table
