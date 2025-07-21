@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import { SimpleFPSCounter } from '../utils/SimpleFPSCounter';
+import { PerformanceLogger } from '../config/DebugConfig';
 
 export class StartScene extends Phaser.Scene {
     private background!: Phaser.GameObjects.TileSprite;
@@ -6,6 +8,7 @@ export class StartScene extends Phaser.Scene {
     private titleText!: Phaser.GameObjects.Text;
     private subtitleText!: Phaser.GameObjects.Text;
     private startButton!: Phaser.GameObjects.Text;
+    private fpsCounter?: SimpleFPSCounter;
 
     constructor() {
         super({ key: 'StartScene' });
@@ -25,6 +28,9 @@ export class StartScene extends Phaser.Scene {
     }
 
     create(): void {
+        // Log scene start for performance monitoring
+        PerformanceLogger.logSceneStart('StartScene');
+
         // Background
         this.background = this.add.tileSprite(640, 360, 1280, 720, 'background');
 
@@ -39,11 +45,20 @@ export class StartScene extends Phaser.Scene {
 
         // Input handling
         this.setupInput();
+
+        // Initialize FPS counter for development
+        this.fpsCounter = new SimpleFPSCounter(this);
+
+        // Log scene completion for performance monitoring
+        PerformanceLogger.logSceneComplete('StartScene');
     }
 
     override update(): void {
         // Parallax background scrolling
         this.background.tilePositionX += 1;
+
+        // Update FPS counter
+        this.fpsCounter?.update();
     }
 
     private createLoadingBar(): void {

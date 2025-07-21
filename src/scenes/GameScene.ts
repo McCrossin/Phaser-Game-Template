@@ -5,6 +5,8 @@
 
 import Phaser from 'phaser';
 import { GAME_CONSTANTS } from '../utils/Constants';
+import { SimpleFPSCounter } from '../utils/SimpleFPSCounter';
+import { PerformanceLogger } from '../config/DebugConfig';
 import { World } from '../ecs/World';
 import {
     MovementSystem,
@@ -25,6 +27,7 @@ import {
 export class GameScene extends Phaser.Scene {
     private world!: World;
     private playerProbeId!: number;
+    private fpsCounter?: SimpleFPSCounter;
 
     constructor() {
         super({ key: 'GameScene' });
@@ -46,6 +49,9 @@ export class GameScene extends Phaser.Scene {
     create(): void {
         console.log('GameScene: Starting with ECS architecture');
 
+        // Log scene start for performance monitoring
+        PerformanceLogger.logSceneStart('GameScene');
+
         // Initialize ECS World
         this.world = new World();
 
@@ -64,6 +70,12 @@ export class GameScene extends Phaser.Scene {
         escKey?.on('down', () => {
             this.returnToMenu();
         });
+
+        // Initialize FPS counter for development
+        this.fpsCounter = new SimpleFPSCounter(this);
+
+        // Log scene completion for performance monitoring
+        PerformanceLogger.logSceneComplete('GameScene');
 
         console.log('GameScene: ECS initialization complete');
     }
@@ -137,6 +149,9 @@ export class GameScene extends Phaser.Scene {
 
         // Update camera to follow player probe
         this.updateCameraFollow();
+
+        // Update FPS counter
+        this.fpsCounter?.update();
     }
 
     private updateCameraFollow(): void {
@@ -162,6 +177,11 @@ export class GameScene extends Phaser.Scene {
 
     shutdown(): void {
         console.log('GameScene: Shutting down ECS world');
+
+        // Clean up FPS counter
+        this.fpsCounter?.destroy();
+
+        // Clean up ECS world
         this.world.clear();
     }
 }
