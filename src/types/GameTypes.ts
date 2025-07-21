@@ -4,7 +4,7 @@ export interface GameConfig {
     readonly WORLD_HEIGHT: number;
     readonly TILE_SIZE: number;
     readonly TARGET_FPS: number;
-    readonly MAX_PROBES: number;
+    readonly MAX_ENTITIES: number;
     readonly UPDATE_INTERVAL: number; // milliseconds
 }
 
@@ -40,13 +40,11 @@ export interface Equipment {
 }
 
 export enum EquipmentType {
-    SCANNER = 'SCANNER',
-    MINING_LASER = 'MINING_LASER',
-    DRILL = 'DRILL',
-    SOLAR_PANEL = 'SOLAR_PANEL',
-    BATTERY = 'BATTERY',
-    FABRICATOR = 'FABRICATOR',
-    CHEMICAL_PROCESSOR = 'CHEMICAL_PROCESSOR'
+    WEAPON = 'WEAPON',
+    TOOL = 'TOOL',
+    UTILITY = 'UTILITY',
+    ENHANCEMENT = 'ENHANCEMENT',
+    CONSUMABLE = 'CONSUMABLE'
 }
 
 export enum EnvironmentType {
@@ -57,67 +55,44 @@ export enum EnvironmentType {
     EXTREME_TEMPERATURE = 'EXTREME_TEMPERATURE'
 }
 
-// Resource System Types
+// Resource System Types (Generic Template)
 export interface Resource {
-    readonly element: ChemicalElement;
+    readonly type: string;
     readonly quantity: number;
-    readonly purity: number; // 0.0 to 1.0
-    readonly discovered: boolean;
-}
-
-export interface ChemicalElement {
-    readonly symbol: string;
-    readonly name: string;
-    readonly atomicNumber: number;
-    readonly category: ElementCategory;
-    readonly rarity: ResourceRarity;
-}
-
-export enum ElementCategory {
-    ALKALI_METAL = 'ALKALI_METAL',
-    ALKALINE_EARTH = 'ALKALINE_EARTH',
-    TRANSITION_METAL = 'TRANSITION_METAL',
-    POST_TRANSITION_METAL = 'POST_TRANSITION_METAL',
-    METALLOID = 'METALLOID',
-    NONMETAL = 'NONMETAL',
-    HALOGEN = 'HALOGEN',
-    NOBLE_GAS = 'NOBLE_GAS',
-    LANTHANIDE = 'LANTHANIDE',
-    ACTINIDE = 'ACTINIDE'
+    readonly quality: number; // 0.0 to 1.0
 }
 
 export enum ResourceRarity {
-    ABUNDANT = 'ABUNDANT',
     COMMON = 'COMMON',
     UNCOMMON = 'UNCOMMON',
     RARE = 'RARE',
-    VERY_RARE = 'VERY_RARE',
-    EXOTIC = 'EXOTIC'
+    EPIC = 'EPIC',
+    LEGENDARY = 'LEGENDARY'
 }
 
-// Probe System Types
-export interface ProbeState {
+// Player System Types
+export interface PlayerState {
     readonly id: string;
     readonly position: Vector2D;
-    readonly equipmentBay: EquipmentSlot[];
+    readonly equipmentSlots: EquipmentSlot[];
     readonly energyState: EnergyState;
-    readonly movementSpeed: number; // tiles per second
+    readonly movementSpeed: number;
     readonly isActive: boolean;
-    readonly currentTask: ProbeTask | null;
+    readonly currentTask: GameTask | null;
 }
 
-export interface ProbeTask {
+export interface GameTask {
     readonly type: TaskType;
     readonly target: Vector2D;
     readonly duration: number; // seconds
-    readonly energyRequired: number; // kWh
+    readonly energyRequired: number;
 }
 
 export enum TaskType {
     MOVE = 'MOVE',
-    SCAN = 'SCAN',
-    MINE = 'MINE',
-    FABRICATE = 'FABRICATE',
+    INTERACT = 'INTERACT',
+    COLLECT = 'COLLECT',
+    CRAFT = 'CRAFT',
     PLACE_EQUIPMENT = 'PLACE_EQUIPMENT',
     COLLECT_RESOURCE = 'COLLECT_RESOURCE'
 }
@@ -139,9 +114,9 @@ export enum CircuitTier {
 }
 
 export interface MaterialRequirement {
-    readonly element: ChemicalElement;
+    readonly type: string;
     readonly quantity: number;
-    readonly purityRequired: number;
+    readonly quality: number;
 }
 
 // World Generation Types
@@ -167,7 +142,7 @@ export enum TerrainType {
 export interface SaveData {
     readonly version: string;
     readonly timestamp: number;
-    readonly probes: ProbeState[];
+    readonly players: PlayerState[];
     readonly world: WorldState;
     readonly progress: ProgressState;
     readonly settings: GameSettings;
@@ -176,21 +151,21 @@ export interface SaveData {
 export interface WorldState {
     readonly seed: string;
     readonly discoveredTiles: Vector2D[];
-    readonly placedEquipment: PlacedEquipment[];
+    readonly placedItems: PlacedItem[];
     readonly globalResources: Resource[];
 }
 
-export interface PlacedEquipment {
+export interface PlacedItem {
     readonly equipment: Equipment;
     readonly position: Vector2D;
-    readonly ownerId: string; // probe ID
+    readonly ownerId: string; // player ID
 }
 
 export interface ProgressState {
     readonly tutorialComplete: boolean;
-    readonly firstReplicationAchieved: boolean;
-    readonly circuitsUnlocked: CircuitTier[];
-    readonly elementsDiscovered: ChemicalElement[];
+    readonly firstGoalAchieved: boolean;
+    readonly unlockedFeatures: string[];
+    readonly discoveredItems: string[];
     readonly achievementsUnlocked: string[];
 }
 

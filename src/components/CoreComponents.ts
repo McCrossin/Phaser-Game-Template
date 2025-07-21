@@ -8,7 +8,7 @@ import type { Equipment } from '../types/GameTypes';
 
 // Simple types for components
 export type ResourceType = string;
-export type ProbeStateType = 'idle' | 'moving' | 'mining' | 'scanning' | 'charging';
+export type EntityStateType = 'idle' | 'moving' | 'active' | 'inactive';
 
 /**
  * Position component - defines entity location in world space
@@ -127,14 +127,13 @@ export class SpriteComponent extends Component {
 }
 
 /**
- * Probe component - specific to probe entities
+ * Player component - specific to player-controlled entities
  */
-export class ProbeComponent extends Component {
-    public state: ProbeStateType = 'idle';
+export class PlayerComponent extends Component {
+    public state: EntityStateType = 'idle';
     public energy: number = 100;
     public maxEnergy: number = 100;
     public energyConsumptionRate: number = 1; // per second
-    public batteryCapacity: number = 100;
     public equipped: Equipment[] = [];
     public maxEquipmentSlots: number = 4;
 

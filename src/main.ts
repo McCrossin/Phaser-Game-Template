@@ -9,7 +9,7 @@ export const GAME_CONFIG: GameConfig = {
     WORLD_HEIGHT: 2048,
     TILE_SIZE: 32,
     TARGET_FPS: 60,
-    MAX_PROBES: 10,
+    MAX_ENTITIES: 100,
     UPDATE_INTERVAL: 100 // 100ms = 10 updates per second for game logic
 } as const;
 

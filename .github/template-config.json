@@ -1,0 +1,16 @@
+{
+    "name": "phaser-game-template",
+    "description": "Professional 2D Phaser game template with CI/CD and monitoring",
+    "visibility": "public",
+    "template": true,
+    "topics": [
+        "phaser",
+        "typescript",
+        "game-template",
+        "2d-game",
+        "vite",
+        "ci-cd",
+        "game-development",
+        "health-monitoring"
+    ]
+}

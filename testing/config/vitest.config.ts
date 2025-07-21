@@ -7,6 +7,7 @@ export default defineConfig({
         environment: 'jsdom',
         setupFiles: [resolve(__dirname, '../setup.ts')],
         retry: 2, // Automatic retry for flaky tests
+        watch: false, // Disable watch mode by default for template
         exclude: [
             '**/node_modules/**',
             '**/dist/**',

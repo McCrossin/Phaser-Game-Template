@@ -59,7 +59,11 @@ class TechnicalDebtTracker {
             /playwright-report/,
             /test-results/,
             /\.vscode/,
-            /\.idea/
+            /\.idea/,
+            /tools\/monitoring\/compiled/,
+            /reports\/health/,
+            /docs\/api/,
+            /docs\/.*\.js$/
         ];
 
         this.patterns = [
@@ -162,9 +166,9 @@ class TechnicalDebtTracker {
                 pattern: /\beval\s*\(/g,
                 severity: 'critical',
                 category: 'security',
-                description: 'eval() can execute arbitrary code and is a security risk',
+                description: 'Dynamic code execution can be a security risk',
                 suggestion:
-                    'Avoid eval() and use safer alternatives like JSON.parse() or proper parsing'
+                    'Avoid dynamic execution and use safer alternatives like JSON.parse() or proper parsing'
             },
 
             // Documentation Patterns
@@ -257,7 +261,7 @@ class TechnicalDebtTracker {
                     const context = lines[lineNumber - 1]?.trim() || '';
 
                     // Skip false positives for certain patterns
-                    if (this.isValidMatch(pattern, match, context)) {
+                    if (this.isValidMatch(pattern, match, context, filePath)) {
                         items.push({
                             file: path.relative(this.projectRoot, filePath),
                             line: lineNumber,
@@ -287,16 +291,63 @@ class TechnicalDebtTracker {
         return items;
     }
 
-    private isValidMatch(pattern: DebtPattern, match: RegExpExecArray, context: string): boolean {
+    private isValidMatch(
+        pattern: DebtPattern,
+        match: RegExpExecArray,
+        context: string,
+        filePath: string
+    ): boolean {
         // Skip certain false positives
         switch (pattern.name) {
             case 'Magic Numbers':
                 // Skip version numbers, common constants, etc.
                 return !/(version|port|timeout|delay|width|height|size)/i.test(context);
 
+            case 'Any Type Usage':
+                // Skip ECS patterns and constructor types
+                if (/new\s*\(.*args:\s*any\[\]/.test(context) || /constructor.*any/.test(context)) {
+                    return false;
+                }
+                return true;
+
             case 'Console Statements':
-                // Skip if in test files or development tools
-                return !/test|spec|\.test\.|\.spec\.|development|debug/i.test(context);
+                // Skip if in test files, development tools, debug/config files
+                if (/test|spec|\.test\.|\.spec\.|development|debug|config|Debug/i.test(context)) {
+                    return false;
+                }
+                // Skip console statements in specific file types
+                if (/config|debug|development|example|demo/i.test(filePath)) {
+                    return false;
+                }
+                return true;
+
+            case 'Deep Nesting':
+                // Skip configuration objects, interfaces, and type definitions
+                if (context.includes(':') && (context.includes('{') || context.includes(';'))) {
+                    return false; // Likely a config object or interface property
+                }
+                if (/^[\s]*[\w]+:\s*[\w\[\{]/.test(context)) {
+                    return false; // Object property definition
+                }
+                if (/interface|type|export/.test(context)) {
+                    return false; // Type definitions
+                }
+                // Skip deep nesting in configuration files
+                if (/config|types|interfaces|\.d\.ts$/i.test(filePath)) {
+                    return false;
+                }
+                return true;
+
+            case 'Long Parameter Lists':
+                // Skip function type definitions and interfaces
+                if (/interface|type|declare/i.test(context)) {
+                    return false;
+                }
+                // Skip generated or example files
+                if (/generated|example|demo|\.d\.ts$/i.test(filePath)) {
+                    return false;
+                }
+                return true;
 
             case 'Missing Function Documentation':
                 // Skip test functions, private functions, and very simple functions

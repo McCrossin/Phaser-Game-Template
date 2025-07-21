@@ -10,7 +10,7 @@ import {
     VelocityComponent,
     SpriteComponent,
     InputComponent,
-    ProbeComponent
+    PlayerComponent
 } from '../components/CoreComponents';
 
 /**
@@ -171,7 +171,7 @@ export class RenderingSystem extends System {
 }
 
 /**
- * Energy System - handles energy consumption and management for probes
+ * Energy System - manages energy consumption and charging for player entities
  */
 export class EnergySystem extends System {
     constructor(entityManager: EntityManager) {
@@ -179,7 +179,7 @@ export class EnergySystem extends System {
     }
 
     getRequiredComponents() {
-        return [ProbeComponent];
+        return [PlayerComponent];
     }
 
     update(deltaTime: number): void {
@@ -187,33 +187,23 @@ export class EnergySystem extends System {
         const deltaSeconds = deltaTime / 1000;
 
         for (const entity of entities) {
-            const probe = entity.getComponent(ProbeComponent)!;
+            const player = entity.getComponent(PlayerComponent)!;
 
-            // Consume energy based on state and equipped items
-            let energyConsumption = probe.energyConsumptionRate;
+            // Calculate energy consumption
+            let energyConsumption = player.energyConsumptionRate;
 
-            // Additional consumption for movement
-            const velocity = entity.getComponent(VelocityComponent);
-            if (velocity && velocity.getSpeed() > 0) {
-                energyConsumption += velocity.getSpeed() * 0.01; // Energy per unit speed
-            }
-
-            // Additional consumption for equipped items
-            for (const equipment of probe.equipped) {
+            // Add equipment energy consumption
+            for (const equipment of player.equipped) {
                 energyConsumption += equipment.powerConsumption;
             }
 
-            // Apply energy consumption
+            // Calculate total energy used this frame
             const energyUsed = energyConsumption * deltaSeconds;
-            probe.energy = Math.max(0, probe.energy - energyUsed);
+            player.energy = Math.max(0, player.energy - energyUsed);
 
-            // Update probe state based on energy
-            if (probe.energy <= 0 && probe.state !== 'idle') {
-                probe.state = 'idle';
-                // Stop movement if out of energy
-                if (velocity) {
-                    velocity.setVelocity(0, 0, 0);
-                }
+            // Disable non-essential systems if energy is low
+            if (player.energy <= 0 && player.state !== 'idle') {
+                player.state = 'idle';
             }
         }
     }
@@ -262,25 +252,25 @@ export class DebugSystem extends System {
         if (!this.debugText) return;
 
         const stats = this.entityManager.getStats();
-        const probes = this.entityManager.getEntitiesWithComponents([ProbeComponent]);
+        const players = this.entityManager.getEntitiesWithComponents([PlayerComponent]);
 
         let debugInfo = `FPS: ${Math.round(this.scene.game.loop.actualFps)}\n`;
         debugInfo += `Entities: ${stats.totalEntities}\n`;
         debugInfo += `Pooled: ${stats.pooledEntities}\n`;
         debugInfo += `Components: ${stats.componentTypes}\n`;
-        debugInfo += `Probes: ${probes.length}\n`;
+        debugInfo += `Players: ${players.length}\n`;
 
-        // Show probe information
-        if (probes.length > 0) {
-            const probeEntity = probes[0];
-            if (probeEntity) {
-                const probe = probeEntity.getComponent(ProbeComponent);
-                if (probe) {
-                    debugInfo += `Energy: ${Math.round(probe.energy)}/${probe.maxEnergy}\n`;
-                    debugInfo += `State: ${probe.state}\n`;
+        // Show player information
+        if (players.length > 0) {
+            const playerEntity = players[0];
+            if (playerEntity) {
+                const player = playerEntity.getComponent(PlayerComponent);
+                if (player) {
+                    debugInfo += `Energy: ${Math.round(player.energy)}/${player.maxEnergy}\n`;
+                    debugInfo += `State: ${player.state}\n`;
                 }
 
-                const position = probeEntity.getComponent(PositionComponent);
+                const position = playerEntity.getComponent(PositionComponent);
                 if (position) {
                     debugInfo += `Pos: (${Math.round(position.x)}, ${Math.round(position.y)})\n`;
                 }

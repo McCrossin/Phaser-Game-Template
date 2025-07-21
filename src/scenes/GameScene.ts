@@ -1,6 +1,20 @@
 /**
  * GameScene - Main gameplay scene using ECS architecture
- * Handles the core game loop with Entity-Component-System patterns
+ * Handles the core game loop    private createPlayerEntity(): void {
+        // Create player entity
+        const playerEntity = this.world.createEntity();
+        this.playerEntityId = playerEntity.id;
+
+        // Add components
+        playerEntity
+            .addComponent(new PositionComponent(640, 360))
+            .addComponent(new VelocityComponent(0, 0, 0, 200))
+            .addComponent(new SpriteComponent('spaceship'))
+            .addComponent(new InputComponent())
+            .addComponent(new PlayerComponent())
+            .addComponent(new InventoryComponent());
+
+        console.log(`Created player entity with ID: ${playerEntity.id}`);mponent-System patterns
  */
 
 import Phaser from 'phaser';
@@ -20,13 +34,13 @@ import {
     VelocityComponent,
     SpriteComponent,
     InputComponent,
-    ProbeComponent,
+    PlayerComponent,
     InventoryComponent
 } from '../components/CoreComponents';
 
 export class GameScene extends Phaser.Scene {
     private world!: World;
-    private playerProbeId!: number;
+    private playerEntityId!: number;
     private fpsCounter?: SimpleFPSCounter;
 
     constructor() {
@@ -59,7 +73,7 @@ export class GameScene extends Phaser.Scene {
         this.setupSystems();
 
         // Create game entities
-        this.createPlayerProbe();
+        this.createPlayerEntity();
         this.createEnvironment();
 
         // Setup camera
@@ -89,21 +103,21 @@ export class GameScene extends Phaser.Scene {
         this.world.addSystem(new DebugSystem(this.world.getEntityManager(), this));
     }
 
-    private createPlayerProbe(): void {
-        // Create probe entity
-        const probeEntity = this.world.createEntity();
-        this.playerProbeId = probeEntity.id;
+    private createPlayerEntity(): void {
+        // Create player entity
+        const playerEntity = this.world.createEntity();
+        this.playerEntityId = playerEntity.id;
 
         // Add components
-        probeEntity
+        playerEntity
             .addComponent(new PositionComponent(640, 360))
             .addComponent(new VelocityComponent(0, 0, 0, 200))
             .addComponent(new SpriteComponent('spaceship'))
             .addComponent(new InputComponent(true)) // Player controlled
-            .addComponent(new ProbeComponent())
+            .addComponent(new PlayerComponent())
             .addComponent(new InventoryComponent(1000));
 
-        console.log(`Created player probe with ID: ${probeEntity.id}`);
+        console.log(`Created player entity with ID: ${playerEntity.id}`);
     }
 
     private createEnvironment(): void {
@@ -132,10 +146,10 @@ export class GameScene extends Phaser.Scene {
         // Setup camera bounds
         this.cameras.main.setBounds(0, 0, GAME_CONSTANTS.WORLD_WIDTH, GAME_CONSTANTS.WORLD_HEIGHT);
 
-        // Camera will follow the player probe sprite (handled in update)
-        const playerProbe = this.world.getEntity(this.playerProbeId);
-        if (playerProbe) {
-            const position = playerProbe.getComponent(PositionComponent);
+        // Camera will follow the player entity sprite (handled in update)
+        const playerEntity = this.world.getEntity(this.playerEntityId);
+        if (playerEntity) {
+            const position = playerEntity.getComponent(PositionComponent);
             if (position) {
                 this.cameras.main.centerOn(position.x, position.y);
                 this.cameras.main.setZoom(1);
@@ -155,10 +169,10 @@ export class GameScene extends Phaser.Scene {
     }
 
     private updateCameraFollow(): void {
-        const playerProbe = this.world.getEntity(this.playerProbeId);
-        if (playerProbe) {
-            const position = playerProbe.getComponent(PositionComponent);
-            const sprite = playerProbe.getComponent(SpriteComponent);
+        const playerEntity = this.world.getEntity(this.playerEntityId);
+        if (playerEntity) {
+            const position = playerEntity.getComponent(PositionComponent);
+            const sprite = playerEntity.getComponent(SpriteComponent);
 
             if (position && sprite?.sprite) {
                 // Update camera to follow sprite
