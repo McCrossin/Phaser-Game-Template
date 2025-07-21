@@ -9,6 +9,7 @@ dist/
 build/
 !build/plugins/
 !config/build/
+!tools/build/
 *.tsbuildinfo
 
 # Environment variables

@@ -26,12 +26,12 @@ jobs:
               run: npm run build
 
             - name: Generate build info
-              run: node scripts/build-info.js
+              run: node tools/build/build-info.js
 
             - name: Blue-green deployment
               run: |
                   echo "Starting blue-green deployment..."
-                  node scripts/deploy.js --environment=production
+                  node tools/deployment/deploy.js --environment=production
 
             - name: Health check
               run: |

@@ -31,7 +31,7 @@ jobs:
               run: npm run build
 
             - name: Generate build info
-              run: node scripts/build-info.js
+              run: node tools/build/build-info.js
 
             - name: Deploy to staging
               run: |
