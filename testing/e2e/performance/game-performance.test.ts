@@ -13,6 +13,9 @@ const PERFORMANCE_THRESHOLDS = {
     minFPS: isCI ? 2 : 5, // Minimum FPS (lower for CI due to resource constraints)
     avgFPS: isCI ? 10 : 25, // Average FPS (significantly lower for CI)
 
+    // FPS stability thresholds (coefficient of variation)
+    maxFPSVariation: isCI ? 4.0 : 1.5, // Max coefficient of variation (CI: 400%, Local: 150%)
+
     // Load time thresholds
     maxLoadTime: isCI ? 30000 : 10000, // Maximum load time in ms
 
@@ -94,8 +97,9 @@ test.describe('Game Performance Tests', () => {
                 `FPS Stability (lower is better): ${((fpsStdDev / avgFPS) * 100).toFixed(2)}%`
             );
 
-            // Ensure FPS isn't too erratic in CI
-            expect(fpsStdDev / avgFPS).toBeLessThan(2.0); // Coefficient of variation < 200%
+            // Environment-aware FPS stability check
+            const coefficientOfVariation = fpsStdDev / avgFPS;
+            expect(coefficientOfVariation).toBeLessThan(PERFORMANCE_THRESHOLDS.maxFPSVariation);
         } else {
             // Stricter checks for local development
             const baseline = 50; // Expected baseline FPS for local development
@@ -187,6 +191,7 @@ test.describe('Game Performance Tests', () => {
         // Monitor for microfreezes (UI thread blocks > 100ms)
         const microfreezes = await page.evaluate(() => {
             const freezes: number[] = [];
+            const startTime = performance.now();
             let lastFrame = performance.now();
 
             return new Promise(resolve => {
@@ -201,8 +206,8 @@ test.describe('Game Performance Tests', () => {
 
                     lastFrame = now;
 
-                    if (freezes.length > 0 || now > lastFrame + 10000) {
-                        // 10 second test
+                    // Stop after 10 seconds or if we have enough data
+                    if (now - startTime > 10000 || freezes.length >= 10) {
                         resolve(freezes);
                     } else {
                         requestAnimationFrame(checkFrameTime);

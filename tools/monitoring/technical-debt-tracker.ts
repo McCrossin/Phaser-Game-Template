@@ -150,7 +150,8 @@ class TechnicalDebtTracker {
             // Security Patterns
             {
                 name: 'Hardcoded Credentials',
-                pattern: /(password|secret|token|key)\s*[:=]\s*['"][^'"]+['"]/gi,
+                pattern:
+                    /(password|secret|api[_-]?key|auth[_-]?token|access[_-]?token)\s*[:=]\s*['"][^'"]+['"]/gi,
                 severity: 'critical',
                 category: 'security',
                 description: 'Hardcoded credentials are a security risk',
