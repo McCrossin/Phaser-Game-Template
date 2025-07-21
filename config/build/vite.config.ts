@@ -6,7 +6,7 @@ import { audioProcessorPlugin } from '../../vite-plugins/audio-processor';
 import { assetManifestPlugin } from '../../vite-plugins/asset-manifest';
 
 export default defineConfig({
-    root: '../..',
+    root: resolve(__dirname, '../..'),
     base: './',
     build: {
         outDir: 'dist',
@@ -16,9 +16,7 @@ export default defineConfig({
         target: 'es2020',
         emptyOutDir: true,
         rollupOptions: {
-            input: {
-                main: resolve(__dirname, '../../index.html')
-            }
+            input: resolve(__dirname, '../../index.html')
         }
     },
     server: {
