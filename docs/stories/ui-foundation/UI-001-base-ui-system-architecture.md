@@ -7,19 +7,19 @@
 
 ## Description
 
-Establish the foundational UI system architecture for New Eden Project, including a responsive scaling system, base UI component classes, event handling, and touch-friendly interaction support. This story creates the reusable UI framework that all game interfaces will build upon, ensuring consistent behavior and appearance across the game.
+Establish the foundational UI system architecture for New Eden Project, including a responsive scaling system, base UI component classes, event handling, and desktop-focused interaction support. This story creates the reusable UI framework that all game interfaces will build upon, ensuring consistent behavior and appearance across the game with scalable HUD elements for windowed and fullscreen modes.
 
 ### Player Experience Goal
-Players will experience a polished, responsive interface that scales seamlessly across different screen sizes and input methods (mouse, touch, keyboard). The UI will feel intuitive and reactive, with smooth animations and clear visual feedback for all interactions.
+Players will experience a polished, responsive interface that scales seamlessly across different desktop resolutions and window modes (windowed, fullscreen). The UI will feel intuitive and reactive, with smooth animations and clear visual feedback for all interactions using mouse and keyboard.
 
 ### Technical Overview
-Implement a component-based UI system built on Phaser 3's GameObject system, with custom base classes for common UI elements. The system will handle responsive scaling from the base 1920x1080 resolution, support both mouse and touch input with appropriate hit areas, and provide a consistent event system for UI interactions.
+Implement a component-based UI system built on Phaser 3's GameObject system, with custom base classes for common UI elements. The system will handle responsive scaling from the base 1920x1080 resolution, support mouse and keyboard input with appropriate interaction areas, and provide a consistent event system for UI interactions. HUD elements must scale appropriately when transitioning between windowed and fullscreen modes.
 
 ## Acceptance Criteria
 
 ### Functional Requirements
-- [ ] UI scales correctly maintaining aspect ratio from 640x360 to 1920x1080
-- [ ] Touch areas are appropriately sized (minimum 44x44 pixels) for mobile
+- [ ] UI scales correctly maintaining aspect ratio across desktop resolutions (up to 4K)
+- [ ] HUD elements scale appropriately in windowed and fullscreen modes
 - [ ] Keyboard navigation works with Tab/Shift+Tab and Enter/Space for activation
 - [ ] UI elements provide visual feedback for hover, press, and disabled states
 - [ ] Z-order management keeps UI elements above game elements
@@ -27,8 +27,8 @@ Implement a component-based UI system built on Phaser 3's GameObject system, wit
 ### Technical Requirements
 - [ ] Base UI component class with lifecycle management
 - [ ] Event system for UI interactions (click, hover, focus)
-- [ ] Responsive scaling utilities for different screen sizes
-- [ ] Touch gesture support (tap, long press, swipe)
+- [ ] Responsive scaling utilities for different desktop resolutions and window modes
+- [ ] Mouse interaction support with hover states
 - [ ] Keyboard focus management system
 - [ ] UI animation/tween utilities
 
@@ -200,8 +200,8 @@ export class Button extends BaseUIComponent {
 - **Save System**: UI state persistence for settings
 
 ### Performance Requirements
-- UI updates consume <2ms per frame
-- Touch response time <50ms
+- UI updates consume <4ms per frame
+- Mouse click response time <50ms
 - Animation frame rate maintains 60 FPS
 - Memory footprint <10MB for UI system
 - Z-sorting optimized for <100 UI elements
@@ -225,8 +225,9 @@ Create utilities for handling different screen sizes and resolutions.
 **Technical Details**:
 - Implement ScaleManager with breakpoint support
 - Create responsive positioning utilities
-- Handle safe area for mobile devices
-- Test scaling from 640x360 to 4K resolutions
+- Handle window mode transitions (windowed to fullscreen)
+- Test scaling from 1280x720 to 4K resolutions
+- Ensure HUD elements maintain readability at all scales
 
 ### 3. Build Core UI Components
 Implement the essential reusable UI components.
@@ -243,7 +244,7 @@ Set up comprehensive input support for all platforms.
 
 **Estimated Time**: 4 hours
 **Technical Details**:
-- Implement touch gesture recognition
+- Implement advanced mouse interaction (hover states, right-click context)
 - Create keyboard navigation system
 - Add gamepad support foundation
 - Ensure proper input priority over game elements
@@ -273,18 +274,19 @@ Create a flexible theming system for consistent visuals.
 ### GDD References
 - UI/UX Design: NASA-inspired mission control aesthetic
 - Accessibility: Support for colorblind modes and screen readers
-- Platform Support: Desktop and mobile responsive design
+- Platform Support: Desktop-focused design with window/fullscreen scaling
 
 ### Balance Parameters
 ```typescript
 const UI_CONFIG = {
-    TOUCH_TARGET_MIN_SIZE: 44, // pixels
-    DOUBLE_TAP_THRESHOLD: 300, // ms
-    LONG_PRESS_DURATION: 500, // ms
+    CLICK_TARGET_MIN_SIZE: 24, // pixels for desktop precision
+    DOUBLE_CLICK_THRESHOLD: 300, // ms
+    HOVER_DELAY: 50, // ms before showing hover state
     ANIMATION_DURATION: 250, // ms
     TOOLTIP_DELAY: 1000, // ms
     FOCUS_OUTLINE_WIDTH: 3, // pixels
-    SAFE_AREA_INSET: 20, // pixels for mobile
+    HUD_SCALE_MIN: 0.75, // minimum HUD scale in windowed mode
+    HUD_SCALE_MAX: 1.25, // maximum HUD scale for large displays
 };
 ```
 
@@ -302,19 +304,19 @@ const UI_CONFIG = {
 - `tests/ui/InputManager.test.ts`: Input event handling
 
 ### Integration Tests
-- `Touch Interaction`: Multi-touch gestures work correctly
+- `Mouse Interaction`: Hover states and click areas work correctly
 - `Keyboard Navigation`: Tab order and activation work properly
 - `Screen Scaling`: UI maintains proportions across resolutions
 - `State Persistence`: UI state saves and restores correctly
 
 ### Performance Tests
-- `Frame Time Impact`: UI updates stay under 2ms
+- `Frame Time Impact`: UI updates stay under 4ms
 - `Memory Usage`: Component pooling keeps memory stable
 - `Animation Performance`: 60 FPS during transitions
 
 ### Gameplay Testing
-- [ ] UI elements respond immediately to all input types
-- [ ] Touch targets are appropriately sized on mobile
+- [ ] UI elements respond immediately to mouse and keyboard input
+- [ ] HUD scales appropriately between windowed and fullscreen modes
 - [ ] Keyboard navigation is intuitive and complete
 - [ ] Visual feedback is clear for all interactions
 - [ ] UI remains responsive during gameplay
