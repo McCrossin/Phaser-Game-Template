@@ -90,11 +90,11 @@
     },
     "lint-staged": {
         "*.{ts,tsx}": [
-            "eslint --fix --config config/development/eslint.config.mjs",
-            "prettier --write"
+            "npx eslint --fix --config config/development/eslint.config.mjs",
+            "npx prettier --write"
         ],
         "*.{json,css,md}": [
-            "prettier --write"
+            "npx prettier --write"
         ]
     }
 }
