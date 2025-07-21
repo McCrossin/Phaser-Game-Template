@@ -1,3 +1,0 @@
-- [ ] Update the technical feasibility analysis document.
-- [ ] Pick a code smell (linter) to use for typescript for the game project.
-- [ ] Create an architecture document after completing game design.

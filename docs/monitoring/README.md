@@ -43,10 +43,10 @@ npx tsc tools/monitoring/technical-debt-tracker.ts --outDir tools/monitoring/com
 node tools/monitoring/compiled/health-check.js
 
 # Run technical debt scan
-node tools/monitoring/compiled/technical-debt-tracker.js
+npm run health:debt
 
-# Or use the convenience script (handles compilation automatically)
-./scripts/generate-health-report.sh
+# Or generate a complete health report (handles compilation automatically)
+npm run health:report
 ```
 
 ### Automated Monitoring

@@ -1,8 +1,8 @@
 {
-    "timestamp": "2025-07-21T13:31:54.128Z",
-    "overallScore": 83,
+    "timestamp": "2025-07-21T15:37:46.502Z",
+    "overallScore": 68,
     "maxScore": 100,
-    "status": "healthy",
+    "status": "warning",
     "categories": [
         {
             "category": "Build System",
@@ -12,12 +12,12 @@
             "details": [
                 "✅ TypeScript compilation successful",
                 "✅ Build process successful",
-                "✅ Build time within threshold (5863ms <= 30000ms)",
-                "📦 Bundle size: 1.5M\tdist"
+                "✅ Build time within threshold (6375ms <= 30000ms)",
+                "📦 Bundle size: 12M\tdist"
             ],
             "metrics": {
-                "buildTime": 5863,
-                "bundleSize": "1.5"
+                "buildTime": 6375,
+                "bundleSize": "12"
             }
         },
         {
@@ -27,25 +27,20 @@
             "status": "pass",
             "details": [
                 "✅ All tests passing",
-                "✅ Test execution within threshold (1412ms <= 60000ms)",
+                "✅ Test execution within threshold (12525ms <= 60000ms)",
                 "ℹ️ Coverage information not available"
             ],
             "metrics": {
-                "testTime": 1412
+                "testTime": 12525
             }
         },
         {
             "category": "Performance",
-            "score": 15,
+            "score": 0,
             "maxScore": 20,
-            "status": "pass",
-            "details": [
-                "✅ Performance tests executed successfully",
-                "⚠️ FPS below minimum requirement (5 < 30)"
-            ],
-            "metrics": {
-                "fps": 5
-            }
+            "status": "fail",
+            "details": ["❌ Performance tests failed", "   Output: spawnSync /bin/sh ETIMEDOUT..."],
+            "metrics": {}
         },
         {
             "category": "Security",

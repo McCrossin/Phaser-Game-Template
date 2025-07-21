@@ -76,11 +76,10 @@ The system automatically adapts thresholds based on environment:
 
 ```bash
 # Generate comprehensive health report
-./scripts/generate-health-report.sh
+npm run health:report
 
 # Quick health status
-npx tsc tools/monitoring/health-check.ts --outDir tools/monitoring/compiled --target es2022 --module node16 --moduleResolution node16 --allowSyntheticDefaultImports --esModuleInterop
-node tools/monitoring/compiled/health-check.js
+npm run health:check
 ```
 
 ### Technical Debt Analysis

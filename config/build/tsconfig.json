@@ -42,6 +42,7 @@
         "../../src/**/*.d.ts",
         "../../vite-plugins/**/*.ts",
         "../../testing/unit/**/*.ts",
+        "../../testing/integration/**/*.ts",
         "../../testing/setup.ts",
         "../../testing/fixtures/**/*.ts",
         "../../config/deployment/**/*.ts",

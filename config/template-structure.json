@@ -1,0 +1,23 @@
+{
+    "templateStructure": {
+        "core": {
+            "src": ["src/", "assets/", "index.html"],
+            "config": ["config/", "environments/"],
+            "build": ["package.json", "vite-plugins/"]
+        },
+        "development": {
+            "tools": ["tools/", "scripts/"],
+            "testing": ["testing/"],
+            "ci": [".github/", ".husky/"]
+        },
+        "documentation": {
+            "essential": ["README.md", "docs/setup/", "docs/examples/"],
+            "development": ["docs/development/", "docs/api/"]
+        },
+        "template": {
+            "maxRootFiles": 15,
+            "requiredDirectories": ["src", "assets", "config", "docs"],
+            "optionalDirectories": ["scripts", "tools", "testing"]
+        }
+    }
+}
