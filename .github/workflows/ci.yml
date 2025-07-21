@@ -24,11 +24,13 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: '22'
+                  node-version: '22.17.1'
                   cache: 'npm'
 
             - name: Install dependencies
-              run: npm ci
+              run: |
+                  npm ci --prefer-offline --no-audit --no-fund
+                  npm ls --depth=0
 
             - name: Run security linting
               run: npm run lint
@@ -48,11 +50,22 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: '22'
+                  node-version: '22.17.1'
                   cache: 'npm'
 
             - name: Install dependencies
-              run: npm ci
+              run: |
+                  npm ci --prefer-offline --no-audit --no-fund
+                  npm ls --depth=0
+
+            - name: Debug Environment
+              run: |
+                  echo "Node version: $(node --version)"
+                  echo "NPM version: $(npm --version)"
+                  echo "OS: $(cat /etc/os-release | grep PRETTY_NAME)"
+                  echo "Current directory: $(pwd)"
+                  echo "Project files:"
+                  ls -la
 
             - name: Run TypeScript check
               run: npm run typecheck
@@ -75,9 +88,12 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
+                  cache-dependency-path: package-lock.json
 
             - name: Install dependencies
-              run: npm ci
+              run: |
+                  npm ci --prefer-offline --no-audit --no-fund
+                  npm ls --depth=0
 
             - name: Run tests
               run: npm run test:run
@@ -103,14 +119,23 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: '22'
+                  node-version: '22.17.1'
                   cache: 'npm'
 
             - name: Install dependencies
-              run: npm ci
+              run: |
+                  # Force rebuild Sharp for Linux asset pipeline
+                  npm ci --prefer-offline --no-audit --no-fund
+                  npm rebuild sharp
+                  npm ls sharp
 
             - name: Build application
-              run: npm run build
+              run: |
+                  echo "Starting build process..."
+                  npm run build
+                  echo "Build completed. Checking outputs:"
+                  ls -la dist/
+                  du -sh dist/
 
             - name: Upload build artifacts
               uses: actions/upload-artifact@v4
@@ -161,11 +186,13 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: '22'
+                  node-version: '22.17.1'
                   cache: 'npm'
 
             - name: Install dependencies
-              run: npm ci
+              run: |
+                  npm ci --prefer-offline --no-audit --no-fund
+                  npm rebuild sharp
 
             - name: Build and check bundle size
               run: |

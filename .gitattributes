@@ -1,0 +1,22 @@
+# Ensure consistent line endings across platforms
+* text=auto eol=lf
+
+# Explicitly handle different file types
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.sh text eol=lf
+
+# Binary files should be left alone
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

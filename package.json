@@ -28,7 +28,8 @@
         "rollback": "node scripts/rollback.js",
         "performance:check": "node scripts/performance-check.js",
         "test:github-actions": "node scripts/test-github-actions.js",
-        "test:github-actions:quick": "node scripts/test-github-actions.js --quick"
+        "test:github-actions:quick": "node scripts/test-github-actions.js --quick",
+        "test:ci-compatibility": "npm run validate && npm run build && echo 'CI compatibility check passed'"
     },
     "keywords": [
         "game",
