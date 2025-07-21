@@ -209,7 +209,9 @@
 
 ## 📱 Touch & Mobile Controls (Future Support)
 
-### Touch Interface Design
+> **Platform Strategy Update (2025-01-21)**: Touch and mobile controls have been formally deferred to Phase 2+ development. Initial release will be desktop-only, focusing on keyboard and mouse input. See `/docs/technical/platform-strategy.md` for complete platform decisions and roadmap.
+
+### Touch Interface Design (Deferred to Phase 2+)
 
 **Basic Touch Gestures**
 - **Single Tap**: Select/interact with objects

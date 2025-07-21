@@ -104,7 +104,7 @@ The current design documentation represents an exceptional foundation with profe
 
 **NFR2**: Achieve save/load operations under 2 seconds for complete game state through optimized serialization, compression algorithms, and incremental saving strategies while maintaining data integrity.
 
-**NFR3**: Support cross-platform compatibility (desktop and mobile browsers) with responsive UI scaling, touch input compatibility, and platform-specific optimization while maintaining feature parity.
+**NFR3**: Support desktop browser compatibility (Chrome 90+, Firefox 88+, Edge 90+, Safari 14+) with responsive window scaling for fullscreen and windowed modes, focusing on keyboard and mouse input optimization. Mobile support is deferred to future phases per platform-strategy.md.
 
 **NFR4**: Implement TypeScript strict mode with explicit type annotations, no `any` types in production code, comprehensive interface definitions, and compile-time error prevention for maintainable AI-assisted development.
 
