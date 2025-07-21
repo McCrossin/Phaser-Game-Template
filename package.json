@@ -29,7 +29,10 @@
         "performance:check": "node tools/development/performance-check.js",
         "test:github-actions": "node tools/maintenance/test-github-actions.js",
         "test:github-actions:quick": "node tools/maintenance/test-github-actions.js --quick",
-        "test:ci-compatibility": "npm run validate && npm run build && echo 'CI compatibility check passed'"
+        "test:ci-compatibility": "npm run validate && npm run build && echo 'CI compatibility check passed'",
+        "health:check": "npx tsc tools/monitoring/health-check.ts --outDir tools/monitoring/compiled --target es2022 --module node16 --moduleResolution node16 --allowSyntheticDefaultImports --esModuleInterop && node tools/monitoring/compiled/health-check.js",
+        "health:debt": "npx tsc tools/monitoring/technical-debt-tracker.ts --outDir tools/monitoring/compiled --target es2022 --module node16 --moduleResolution node16 --allowSyntheticDefaultImports --esModuleInterop && node tools/monitoring/compiled/technical-debt-tracker.js",
+        "health:report": "./scripts/generate-health-report.sh"
     },
     "keywords": [
         "game",
