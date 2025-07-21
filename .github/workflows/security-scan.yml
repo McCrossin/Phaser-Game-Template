@@ -9,17 +9,6 @@ on:
         - cron: '0 4 * * 1' # Weekly on Monday at 4 AM
 
 jobs:
-# Security Scanning Pipeline - Indie Developer Edition
-name: Security Scan
-on:
-    pull_request:
-        branches: [main, develop]
-    push:
-        branches: [main, develop]
-    schedule:
-        - cron: '0 4 * * 1' # Weekly on Monday at 4 AM
-
-jobs:
     static-analysis:
         name: Static Security Analysis
         runs-on: ubuntu-latest
