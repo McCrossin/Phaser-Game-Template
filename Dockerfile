@@ -1,5 +1,5 @@
 # Multi-platform Docker build with 2025 optimizations
-FROM --platform=$BUILDPLATFORM node:22-alpine AS builder
+FROM node:22-alpine AS builder
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN npm ci --ignore-scripts
 COPY . .
 
 # Create asset directories if they don't exist
-RUN mkdir -p assets/raw/sprites assets/raw/ui assets/processed
+RUN mkdir -p assets/source/sprites assets/source/ui assets/processed
 
 # Build application for Docker (with TypeScript compilation)
 RUN npm run build
