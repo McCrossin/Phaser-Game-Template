@@ -92,7 +92,7 @@ export class StartScene extends Phaser.Scene {
 
         // Subtitle
         this.subtitleText = this.add
-            .text(640, 200, 'Last Guardian of Consciousness', {
+            .text(640, 200, 'Built with Phaser 3 + TypeScript', {
                 fontSize: '20px',
                 color: '#88ffaa',
                 fontFamily: 'Arial, sans-serif',

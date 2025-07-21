@@ -76,13 +76,16 @@ test.describe('Game Performance Tests', () => {
 
 async function measureGamePerformance(page: Page, duration = 10000): Promise<PerformanceMetrics> {
     await page.goto('/');
-    await page.waitForSelector('#game-canvas', { state: 'visible' });
+    await page.waitForSelector('#game-container', { state: 'visible' });
 
     // Wait for game to fully load
-    await page.waitForFunction(() => {
-        const game = (window as any).game;
-        return game && game.scene && game.scene.isActive('MainScene');
-    });
+    await page.waitForFunction(
+        () => {
+            const game = (window as any).game;
+            return game && game.scene && game.scene.isActive('StartScene');
+        },
+        { timeout: 10000 }
+    );
 
     // Start performance measurement
     const startTime = Date.now();
