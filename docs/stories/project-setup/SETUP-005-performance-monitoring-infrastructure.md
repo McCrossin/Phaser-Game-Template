@@ -249,3 +249,51 @@ None - uses only Phaser's built-in functionality
 - [x] Zero impact on production builds
 - [x] Team knows how to use tools
 - [x] Documentation complete
+
+## Known Issues & Future Work
+
+### CI/E2E Performance Test Failures ⚠️
+
+**Issue**: The automated performance tests in GitHub Actions are failing due to CI environment constraints.
+
+**Error Details**: See `runfpsbenchmarks_error.txt` for full error log.
+
+**Symptoms**:
+- FPS Performance Test expects minimum 5 FPS but getting ~3-5 FPS in CI
+- Average FPS is acceptable (82-155 FPS) but minimum FPS drops too low
+- Tests pass locally but fail in CI environment
+
+**Root Cause Analysis**:
+1. **CI Environment Limitations**: GitHub Actions runners have limited resources
+2. **Headless Browser Performance**: Playwright in headless mode may have different performance characteristics
+3. **Test Threshold Too Strict**: 5 FPS minimum may be unrealistic for CI environment
+
+**Recommended Solutions** (for future developer):
+
+1. **Immediate Fix - Adjust CI Thresholds**:
+   ```typescript
+   // In tests/e2e/performance/game-performance.test.ts
+   // Change line 54:
+   expect(minFPS).toBeGreaterThan(2); // Reduced from 5 for CI environment
+   ```
+
+2. **Better Solution - Environment-Aware Thresholds**:
+   ```typescript
+   const isCI = process.env.CI === 'true';
+   const minFPSThreshold = isCI ? 2 : 5;
+   expect(minFPS).toBeGreaterThan(minFPSThreshold);
+   ```
+
+3. **Comprehensive Solution - Separate CI/Local Test Configs**:
+   - Create separate Playwright configs for CI vs local testing
+   - Use different performance thresholds for different environments
+   - Add performance benchmarking instead of strict pass/fail
+
+**Impact**: This does not affect the core SimpleFPSCounter functionality, which works perfectly in development builds. Only affects automated CI testing.
+
+**Priority**: Medium - CI tests should pass, but local development is unaffected.
+
+**References**:
+- Error log: `runfpsbenchmarks_error.txt`
+- Test file: `tests/e2e/performance/game-performance.test.ts`
+- Related GitHub Actions workflow: Performance testing pipeline

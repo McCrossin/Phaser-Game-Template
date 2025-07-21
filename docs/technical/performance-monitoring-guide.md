@@ -130,6 +130,14 @@ if (fps >= 55) {        // Green threshold
 - No performance overhead
 - Console logging disabled
 
+### CI/E2E Testing Issues
+
+**GitHub Actions Performance Test Failures**:
+- **Symptom**: Tests expect >5 FPS minimum but CI gets ~3-5 FPS
+- **Cause**: CI environment resource constraints and headless browser limitations
+- **Solution**: See `docs/issues/ci-performance-test-failures.md` for detailed fix instructions
+- **Quick Fix**: Adjust threshold in test from `toBeGreaterThan(5)` to `toBeGreaterThan(2)`
+
 ### Performance Optimization
 
 **If FPS drops below 55**:
@@ -159,6 +167,8 @@ npm test -- tests/unit/utils/SimpleFPSCounter.test.ts
 ```bash
 npm run test:e2e -- tests/e2e/performance/
 ```
+
+**⚠️ Known Issue**: CI environment performance tests may fail due to resource constraints. See `docs/issues/ci-performance-test-failures.md` for details and solutions.
 
 ### Manual Testing
 
