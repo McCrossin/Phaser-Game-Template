@@ -1,4 +1,5 @@
 # Story: Remove Game-Specific Source Code and Assets
+
 **ID**: TEMP-004  
 **Epic**: Template Conversion  
 **Priority**: High  
@@ -10,14 +11,17 @@
 Remove all New Eden Project-specific source code, game logic, and assets while preserving the technical infrastructure, build system, and development tools. Create a minimal but functional Phaser 3 starter project with example components.
 
 ### Player Experience Goal
+
 Developers will receive a clean, functional Phaser 3 project with example scenes, components, and systems that demonstrate best practices without any game-specific content.
 
 ### Technical Overview
+
 Strip out New Eden game logic, assets, and specific implementations while maintaining the TypeScript architecture, build system, testing framework, and development tools. Create example scenes and components that showcase the template's capabilities.
 
 ## Acceptance Criteria
 
 ### Functional Requirements
+
 - [ ] All New Eden specific game logic removed
 - [ ] Game-specific assets removed (keeping placeholder assets)
 - [ ] Functional example Phaser 3 scenes created
@@ -25,6 +29,7 @@ Strip out New Eden game logic, assets, and specific implementations while mainta
 - [ ] Build system and tools remain fully functional
 
 ### Technical Requirements
+
 - [ ] src/ folder contains template code only
 - [ ] Example scenes demonstrate Phaser 3 patterns
 - [ ] TypeScript architecture preserved
@@ -32,6 +37,7 @@ Strip out New Eden game logic, assets, and specific implementations while mainta
 - [ ] Testing framework with example tests
 
 ### Game Design Requirements
+
 - [ ] No New Eden mechanics in codebase
 - [ ] Generic game systems as examples
 - [ ] Scalable architecture for any 2D game
@@ -40,6 +46,7 @@ Strip out New Eden game logic, assets, and specific implementations while mainta
 ## Technical Specifications
 
 ### Source Code Structure After Cleanup
+
 ```
 src/
 ├── main.ts                 # Entry point with example game config
@@ -65,18 +72,20 @@ src/
 ```
 
 ### Assets to Remove/Replace
+
 1. **Remove New Eden Assets**
-   - assets/sprites/ (New Eden specific sprites)
-   - Game-specific audio files
-   - New Eden themed UI elements
+    - assets/sprites/ (New Eden specific sprites)
+    - Game-specific audio files
+    - New Eden themed UI elements
 
 2. **Keep/Add Template Assets**
-   - assets/phaser.png (Phaser logo)
-   - Basic placeholder sprites
-   - Example UI elements
-   - Template background/space image
+    - assets/phaser.png (Phaser logo)
+    - Basic placeholder sprites
+    - Example UI elements
+    - Template background/space image
 
 ### Example Scene Implementation
+
 ```typescript
 // src/scenes/GameScene.ts - Example gameplay scene
 export class GameScene extends Phaser.Scene {
@@ -86,11 +95,13 @@ export class GameScene extends Phaser.Scene {
 
     create() {
         // Example implementation showing template patterns
-        this.add.text(400, 300, 'Template Game Scene', {
-            fontSize: '32px',
-            fill: '#ffffff'
-        }).setOrigin(0.5);
-        
+        this.add
+            .text(400, 300, 'Template Game Scene', {
+                fontSize: '32px',
+                fill: '#ffffff'
+            })
+            .setOrigin(0.5);
+
         // Example of component usage
         // Template patterns without game-specific logic
     }
@@ -98,6 +109,7 @@ export class GameScene extends Phaser.Scene {
 ```
 
 ### Configuration Updates
+
 ```typescript
 // src/config/GameConfig.ts - Generic game configuration
 export const gameConfig: Phaser.Types.Core.GameConfig = {
@@ -105,7 +117,7 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
     width: 1920,
     height: 1080,
     title: 'Phaser Game Template',
-    scene: [BootScene, MenuScene, GameScene],
+    scene: [BootScene, MenuScene, GameScene]
     // Remove New Eden specific configurations
 };
 ```
@@ -113,30 +125,35 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
 ## Implementation Tasks
 
 ### Phase 1: Code Analysis and Planning (0.5 days)
+
 1. Identify all New Eden specific code
 2. Catalog reusable infrastructure components
 3. Plan example implementations
 4. Document code removal strategy
 
 ### Phase 2: Source Code Cleanup (2 days)
+
 1. Remove New Eden game logic from all files
 2. Clean up type definitions
 3. Remove game-specific configurations
 4. Update imports and dependencies
 
 ### Phase 3: Example Implementation (1.5 days)
+
 1. Create example scenes showing best practices
 2. Implement component architecture examples
 3. Create basic game object examples
 4. Add configuration examples
 
 ### Phase 4: Asset Management (0.5 days)
+
 1. Remove New Eden specific assets
 2. Add placeholder/example assets
 3. Update asset loading configurations
 4. Test asset pipeline
 
 ### Phase 5: Testing and Validation (0.5 days)
+
 1. Update tests for template code
 2. Verify build processes work
 3. Test example scenes function correctly
@@ -145,18 +162,21 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
 ## Testing Requirements
 
 ### Unit Tests
+
 - Example components have test coverage
 - Utility functions tested
 - Configuration loading tested
 - Scene management tested
 
 ### Integration Tests
+
 - Example scenes load and function correctly
 - Asset loading pipeline works
 - Build system produces working game
 - Development server functions properly
 
 ### Performance Tests
+
 - Template maintains performance standards
 - Example scenes meet frame rate targets
 - Asset loading is efficient
@@ -165,30 +185,35 @@ export const gameConfig: Phaser.Types.Core.GameConfig = {
 ## Definition of Done
 
 ### Implementation Complete
+
 - [ ] All New Eden specific code removed
 - [ ] Functional example scenes implemented
 - [ ] Component architecture examples created
 - [ ] Build system fully functional
 
 ### Quality Assurance
+
 - [ ] Example code demonstrates best practices
 - [ ] No game-specific content remains
 - [ ] Template is immediately usable
 - [ ] Code quality standards maintained
 
 ### Technical Validation
+
 - [ ] All tests pass with new template code
 - [ ] Build processes work correctly
 - [ ] Performance benchmarks met
 - [ ] Development workflow validated
 
 ### Asset Management
+
 - [ ] Game-specific assets removed
 - [ ] Placeholder assets functional
 - [ ] Asset pipeline works correctly
 - [ ] Template ready for new game assets
 
 ### Documentation
+
 - [ ] Code examples are well-documented
 - [ ] Component architecture explained
 - [ ] Template usage patterns documented

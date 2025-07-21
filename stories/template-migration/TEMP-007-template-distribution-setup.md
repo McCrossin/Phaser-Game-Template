@@ -1,4 +1,5 @@
 # Story: Create Template Repository Setup and Distribution
+
 **ID**: TEMP-007  
 **Epic**: Template Conversion  
 **Priority**: Medium  
@@ -10,14 +11,17 @@
 Prepare the template for distribution by creating repository setup instructions, template clone/setup automation, and ensuring the template is ready to be used as a GitHub template repository or distributed independently.
 
 ### Player Experience Goal
+
 Developers will be able to quickly create new projects from this template through GitHub's template feature or by cloning and setting up the repository with minimal manual configuration.
 
 ### Technical Overview
+
 Create automation scripts for template setup, prepare the repository for GitHub template distribution, and ensure all template features work correctly when instantiated as a new project.
 
 ## Acceptance Criteria
 
 ### Functional Requirements
+
 - [ ] Repository configured as GitHub template
 - [ ] Template setup automation script created
 - [ ] New project initialization process documented
@@ -25,6 +29,7 @@ Create automation scripts for template setup, prepare the repository for GitHub 
 - [ ] Setup verification process included
 
 ### Technical Requirements
+
 - [ ] GitHub template configuration complete
 - [ ] Automated setup script functional
 - [ ] Template cloning process tested
@@ -32,6 +37,7 @@ Create automation scripts for template setup, prepare the repository for GitHub 
 - [ ] Build system works in new projects
 
 ### Game Design Requirements
+
 - [ ] Template supports various 2D game projects
 - [ ] Professional development workflow maintained
 - [ ] Template easily customizable for different genres
@@ -42,19 +48,20 @@ Create automation scripts for template setup, prepare the repository for GitHub 
 ### GitHub Template Configuration
 
 1. **Repository Settings**
-   - Enable "Template repository" in GitHub settings
-   - Configure repository description for template use
-   - Set appropriate repository topics/tags
-   - Configure default branch and protections
+    - Enable "Template repository" in GitHub settings
+    - Configure repository description for template use
+    - Set appropriate repository topics/tags
+    - Configure default branch and protections
 
 2. **Template Configuration File**
+
 ```json
 {
-  "name": "phaser-game-template",
-  "description": "Professional 2D Phaser game template with CI/CD and monitoring",
-  "visibility": "public",
-  "template": true,
-  "topics": ["phaser", "typescript", "game-template", "2d-game", "vite"]
+    "name": "phaser-game-template",
+    "description": "Professional 2D Phaser game template with CI/CD and monitoring",
+    "visibility": "public",
+    "template": true,
+    "topics": ["phaser", "typescript", "game-template", "2d-game", "vite"]
 }
 ```
 
@@ -71,39 +78,39 @@ const { execSync } = require('child_process');
 
 // Template setup automation
 function setupNewProject(projectName, gameTitle, author) {
-  console.log(`Setting up new game project: ${projectName}`);
-  
-  // Update package.json
-  updatePackageJson(projectName, gameTitle, author);
-  
-  // Update configuration files
-  updateConfigurations(projectName, gameTitle);
-  
-  // Initialize git repository
-  initializeGit();
-  
-  // Install dependencies
-  installDependencies();
-  
-  console.log('Template setup complete!');
+    console.log(`Setting up new game project: ${projectName}`);
+
+    // Update package.json
+    updatePackageJson(projectName, gameTitle, author);
+
+    // Update configuration files
+    updateConfigurations(projectName, gameTitle);
+
+    // Initialize git repository
+    initializeGit();
+
+    // Install dependencies
+    installDependencies();
+
+    console.log('Template setup complete!');
 }
 ```
 
 ### Template Distribution Options
 
 1. **GitHub Template**
-   - Use GitHub's "Use this template" button
-   - Automatic repository creation
-   - Preserves all template features
+    - Use GitHub's "Use this template" button
+    - Automatic repository creation
+    - Preserves all template features
 
 2. **Manual Clone Setup**
-   - Clone repository
-   - Run setup script
-   - Manual configuration
+    - Clone repository
+    - Run setup script
+    - Manual configuration
 
 3. **NPX Package** (Future consideration)
-   - `npx create-phaser-game my-game`
-   - Automated project scaffolding
+    - `npx create-phaser-game my-game`
+    - Automated project scaffolding
 
 ### Setup Verification Process
 
@@ -140,18 +147,21 @@ echo "✅ Template setup verified successfully"
 ## Implementation Tasks
 
 ### Phase 1: Repository Configuration (0.5 days)
+
 1. Configure GitHub template settings
 2. Update repository metadata
 3. Set up template-specific documentation
 4. Configure repository protections
 
 ### Phase 2: Setup Automation (1 day)
+
 1. Create template setup script
 2. Implement project configuration automation
 3. Add setup verification process
 4. Test automation with new projects
 
 ### Phase 3: Distribution Preparation (0.5 days)
+
 1. Create template usage instructions
 2. Test GitHub template functionality
 3. Verify manual setup process
@@ -160,18 +170,21 @@ echo "✅ Template setup verified successfully"
 ## Testing Requirements
 
 ### Template Functionality Tests
+
 - GitHub template creation works correctly
 - Setup automation script functions properly
 - All template features work in new projects
 - Verification process catches issues
 
 ### Distribution Tests
+
 - Template can be used via GitHub interface
 - Manual clone and setup process works
 - All documentation is accurate
 - New projects build and run correctly
 
 ### User Experience Tests
+
 - Template setup is straightforward
 - Documentation is clear and complete
 - Common issues are addressed
@@ -180,30 +193,35 @@ echo "✅ Template setup verified successfully"
 ## Definition of Done
 
 ### Repository Setup
+
 - [ ] GitHub template configuration complete
 - [ ] Repository properly configured for distribution
 - [ ] Template metadata accurate and helpful
 - [ ] Distribution options documented
 
 ### Automation Complete
+
 - [ ] Template setup script functional
 - [ ] Project configuration automation working
 - [ ] Setup verification process implemented
 - [ ] All automation tested and documented
 
 ### Distribution Ready
+
 - [ ] Template works via GitHub template feature
 - [ ] Manual setup process documented and tested
 - [ ] All template features preserved in new projects
 - [ ] Ready for public distribution
 
 ### Quality Assurance
+
 - [ ] Template setup tested by multiple users
 - [ ] All documentation validated
 - [ ] Common issues identified and addressed
 - [ ] Professional quality maintained
 
 ### Template Validation
+
 - [ ] New projects created from template work correctly
 - [ ] All monitoring and CI/CD features functional
 - [ ] Template provides immediate development value
