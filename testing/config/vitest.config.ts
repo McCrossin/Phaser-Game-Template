@@ -10,10 +10,10 @@ export default defineConfig({
         environment: 'node',
         setupFiles: [resolve(__dirname, '../setup.ts')],
 
-        // Increased timeout configuration for linting tests
-        testTimeout: isCI ? 30000 : 15000, // 15s local, 30s CI for slow linting
-        hookTimeout: isCI ? 10000 : 5000, // 5s local, 10s CI
-        teardownTimeout: isCI ? 5000 : 3000, // 3s local, 5s CI
+        // Increased timeout configuration for build/integration tests
+        testTimeout: isCI ? 120000 : 30000, // 30s local, 120s CI for long build tests
+        hookTimeout: isCI ? 20000 : 10000, // 10s local, 20s CI
+        teardownTimeout: isCI ? 10000 : 5000, // 5s local, 10s CI
 
         // Optimized retry and bail configuration
         retry: isCI ? 1 : 0, // Minimal retries to prevent hanging

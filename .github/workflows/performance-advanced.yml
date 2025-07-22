@@ -106,8 +106,9 @@ jobs:
                   command: |
                       echo "🎮 Running performance tests (attempt ${{ steps.retry.outputs.attempt || 1 }}/3)..."
 
-                      # Install browsers with retry
-                      npx playwright install chromium --with-deps
+                      # Install browsers with proper permissions and caching
+                      export PLAYWRIGHT_BROWSERS_PATH=$HOME/.cache/playwright
+                      npx playwright install --with-deps chromium
 
                       # Run performance tests with CI settings
                       npm run test:performance

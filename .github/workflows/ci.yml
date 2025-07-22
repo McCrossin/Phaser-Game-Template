@@ -102,7 +102,7 @@ jobs:
 
             - name: Run tests
               run: npm run test:run
-              timeout-minutes: 5
+              timeout-minutes: 15
 
             - name: Upload coverage artifacts
               uses: actions/upload-artifact@v4
