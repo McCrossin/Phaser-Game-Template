@@ -2,7 +2,31 @@
 
 This guide helps diagnose and resolve common issues with the CI/CD pipeline and performance monitoring in GitHub Actions.
 
-## 🚨 Quick Diagnosis
+## � Matrix Build Configurations
+
+The CI pipeline now uses matrix builds to test across multiple Node.js versions and operating systems:
+
+- **Node.js Versions**: 18.20.4, 20.17.0, 22.17.1
+- **Operating Systems**: Ubuntu Latest, Windows Latest
+- **Test Combinations**: Each test suite runs on all combinations
+
+### Matrix Build Issues
+
+**Common Problems**:
+- Platform-specific dependency compilation failures
+- Windows vs Linux path differences
+- Node.js version compatibility issues
+
+**Solutions**:
+```yaml
+strategy:
+    matrix:
+        node-version: ['18.20.4', '20.17.0', '22.17.1']
+        os: [ubuntu-latest, windows-latest]
+    fail-fast: false  # Continue testing other combinations if one fails
+```
+
+## �🚨 Quick Diagnosis
 
 ### Performance Tests Failing in CI but Passing Locally
 

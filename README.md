@@ -2,7 +2,10 @@
 
 **Professional 2D game development template with modern tooling and comprehensive documentation.**
 
-[![CI/CD Pipeline](https://github.com/McCrossin/Phaser-Game-Template/workflows/CI/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
+[![CI/CD Pipeline](https://github.com/McCrossin/Phaser-Game-Template/workflows/Game%20CI%20Pipeline%202025/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
+[![Security Scan](https://github.com/McCrossin/Phaser-Game-Template/workflows/Security%20Scan/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
+[![Template Quality](https://github.com/McCrossin/Phaser-Game-Template/workflows/Template%20Quality%20Check/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
+[![Health Monitoring](https://github.com/McCrossin/Phaser-Game-Template/workflows/Health%20Monitoring/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Phaser](https://img.shields.io/badge/Phaser-3.70+-orange.svg)](https://phaser.io/)

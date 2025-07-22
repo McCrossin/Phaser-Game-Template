@@ -6,6 +6,8 @@ permissions:
     packages: write
     security-events: write
     id-token: write
+    actions: read
+    checks: write
 
 on:
     pull_request:
@@ -75,11 +77,13 @@ jobs:
               run: npm run lint
 
     test:
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
         timeout-minutes: 10
         strategy:
             matrix:
-                node-version: ['22.17.1']
+                node-version: ['18.20.4', '20.17.0', '22.17.1']
+                os: [ubuntu-latest, windows-latest]
+            fail-fast: false
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -104,7 +108,7 @@ jobs:
               uses: actions/upload-artifact@v4
               if: always()
               with:
-                  name: coverage-${{ matrix.node-version }}
+                  name: coverage-${{ matrix.node-version }}-${{ matrix.os }}
                   path: coverage/
 
     build-and-push:

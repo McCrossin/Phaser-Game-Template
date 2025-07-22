@@ -5,20 +5,35 @@ updates:
       directory: '/'
       schedule:
           interval: 'weekly'
+          day: 'monday'
+          time: '06:00'
+          timezone: 'UTC'
       open-pull-requests-limit: 10
       reviewers:
           - 'TEMPLATE-OWNER'
+      assignees:
+          - 'TEMPLATE-OWNER'
       labels:
           - 'dependencies'
+          - 'npm'
+      commit-message:
+          prefix: 'npm'
+          include: 'scope'
       groups:
+          phaser:
+              patterns:
+                  - 'phaser*'
           vitest:
               patterns:
                   - 'vitest*'
                   - '@vitest/*'
+                  - 'jsdom'
+                  - 'happy-dom'
           typescript:
               patterns:
                   - 'typescript*'
                   - '@typescript-eslint/*'
+                  - '@types/*'
           eslint:
               patterns:
                   - 'eslint*'
@@ -28,15 +43,34 @@ updates:
                   - 'vite*'
                   - '@vitejs/*'
                   - 'typedoc*'
+                  - 'rollup*'
+          development-tools:
+              patterns:
+                  - 'prettier*'
+                  - 'husky*'
+                  - 'lint-staged*'
+                  - 'is-ci*'
+          playwright:
+              patterns:
+                  - '@playwright/*'
+                  - 'playwright*'
 
     # Enable version updates for GitHub Actions
     - package-ecosystem: 'github-actions'
       directory: '/'
       schedule:
           interval: 'weekly'
+          day: 'monday'
+          time: '06:00'
+          timezone: 'UTC'
       open-pull-requests-limit: 5
       reviewers:
+          - 'TEMPLATE-OWNER'
+      assignees:
           - 'TEMPLATE-OWNER'
       labels:
           - 'github-actions'
           - 'dependencies'
+      commit-message:
+          prefix: 'github-actions'
+          include: 'scope'

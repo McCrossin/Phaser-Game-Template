@@ -28,7 +28,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: ['22.17.1']
+                node-version: ['18.20.4', '20.17.0', '22.17.1']
                 test-suite: [unit, integration, e2e, full]
             fail-fast: false
 
