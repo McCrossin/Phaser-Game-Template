@@ -46,7 +46,8 @@
         "../../testing/setup.ts",
         "../../testing/fixtures/**/*.ts",
         "../../config/deployment/**/*.ts",
-        "../../testing/config/vitest.config.ts"
+        "../../testing/config/vitest.config.ts",
+        "../../tools/**/*.ts"
     ],
     "exclude": [
         "../../node_modules",

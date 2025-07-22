@@ -92,7 +92,7 @@ class FrameworkHealthChecker {
             const thresholdsData = await fs.readFile(thresholdsPath, 'utf-8');
             const loadedThresholds = JSON.parse(thresholdsData);
             this.thresholds = { ...this.thresholds, ...loadedThresholds };
-        } catch (error) {
+        } catch {
             console.warn('Could not load health thresholds, using defaults');
         }
     }
@@ -110,7 +110,7 @@ class FrameworkHealthChecker {
                 success: true,
                 time: Date.now() - startTime
             };
-        } catch (error) {
+        } catch {
             return {
                 stdout: error instanceof Error ? error.message : 'Unknown error',
                 success: false,
@@ -145,7 +145,7 @@ class FrameworkHealthChecker {
         if (buildCheck.success) {
             result.score += 15;
             result.details.push('✅ Build process successful');
-            result.metrics!.buildTime = buildCheck.time;
+            result.metrics!['buildTime'] = buildCheck.time;
 
             if (buildCheck.time <= this.thresholds.build.max_time_ms) {
                 result.score += 5;
@@ -169,13 +169,13 @@ class FrameworkHealthChecker {
                 const sizeCheck = this.execCommand('du -sh dist');
                 if (sizeCheck.success) {
                     const sizeMatch = sizeCheck.stdout.match(/(\d+(?:\.\d+)?)[KMG]?/);
-                    if (sizeMatch) {
+                    if (sizeMatch && sizeMatch[1]) {
                         result.details.push(`📦 Bundle size: ${sizeCheck.stdout.trim()}`);
-                        result.metrics!.bundleSize = sizeMatch[1];
+                        result.metrics!['bundleSize'] = sizeMatch[1];
                     }
                 }
             }
-        } catch (error) {
+        } catch {
             result.details.push('⚠️ No dist directory found (build may not generate output)');
         }
 
@@ -199,7 +199,7 @@ class FrameworkHealthChecker {
         if (testCheck.success) {
             result.score += 15;
             result.details.push('✅ All tests passing');
-            result.metrics!.testTime = testCheck.time;
+            result.metrics!['testTime'] = testCheck.time;
 
             if (testCheck.time <= this.thresholds.test.max_time_ms) {
                 result.score += 5;
@@ -221,11 +221,11 @@ class FrameworkHealthChecker {
         if (coverageCheck.success) {
             // Extract coverage percentage from output
             const coverageMatch = coverageCheck.stdout.match(
-                /All files[^\|]*\|[^\|]*\|[^\|]*\|[^\|]*\|[^\|]*(\d+(?:\.\d+)?)/
+                /All files[^|]*\|[^|]*\|[^|]*\|[^|]*\|[^|]*(\d+(?:\.\d+)?)/
             );
-            if (coverageMatch) {
+            if (coverageMatch && coverageMatch[1]) {
                 const coverage = parseFloat(coverageMatch[1]);
-                result.metrics!.coverage = coverage;
+                result.metrics!['coverage'] = coverage;
                 if (coverage >= this.thresholds.test.min_coverage_percent) {
                     result.score += 5;
                     result.details.push(
@@ -269,9 +269,9 @@ class FrameworkHealthChecker {
 
                 // Try to extract FPS information
                 const fpsMatch = perfCheck.stdout.match(/FPS[:\s]*(\d+(?:\.\d+)?)/i);
-                if (fpsMatch) {
+                if (fpsMatch && fpsMatch[1]) {
                     const fps = parseFloat(fpsMatch[1]);
-                    result.metrics!.fps = fps;
+                    result.metrics!['fps'] = fps;
                     if (fps >= this.thresholds.performance.min_fps) {
                         result.score += 5;
                         result.details.push(
@@ -287,7 +287,7 @@ class FrameworkHealthChecker {
                 result.details.push('❌ Performance tests failed');
                 result.details.push(`   Output: ${perfCheck.stdout.slice(0, 200)}...`);
             }
-        } catch (error) {
+        } catch {
             result.score += 10; // Partial credit if no performance tests exist yet
             result.details.push(
                 'ℹ️ No performance test script found - this is acceptable for early development'
@@ -317,9 +317,9 @@ class FrameworkHealthChecker {
         } else {
             // Parse audit output for vulnerability count
             const vulnMatch = auditCheck.stdout.match(/(\d+) vulnerabilities/);
-            if (vulnMatch) {
+            if (vulnMatch && vulnMatch[1]) {
                 const vulnCount = parseInt(vulnMatch[1]);
-                result.metrics!.vulnerabilities = vulnCount;
+                result.metrics!['vulnerabilities'] = vulnCount;
                 if (vulnCount <= this.thresholds.security.max_vulnerabilities) {
                     result.score += 5;
                     result.details.push(
@@ -349,7 +349,7 @@ class FrameworkHealthChecker {
                 securityFileFound = true;
                 result.details.push(`✅ Security policy found: ${file}`);
                 break;
-            } catch (error) {
+            } catch {
                 // File doesn't exist, continue checking
             }
         }
@@ -381,7 +381,7 @@ class FrameworkHealthChecker {
             if (outdatedCheck.stdout.trim()) {
                 const outdatedData = JSON.parse(outdatedCheck.stdout);
                 const outdatedCount = Object.keys(outdatedData).length;
-                result.metrics!.outdatedDependencies = outdatedCount;
+                result.metrics!['outdatedDependencies'] = outdatedCount;
 
                 if (outdatedCount <= this.thresholds.dependencies.max_outdated) {
                     result.score += 5;
@@ -397,7 +397,7 @@ class FrameworkHealthChecker {
                 result.score += 5;
                 result.details.push('✅ All dependencies are up to date');
             }
-        } catch (error) {
+        } catch {
             if (outdatedCheck.stdout.includes('No package.json found')) {
                 result.details.push('❌ No package.json found');
             } else {
@@ -413,7 +413,7 @@ class FrameworkHealthChecker {
             JSON.parse(packageData); // Validate JSON
             result.score += 5;
             result.details.push('✅ package.json is valid');
-        } catch (error) {
+        } catch {
             result.details.push('❌ package.json is missing or invalid');
         }
 
@@ -514,7 +514,7 @@ class FrameworkHealthChecker {
 
             // Exit with appropriate code
             process.exit(report.status === 'critical' ? 1 : 0);
-        } catch (error) {
+        } catch {
             console.error('❌ Health check failed with error:', error);
             process.exit(1);
         }

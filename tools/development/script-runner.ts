@@ -6,7 +6,7 @@
  * Provides cross-platform alternatives to shell scripts using Node.js
  */
 
-import { execSync, spawn } from 'child_process';
+import { execSync, spawn, ChildProcess } from 'child_process';
 import { existsSync, rmSync, mkdirSync, statSync, readdirSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
@@ -16,7 +16,39 @@ const __dirname = dirname(__filename);
 const PROJECT_ROOT = resolve(__dirname, '../..');
 
 // Color output utilities
-const colors = {
+interface Colors {
+    readonly reset: string;
+    readonly red: string;
+    readonly green: string;
+    readonly yellow: string;
+    readonly blue: string;
+    readonly cyan: string;
+}
+
+type LogLevel = 'info' | 'success' | 'warning' | 'error';
+
+interface CleanupPath {
+    readonly path: string;
+    readonly desc: string;
+}
+
+interface CleanupOptions {
+    readonly dryRun?: boolean;
+    readonly backup?: boolean;
+}
+
+interface CommandOptions {
+    readonly cwd?: string;
+    readonly stdio?: 'inherit' | 'pipe' | 'ignore';
+    readonly env?: NodeJS.ProcessEnv;
+}
+
+interface TestPerformanceOptions {
+    timeout?: number;
+    extraArgs?: string[];
+}
+
+const colors: Colors = {
     reset: '\x1b[0m',
     red: '\x1b[31m',
     green: '\x1b[32m',
@@ -25,7 +57,7 @@ const colors = {
     cyan: '\x1b[36m'
 };
 
-function log(level, message) {
+function log(level: LogLevel, message: string): void {
     const timestamp = new Date().toISOString();
     const prefix = {
         info: `${colors.blue}ℹ️${colors.reset}`,
@@ -37,7 +69,7 @@ function log(level, message) {
     console.log(`${prefix[level]} [${timestamp}] ${message}`);
 }
 
-function getFileSize(path) {
+function getFileSize(path: string): number {
     try {
         const stats = statSync(path);
         if (stats.isDirectory()) {
@@ -55,12 +87,12 @@ function getFileSize(path) {
         } else {
             return stats.size;
         }
-    } catch (error) {
+    } catch {
         return 0;
     }
 }
 
-function formatSize(bytes) {
+function formatSize(bytes: number): string {
     if (bytes === 0) return '0 B';
     const k = 1024;
     const sizes = ['B', 'KB', 'MB', 'GB'];
@@ -68,7 +100,11 @@ function formatSize(bytes) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }
 
-function removePathSafely(targetPath, description, options = {}) {
+function removePathSafely(
+    targetPath: string,
+    description: string,
+    options: CleanupOptions = {}
+): boolean {
     const { dryRun = false, backup = false } = options;
 
     if (!existsSync(targetPath)) {
@@ -95,26 +131,31 @@ function removePathSafely(targetPath, description, options = {}) {
         log('success', `Successfully removed ${description}`);
         return true;
     } catch (error) {
-        log('error', `Failed to remove ${description}: ${error.message}`);
+        log('error', `Failed to remove ${description}: ${(error as Error).message}`);
         return false;
     }
 }
 
-async function runCommand(command, args = [], options = {}) {
+async function runCommand(
+    command: string,
+    args: string[] = [],
+    options: CommandOptions = {}
+): Promise<number> {
     const { cwd = PROJECT_ROOT, stdio = 'inherit' } = options;
 
     return new Promise((resolve, reject) => {
         log('info', `Running: ${command} ${args.join(' ')}`);
 
-        const child = spawn(command, args, {
+        const child: ChildProcess = spawn(command, args, {
             cwd,
             stdio,
-            shell: process.platform === 'win32'
+            shell: process.platform === 'win32',
+            env: options.env
         });
 
         child.on('close', code => {
             if (code === 0) {
-                resolve(code);
+                resolve(code || 0);
             } else {
                 reject(new Error(`Command failed with exit code ${code}`));
             }
@@ -128,12 +169,12 @@ async function runCommand(command, args = [], options = {}) {
 
 // Script functions
 const scripts = {
-    async cleanupCache(options = {}) {
+    async cleanupCache(options: CleanupOptions = {}): Promise<void> {
         const { dryRun = false, backup = false } = options;
 
         log('info', 'Starting cache cleanup...');
 
-        const pathsToClean = [
+        const pathsToClean: CleanupPath[] = [
             { path: join(PROJECT_ROOT, 'node_modules'), desc: 'Node modules' },
             { path: join(PROJECT_ROOT, 'dist'), desc: 'Build output' },
             { path: join(PROJECT_ROOT, '.vite'), desc: 'Vite cache' },
@@ -160,8 +201,8 @@ const scripts = {
         );
     },
 
-    async testPerformance(options = {}) {
-        const { timeout = process.env.CI ? 300000 : 180000, extraArgs = [] } = options;
+    async testPerformance(options: TestPerformanceOptions = {}): Promise<void> {
+        const { timeout = process.env['CI'] ? 300000 : 180000, extraArgs = [] } = options;
 
         log('info', 'Setting up performance test environment...');
         log('info', `Using timeout: ${timeout}ms`);
@@ -177,7 +218,7 @@ const scripts = {
                 execSync('pkill -f "vite preview" || true', { stdio: 'ignore' });
                 execSync('pkill -f "playwright" || true', { stdio: 'ignore' });
             }
-        } catch (error) {
+        } catch {
             // Ignore errors from process cleanup
         }
 
@@ -196,14 +237,13 @@ const scripts = {
         });
     },
 
-    async generateHealthReport(options = {}) {
+    async generateHealthReport(): Promise<void> {
         log('info', 'Generating health report...');
 
         const reportDir = join(PROJECT_ROOT, 'reports/health');
-        const timestamp =
-            new Date().toISOString().replace(/[:.]/g, '-').split('T')[0] +
-            '_' +
-            new Date().toTimeString().split(' ')[0].replace(/:/g, '-');
+        const dateString = new Date().toISOString().replace(/[:.]/g, '-').split('T')[0];
+        const timeString = new Date().toTimeString().split(' ')[0];
+        const timestamp = `${dateString}_${timeString ? timeString.replace(/:/g, '-') : '00-00-00'}`;
         const reportFile = join(reportDir, `health-report-${timestamp}.md`);
 
         // Create reports directory
@@ -215,14 +255,14 @@ const scripts = {
             await runCommand('npm', ['run', 'health:debt']);
             log('success', `Health report generated: ${reportFile}`);
         } catch (error) {
-            log('error', `Health report generation failed: ${error.message}`);
+            log('error', `Health report generation failed: ${(error as Error).message}`);
             throw error;
         }
     }
 };
 
 // CLI interface
-async function main() {
+async function main(): Promise<void> {
     const args = process.argv.slice(2);
     const command = args[0];
 
@@ -244,15 +284,21 @@ async function main() {
                 });
                 break;
 
-            case 'test-performance':
+            case 'test-performance': {
                 const timeoutArg = args.find(arg => arg.startsWith('--timeout='));
-                const timeout = timeoutArg ? parseInt(timeoutArg.split('=')[1]) : undefined;
+                const timeoutValue = timeoutArg ? timeoutArg.split('=')[1] : undefined;
+                const timeout = timeoutValue ? parseInt(timeoutValue) : undefined;
                 const extraArgs = args.filter(
                     arg => !arg.startsWith('--timeout=') && arg !== command
                 );
 
-                await scripts.testPerformance({ timeout, extraArgs });
+                const performanceOptions: TestPerformanceOptions = { extraArgs };
+                if (timeout !== undefined) {
+                    performanceOptions.timeout = timeout;
+                }
+                await scripts.testPerformance(performanceOptions);
                 break;
+            }
 
             case 'generate-health-report':
                 await scripts.generateHealthReport();
@@ -263,7 +309,7 @@ async function main() {
                 process.exit(1);
         }
     } catch (error) {
-        log('error', `Script failed: ${error.message}`);
+        log('error', `Script failed: ${(error as Error).message}`);
         process.exit(1);
     }
 }

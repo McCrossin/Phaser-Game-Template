@@ -47,19 +47,23 @@ describe('Script Migration Validation', () => {
         it('should use Node.js implementations for cross-platform scripts', () => {
             const scripts = packageJson.scripts;
 
-            // These scripts should use Node.js script runner
-            expect(scripts.clean).toContain('node tools/development/script-runner.js');
-            expect(scripts['clean:dry-run']).toContain('node tools/development/script-runner.js');
-            expect(scripts['test:performance']).toContain(
-                'node tools/development/script-runner.js'
+            // These scripts should use TypeScript script runner with tsx
+            expect(scripts.clean).toContain('npx tsx tools/development/script-runner.ts');
+            expect(scripts['clean:dry-run']).toContain(
+                'npx tsx tools/development/script-runner.ts'
             );
-            expect(scripts['health:report']).toContain('node tools/development/script-runner.js');
+            expect(scripts['test:performance']).toContain(
+                'npx tsx tools/development/script-runner.ts'
+            );
+            expect(scripts['health:report']).toContain(
+                'npx tsx tools/development/script-runner.ts'
+            );
         });
     });
 
     describe('cross-platform script runner', () => {
         it('should have script runner utility available', () => {
-            const scriptRunner = join(PROJECT_ROOT, 'tools/development/script-runner.js');
+            const scriptRunner = join(PROJECT_ROOT, 'tools/development/script-runner.ts');
             expect(existsSync(scriptRunner)).toBe(true);
         });
 
@@ -76,7 +80,7 @@ describe('Script Migration Validation', () => {
         it('should show help for script runner commands', () => {
             let output: string;
             try {
-                output = execSync('node tools/development/script-runner.js', {
+                output = execSync('npx tsx tools/development/script-runner.ts', {
                     stdio: 'pipe',
                     cwd: PROJECT_ROOT,
                     encoding: 'utf8'

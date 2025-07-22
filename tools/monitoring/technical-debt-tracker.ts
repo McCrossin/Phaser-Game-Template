@@ -293,7 +293,7 @@ class TechnicalDebtTracker {
 
     private isValidMatch(
         pattern: DebtPattern,
-        match: RegExpExecArray,
+        _match: RegExpExecArray,
         context: string,
         filePath: string
     ): boolean {
@@ -326,7 +326,7 @@ class TechnicalDebtTracker {
                 if (context.includes(':') && (context.includes('{') || context.includes(';'))) {
                     return false; // Likely a config object or interface property
                 }
-                if (/^[\s]*[\w]+:\s*[\w\[\{]/.test(context)) {
+                if (/^[\s]*[\w]+:\s*[\w[{]/.test(context)) {
                     return false; // Object property definition
                 }
                 if (/interface|type|export/.test(context)) {
@@ -376,27 +376,27 @@ class TechnicalDebtTracker {
             {} as Record<string, number>
         );
 
-        if (severityCounts.critical > 0) {
+        if (severityCounts['critical'] && severityCounts['critical'] > 0) {
             recommendations.push(
-                `🚨 CRITICAL: Address ${severityCounts.critical} critical security/quality issues immediately`
+                `🚨 CRITICAL: Address ${severityCounts['critical']} critical security/quality issues immediately`
             );
         }
 
-        if (severityCounts.high > 0) {
+        if (severityCounts['high'] && severityCounts['high'] > 0) {
             recommendations.push(
-                `🔴 HIGH: Fix ${severityCounts.high} high-priority issues before next release`
+                `🔴 HIGH: Fix ${severityCounts['high']} high-priority issues before next release`
             );
         }
 
-        if (severityCounts.medium > 5) {
+        if (severityCounts['medium'] && severityCounts['medium'] > 5) {
             recommendations.push(
-                `🟡 MEDIUM: Consider refactoring to address ${severityCounts.medium} medium-priority issues`
+                `🟡 MEDIUM: Consider refactoring to address ${severityCounts['medium']} medium-priority issues`
             );
         }
 
-        if (severityCounts.low > 10) {
+        if (severityCounts['low'] && severityCounts['low'] > 10) {
             recommendations.push(
-                `🟢 LOW: Schedule cleanup for ${severityCounts.low} low-priority maintenance items`
+                `🟢 LOW: Schedule cleanup for ${severityCounts['low']} low-priority maintenance items`
             );
         }
 

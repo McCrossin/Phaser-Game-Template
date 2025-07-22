@@ -16,7 +16,7 @@ export default tseslint.config(
             'testing/config/playwright-ci.config.ts',
             'config/build/vite.config.ts',
             'build/plugins/**/*',
-            'tools/**/*'
+            'tools/**/*.js'
         ]
     },
     prettierRecommended,

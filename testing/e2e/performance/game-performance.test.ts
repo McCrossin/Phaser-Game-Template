@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { writeFileSync } from 'fs';
 
 /**
  * Performance tests for Phaser Game Template
@@ -105,6 +106,30 @@ test.describe('Game Performance Tests', () => {
             const baseline = 50; // Expected baseline FPS for local development
             const degradation = Math.max(0, (baseline - avgFPS) / baseline);
             expect(degradation).toBeLessThan(0.3); // Less than 30% degradation acceptable locally
+        }
+
+        // Write performance results to file for the performance check tool
+        const performanceResults = {
+            fps: {
+                average: avgFPS,
+                minimum: minFPS,
+                maximum: maxFPS,
+                baseline: isCI ? PERFORMANCE_THRESHOLDS.avgFPS : 50,
+                samples: fpsData.length
+            },
+            microfreezes: {
+                count: fpsData.filter((fps: number) => fps < PERFORMANCE_THRESHOLDS.minFPS).length,
+                maxDuration: 0 // Will be calculated by monitoring tools if needed
+            },
+            environment: isCI ? 'ci' : 'local',
+            timestamp: Date.now()
+        };
+
+        try {
+            writeFileSync('performance-results.json', JSON.stringify(performanceResults, null, 2));
+            console.log('✅ Performance results written to performance-results.json');
+        } catch (error) {
+            console.warn('⚠️  Failed to write performance results:', error);
         }
     });
 

@@ -8,21 +8,44 @@
 import { readFileSync, existsSync, statSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-const PERFORMANCE_THRESHOLDS = {
+interface PerformanceThresholds {
+    readonly minFPS: number;
+    readonly degradationTolerance: number;
+    readonly maxBundleSize: number;
+    readonly maxLoadTime: number;
+}
+
+interface FPSMetrics {
+    readonly average: number;
+    readonly baseline?: number;
+}
+
+interface MicrofreezeData {
+    readonly count: number;
+    readonly maxDuration?: number;
+}
+
+interface PerformanceResults {
+    readonly fps?: FPSMetrics;
+    readonly microfreezes?: MicrofreezeData;
+    readonly loadTime?: number;
+}
+
+const PERFORMANCE_THRESHOLDS: PerformanceThresholds = {
     minFPS: 55,
     degradationTolerance: 0.03, // 3%
     maxBundleSize: 2 * 1024 * 1024, // 2MB (excluding source maps)
     maxLoadTime: 3000 // 3 seconds
 };
 
-function getDirectorySize(dirPath) {
+function getDirectorySize(dirPath: string): number {
     if (!existsSync(dirPath)) {
         return 0;
     }
 
     let totalSize = 0;
 
-    function calculateSize(currentPath) {
+    function calculateSize(currentPath: string): void {
         const stats = statSync(currentPath);
 
         if (stats.isFile()) {
@@ -42,7 +65,7 @@ function getDirectorySize(dirPath) {
     return totalSize;
 }
 
-function checkBundleSize() {
+function checkBundleSize(): boolean {
     console.log('📦 Checking bundle size...');
 
     if (!existsSync('dist')) {
@@ -65,12 +88,12 @@ function checkBundleSize() {
         console.log('✅ Bundle size check passed');
         return true;
     } catch (error) {
-        console.error('❌ Bundle size check failed:', error.message);
+        console.error('❌ Bundle size check failed:', (error as Error).message);
         return false;
     }
 }
 
-function checkPerformanceResults() {
+function checkPerformanceResults(): boolean {
     console.log('🎮 Checking performance test results...');
 
     if (!existsSync('performance-results.json')) {
@@ -79,7 +102,9 @@ function checkPerformanceResults() {
     }
 
     try {
-        const results = JSON.parse(readFileSync('performance-results.json', 'utf8'));
+        const results: PerformanceResults = JSON.parse(
+            readFileSync('performance-results.json', 'utf8')
+        );
 
         // Check FPS metrics
         if (results.fps && results.fps.average) {
@@ -119,12 +144,12 @@ function checkPerformanceResults() {
         console.log('✅ Performance check passed');
         return true;
     } catch (error) {
-        console.error('❌ Performance check failed:', error.message);
+        console.error('❌ Performance check failed:', (error as Error).message);
         return false;
     }
 }
 
-function main() {
+function main(): void {
     console.log('🔍 Running performance checks...');
 
     const bundleCheck = checkBundleSize();
