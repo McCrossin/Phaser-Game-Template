@@ -1,15 +1,15 @@
 {
     "fps": {
-        "average": 87.83243996117335,
-        "minimum": 7.651109410867301,
-        "maximum": 1000,
+        "average": 71.36189943543283,
+        "minimum": 10.341261634397405,
+        "maximum": 1428.5714376945884,
         "baseline": 50,
-        "samples": 112
+        "samples": 169
     },
     "microfreezes": {
         "count": 0,
         "maxDuration": 0
     },
     "environment": "local",
-    "timestamp": 1753145597532
+    "timestamp": 1753178111031
 }

@@ -66,4 +66,7 @@ window.addEventListener('unhandledrejection', event => {
     console.error('Unhandled Promise Rejection:', event.reason);
 });
 
+// Expose game to global scope for testing
+window.game = game;
+
 export default game;

@@ -2,25 +2,27 @@
 
 **Professional 2D game development template with modern tooling and comprehensive documentation.**
 
-[![CI/CD Pipeline](https://github.com/your-username/phaser-game-template/workflows/CI/badge.svg)](https://github.com/your-username/phaser-game-template/actions)
+[![CI/CD Pipeline](https://github.com/McCrossin/Phaser-Game-Template/workflows/CI/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Phaser](https://img.shields.io/badge/Phaser-3.70+-orange.svg)](https://phaser.io/)
+[![Template](https://img.shields.io/badge/Template-Ready-green.svg)](#)
 
 ## 🎯 Template Overview
 
 **Phaser Game Template** is a production-ready 2D game development template built with Phaser 3, TypeScript, and modern development tools. This template provides everything you need to start building professional 2D games immediately.
 
-### 🚀 Features
+### ✨ Key Features
 
-- **Phaser 3 + TypeScript**: Modern game development with full type safety
-- **Vite Build System**: Lightning-fast dev server and optimized production builds
-- **Complete Testing Suite**: Unit tests, E2E tests, and performance benchmarking
-- **CI/CD Pipeline**: Automated testing, linting, and deployment with GitHub Actions
-- **Health Monitoring**: Built-in performance tracking and technical debt analysis
-- **Asset Pipeline**: Automated texture packing and asset optimization
-- **Cross-Platform**: Desktop and mobile browser support with responsive design
-- **Modern Tooling**: ESLint, Prettier, Husky, and development best practices
+- **🎮 Phaser 3 + TypeScript**: Modern game development with full type safety
+- **⚡ Vite Build System**: Lightning-fast dev server and optimized production builds
+- **🧪 Complete Testing Suite**: Unit tests, E2E tests, and performance benchmarking
+- **🚀 CI/CD Pipeline**: Automated testing, linting, and deployment with GitHub Actions
+- **📊 Health Monitoring**: Built-in performance tracking and technical debt analysis
+- **🎨 Asset Pipeline**: Automated texture packing and asset optimization
+- **📱 Cross-Platform**: Desktop and mobile browser support with responsive design
+- **🛠️ Modern Tooling**: ESLint, Prettier, Husky, and development best practices
+- **📚 Comprehensive Docs**: Complete setup, customization, and architecture guides
 
 ## � Quick Start
 
@@ -37,7 +39,7 @@ Get your game running in under 5 minutes:
 ```bash
 # 1. Use this template (click "Use this template" on GitHub)
 # or clone directly:
-git clone https://github.com/your-username/phaser-game-template.git my-awesome-game
+git clone https://github.com/McCrossin/Phaser-Game-Template.git my-awesome-game
 cd my-awesome-game
 
 # 2. Install dependencies
@@ -49,16 +51,40 @@ npm run dev
 # 4. Open browser (auto-opens to http://localhost:5173)
 ```
 
-✅ **That's it!** You now have a fully functional Phaser 3 game template running.
+**🎉 That's it!** Your game development environment is ready.
 
 ### Next Steps
 
-1. **Customize Your Project**: Update `package.json` and `index.html`
-2. **Start Building**: Edit `src/scenes/GameScene.ts` for your game logic
-3. **Add Assets**: Replace placeholder assets in `assets/` folder
-4. **Read Documentation**: Check out our comprehensive guides below
+1. **📖 Read the Setup Guide**: Check `docs/template-setup-guide.md` for detailed instructions
+2. **🎨 Customize Your Project**: Follow `docs/template-customization-guide.md`
+3. **🏗️ Study the Architecture**: Review `docs/development/brownfield-architecture.md`
+4. **🚀 Start Building**: Edit `src/scenes/GameScene.ts` for your game logic
+5. **🎮 Add Assets**: Replace demo assets in `assets/` folder
 
-## 📚 Documentation
+## 📚 Template Documentation
+
+### 🚀 Essential Guides
+
+- **[Template Setup Guide](docs/template-setup-guide.md)** - Complete setup and configuration
+- **[Template Customization Guide](docs/template-customization-guide.md)** - Adapt the template for your game
+- **[Template Usage](TEMPLATE-USAGE.md)** - Quick usage instructions
+- **[Architecture Overview](docs/development/brownfield-architecture.md)** - Technical architecture guide
+
+### 🛠️ Development Resources
+
+- **[Project Structure](docs/development/project-structure.md)** - Code organization
+- **[Component Architecture](docs/development/component-architecture.md)** - ECS patterns
+- **[Scene Management](docs/development/scene-management.md)** - Phaser scene patterns
+- **[Asset Pipeline](docs/development/asset-pipeline.md)** - Asset management
+- **[Testing Framework](docs/features/testing-framework.md)** - Testing capabilities
+
+### 🎮 Game Development
+
+- **[Basic Game Example](docs/examples/basic-game.md)** - Complete game walkthrough
+- **[Best Practices](docs/examples/best-practices.md)** - Development guidelines
+- **[Performance Optimization](docs/features/performance-tools.md)** - Optimization techniques
+
+## 📚 Documentation (Legacy)
 
 ### 🚀 Getting Started
 

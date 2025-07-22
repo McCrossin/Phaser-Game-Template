@@ -43,10 +43,14 @@
         "../../vite-plugins/**/*.ts",
         "../../testing/unit/**/*.ts",
         "../../testing/integration/**/*.ts",
+        "../../testing/template-validation/**/*.ts",
         "../../testing/setup.ts",
         "../../testing/fixtures/**/*.ts",
+        "../../testing/config/**/*.ts",
+        "../../testing/helpers/**/*.ts",
+        "../../config/build/**/*.ts",
         "../../config/deployment/**/*.ts",
-        "../../testing/config/vitest.config.ts",
+        "../../scripts/**/*.ts",
         "../../tools/**/*.ts"
     ],
     "exclude": [

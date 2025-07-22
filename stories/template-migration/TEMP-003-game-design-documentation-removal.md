@@ -30,8 +30,8 @@ Remove specific game design files, create documentation templates, and update th
 
 ### Technical Requirements
 
-- [x] Remove new-eden-project-gdd.md files
-- [x] Remove new-eden-project-game-architecture.md
+- [x] Remove game-project-gdd.md files
+- [x] Remove game-project-game-architecture.md
 - [x] Remove implementation-prd.md with New Eden content
 - [x] Create generic game-design-template.md
 - [x] Create architecture-template.md
@@ -48,11 +48,11 @@ Remove specific game design files, create documentation templates, and update th
 
 ### Files to Remove
 
-1. **docs/new-eden-project-gdd.md** - Complete removal
-2. **docs/new-eden-project-game-architecture.md** - Complete removal
-3. **docs/implementation-prd.md** - Remove if New Eden specific
-4. **docs/api/media/new-eden-project-gdd.md** - Complete removal
-5. **docs/api/media/implementation-architecture.md** - If New Eden specific
+1. **docs/game-project-gdd.md** - Complete removal
+2. **docs/game-project-game-architecture.md** - Complete removal
+3. **docs/implementation-prd.md** - Remove if game specific
+4. **docs/api/media/game-project-gdd.md** - Complete removal
+5. **docs/api/media/implementation-architecture.md** - If game specific
 
 ### Files to Create
 

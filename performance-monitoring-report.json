@@ -1,0 +1,16 @@
+{
+    "success": true,
+    "metrics": {
+        "bundleSize": 1500391,
+        "bundleSizeMB": 1.4308843612670898,
+        "avgFPS": 71.36189943543283,
+        "minFPS": 10.341261634397405,
+        "fpssamples": 169,
+        "fpsDegradation": -0.42723798870865665,
+        "microfreezes": 0,
+        "executionTimeMs": 4
+    },
+    "errors": [],
+    "environment": "local",
+    "timestamp": "2025-07-22T09:56:04.702Z"
+}

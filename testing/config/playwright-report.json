@@ -1,0 +1,3250 @@
+{
+    "config": {
+        "configFile": "/home/morton/git/Phaser-Game-Template/testing/config/playwright.config.ts",
+        "rootDir": "/home/morton/git/Phaser-Game-Template/testing/e2e",
+        "forbidOnly": false,
+        "fullyParallel": true,
+        "globalSetup": null,
+        "globalTeardown": null,
+        "globalTimeout": 0,
+        "grep": {},
+        "grepInvert": null,
+        "maxFailures": 0,
+        "metadata": {
+            "actualWorkers": 12
+        },
+        "preserveOutput": "always",
+        "reporter": [
+            [
+                "json",
+                {
+                    "outputFile": "playwright-report.json"
+                }
+            ],
+            ["list", null]
+        ],
+        "reportSlowTests": {
+            "max": 5,
+            "threshold": 300000
+        },
+        "quiet": false,
+        "projects": [
+            {
+                "outputDir": "/home/morton/git/Phaser-Game-Template/test-results",
+                "repeatEach": 1,
+                "retries": 0,
+                "metadata": {
+                    "actualWorkers": 12
+                },
+                "id": "chromium",
+                "name": "chromium",
+                "testDir": "/home/morton/git/Phaser-Game-Template/testing/e2e",
+                "testIgnore": [],
+                "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+                "timeout": 120000
+            },
+            {
+                "outputDir": "/home/morton/git/Phaser-Game-Template/test-results",
+                "repeatEach": 1,
+                "retries": 0,
+                "metadata": {
+                    "actualWorkers": 12
+                },
+                "id": "firefox",
+                "name": "firefox",
+                "testDir": "/home/morton/git/Phaser-Game-Template/testing/e2e",
+                "testIgnore": [],
+                "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+                "timeout": 120000
+            },
+            {
+                "outputDir": "/home/morton/git/Phaser-Game-Template/test-results",
+                "repeatEach": 1,
+                "retries": 0,
+                "metadata": {
+                    "actualWorkers": 12
+                },
+                "id": "webkit",
+                "name": "webkit",
+                "testDir": "/home/morton/git/Phaser-Game-Template/testing/e2e",
+                "testIgnore": [],
+                "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+                "timeout": 120000
+            },
+            {
+                "outputDir": "/home/morton/git/Phaser-Game-Template/test-results",
+                "repeatEach": 1,
+                "retries": 0,
+                "metadata": {
+                    "actualWorkers": 12
+                },
+                "id": "Mobile Chrome",
+                "name": "Mobile Chrome",
+                "testDir": "/home/morton/git/Phaser-Game-Template/testing/e2e",
+                "testIgnore": [],
+                "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+                "timeout": 120000
+            },
+            {
+                "outputDir": "/home/morton/git/Phaser-Game-Template/test-results",
+                "repeatEach": 1,
+                "retries": 0,
+                "metadata": {
+                    "actualWorkers": 12
+                },
+                "id": "Mobile Safari",
+                "name": "Mobile Safari",
+                "testDir": "/home/morton/git/Phaser-Game-Template/testing/e2e",
+                "testIgnore": [],
+                "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+                "timeout": 120000
+            },
+            {
+                "outputDir": "/home/morton/git/Phaser-Game-Template/test-results",
+                "repeatEach": 1,
+                "retries": 0,
+                "metadata": {
+                    "actualWorkers": 12
+                },
+                "id": "performance",
+                "name": "performance",
+                "testDir": "/home/morton/git/Phaser-Game-Template/testing/e2e/performance",
+                "testIgnore": [],
+                "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+                "timeout": 90000
+            },
+            {
+                "outputDir": "/home/morton/git/Phaser-Game-Template/test-results",
+                "repeatEach": 1,
+                "retries": 0,
+                "metadata": {
+                    "actualWorkers": 12
+                },
+                "id": "performance-local",
+                "name": "performance-local",
+                "testDir": "/home/morton/git/Phaser-Game-Template/testing/e2e/performance",
+                "testIgnore": [],
+                "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+                "timeout": 60000
+            }
+        ],
+        "shard": null,
+        "updateSnapshots": "missing",
+        "updateSourceMethod": "patch",
+        "version": "1.54.1",
+        "workers": 12,
+        "webServer": {
+            "command": "npm run preview",
+            "url": "http://localhost:4173",
+            "reuseExistingServer": true,
+            "timeout": 120000,
+            "stdout": "pipe",
+            "stderr": "pipe"
+        }
+    },
+    "suites": [
+        {
+            "title": "debug-game.spec.ts",
+            "file": "debug-game.spec.ts",
+            "column": 0,
+            "line": 0,
+            "specs": [
+                {
+                    "title": "Debug game initialization",
+                    "ok": true,
+                    "tags": [],
+                    "tests": [
+                        {
+                            "timeout": 120000,
+                            "annotations": [],
+                            "expectedStatus": "passed",
+                            "projectId": "chromium",
+                            "projectName": "chromium",
+                            "results": [
+                                {
+                                    "workerIndex": 0,
+                                    "parallelIndex": 0,
+                                    "status": "passed",
+                                    "duration": 4640,
+                                    "errors": [],
+                                    "stdout": [
+                                        {
+                                            "text": "Starting debug test...\n"
+                                        },
+                                        {
+                                            "text": "Game container exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Canvas exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game object exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game state: {\n  hasSceneManager: \u001b[33mtrue\u001b[39m,\n  activeScenes: [ \u001b[32m'0'\u001b[39m, \u001b[32m'1'\u001b[39m ],\n  currentActiveScene: \u001b[32m'StartScene'\u001b[39m,\n  sceneKeys: [ \u001b[32m'StartScene'\u001b[39m, \u001b[32m'GameScene'\u001b[39m ],\n  isStartSceneRunning: \u001b[33mtrue\u001b[39m\n}\n"
+                                        }
+                                    ],
+                                    "stderr": [],
+                                    "retry": 0,
+                                    "startTime": "2025-07-22T09:54:12.033Z",
+                                    "annotations": [],
+                                    "attachments": []
+                                }
+                            ],
+                            "status": "expected"
+                        }
+                    ],
+                    "id": "592ec9b31a41187137a7-d8c6269b512a500e6636",
+                    "file": "debug-game.spec.ts",
+                    "line": 3,
+                    "column": 1
+                },
+                {
+                    "title": "Debug game initialization",
+                    "ok": true,
+                    "tags": [],
+                    "tests": [
+                        {
+                            "timeout": 120000,
+                            "annotations": [],
+                            "expectedStatus": "passed",
+                            "projectId": "firefox",
+                            "projectName": "firefox",
+                            "results": [
+                                {
+                                    "workerIndex": 12,
+                                    "parallelIndex": 8,
+                                    "status": "passed",
+                                    "duration": 7990,
+                                    "errors": [],
+                                    "stdout": [
+                                        {
+                                            "text": "Starting debug test...\n"
+                                        },
+                                        {
+                                            "text": "Game container exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Canvas exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game object exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game state: {\n  hasSceneManager: \u001b[33mtrue\u001b[39m,\n  activeScenes: [ \u001b[32m'0'\u001b[39m, \u001b[32m'1'\u001b[39m ],\n  currentActiveScene: \u001b[32m'StartScene'\u001b[39m,\n  sceneKeys: [ \u001b[32m'StartScene'\u001b[39m, \u001b[32m'GameScene'\u001b[39m ],\n  isStartSceneRunning: \u001b[33mtrue\u001b[39m\n}\n"
+                                        }
+                                    ],
+                                    "stderr": [],
+                                    "retry": 0,
+                                    "startTime": "2025-07-22T09:54:15.760Z",
+                                    "annotations": [],
+                                    "attachments": []
+                                }
+                            ],
+                            "status": "expected"
+                        }
+                    ],
+                    "id": "592ec9b31a41187137a7-91f4c27a29512b3c7212",
+                    "file": "debug-game.spec.ts",
+                    "line": 3,
+                    "column": 1
+                },
+                {
+                    "title": "Debug game initialization",
+                    "ok": true,
+                    "tags": [],
+                    "tests": [
+                        {
+                            "timeout": 120000,
+                            "annotations": [],
+                            "expectedStatus": "passed",
+                            "projectId": "webkit",
+                            "projectName": "webkit",
+                            "results": [
+                                {
+                                    "workerIndex": 24,
+                                    "parallelIndex": 2,
+                                    "status": "passed",
+                                    "duration": 5309,
+                                    "errors": [],
+                                    "stdout": [
+                                        {
+                                            "text": "Starting debug test...\n"
+                                        },
+                                        {
+                                            "text": "Game container exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Canvas exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game object exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game state: {\n  hasSceneManager: \u001b[33mtrue\u001b[39m,\n  activeScenes: [ \u001b[32m'0'\u001b[39m, \u001b[32m'1'\u001b[39m ],\n  currentActiveScene: \u001b[32m'StartScene'\u001b[39m,\n  sceneKeys: [ \u001b[32m'StartScene'\u001b[39m, \u001b[32m'GameScene'\u001b[39m ],\n  isStartSceneRunning: \u001b[33mtrue\u001b[39m\n}\n"
+                                        }
+                                    ],
+                                    "stderr": [],
+                                    "retry": 0,
+                                    "startTime": "2025-07-22T09:54:31.611Z",
+                                    "annotations": [],
+                                    "attachments": []
+                                }
+                            ],
+                            "status": "expected"
+                        }
+                    ],
+                    "id": "592ec9b31a41187137a7-7aa45b1ef6118e6782bf",
+                    "file": "debug-game.spec.ts",
+                    "line": 3,
+                    "column": 1
+                },
+                {
+                    "title": "Debug game initialization",
+                    "ok": true,
+                    "tags": [],
+                    "tests": [
+                        {
+                            "timeout": 120000,
+                            "annotations": [],
+                            "expectedStatus": "passed",
+                            "projectId": "Mobile Chrome",
+                            "projectName": "Mobile Chrome",
+                            "results": [
+                                {
+                                    "workerIndex": 34,
+                                    "parallelIndex": 2,
+                                    "status": "passed",
+                                    "duration": 4265,
+                                    "errors": [],
+                                    "stdout": [
+                                        {
+                                            "text": "Starting debug test...\n"
+                                        },
+                                        {
+                                            "text": "Game container exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Canvas exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game object exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game state: {\n  hasSceneManager: \u001b[33mtrue\u001b[39m,\n  activeScenes: [ \u001b[32m'0'\u001b[39m, \u001b[32m'1'\u001b[39m ],\n  currentActiveScene: \u001b[32m'StartScene'\u001b[39m,\n  sceneKeys: [ \u001b[32m'StartScene'\u001b[39m, \u001b[32m'GameScene'\u001b[39m ],\n  isStartSceneRunning: \u001b[33mtrue\u001b[39m\n}\n"
+                                        }
+                                    ],
+                                    "stderr": [],
+                                    "retry": 0,
+                                    "startTime": "2025-07-22T09:54:39.454Z",
+                                    "annotations": [],
+                                    "attachments": []
+                                }
+                            ],
+                            "status": "expected"
+                        }
+                    ],
+                    "id": "592ec9b31a41187137a7-7da5149f418b9a756914",
+                    "file": "debug-game.spec.ts",
+                    "line": 3,
+                    "column": 1
+                },
+                {
+                    "title": "Debug game initialization",
+                    "ok": true,
+                    "tags": [],
+                    "tests": [
+                        {
+                            "timeout": 120000,
+                            "annotations": [],
+                            "expectedStatus": "passed",
+                            "projectId": "Mobile Safari",
+                            "projectName": "Mobile Safari",
+                            "results": [
+                                {
+                                    "workerIndex": 45,
+                                    "parallelIndex": 8,
+                                    "status": "passed",
+                                    "duration": 6080,
+                                    "errors": [],
+                                    "stdout": [
+                                        {
+                                            "text": "Starting debug test...\n"
+                                        },
+                                        {
+                                            "text": "Game container exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Canvas exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game object exists: \u001b[33mtrue\u001b[39m\n"
+                                        },
+                                        {
+                                            "text": "Game state: {\n  hasSceneManager: \u001b[33mtrue\u001b[39m,\n  activeScenes: [ \u001b[32m'0'\u001b[39m, \u001b[32m'1'\u001b[39m ],\n  currentActiveScene: \u001b[32m'StartScene'\u001b[39m,\n  sceneKeys: [ \u001b[32m'StartScene'\u001b[39m, \u001b[32m'GameScene'\u001b[39m ],\n  isStartSceneRunning: \u001b[33mtrue\u001b[39m\n}\n"
+                                        }
+                                    ],
+                                    "stderr": [],
+                                    "retry": 0,
+                                    "startTime": "2025-07-22T09:54:50.539Z",
+                                    "annotations": [],
+                                    "attachments": []
+                                }
+                            ],
+                            "status": "expected"
+                        }
+                    ],
+                    "id": "592ec9b31a41187137a7-02095e017a5f31f51802",
+                    "file": "debug-game.spec.ts",
+                    "line": 3,
+                    "column": 1
+                }
+            ]
+        },
+        {
+            "title": "performance/game-performance.test.ts",
+            "file": "performance/game-performance.test.ts",
+            "column": 0,
+            "line": 0,
+            "specs": [],
+            "suites": [
+                {
+                    "title": "Game Performance Tests",
+                    "file": "performance/game-performance.test.ts",
+                    "line": 37,
+                    "column": 6,
+                    "specs": [
+                        {
+                            "title": "FPS Performance Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 1,
+                                            "parallelIndex": 1,
+                                            "status": "passed",
+                                            "duration": 7569,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Average FPS: 85.81 (threshold: >25)\n"
+                                                },
+                                                {
+                                                    "text": "Min FPS: 8.61 (threshold: >1)\n"
+                                                },
+                                                {
+                                                    "text": "Max FPS: 1428.57\n"
+                                                },
+                                                {
+                                                    "text": "FPS samples collected: 128\n"
+                                                },
+                                                {
+                                                    "text": "✅ Performance results written to performance-results.json\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.037Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-2fc9b27e01d79d749d5e",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 57,
+                            "column": 5
+                        },
+                        {
+                            "title": "Load Time Performance",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 2,
+                                            "parallelIndex": 2,
+                                            "status": "passed",
+                                            "duration": 3403,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Load time: 1973ms (threshold: <10000ms)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.086Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-96092c04c0f36bc57f7b",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 150,
+                            "column": 5
+                        },
+                        {
+                            "title": "Memory Usage Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 3,
+                                            "parallelIndex": 3,
+                                            "status": "passed",
+                                            "duration": 13733,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Initial memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Final memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Memory growth: 0.00MB (threshold: <50MB)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.119Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-bd9f5a6ee5cff2c3e317",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 186,
+                            "column": 5
+                        },
+                        {
+                            "title": "Microfreeze Detection",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 4,
+                                            "parallelIndex": 4,
+                                            "status": "passed",
+                                            "duration": 13510,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Microfreezes detected: 3 (threshold: <15)\n"
+                                                },
+                                                {
+                                                    "text": "Freeze durations: 105.50, 111.60, 103.00ms\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.011Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-f9f7bfe30ccccf651299",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 226,
+                            "column": 5
+                        },
+                        {
+                            "title": "Bundle Size Check",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 5,
+                                            "parallelIndex": 5,
+                                            "status": "passed",
+                                            "duration": 2957,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Total bundle size: 0.00MB (threshold: <2.00MB)\n"
+                                                },
+                                                {
+                                                    "text": "Resource breakdown:\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.045Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-2d733cea7d86670f65b8",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 286,
+                            "column": 5
+                        },
+                        {
+                            "title": "FPS Performance Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 13,
+                                            "parallelIndex": 5,
+                                            "status": "passed",
+                                            "duration": 13177,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Average FPS: 62.13 (threshold: >25)\n"
+                                                },
+                                                {
+                                                    "text": "Min FPS: 31.25 (threshold: >1)\n"
+                                                },
+                                                {
+                                                    "text": "Max FPS: 333.33\n"
+                                                },
+                                                {
+                                                    "text": "FPS samples collected: 300\n"
+                                                },
+                                                {
+                                                    "text": "✅ Performance results written to performance-results.json\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:17.124Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-b3979996b733aee3ecf8",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 57,
+                            "column": 5
+                        },
+                        {
+                            "title": "Load Time Performance",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 14,
+                                            "parallelIndex": 2,
+                                            "status": "passed",
+                                            "duration": 10071,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Load time: 1691ms (threshold: <10000ms)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:17.393Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-10abdad74091f550f715",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 150,
+                            "column": 5
+                        },
+                        {
+                            "title": "Memory Usage Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 15,
+                                            "parallelIndex": 10,
+                                            "status": "passed",
+                                            "duration": 18538,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Initial memory: 0.00MB\n"
+                                                },
+                                                {
+                                                    "text": "Final memory: 0.00MB\n"
+                                                },
+                                                {
+                                                    "text": "Memory growth: 0.00MB (threshold: <50MB)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:18.257Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-a6618b74fd4ff0e1a256",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 186,
+                            "column": 5
+                        },
+                        {
+                            "title": "Microfreeze Detection",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 16,
+                                            "parallelIndex": 0,
+                                            "status": "passed",
+                                            "duration": 19300,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Microfreezes detected: 1 (threshold: <15)\n"
+                                                },
+                                                {
+                                                    "text": "Freeze durations: 290.00ms\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:18.815Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-38ab6f0cd783e0a6e8e2",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 226,
+                            "column": 5
+                        },
+                        {
+                            "title": "Bundle Size Check",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 17,
+                                            "parallelIndex": 11,
+                                            "status": "passed",
+                                            "duration": 8761,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Total bundle size: 0.33MB (threshold: <2.00MB)\n"
+                                                },
+                                                {
+                                                    "text": "Resource breakdown:\n"
+                                                },
+                                                {
+                                                    "text": "  phaser-Eor8DeHH.js: 0.32MB\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:18.781Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-7c2888bc82cb88906185",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 286,
+                            "column": 5
+                        },
+                        {
+                            "title": "FPS Performance Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 26,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 9465,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Average FPS: Infinity (threshold: >25)\n"
+                                                },
+                                                {
+                                                    "text": "Min FPS: 19.61 (threshold: >1)\n"
+                                                },
+                                                {
+                                                    "text": "Max FPS: Infinity\n"
+                                                },
+                                                {
+                                                    "text": "FPS samples collected: 203\n"
+                                                },
+                                                {
+                                                    "text": "✅ Performance results written to performance-results.json\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:33.174Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-155c251308a16f5d5691",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 57,
+                            "column": 5
+                        },
+                        {
+                            "title": "Load Time Performance",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 25,
+                                            "parallelIndex": 8,
+                                            "status": "passed",
+                                            "duration": 4738,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Load time: 1303ms (threshold: <10000ms)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:33.105Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-948a8de555a8f318a3b7",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 150,
+                            "column": 5
+                        },
+                        {
+                            "title": "Memory Usage Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 27,
+                                            "parallelIndex": 11,
+                                            "status": "passed",
+                                            "duration": 14722,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Initial memory: 0.00MB\n"
+                                                },
+                                                {
+                                                    "text": "Final memory: 0.00MB\n"
+                                                },
+                                                {
+                                                    "text": "Memory growth: 0.00MB (threshold: <50MB)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:33.320Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-b9c9df31f265115424e1",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 186,
+                            "column": 5
+                        },
+                        {
+                            "title": "Microfreeze Detection",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 28,
+                                            "parallelIndex": 4,
+                                            "status": "passed",
+                                            "duration": 14225,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Microfreezes detected: 0 (threshold: <15)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:33.434Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-3065eb46770c97a68804",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 226,
+                            "column": 5
+                        },
+                        {
+                            "title": "Bundle Size Check",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 29,
+                                            "parallelIndex": 3,
+                                            "status": "passed",
+                                            "duration": 3891,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Total bundle size: 0.00MB (threshold: <2.00MB)\n"
+                                                },
+                                                {
+                                                    "text": "Resource breakdown:\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:36.486Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-e33a4bf4fd4d4ace6066",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 286,
+                            "column": 5
+                        },
+                        {
+                            "title": "FPS Performance Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 37,
+                                            "parallelIndex": 3,
+                                            "status": "passed",
+                                            "duration": 8000,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Average FPS: 66.36 (threshold: >25)\n"
+                                                },
+                                                {
+                                                    "text": "Min FPS: 13.09 (threshold: >1)\n"
+                                                },
+                                                {
+                                                    "text": "Max FPS: 769.23\n"
+                                                },
+                                                {
+                                                    "text": "FPS samples collected: 169\n"
+                                                },
+                                                {
+                                                    "text": "✅ Performance results written to performance-results.json\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:42.952Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-15584972478caee6b6a5",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 57,
+                            "column": 5
+                        },
+                        {
+                            "title": "Load Time Performance",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 36,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 3362,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Load time: 1514ms (threshold: <10000ms)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:42.691Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-c526c11bb81bbf72572c",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 150,
+                            "column": 5
+                        },
+                        {
+                            "title": "Memory Usage Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 39,
+                                            "parallelIndex": 10,
+                                            "status": "passed",
+                                            "duration": 13260,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Initial memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Final memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Memory growth: 0.00MB (threshold: <50MB)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:43.783Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-d4886155515c9faec7f4",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 186,
+                            "column": 5
+                        },
+                        {
+                            "title": "Microfreeze Detection",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 38,
+                                            "parallelIndex": 9,
+                                            "status": "passed",
+                                            "duration": 13187,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Microfreezes detected: 0 (threshold: <15)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:43.078Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-01d07378eeb9c24d4c38",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 226,
+                            "column": 5
+                        },
+                        {
+                            "title": "Bundle Size Check",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 40,
+                                            "parallelIndex": 8,
+                                            "status": "passed",
+                                            "duration": 3205,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Total bundle size: 0.00MB (threshold: <2.00MB)\n"
+                                                },
+                                                {
+                                                    "text": "Resource breakdown:\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:45.641Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-8f069074a6142803d4b0",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 286,
+                            "column": 5
+                        },
+                        {
+                            "title": "FPS Performance Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 46,
+                                            "parallelIndex": 1,
+                                            "status": "passed",
+                                            "duration": 9227,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Average FPS: 47.80 (threshold: >25)\n"
+                                                },
+                                                {
+                                                    "text": "Min FPS: 23.26 (threshold: >1)\n"
+                                                },
+                                                {
+                                                    "text": "Max FPS: 100.00\n"
+                                                },
+                                                {
+                                                    "text": "FPS samples collected: 266\n"
+                                                },
+                                                {
+                                                    "text": "✅ Performance results written to performance-results.json\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:51.056Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-fb9a90967821af0ffe36",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 57,
+                            "column": 5
+                        },
+                        {
+                            "title": "Load Time Performance",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 47,
+                                            "parallelIndex": 5,
+                                            "status": "passed",
+                                            "duration": 4452,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Load time: 1258ms (threshold: <10000ms)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:52.167Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-b7545b9ce396aeba97c5",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 150,
+                            "column": 5
+                        },
+                        {
+                            "title": "Memory Usage Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 48,
+                                            "parallelIndex": 7,
+                                            "status": "passed",
+                                            "duration": 15047,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Initial memory: 0.00MB\n"
+                                                },
+                                                {
+                                                    "text": "Final memory: 0.00MB\n"
+                                                },
+                                                {
+                                                    "text": "Memory growth: 0.00MB (threshold: <50MB)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:52.542Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-18ed100125f75745745c",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 186,
+                            "column": 5
+                        },
+                        {
+                            "title": "Microfreeze Detection",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 49,
+                                            "parallelIndex": 3,
+                                            "status": "passed",
+                                            "duration": 14998,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Microfreezes detected: 0 (threshold: <15)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:52.639Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-df47d87b8c948df69fa7",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 226,
+                            "column": 5
+                        },
+                        {
+                            "title": "Bundle Size Check",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 50,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 4304,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Total bundle size: 0.00MB (threshold: <2.00MB)\n"
+                                                },
+                                                {
+                                                    "text": "Resource breakdown:\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:53.776Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "63768c87abc5808adb94-ce0057b718f69a19772e",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 286,
+                            "column": 5
+                        },
+                        {
+                            "title": "FPS Performance Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 90000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance",
+                                    "projectName": "performance",
+                                    "results": [
+                                        {
+                                            "workerIndex": 57,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 8085,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Average FPS: 69.66 (threshold: >25)\n"
+                                                },
+                                                {
+                                                    "text": "Min FPS: 11.43 (threshold: >1)\n"
+                                                },
+                                                {
+                                                    "text": "Max FPS: 1000.00\n"
+                                                },
+                                                {
+                                                    "text": "FPS samples collected: 149\n"
+                                                },
+                                                {
+                                                    "text": "✅ Performance results written to performance-results.json\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:00.885Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-6f88d72b44df37771822",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 57,
+                            "column": 5
+                        },
+                        {
+                            "title": "Load Time Performance",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 90000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance",
+                                    "projectName": "performance",
+                                    "results": [
+                                        {
+                                            "workerIndex": 56,
+                                            "parallelIndex": 0,
+                                            "status": "passed",
+                                            "duration": 3441,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Load time: 1621ms (threshold: <10000ms)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:59.805Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-afd8579c13eff2145449",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 150,
+                            "column": 5
+                        },
+                        {
+                            "title": "Memory Usage Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 90000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance",
+                                    "projectName": "performance",
+                                    "results": [
+                                        {
+                                            "workerIndex": 58,
+                                            "parallelIndex": 8,
+                                            "status": "passed",
+                                            "duration": 13741,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Initial memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Final memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Memory growth: 0.00MB (threshold: <50MB)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:01.806Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-084f4b7c927ba398a54e",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 186,
+                            "column": 5
+                        },
+                        {
+                            "title": "Microfreeze Detection",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 90000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance",
+                                    "projectName": "performance",
+                                    "results": [
+                                        {
+                                            "workerIndex": 59,
+                                            "parallelIndex": 11,
+                                            "status": "passed",
+                                            "duration": 13614,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Microfreezes detected: 0 (threshold: <15)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:02.012Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-5d2c142b5d7c29d116de",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 226,
+                            "column": 5
+                        },
+                        {
+                            "title": "Bundle Size Check",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 90000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance",
+                                    "projectName": "performance",
+                                    "results": [
+                                        {
+                                            "workerIndex": 60,
+                                            "parallelIndex": 1,
+                                            "status": "passed",
+                                            "duration": 3823,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Total bundle size: 0.00MB (threshold: <2.00MB)\n"
+                                                },
+                                                {
+                                                    "text": "Resource breakdown:\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:02.261Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-eae50090d4db1df1257f",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 286,
+                            "column": 5
+                        },
+                        {
+                            "title": "FPS Performance Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 60000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance-local",
+                                    "projectName": "performance-local",
+                                    "results": [
+                                        {
+                                            "workerIndex": 61,
+                                            "parallelIndex": 5,
+                                            "status": "passed",
+                                            "duration": 8182,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Average FPS: 71.36 (threshold: >25)\n"
+                                                },
+                                                {
+                                                    "text": "Min FPS: 10.34 (threshold: >1)\n"
+                                                },
+                                                {
+                                                    "text": "Max FPS: 1428.57\n"
+                                                },
+                                                {
+                                                    "text": "FPS samples collected: 169\n"
+                                                },
+                                                {
+                                                    "text": "✅ Performance results written to performance-results.json\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:02.698Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-f6dd3e83fbd894f451b0",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 57,
+                            "column": 5
+                        },
+                        {
+                            "title": "Load Time Performance",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 60000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance-local",
+                                    "projectName": "performance-local",
+                                    "results": [
+                                        {
+                                            "workerIndex": 63,
+                                            "parallelIndex": 10,
+                                            "status": "passed",
+                                            "duration": 3864,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Load time: 1746ms (threshold: <10000ms)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:03.070Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-a0aa0ba6f15dc4235514",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 150,
+                            "column": 5
+                        },
+                        {
+                            "title": "Memory Usage Test",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 60000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance-local",
+                                    "projectName": "performance-local",
+                                    "results": [
+                                        {
+                                            "workerIndex": 62,
+                                            "parallelIndex": 0,
+                                            "status": "passed",
+                                            "duration": 13895,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Initial memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Final memory: 24.80MB\n"
+                                                },
+                                                {
+                                                    "text": "Memory growth: 0.00MB (threshold: <50MB)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:02.740Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-6ac40fc9ec5e64bb44ff",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 186,
+                            "column": 5
+                        },
+                        {
+                            "title": "Microfreeze Detection",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 60000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance-local",
+                                    "projectName": "performance-local",
+                                    "results": [
+                                        {
+                                            "workerIndex": 64,
+                                            "parallelIndex": 9,
+                                            "status": "passed",
+                                            "duration": 13156,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Microfreezes detected: 0 (threshold: <15)\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:05.836Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-59230d5fb4be728aece0",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 226,
+                            "column": 5
+                        },
+                        {
+                            "title": "Bundle Size Check",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 60000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "performance-local",
+                                    "projectName": "performance-local",
+                                    "results": [
+                                        {
+                                            "workerIndex": 65,
+                                            "parallelIndex": 1,
+                                            "status": "passed",
+                                            "duration": 2931,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Environment: Local\n"
+                                                },
+                                                {
+                                                    "text": "Total bundle size: 0.00MB (threshold: <2.00MB)\n"
+                                                },
+                                                {
+                                                    "text": "Resource breakdown:\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:55:06.020Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "0c457c8b8f0a3caf8d37-49f7c09d6779eb9a71dd",
+                            "file": "performance/game-performance.test.ts",
+                            "line": 286,
+                            "column": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "performance.spec.ts",
+            "file": "performance.spec.ts",
+            "column": 0,
+            "line": 0,
+            "specs": [],
+            "suites": [
+                {
+                    "title": "Game Performance Tests",
+                    "file": "performance.spec.ts",
+                    "line": 25,
+                    "column": 6,
+                    "specs": [
+                        {
+                            "title": "should maintain 55+ FPS during gameplay",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 6,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 11763,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.035Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-fe87d303b4814715684b",
+                            "file": "performance.spec.ts",
+                            "line": 26,
+                            "column": 5
+                        },
+                        {
+                            "title": "should detect microfreezes (100-1000ms UI freezes)",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 7,
+                                            "parallelIndex": 7,
+                                            "status": "passed",
+                                            "duration": 11976,
+                                            "errors": [],
+                                            "stdout": [
+                                                {
+                                                    "text": "Detected microfreezes: [\n  \u001b[33m108.39999999850988\u001b[39m,\n  \u001b[33m112.69999999552965\u001b[39m,\n  \u001b[33m105.20000000298023\u001b[39m,\n  \u001b[33m104.79999999701977\u001b[39m,\n  \u001b[33m104.39999999850988\u001b[39m,\n  \u001b[33m103.09999999403954\u001b[39m,\n  \u001b[33m114.39999999850988\u001b[39m\n]\n"
+                                                }
+                                            ],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.034Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-0f4b2842d67f392d5415",
+                            "file": "performance.spec.ts",
+                            "line": 37,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load within 3 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 8,
+                                            "parallelIndex": 8,
+                                            "status": "passed",
+                                            "duration": 1787,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.018Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-e657784bf7062091aa53",
+                            "file": "performance.spec.ts",
+                            "line": 54,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable memory usage",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 9,
+                                            "parallelIndex": 9,
+                                            "status": "passed",
+                                            "duration": 6636,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.033Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-a2d0dc07ddc321313731",
+                            "file": "performance.spec.ts",
+                            "line": 75,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain 55+ FPS during gameplay",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 18,
+                                            "parallelIndex": 9,
+                                            "status": "passed",
+                                            "duration": 14461,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:20.170Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-62c7817d6c7cc9f41306",
+                            "file": "performance.spec.ts",
+                            "line": 26,
+                            "column": 5
+                        },
+                        {
+                            "title": "should detect microfreezes (100-1000ms UI freezes)",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 19,
+                                            "parallelIndex": 1,
+                                            "status": "passed",
+                                            "duration": 14317,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:21.072Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-e183689af668a5c42d33",
+                            "file": "performance.spec.ts",
+                            "line": 37,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load within 3 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 20,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 4261,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:25.294Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-7066439a301f531f1192",
+                            "file": "performance.spec.ts",
+                            "line": 54,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable memory usage",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 21,
+                                            "parallelIndex": 7,
+                                            "status": "passed",
+                                            "duration": 9321,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:25.338Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-151e155bd9f6ed5c3472",
+                            "file": "performance.spec.ts",
+                            "line": 75,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain 55+ FPS during gameplay",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 30,
+                                            "parallelIndex": 5,
+                                            "status": "passed",
+                                            "duration": 13016,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:36.973Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-a49246cb3a5988c94953",
+                            "file": "performance.spec.ts",
+                            "line": 26,
+                            "column": 5
+                        },
+                        {
+                            "title": "should detect microfreezes (100-1000ms UI freezes)",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 31,
+                                            "parallelIndex": 7,
+                                            "status": "passed",
+                                            "duration": 12903,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:37.269Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-e8a471b319541fb309dc",
+                            "file": "performance.spec.ts",
+                            "line": 37,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load within 3 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 24,
+                                            "parallelIndex": 2,
+                                            "status": "passed",
+                                            "duration": 2698,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:35.091Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-d1dbaa0906e590f7233b",
+                            "file": "performance.spec.ts",
+                            "line": 54,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable memory usage",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 25,
+                                            "parallelIndex": 8,
+                                            "status": "passed",
+                                            "duration": 7738,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:36.040Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-1e693005b5a0149c7e3a",
+                            "file": "performance.spec.ts",
+                            "line": 75,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain 55+ FPS during gameplay",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 34,
+                                            "parallelIndex": 2,
+                                            "status": "passed",
+                                            "duration": 11484,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:43.896Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-75da26d5edf8612f1521",
+                            "file": "performance.spec.ts",
+                            "line": 26,
+                            "column": 5
+                        },
+                        {
+                            "title": "should detect microfreezes (100-1000ms UI freezes)",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 41,
+                                            "parallelIndex": 0,
+                                            "status": "passed",
+                                            "duration": 11984,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:46.536Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-1976c9111d12a1d06725",
+                            "file": "performance.spec.ts",
+                            "line": 37,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load within 3 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 42,
+                                            "parallelIndex": 1,
+                                            "status": "passed",
+                                            "duration": 2096,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:47.264Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-f6b5e3043dab94918101",
+                            "file": "performance.spec.ts",
+                            "line": 54,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable memory usage",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 43,
+                                            "parallelIndex": 11,
+                                            "status": "passed",
+                                            "duration": 7277,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:48.227Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-2d47eb14d0f9f4e656ae",
+                            "file": "performance.spec.ts",
+                            "line": 75,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain 55+ FPS during gameplay",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 51,
+                                            "parallelIndex": 4,
+                                            "status": "passed",
+                                            "duration": 13350,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:55.547Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-e7d31d18089e8c437ad1",
+                            "file": "performance.spec.ts",
+                            "line": 26,
+                            "column": 5
+                        },
+                        {
+                            "title": "should detect microfreezes (100-1000ms UI freezes)",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 52,
+                                            "parallelIndex": 2,
+                                            "status": "passed",
+                                            "duration": 12936,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:56.743Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-d6976cd37e5a25d818e0",
+                            "file": "performance.spec.ts",
+                            "line": 37,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load within 3 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 53,
+                                            "parallelIndex": 11,
+                                            "status": "passed",
+                                            "duration": 2894,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:57.014Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-ab38608bb4e06602878d",
+                            "file": "performance.spec.ts",
+                            "line": 54,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable memory usage",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 54,
+                                            "parallelIndex": 9,
+                                            "status": "passed",
+                                            "duration": 8085,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:57.582Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "b15d6361b2fc38288977-ffee2de91dc80f9711fe",
+                            "file": "performance.spec.ts",
+                            "line": 75,
+                            "column": 5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "performance.test.ts",
+            "file": "performance.test.ts",
+            "column": 0,
+            "line": 0,
+            "specs": [],
+            "suites": [
+                {
+                    "title": "Game Performance",
+                    "file": "performance.test.ts",
+                    "line": 3,
+                    "column": 6,
+                    "specs": [
+                        {
+                            "title": "should load game within 5 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 10,
+                                            "parallelIndex": 10,
+                                            "status": "passed",
+                                            "duration": 1004,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.007Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-9aff4beff15e760a9f58",
+                            "file": "performance.test.ts",
+                            "line": 8,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable FPS",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 11,
+                                            "parallelIndex": 11,
+                                            "status": "passed",
+                                            "duration": 5036,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:12.091Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-e7d7616259fbe0e821cc",
+                            "file": "performance.test.ts",
+                            "line": 13,
+                            "column": 5
+                        },
+                        {
+                            "title": "should not exceed memory limits",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "chromium",
+                                    "projectName": "chromium",
+                                    "results": [
+                                        {
+                                            "workerIndex": 10,
+                                            "parallelIndex": 10,
+                                            "status": "passed",
+                                            "duration": 3398,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:13.136Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-63e7d7e619fa2c909150",
+                            "file": "performance.test.ts",
+                            "line": 32,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load game within 5 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 22,
+                                            "parallelIndex": 4,
+                                            "status": "passed",
+                                            "duration": 4141,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:26.659Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-0535d73969fbbc8fcd8e",
+                            "file": "performance.test.ts",
+                            "line": 8,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable FPS",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 12,
+                                            "parallelIndex": 8,
+                                            "status": "passed",
+                                            "duration": 4871,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:25.993Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-cb3fcd7b1b56168c076b",
+                            "file": "performance.test.ts",
+                            "line": 13,
+                            "column": 5
+                        },
+                        {
+                            "title": "should not exceed memory limits",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "firefox",
+                                    "projectName": "firefox",
+                                    "results": [
+                                        {
+                                            "workerIndex": 23,
+                                            "parallelIndex": 3,
+                                            "status": "passed",
+                                            "duration": 5887,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:27.003Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-8281021ac22ed6596b0d",
+                            "file": "performance.test.ts",
+                            "line": 32,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load game within 5 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 32,
+                                            "parallelIndex": 9,
+                                            "status": "passed",
+                                            "duration": 2899,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:38.195Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-96720084112e53258ebe",
+                            "file": "performance.test.ts",
+                            "line": 8,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable FPS",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 33,
+                                            "parallelIndex": 1,
+                                            "status": "passed",
+                                            "duration": 5941,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:39.153Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-1161cfa54f7f99622d9f",
+                            "file": "performance.test.ts",
+                            "line": 13,
+                            "column": 5
+                        },
+                        {
+                            "title": "should not exceed memory limits",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "webkit",
+                                    "projectName": "webkit",
+                                    "results": [
+                                        {
+                                            "workerIndex": 35,
+                                            "parallelIndex": 0,
+                                            "status": "passed",
+                                            "duration": 4699,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:39.748Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-0edf9ef8b58eaa5251ee",
+                            "file": "performance.test.ts",
+                            "line": 32,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load game within 5 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 36,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 1152,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:46.238Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-2d5782dedbbc6240ff97",
+                            "file": "performance.test.ts",
+                            "line": 8,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable FPS",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 36,
+                                            "parallelIndex": 6,
+                                            "status": "passed",
+                                            "duration": 4870,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:47.406Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-0f9027e74b7fdeeeea4d",
+                            "file": "performance.test.ts",
+                            "line": 13,
+                            "column": 5
+                        },
+                        {
+                            "title": "should not exceed memory limits",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Chrome",
+                                    "projectName": "Mobile Chrome",
+                                    "results": [
+                                        {
+                                            "workerIndex": 44,
+                                            "parallelIndex": 4,
+                                            "status": "passed",
+                                            "duration": 3744,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:50.063Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-6dd93685e94e53c81236",
+                            "file": "performance.test.ts",
+                            "line": 32,
+                            "column": 5
+                        },
+                        {
+                            "title": "should load game within 5 seconds",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 45,
+                                            "parallelIndex": 8,
+                                            "status": "passed",
+                                            "duration": 2816,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:56.867Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-58cf81d974990a4d128c",
+                            "file": "performance.test.ts",
+                            "line": 8,
+                            "column": 5
+                        },
+                        {
+                            "title": "should maintain stable FPS",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 47,
+                                            "parallelIndex": 5,
+                                            "status": "passed",
+                                            "duration": 5993,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:56.896Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-c6a4ca835dfb1d7c289b",
+                            "file": "performance.test.ts",
+                            "line": 13,
+                            "column": 5
+                        },
+                        {
+                            "title": "should not exceed memory limits",
+                            "ok": true,
+                            "tags": [],
+                            "tests": [
+                                {
+                                    "timeout": 120000,
+                                    "annotations": [],
+                                    "expectedStatus": "passed",
+                                    "projectId": "Mobile Safari",
+                                    "projectName": "Mobile Safari",
+                                    "results": [
+                                        {
+                                            "workerIndex": 55,
+                                            "parallelIndex": 10,
+                                            "status": "passed",
+                                            "duration": 4792,
+                                            "errors": [],
+                                            "stdout": [],
+                                            "stderr": [],
+                                            "retry": 0,
+                                            "startTime": "2025-07-22T09:54:58.261Z",
+                                            "annotations": [],
+                                            "attachments": []
+                                        }
+                                    ],
+                                    "status": "expected"
+                                }
+                            ],
+                            "id": "d4ed39de60135826bfb2-6751babfc7f7ba5f72c7",
+                            "file": "performance.test.ts",
+                            "line": 32,
+                            "column": 5
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "errors": [],
+    "stats": {
+        "startTime": "2025-07-22T09:54:11.272Z",
+        "duration": 72019.869,
+        "expected": 75,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+    }
+}

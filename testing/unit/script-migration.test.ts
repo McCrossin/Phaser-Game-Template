@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { execSync } from 'child_process';
 import { existsSync, readFileSync } from 'fs';
-import { join } from 'path';
+import * as path from 'path';
 import packageJson from '../../package.json';
 
 /**
@@ -11,7 +11,7 @@ import packageJson from '../../package.json';
  * and that all cross-platform functionality is operational.
  */
 
-const PROJECT_ROOT = join(__dirname, '../..');
+const PROJECT_ROOT = path.join(__dirname, '../..');
 
 describe('Script Migration Validation', () => {
     beforeEach(() => {
@@ -63,7 +63,7 @@ describe('Script Migration Validation', () => {
 
     describe('cross-platform script runner', () => {
         it('should have script runner utility available', () => {
-            const scriptRunner = join(PROJECT_ROOT, 'tools/development/script-runner.ts');
+            const scriptRunner = path.join(PROJECT_ROOT, 'tools/development/script-runner.ts');
             expect(existsSync(scriptRunner)).toBe(true);
         });
 
@@ -99,11 +99,11 @@ describe('Script Migration Validation', () => {
 
     describe('template-specific scripts relocation', () => {
         it('should have moved template scripts to template-cleanup directory', () => {
-            const templateCleanupDir = join(PROJECT_ROOT, 'scripts/template-cleanup');
+            const templateCleanupDir = path.join(PROJECT_ROOT, 'scripts/template-cleanup');
             expect(existsSync(templateCleanupDir)).toBe(true);
 
-            const setupScript = join(templateCleanupDir, 'setup-template.js');
-            const verifyScript = join(templateCleanupDir, 'verify-template-setup.sh');
+            const setupScript = path.join(templateCleanupDir, 'setup-template.js');
+            const verifyScript = path.join(templateCleanupDir, 'verify-template-setup.sh');
 
             expect(existsSync(setupScript)).toBe(true);
             expect(existsSync(verifyScript)).toBe(true);
@@ -118,14 +118,14 @@ describe('Script Migration Validation', () => {
             ];
 
             oldScripts.forEach(script => {
-                const scriptPath = join(PROJECT_ROOT, script);
+                const scriptPath = path.join(PROJECT_ROOT, script);
                 expect(existsSync(scriptPath)).toBe(false);
             });
         });
 
         it('should not have template setup scripts in project root', () => {
-            const rootSetupScript = join(PROJECT_ROOT, 'setup-template.js');
-            const rootVerifyScript = join(PROJECT_ROOT, 'verify-template-setup.sh');
+            const rootSetupScript = path.join(PROJECT_ROOT, 'setup-template.js');
+            const rootVerifyScript = path.join(PROJECT_ROOT, 'verify-template-setup.sh');
 
             expect(existsSync(rootSetupScript)).toBe(false);
             expect(existsSync(rootVerifyScript)).toBe(false);
@@ -141,7 +141,7 @@ describe('Script Migration Validation', () => {
                     timeout: 30000
                 });
             }).not.toThrow();
-        });
+        }, 30000); // 30 second timeout for the test
 
         it('should run type checking successfully', () => {
             expect(() => {
@@ -166,7 +166,7 @@ describe('Script Migration Validation', () => {
 
     describe('documentation and guidance', () => {
         it('should have script usage guide documentation', () => {
-            const scriptGuide = join(PROJECT_ROOT, 'docs/template-scripts-guide.md');
+            const scriptGuide = path.join(PROJECT_ROOT, 'docs/template-scripts-guide.md');
             expect(existsSync(scriptGuide)).toBe(true);
         });
 
@@ -201,7 +201,7 @@ describe('Script Migration Validation', () => {
 
 describe('Script Migration Documentation', () => {
     it('should have migration mapping documented', () => {
-        const scriptGuide = join(PROJECT_ROOT, 'docs/template-scripts-guide.md');
+        const scriptGuide = path.join(PROJECT_ROOT, 'docs/template-scripts-guide.md');
         const content = readFileSync(scriptGuide, 'utf8');
 
         // Should document the migration mapping
@@ -213,7 +213,7 @@ describe('Script Migration Documentation', () => {
     });
 
     it('should provide cross-platform compatibility information', () => {
-        const scriptGuide = join(PROJECT_ROOT, 'docs/template-scripts-guide.md');
+        const scriptGuide = path.join(PROJECT_ROOT, 'docs/template-scripts-guide.md');
         const content = readFileSync(scriptGuide, 'utf8');
 
         expect(content).toContain('Cross-Platform Compatibility');

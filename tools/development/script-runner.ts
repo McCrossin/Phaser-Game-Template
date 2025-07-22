@@ -9,7 +9,7 @@
 import { execSync, spawn, ChildProcess } from 'child_process';
 import { existsSync, rmSync, mkdirSync, statSync, readdirSync } from 'fs';
 import { join, dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

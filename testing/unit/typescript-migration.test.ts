@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { removePathSafely, log } from '../../tools/development/script-runner';
 import { mkdirSync, rmSync, writeFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import * as path from 'path';
 
 describe('TypeScript Migration - Script Runner', () => {
-    const testDir = join(process.cwd(), 'test-temp');
-    const testFile = join(testDir, 'test.txt');
+    const testDir = path.join(process.cwd(), 'test-temp');
+    const testFile = path.join(testDir, 'test.txt');
 
     beforeEach(() => {
         // Clean up any existing test directory

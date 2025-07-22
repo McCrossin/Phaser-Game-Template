@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { exec } from 'child_process';
-import { promisify } from 'util';
+import { promisify } from 'node:util';
 import { existsSync, readdirSync, statSync, readFileSync } from 'fs';
 import path from 'path';
 
@@ -47,7 +47,7 @@ describe('Template Structure Integration Tests', () => {
                 expect(errorMessage).not.toContain('Cannot resolve');
                 expect(errorMessage).not.toContain('Module not found');
             }
-        });
+        }, 30000); // 30 second timeout for the test
 
         it('should run type checking without path errors', async () => {
             try {

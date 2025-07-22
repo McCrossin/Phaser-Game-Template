@@ -1,90 +1,64 @@
-import { vi } from 'vitest';
+import { vi, beforeEach, afterEach } from 'vitest';
 
-// Setup canvas for JSDOM when testing canvas-related functionality
-if (
-    typeof window !== 'undefined' &&
-    !window.HTMLCanvasElement.prototype.toDataURL.toString().includes('[native code]')
-) {
-    // Use a simple mock canvas implementation for testing
-    const originalCreateElement = document.createElement.bind(document);
+// Simplified global cleanup - no timer tracking overhead
+beforeEach(() => {
+    // Clear vi mocks to prevent memory leaks
+    vi.clearAllMocks();
 
-    (document as any).createElement = function (tagName: string, options?: ElementCreationOptions) {
-        if (tagName.toLowerCase() === 'canvas') {
-            // Create a basic mock canvas
-            const canvas = {
-                width: 800,
-                height: 600,
-                style: {},
-                getContext: vi.fn().mockReturnValue({
-                    fillRect: vi.fn(),
-                    clearRect: vi.fn(),
-                    getImageData: vi.fn(),
-                    putImageData: vi.fn(),
-                    createImageData: vi.fn(),
-                    setTransform: vi.fn(),
-                    drawImage: vi.fn(),
-                    save: vi.fn(),
-                    restore: vi.fn(),
-                    scale: vi.fn(),
-                    rotate: vi.fn(),
-                    translate: vi.fn(),
-                    transform: vi.fn(),
-                    setLineDash: vi.fn(),
-                    getLineDash: vi.fn(),
-                    measureText: vi.fn().mockReturnValue({ width: 0 }),
-                    canvas: null
-                }),
-                toDataURL: vi.fn().mockReturnValue('data:image/png;base64,mock'),
-                addEventListener: vi.fn(),
-                removeEventListener: vi.fn(),
-                dispatchEvent: vi.fn()
-            };
+    // Clear common global test state
+    delete (globalThis as any).testSpecificState;
+    delete (globalThis as any).contaminatedState;
+    delete (globalThis as any).testState;
+    delete (globalThis as any).asyncState;
+    delete (globalThis as any).tempRef;
+    delete (globalThis as any).newProperty;
+});
 
-            // Make getContext return a reference to itself for canvas property
-            if (canvas.getContext) {
-                const ctx = canvas.getContext();
-                if (ctx) {
-                    ctx.canvas = canvas;
-                }
-            }
+afterEach(() => {
+    // Always use real timers after each test
+    vi.useRealTimers();
+    vi.clearAllTimers();
 
-            return canvas as any;
-        }
-        return originalCreateElement(tagName, options);
-    };
-}
+    // Clean up any leftover globals
+    delete (globalThis as any).testSpecificState;
+    delete (globalThis as any).contaminatedState;
+    delete (globalThis as any).testState;
+    delete (globalThis as any).asyncState;
+    delete (globalThis as any).tempRef;
+    delete (globalThis as any).newProperty;
+});
 
-// Mock Canvas for Phaser tests (fallback)
-Object.defineProperty(window, 'HTMLCanvasElement', {
-    value: class HTMLCanvasElement {
-        private mockContext = {
-            fillRect: vi.fn(),
-            clearRect: vi.fn(),
-            getImageData: vi.fn(),
-            putImageData: vi.fn(),
-            createImageData: vi.fn(),
-            setTransform: vi.fn(),
-            drawImage: vi.fn(),
-            save: vi.fn(),
-            restore: vi.fn(),
-            beginPath: vi.fn(),
-            moveTo: vi.fn(),
-            lineTo: vi.fn(),
-            closePath: vi.fn(),
-            stroke: vi.fn(),
-            fill: vi.fn()
-        };
-
+// Optimized Node.js environment setup - minimal mock overhead
+if (typeof globalThis.window === 'undefined') {
+    // Lightweight HTMLCanvasElement mock
+    class MockHTMLCanvasElement {
         width = 800;
         height = 600;
         style = {};
 
-        getContext(): any {
-            return this.mockContext;
+        getContext() {
+            return {
+                fillRect: vi.fn(),
+                clearRect: vi.fn(),
+                getImageData: vi.fn(),
+                putImageData: vi.fn(),
+                createImageData: vi.fn(),
+                setTransform: vi.fn(),
+                drawImage: vi.fn(),
+                save: vi.fn(),
+                restore: vi.fn(),
+                scale: vi.fn(),
+                rotate: vi.fn(),
+                translate: vi.fn(),
+                transform: vi.fn(),
+                setLineDash: vi.fn(),
+                getLineDash: vi.fn(),
+                measureText: vi.fn(() => ({ width: 0 })),
+                canvas: this
+            };
         }
 
-        toDataURL(): string {
-            // Return a valid base64 data URL
+        toDataURL() {
             return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
         }
 
@@ -92,9 +66,32 @@ Object.defineProperty(window, 'HTMLCanvasElement', {
         removeEventListener = vi.fn();
         dispatchEvent = vi.fn();
     }
-});
 
-// Mock Phaser for unit tests
+    // Mock window and document objects for Node.js testing
+    (globalThis as any).window = {
+        HTMLCanvasElement: MockHTMLCanvasElement,
+        requestAnimationFrame: vi.fn(cb => setTimeout(cb, 16)),
+        cancelAnimationFrame: vi.fn(),
+        location: { href: 'http://localhost/' },
+        navigator: { userAgent: 'test' }
+    };
+
+    (globalThis as any).document = {
+        createElement: vi.fn().mockImplementation((tagName: string) => {
+            if (tagName.toLowerCase() === 'canvas') {
+                return new MockHTMLCanvasElement();
+            }
+            return {
+                addEventListener: vi.fn(),
+                removeEventListener: vi.fn()
+            };
+        }),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn()
+    };
+}
+
+// Mock Phaser for unit tests - lightweight implementation
 vi.mock('phaser', () => ({
     Scene: class MockScene {
         constructor() {}
@@ -113,7 +110,7 @@ vi.mock('phaser', () => ({
 }));
 
 // Global test utilities
-(global as any).createMockScene = () => {
+(globalThis as any).createMockScene = () => {
     return {
         add: {
             text: vi.fn(),
@@ -128,7 +125,8 @@ vi.mock('phaser', () => ({
         },
         load: {
             image: vi.fn(),
-            atlas: vi.fn()
+            atlas: vi.fn(),
+            on: vi.fn()
         }
     };
 };

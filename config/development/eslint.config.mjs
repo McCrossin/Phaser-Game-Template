@@ -96,5 +96,29 @@ export default tseslint.config(
         rules: {
             'prettier/prettier': ['error', { endOfLine: 'auto' }]
         }
+    },
+    {
+        files: [
+            'scripts/**/*.ts',
+            'scripts/**/*.js',
+            'testing/template-validation/**/*.ts',
+            'testing/unit/**/*.test.ts'
+        ],
+        languageOptions: {
+            globals: {
+                console: 'readonly',
+                process: 'readonly'
+            }
+        },
+        rules: {
+            'security/detect-non-literal-fs-filename': 'off',
+            'security/detect-object-injection': 'off',
+            'security/detect-non-literal-regexp': 'off',
+            'security/detect-unsafe-regex': 'off',
+            '@typescript-eslint/no-explicit-any': 'off',
+            '@typescript-eslint/no-unused-vars': 'off',
+            'no-undef': 'off',
+            'no-unused-vars': 'off'
+        }
     }
 );

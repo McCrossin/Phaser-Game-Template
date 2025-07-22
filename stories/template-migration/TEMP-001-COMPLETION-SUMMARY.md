@@ -12,7 +12,7 @@
 ### Phase 1: Package Configuration ✅
 
 - Updated `package.json` with generic template information
-    - Name: `new-eden-project` → `phaser-game-template`
+    - Name: `game-project` → `phaser-game-template`
     - Description: Generic 2D Phaser game template description
     - Author: Updated to `Template Author`
     - Keywords: Updated for general 2D game development
@@ -26,7 +26,7 @@
 - Documented all template features and capabilities
 - Added quick start instructions for new developers
 - Included template customization guide
-- Backed up original README as `README-NEW-EDEN-BACKUP.md`
+- Backed up original README as `README-ORIGINAL-BACKUP.md`
 
 ### Phase 3: Configuration Files ✅
 
@@ -50,7 +50,7 @@
 
 - `package.json` - Template metadata and scripts
 - `README.md` - Complete template documentation
-- `README-NEW-EDEN-BACKUP.md` - Backup of original docs
+- `README-ORIGINAL-BACKUP.md` - Backup of original docs
 
 ### Build Tools & Scripts
 

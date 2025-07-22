@@ -125,31 +125,64 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
                 }
             }
 
-            // Generate WebP version
+            // Generate optimized versions with size comparison
+            let optimizedSize = 0;
+            let bestFormat = '';
+
+            // Try WebP first (usually smaller)
             const webpPath = join(outputDirPath, `${baseName}.webp`);
             await image.clone().webp({ quality }).toFile(webpPath);
-
-            processed.webp = webpPath;
             // eslint-disable-next-line security/detect-non-literal-fs-filename
             const webpStats = await fs.stat(webpPath);
-            processed.size.optimized += webpStats.size;
 
-            // Generate PNG fallback (unless original is already optimized PNG)
-            if (extname(imagePath).toLowerCase() !== '.png' || quality < 100) {
-                const pngPath = join(outputDirPath, `${baseName}.png`);
-                await image.clone().png({ quality }).toFile(pngPath);
-
-                processed.png = pngPath;
-                // eslint-disable-next-line security/detect-non-literal-fs-filename
-                const pngStats = await fs.stat(pngPath);
-                processed.size.optimized += pngStats.size;
-            } else {
-                // Copy original PNG if it's already optimized
-                const pngPath = join(outputDirPath, `${baseName}.png`);
-                await fs.copyFile(imagePath, pngPath);
-                processed.png = pngPath;
-                processed.size.optimized += originalSize;
+            if (webpStats.size < originalSize) {
+                optimizedSize = webpStats.size;
+                bestFormat = 'webp';
+                processed.webp = webpPath;
             }
+
+            // Try PNG optimization
+            const pngPath = join(outputDirPath, `${baseName}.png`);
+            await image.clone().png({ quality }).toFile(pngPath);
+            // eslint-disable-next-line security/detect-non-literal-fs-filename
+            const pngStats = await fs.stat(pngPath);
+
+            // Use PNG if it's smaller than WebP or if WebP didn't improve
+            if (
+                pngStats.size < originalSize &&
+                (bestFormat === '' || pngStats.size < optimizedSize)
+            ) {
+                // Clean up WebP if PNG is better
+                if (bestFormat === 'webp') {
+                    await fs.unlink(webpPath).catch(() => {});
+                    delete processed.webp;
+                }
+                optimizedSize = pngStats.size;
+                bestFormat = 'png';
+                processed.png = pngPath;
+            } else if (bestFormat === 'webp') {
+                // Clean up PNG if WebP is better
+                await fs.unlink(pngPath).catch(() => {});
+            }
+
+            // If optimization didn't help, just copy original
+            if (optimizedSize === 0 || optimizedSize >= originalSize) {
+                const fallbackPath = join(outputDirPath, basename(imagePath));
+                await fs.copyFile(imagePath, fallbackPath);
+                optimizedSize = originalSize;
+
+                // Clean up any generated files
+                if (processed.webp) {
+                    await fs.unlink(processed.webp).catch(() => {});
+                    delete processed.webp;
+                }
+                if (processed.png && processed.png !== fallbackPath) {
+                    await fs.unlink(processed.png).catch(() => {});
+                }
+                processed.png = fallbackPath;
+            }
+
+            processed.size.optimized = optimizedSize;
 
             processedImages.set(relativePath, processed);
         } catch (error) {
@@ -202,14 +235,17 @@ export function imageOptimizerPlugin(options: ImageOptimizerOptions): Plugin {
         const savingsPercent =
             totalOriginal > 0
                 ? (((totalOriginal - totalOptimized) / totalOriginal) * 100).toFixed(1)
-                : '0';
+                : '0.0';
+
+        const savedBytes = totalOriginal - totalOptimized;
+        const savingsDisplay = savedBytes >= 0 ? savingsPercent : '0.0';
 
         console.log(`
 🖼️  Image Optimization Complete:
    📁 Files processed: ${fileCount}
    📦 Original size: ${formatBytes(totalOriginal)}
    🗜️  Optimized size: ${formatBytes(totalOptimized)}
-   💾 Space saved: ${savingsPercent}% (${formatBytes(totalOriginal - totalOptimized)})
+   💾 Space saved: ${savingsDisplay}% (${formatBytes(Math.abs(savedBytes))})
         `);
     }
 

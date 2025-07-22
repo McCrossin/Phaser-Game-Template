@@ -8,7 +8,7 @@
 
 ## Description
 
-**⚠️ CRITICAL SAFETY ISSUE**: This repository is currently a copy of the New Eden Project and is still connected to the original repository (New-Eden-Project/main). Any commits made will be pushed to the main game repository, which must be prevented immediately.
+**⚠️ CRITICAL SAFETY ISSUE**: This repository is currently a copy of a game project and is still connected to the original repository. Any commits made will be pushed to the main game repository, which must be prevented immediately.
 
 Remove all New Eden Project git configuration details and repository references, replacing them with generic Phaser Game Template repository information. This includes disconnecting from the original repository, updating remote origins, repository metadata, and any hardcoded repository references in documentation or configuration.
 
@@ -20,7 +20,7 @@ Template users will have a clean repository setup without any references to the 
 
 ### Technical Overview
 
-**URGENT**: Clean up git configuration to prevent accidental commits to the New Eden Project repository. This repository is currently connected to McCrossin/New-Eden-Project and any commits will go to the main game repository.
+**URGENT**: Clean up git configuration to prevent accidental commits to the original game project repository. This repository is currently connected to the original project and any commits will go to the main game repository.
 
 Clean up git configuration, remove original repository references, update any hardcoded URLs or repository names in configuration files, and prepare the repository for template distribution with appropriate git setup.
 
@@ -28,7 +28,7 @@ Clean up git configuration, remove original repository references, update any ha
 
 ### Functional Requirements
 
-- [x] **URGENT**: Disconnect from New Eden Project repository (McCrossin/New-Eden-Project)
+- [x] **URGENT**: Disconnect from original game project repository
 - [x] All New Eden Project repository references removed
 - [x] Git configuration cleaned for template use
 - [ ] Repository URLs updated to template repository
@@ -109,7 +109,7 @@ Clean up git configuration, remove original repository references, update any ha
 
 ```bash
 # FIRST - Prevent accidental pushes to New Eden Project
-git remote remove origin  # Disconnects from McCrossin/New-Eden-Project
+git remote remove origin  # Disconnects from original project repository
 
 # Option 1: Create new template repository
 git remote add origin [NEW-PHASER-TEMPLATE-REPO-URL]
@@ -133,7 +133,7 @@ git remote -v  # Should show no remotes or only new template remote
 ### Phase 1: URGENT Repository Safety (0.1 days)
 
 1. **IMMEDIATE**: Disconnect from New Eden Project repository
-2. Verify no remote connections to McCrossin/New-Eden-Project
+2. Verify no remote connections to original project repository
 3. Document current repository state
 4. Set up safe working environment
 
@@ -185,7 +185,7 @@ git remote -v  # Should show no remotes or only new template remote
 
 ### Git Configuration Clean
 
-- [x] **CRITICAL**: Original repository remote disconnected (McCrossin/New-Eden-Project)
+- [x] **CRITICAL**: Original repository remote disconnected
 - [x] All original repository references removed
 - [ ] Template repository URLs configured
 - [x] Git history prepared appropriately

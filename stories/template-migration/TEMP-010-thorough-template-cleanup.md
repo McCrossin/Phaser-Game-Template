@@ -314,7 +314,7 @@ const TEMPLATE_GAME_CONFIG = {
 - [ ] `old docs/` - Legacy documentation
 - [ ] `AI notes.md` - Development notes
 - [ ] `TODO Lists/` - Development todos
-- [ ] Personal README files (README-NEW-EDEN-BACKUP.md)
+- [ ] Personal README files (README-ORIGINAL-BACKUP.md)
 - [ ] Development health reports and analysis files
 - [ ] Project-specific research files
 

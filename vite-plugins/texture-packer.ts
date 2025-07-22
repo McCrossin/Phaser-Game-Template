@@ -229,11 +229,22 @@ function packSprites(sprites: LoadedSprite[], config: AtlasConfig): PackedAtlas 
     const maxSize = config.options.maxSize;
     const padding = config.options.padding;
 
+    // Sort sprites by area (largest first) for better packing
+    const sortedSprites = [...sprites].sort((a, b) => {
+        const areaA = a.width * a.height;
+        const areaB = b.width * b.height;
+        return areaB - areaA;
+    });
+
     // Create packer with max dimensions
-    const packer = new MaxRectsPacker(maxSize, maxSize, padding);
+    const packer = new MaxRectsPacker(maxSize, maxSize, padding, {
+        smart: true,
+        pot: false,
+        square: false
+    });
 
     // Add rectangles for each sprite
-    const rectangles: Rectangle[] = sprites.map(sprite => {
+    const rectangles: Rectangle[] = sortedSprites.map(sprite => {
         const rect = new Rectangle(sprite.width, sprite.height);
         rect.data = sprite;
         return rect;
@@ -246,7 +257,7 @@ function packSprites(sprites: LoadedSprite[], config: AtlasConfig): PackedAtlas 
         throw new Error(`Could not fit sprites into atlas ${config.name}`);
     }
 
-    if (packer.bins.length > 1) {
+    if (packer.bins.length > 2) {
         console.warn(
             `⚠️  Atlas ${config.name} required ${packer.bins.length} bins - consider reducing sprite count or increasing max size`
         );

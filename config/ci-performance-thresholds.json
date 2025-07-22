@@ -1,0 +1,64 @@
+{
+    "environments": {
+        "local": {
+            "performance": {
+                "minFPS": 30,
+                "avgFPS": 55,
+                "maxFPSVariation": 1.5,
+                "maxLoadTime": 3000,
+                "maxMemoryGrowth": 50,
+                "maxMicrofreezes": 2,
+                "buildTimeLimit": 60000,
+                "bundleSizeLimit": 2097152
+            },
+            "timeouts": {
+                "browserLaunch": 10000,
+                "pageLoad": 15000,
+                "testExecution": 30000
+            },
+            "retry": {
+                "maxAttempts": 2,
+                "backoffDelay": 1000
+            }
+        },
+        "ci": {
+            "performance": {
+                "minFPS": 2,
+                "avgFPS": 10,
+                "maxFPSVariation": 4.0,
+                "maxLoadTime": 30000,
+                "maxMemoryGrowth": 150,
+                "maxMicrofreezes": 5,
+                "buildTimeLimit": 600000,
+                "bundleSizeLimit": 10485760
+            },
+            "timeouts": {
+                "browserLaunch": 30000,
+                "pageLoad": 45000,
+                "testExecution": 120000
+            },
+            "retry": {
+                "maxAttempts": 3,
+                "backoffDelay": 2000
+            }
+        }
+    },
+    "monitoring": {
+        "sampleDuration": 6000,
+        "memoryTestDuration": {
+            "local": 10000,
+            "ci": 5000
+        },
+        "microfreezeDetectionDuration": 10000,
+        "artifacts": {
+            "retentionDays": 30,
+            "compressionLevel": 6
+        }
+    },
+    "logging": {
+        "verboseMode": false,
+        "enableMetricsLogging": true,
+        "enableEnvironmentInfo": true,
+        "enableResourceBreakdown": true
+    }
+}

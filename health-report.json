@@ -1,6 +1,6 @@
 {
-    "timestamp": "2025-07-21T15:37:46.502Z",
-    "overallScore": 68,
+    "timestamp": "2025-07-22T09:56:49.660Z",
+    "overallScore": 78,
     "maxScore": 100,
     "status": "warning",
     "categories": [
@@ -12,11 +12,11 @@
             "details": [
                 "✅ TypeScript compilation successful",
                 "✅ Build process successful",
-                "✅ Build time within threshold (6375ms <= 30000ms)",
+                "✅ Build time within threshold (7299ms <= 30000ms)",
                 "📦 Bundle size: 12M\tdist"
             ],
             "metrics": {
-                "buildTime": 6375,
+                "buildTime": 7299,
                 "bundleSize": "12"
             }
         },
@@ -27,19 +27,22 @@
             "status": "pass",
             "details": [
                 "✅ All tests passing",
-                "✅ Test execution within threshold (12525ms <= 60000ms)",
-                "ℹ️ Coverage information not available"
+                "✅ Test execution within threshold (17994ms <= 60000ms)",
+                "⚠️ Test coverage below threshold (2% < 70%)"
             ],
             "metrics": {
-                "testTime": 12525
+                "testTime": 17994,
+                "coverage": 2
             }
         },
         {
             "category": "Performance",
-            "score": 0,
+            "score": 10,
             "maxScore": 20,
-            "status": "fail",
-            "details": ["❌ Performance tests failed", "   Output: spawnSync /bin/sh ETIMEDOUT..."],
+            "status": "warn",
+            "details": [
+                "ℹ️ No performance test script found - this is acceptable for early development"
+            ],
             "metrics": {}
         },
         {

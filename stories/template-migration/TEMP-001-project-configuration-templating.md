@@ -31,7 +31,7 @@ Replace all New Eden references with template placeholders or generic game devel
 
 ### Technical Requirements
 
-- [x] Package.json name changed from "new-eden-project" to "phaser-game-template"
+- [x] Package.json name changed from "game-project" to "phaser-game-template"
 - [x] Description updated to reflect template nature
 - [x] Author field updated to be generic
 - [x] Keywords updated for general 2D game development

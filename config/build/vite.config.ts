@@ -15,12 +15,29 @@ export default defineConfig({
         minify: 'esbuild',
         target: 'es2020',
         emptyOutDir: true,
-        chunkSizeWarningLimit: 1000, // Increase threshold to 1MB
+        chunkSizeWarningLimit: 1500, // Temporarily increase to 1.5MB for Phaser
         rollupOptions: {
             input: resolve(__dirname, '../../index.html'),
             output: {
-                manualChunks: {
-                    phaser: ['phaser']
+                manualChunks: (id: string) => {
+                    // Keep Phaser as a single vendor chunk for now
+                    if (id.includes('phaser')) {
+                        return 'phaser';
+                    }
+                    // Split other vendor libraries
+                    if (id.includes('node_modules')) {
+                        return 'vendor';
+                    }
+                    // Split application code by feature
+                    if (id.includes('src/scenes')) {
+                        return 'scenes';
+                    }
+                    if (id.includes('src/systems')) {
+                        return 'systems';
+                    }
+                    if (id.includes('src/components')) {
+                        return 'components';
+                    }
                 }
             }
         }
@@ -76,9 +93,9 @@ export default defineConfig({
                 source: resolve(__dirname, '../../assets/source/ui'),
                 files: ['*.png'],
                 options: {
-                    maxSize: 1024,
+                    maxSize: 2048, // Increased from 1024 to 2048
                     padding: 1,
-                    trim: false,
+                    trim: true, // Changed to true to save space
                     extrude: 0
                 }
             }

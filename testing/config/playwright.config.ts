@@ -2,6 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
     testDir: '../e2e',
+    /* Global test timeout */
+    timeout: process.env.CI ? 300000 : 120000, // 5 minutes for CI, 2 minutes for local
     /* Run tests in files in parallel */
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -10,8 +12,10 @@ export default defineConfig({
     retries: process.env['CI'] ? 2 : 0,
     /* Opt out of parallel tests on CI. */
     workers: process.env['CI'] ? 1 : undefined,
-    /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-    reporter: 'html',
+    /* Reporter to use - Use JSON for AI-readable output, avoid interactive HTML */
+    reporter: process.env['AI_VALIDATION']
+        ? [['json', { outputFile: 'playwright-report.json' }], ['list']]
+        : [['html', { open: 'never' }], ['list']],
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
         /* Base URL to use in actions like `await page.goto('/')`. */
