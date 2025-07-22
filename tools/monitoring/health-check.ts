@@ -110,7 +110,7 @@ class FrameworkHealthChecker {
                 success: true,
                 time: Date.now() - startTime
             };
-        } catch {
+        } catch (error) {
             return {
                 stdout: error instanceof Error ? error.message : 'Unknown error',
                 success: false,
@@ -514,7 +514,7 @@ class FrameworkHealthChecker {
 
             // Exit with appropriate code
             process.exit(report.status === 'critical' ? 1 : 0);
-        } catch {
+        } catch (error) {
             console.error('❌ Health check failed with error:', error);
             process.exit(1);
         }
