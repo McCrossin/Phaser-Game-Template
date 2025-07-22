@@ -36,7 +36,7 @@ import {
     InputComponent,
     PlayerComponent,
     InventoryComponent
-} from '../components/CoreComponents';
+} from '../gameObjects/CoreComponents';
 
 export class GameScene extends Phaser.Scene {
     private world!: World;

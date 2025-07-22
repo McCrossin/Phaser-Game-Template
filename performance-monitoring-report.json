@@ -1,16 +1,16 @@
 {
-    "success": false,
+    "success": true,
     "metrics": {
-        "bundleSize": 1500479,
-        "bundleSizeMB": 1.4309682846069336,
-        "avgFPS": 71.36189943543283,
-        "minFPS": 10.341261634397405,
-        "fpssamples": 169,
-        "executionTimeMs": 1013
+        "bundleSize": 1499653,
+        "bundleSizeMB": 1.430180549621582,
+        "avgFPS": 121.21837699141167,
+        "minFPS": 7.027406886859324,
+        "fpssamples": 127,
+        "fpsDegradation": -1.4243675398282334,
+        "microfreezes": 0,
+        "executionTimeMs": 4
     },
-    "errors": [
-        "Performance Results Check failed after 2 attempts: Minimum FPS below threshold: 10.34 < 30"
-    ],
+    "errors": [],
     "environment": "local",
-    "timestamp": "2025-07-22T11:19:17.161Z"
+    "timestamp": "2025-07-22T14:31:00.623Z"
 }

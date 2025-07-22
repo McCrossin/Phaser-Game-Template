@@ -30,7 +30,7 @@ class TestIssueFixer {
             // Fix 1: AssetLoader test expectations to match actual implementation
             {
                 description: 'Fix AssetLoader test to handle manifest loading failure',
-                filePath: path.join(PROJECT_ROOT, 'testing/unit/systems/AssetLoader.test.ts'),
+                filePath: path.join(PROJECT_ROOT, 'tests/unit/systems/AssetLoader.test.ts'),
                 action: 'replace',
                 oldContent: `        it('should load image assets correctly', async () => {
             // Mock the load complete event
@@ -68,7 +68,7 @@ class TestIssueFixer {
             // Fix 2: Progress callback expectations
             {
                 description: 'Fix AssetLoader progress callback expectations',
-                filePath: path.join(PROJECT_ROOT, 'testing/unit/systems/AssetLoader.test.ts'),
+                filePath: path.join(PROJECT_ROOT, 'tests/unit/systems/AssetLoader.test.ts'),
                 action: 'replace',
                 oldContent: `        it('should call progress callback during loading', async () => {
             const mockOn = mockScene.load.on as any;
@@ -108,7 +108,7 @@ class TestIssueFixer {
             // Fix 3: Update test timeout for linting tests
             {
                 description: 'Increase timeout for linting tests',
-                filePath: path.join(PROJECT_ROOT, 'testing/integration/template-structure.test.ts'),
+                filePath: path.join(PROJECT_ROOT, 'tests/integration/template-structure.test.ts'),
                 action: 'replace',
                 oldContent: `        it('should run linting without path errors', async () => {`,
                 newContent: `        it('should run linting without path errors', async () => {`
@@ -116,7 +116,7 @@ class TestIssueFixer {
             // Fix 4: Fix script migration test timeout
             {
                 description: 'Fix script migration test timeout',
-                filePath: path.join(PROJECT_ROOT, 'testing/unit/script-migration.test.ts'),
+                filePath: path.join(PROJECT_ROOT, 'tests/unit/script-migration.test.ts'),
                 action: 'replace',
                 oldContent: `        it('should run linting successfully', () => {`,
                 newContent: `        it('should run linting successfully', () => {`
@@ -126,7 +126,7 @@ class TestIssueFixer {
                 description: 'Fix code quality validation test timeout',
                 filePath: path.join(
                     PROJECT_ROOT,
-                    'testing/unit/code-quality/temp-020-validation.test.ts'
+                    'tests/unit/code-quality/temp-020-validation.test.ts'
                 ),
                 action: 'replace',
                 oldContent: `        it('should have zero ESLint warnings and errors', () => {`,
@@ -163,7 +163,7 @@ class TestIssueFixer {
     async fixAssetLoaderTest(): Promise<void> {
         console.log('🔧 Fixing AssetLoader test specifically...');
 
-        const testFile = path.join(PROJECT_ROOT, 'testing/unit/systems/AssetLoader.test.ts');
+        const testFile = path.join(PROJECT_ROOT, 'tests/unit/systems/AssetLoader.test.ts');
 
         try {
             let content = await fs.readFile(testFile, 'utf8');
@@ -204,17 +204,17 @@ class TestIssueFixer {
 
         /* const _timeoutFixes = [
             {
-                file: 'testing/integration/template-structure.test.ts',
+                file: 'tests/integration/template-structure.test.ts',
                 find: `it('should run linting without path errors', async () => {`,
                 replace: `it('should run linting without path errors', async () => {`
             },
             {
-                file: 'testing/unit/script-migration.test.ts',
+                file: 'tests/unit/script-migration.test.ts',
                 find: `it('should run linting successfully', () => {`,
                 replace: `it('should run linting successfully', () => {`
             },
             {
-                file: 'testing/unit/code-quality/temp-020-validation.test.ts',
+                file: 'tests/unit/code-quality/temp-020-validation.test.ts',
                 find: `it('should have zero ESLint warnings and errors', () => {`,
                 replace: `it('should have zero ESLint warnings and errors', () => {`
             }

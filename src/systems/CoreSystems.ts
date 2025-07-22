@@ -11,7 +11,7 @@ import {
     SpriteComponent,
     InputComponent,
     PlayerComponent
-} from '../components/CoreComponents';
+} from '../gameObjects/CoreComponents';
 
 /**
  * Movement System - handles entity movement based on velocity

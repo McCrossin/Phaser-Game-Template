@@ -70,3 +70,4 @@ window.addEventListener('unhandledrejection', event => {
 window.game = game;
 
 export default game;
+// Test fix

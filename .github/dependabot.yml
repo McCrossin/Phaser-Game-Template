@@ -1,6 +1,6 @@
 version: 2
 updates:
-    # Enable version updates for npm
+    # Game Development Dependencies
     - package-ecosystem: 'npm'
       directory: '/'
       schedule:
@@ -8,54 +8,55 @@ updates:
           day: 'monday'
           time: '06:00'
           timezone: 'UTC'
-      open-pull-requests-limit: 10
-      reviewers:
-          - 'TEMPLATE-OWNER'
-      assignees:
-          - 'TEMPLATE-OWNER'
+      open-pull-requests-limit: 8
       labels:
           - 'dependencies'
-          - 'npm'
+          - 'game-development'
       commit-message:
-          prefix: 'npm'
+          prefix: 'deps'
           include: 'scope'
       groups:
-          phaser:
+          # Core Game Development
+          game-engine:
               patterns:
                   - 'phaser*'
-          vitest:
-              patterns:
-                  - 'vitest*'
-                  - '@vitest/*'
-                  - 'jsdom'
-                  - 'happy-dom'
-          typescript:
+                  - 'lz-string*'
+
+          # TypeScript and Build Tools
+          typescript-tools:
               patterns:
                   - 'typescript*'
                   - '@typescript-eslint/*'
                   - '@types/*'
-          eslint:
-              patterns:
-                  - 'eslint*'
-                  - 'eslint-*'
-          build-tools:
-              patterns:
                   - 'vite*'
                   - '@vitejs/*'
-                  - 'typedoc*'
-                  - 'rollup*'
-          development-tools:
+
+          # Testing Framework
+          testing-tools:
               patterns:
-                  - 'prettier*'
-                  - 'husky*'
-                  - 'lint-staged*'
-                  - 'is-ci*'
-          playwright:
-              patterns:
+                  - 'vitest*'
+                  - '@vitest/*'
+                  - 'jsdom*'
                   - '@playwright/*'
                   - 'playwright*'
 
-    # Enable version updates for GitHub Actions
+          # Code Quality
+          code-quality:
+              patterns:
+                  - 'eslint*'
+                  - 'eslint-*'
+                  - 'prettier*'
+                  - 'husky*'
+                  - 'lint-staged*'
+
+          # Asset Processing
+          asset-tools:
+              patterns:
+                  - 'sharp*'
+                  - 'canvas*'
+                  - 'maxrects-packer*'
+
+    # GitHub Actions Updates
     - package-ecosystem: 'github-actions'
       directory: '/'
       schedule:
@@ -63,14 +64,10 @@ updates:
           day: 'monday'
           time: '06:00'
           timezone: 'UTC'
-      open-pull-requests-limit: 5
-      reviewers:
-          - 'TEMPLATE-OWNER'
-      assignees:
-          - 'TEMPLATE-OWNER'
+      open-pull-requests-limit: 3
       labels:
           - 'github-actions'
-          - 'dependencies'
+          - 'ci-cd'
       commit-message:
-          prefix: 'github-actions'
+          prefix: 'ci'
           include: 'scope'
