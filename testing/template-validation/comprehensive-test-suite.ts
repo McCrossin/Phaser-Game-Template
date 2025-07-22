@@ -5,7 +5,7 @@ import {
     QualityGate,
     E2ETestResults
 } from './types';
-import { ReportAnalyzer } from './report-analysis';
+// import { ReportAnalyzer } from './report-analysis';
 import { ErrorDetector } from './error-detection';
 import { QualityGateValidator } from './quality-gates';
 import { execSync } from 'child_process';
@@ -450,7 +450,7 @@ export class TemplateValidator {
     ): TemplateQualityReport {
         const failedGates = qualityGates?.filter(gate => gate.status === 'FAIL') || [];
         const hasErrors = (report.errors?.length || 0) > 0;
-        const hasWarnings = (report.warnings?.length || 0) > 0;
+        // const hasWarnings = (report.warnings?.length || 0) > 0;
 
         const overallStatus = failedGates.length === 0 && !hasErrors ? 'PASS' : 'FAIL';
 
@@ -476,7 +476,7 @@ export class TemplateValidator {
     // Helper methods
     private extractDuration(output: string): number {
         const match = output.match(/Time:\s*(\d+(?:\.\d+)?)\s*m?s/);
-        return match ? parseFloat(match[1]) : 0;
+        return match ? parseFloat(match[1] || '0') : 0;
     }
 
     private async getBuildSize(): Promise<number> {
@@ -498,17 +498,17 @@ export class TemplateValidator {
         }
     }
 
-    private countTotalTests(testResults: TestSuiteResults): number {
+    private countTotalTests(_testResults: TestSuiteResults): number {
         // Implementation depends on test result structure
         return 0; // Placeholder
     }
 
-    private countPassedTests(testResults: TestSuiteResults): number {
+    private countPassedTests(_testResults: TestSuiteResults): number {
         // Implementation depends on test result structure
         return 0; // Placeholder
     }
 
-    private countFailedTests(testResults: TestSuiteResults): number {
+    private countFailedTests(_testResults: TestSuiteResults): number {
         // Implementation depends on test result structure
         return 0; // Placeholder
     }

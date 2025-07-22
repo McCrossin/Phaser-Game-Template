@@ -11,7 +11,7 @@ export default defineConfig({
     build: {
         outDir: 'dist',
         assetsDir: 'assets',
-        sourcemap: process.env.NODE_ENV !== 'production',
+        sourcemap: process.env['NODE_ENV'] !== 'production',
         minify: 'esbuild',
         target: 'es2020',
         emptyOutDir: true,
@@ -28,16 +28,8 @@ export default defineConfig({
                     if (id.includes('node_modules')) {
                         return 'vendor';
                     }
-                    // Split application code by feature
-                    if (id.includes('src/scenes')) {
-                        return 'scenes';
-                    }
-                    if (id.includes('src/systems')) {
-                        return 'systems';
-                    }
-                    if (id.includes('src/components')) {
-                        return 'components';
-                    }
+                    // Default chunk
+                    return undefined;
                 }
             }
         }
@@ -74,7 +66,7 @@ export default defineConfig({
         imageOptimizerPlugin({
             sourceDir: resolve(__dirname, '../../assets/source'),
             outputDir: resolve(__dirname, '../../assets/processed'),
-            isDev: process.env.NODE_ENV === 'development'
+            isDev: process.env['NODE_ENV'] === 'development'
         }),
         texturePackerPlugin([
             {
@@ -103,12 +95,12 @@ export default defineConfig({
         audioProcessorPlugin({
             sourceDir: resolve(__dirname, '../../assets/source'),
             outputDir: resolve(__dirname, '../../assets/processed'),
-            isDev: process.env.NODE_ENV === 'development'
+            isDev: process.env['NODE_ENV'] === 'development'
         }),
         assetManifestPlugin({
             outputDir: resolve(__dirname, '../../assets/processed'),
             publicPath: './assets/processed/',
-            isDev: process.env.NODE_ENV === 'development'
+            isDev: process.env['NODE_ENV'] === 'development'
         })
     ]
 });

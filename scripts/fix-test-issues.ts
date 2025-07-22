@@ -202,7 +202,7 @@ class TestIssueFixer {
     async fixTimeoutIssues(): Promise<void> {
         console.log('🔧 Fixing timeout issues in tests...');
 
-        const _timeoutFixes = [
+        /* const _timeoutFixes = [
             {
                 file: 'testing/integration/template-structure.test.ts',
                 find: `it('should run linting without path errors', async () => {`,
@@ -218,7 +218,7 @@ class TestIssueFixer {
                 find: `it('should have zero ESLint warnings and errors', () => {`,
                 replace: `it('should have zero ESLint warnings and errors', () => {`
             }
-        ];
+        ]; */
 
         // Update vitest config to increase timeout
         const vitestConfigPath = path.join(PROJECT_ROOT, 'vitest.config.ts');

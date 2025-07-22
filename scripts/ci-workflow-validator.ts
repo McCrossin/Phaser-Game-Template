@@ -9,6 +9,11 @@ import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import * as yaml from 'js-yaml';
 
+// import { fileURLToPath } from 'node:url';
+// import { dirname } from 'path';
+
+// const __filename = fileURLToPath(import.meta.url);
+
 interface WorkflowValidationResult {
     file: string;
     valid: boolean;
@@ -237,15 +242,15 @@ class WorkflowValidator {
 }
 
 // Run validation if called directly
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
-async function main(): Promise<void> {
-    // Main execution logic would go here
-}
+// async function main(): Promise<void> {
+//     // Main execution logic would go here
+// }
 
 // Check if this file is being executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {
