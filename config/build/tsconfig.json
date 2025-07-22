@@ -41,13 +41,13 @@
         "../../src/**/*.ts",
         "../../src/**/*.d.ts",
         "../../vite-plugins/**/*.ts",
-        "../../testing/unit/**/*.ts",
-        "../../testing/integration/**/*.ts",
-        "../../testing/template-validation/**/*.ts",
-        "../../testing/setup.ts",
-        "../../testing/fixtures/**/*.ts",
-        "../../testing/config/**/*.ts",
-        "../../testing/helpers/**/*.ts",
+        "../../tests/unit/**/*.ts",
+        "../../tests/integration/**/*.ts",
+        "../../tests/setup.ts",
+        "../../tests/fixtures/**/*.ts",
+        "../../tests/config/**/*.ts",
+        "../../tests/helpers/**/*.ts",
+        "../../tests/e2e/**/*.ts",
         "../../config/build/**/*.ts",
         "../../config/deployment/**/*.ts",
         "../../scripts/**/*.ts",
@@ -56,8 +56,7 @@
     "exclude": [
         "../../node_modules",
         "../../dist",
-        "../../testing/e2e/**/*",
-        "../../testing/config/playwright.config.ts",
-        "../../testing/config/playwright-ci.config.ts"
+        "../../tests/config/playwright.config.ts",
+        "../../tests/config/playwright-ci.config.ts"
     ]
 }

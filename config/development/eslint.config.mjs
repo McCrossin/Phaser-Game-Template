@@ -2,6 +2,13 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import security from 'eslint-plugin-security';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const projectRoot = join(__dirname, '../..');
 
 export default tseslint.config(
     {
@@ -11,9 +18,9 @@ export default tseslint.config(
             '**/*.d.ts',
             'coverage/',
             'docs/',
-            'testing/e2e/**/*',
-            'testing/config/playwright.config.ts',
-            'testing/config/playwright-ci.config.ts',
+            'tests/e2e/**/*',
+            'tests/config/playwright.config.ts',
+            'tests/config/playwright-ci.config.ts',
             'config/build/vite.config.ts',
             'build/plugins/**/*',
             'tools/**/*.js'
@@ -28,7 +35,7 @@ export default tseslint.config(
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                project: '../build/tsconfig.json'
+                project: join(projectRoot, 'config/build/tsconfig.json')
             }
         },
         rules: {
@@ -49,7 +56,7 @@ export default tseslint.config(
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                project: '../build/tsconfig.json'
+                project: join(projectRoot, 'config/build/tsconfig.json')
             }
         },
         rules: {
@@ -65,12 +72,12 @@ export default tseslint.config(
         }
     },
     {
-        files: ['testing/**/*.ts', '**/*.test.ts', '**/*.config.ts'],
+        files: ['tests/**/*.ts', '**/*.test.ts', '**/*.config.ts'],
         extends: [tseslint.configs.recommended],
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                project: '../build/tsconfig.json'
+                project: join(projectRoot, 'config/build/tsconfig.json')
             }
         },
         rules: {
@@ -101,8 +108,8 @@ export default tseslint.config(
         files: [
             'scripts/**/*.ts',
             'scripts/**/*.js',
-            'testing/template-validation/**/*.ts',
-            'testing/unit/**/*.test.ts'
+            'tests/template-validation/**/*.ts',
+            'tests/unit/**/*.test.ts'
         ],
         languageOptions: {
             globals: {
