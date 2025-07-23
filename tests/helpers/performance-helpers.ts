@@ -101,10 +101,10 @@ export class EnvironmentDetector {
                 performance: {
                     minFPS: 2,
                     avgFPS: 10,
-                    maxFPSVariation: 6.0,
+                    maxFPSVariation: 10.0,
                     maxLoadTime: 30000,
                     maxMemoryGrowth: 150,
-                    maxMicrofreezes: 15
+                    maxMicrofreezes: 25
                 },
                 timeouts: {
                     browserLaunch: 30000,

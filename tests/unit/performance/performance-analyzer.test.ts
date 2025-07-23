@@ -177,7 +177,7 @@ describe('Performance Analysis', () => {
             process.env['CI'] = 'true';
             const ciThresholds = EnvironmentDetector.getThresholds();
 
-            const excessiveMicrofreezes = 20;
+            const excessiveMicrofreezes = 30;
 
             expect(excessiveMicrofreezes).toBeGreaterThan(
                 localThresholds.performance.maxMicrofreezes
