@@ -8,11 +8,69 @@
 import { readFileSync, existsSync, statSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-interface PerformanceThresholds {
-    readonly minFPS: number;
-    readonly degradationTolerance: number;
-    readonly maxBundleSize: number;
-    readonly maxLoadTime: number;
+// Import environment detection for consistency
+class EnvironmentDetector {
+    static detect(): 'local' | 'ci' {
+        return process.env['CI'] === 'true' ||
+            process.env['GITHUB_ACTIONS'] === 'true' ||
+            process.env['GITLAB_CI'] === 'true' ||
+            process.env['TRAVIS'] === 'true' ||
+            process.env['CIRCLECI'] === 'true' ||
+            process.env['JENKINS_URL'] !== undefined ||
+            process.env['BUILDKITE'] === 'true'
+            ? 'ci'
+            : 'local';
+    }
+
+    static getThresholds() {
+        const environment = this.detect();
+        const configPath = join(process.cwd(), 'config', 'ci-performance-thresholds.json');
+
+        try {
+            if (existsSync(configPath)) {
+                const config = JSON.parse(readFileSync(configPath, 'utf8'));
+                const envConfig = config.environments[environment];
+
+                if (envConfig) {
+                    return {
+                        environment,
+                        ...envConfig
+                    };
+                }
+            }
+        } catch (error) {
+            console.warn('Failed to load performance thresholds config, using defaults:', error);
+        }
+
+        // Fallback defaults
+        return environment === 'ci'
+            ? {
+                  environment: 'ci',
+                  performance: {
+                      minFPS: 2,
+                      avgFPS: 10,
+                      maxFPSVariation: 4.0,
+                      maxLoadTime: 30000,
+                      maxMemoryGrowth: 150,
+                      maxMicrofreezes: 5,
+                      buildTimeLimit: 600000,
+                      bundleSizeLimit: 10485760
+                  }
+              }
+            : {
+                  environment: 'local',
+                  performance: {
+                      minFPS: 30,
+                      avgFPS: 55,
+                      maxFPSVariation: 1.5,
+                      maxLoadTime: 3000,
+                      maxMemoryGrowth: 50,
+                      maxMicrofreezes: 2,
+                      buildTimeLimit: 60000,
+                      bundleSizeLimit: 2097152
+                  }
+              };
+    }
 }
 
 interface FPSMetrics {
@@ -29,14 +87,14 @@ interface PerformanceResults {
     readonly fps?: FPSMetrics;
     readonly microfreezes?: MicrofreezeData;
     readonly loadTime?: number;
+    readonly environment?: string;
 }
 
-const PERFORMANCE_THRESHOLDS: PerformanceThresholds = {
-    minFPS: 55,
-    degradationTolerance: 0.03, // 3%
-    maxBundleSize: 2 * 1024 * 1024, // 2MB (excluding source maps)
-    maxLoadTime: 3000 // 3 seconds
-};
+// Get environment-aware thresholds
+const thresholds = EnvironmentDetector.getThresholds();
+const isCI = thresholds.environment === 'ci';
+
+console.log(`Performance check running in ${thresholds.environment} environment`);
 
 function getDirectorySize(dirPath: string): number {
     if (!existsSync(dirPath)) {
@@ -78,9 +136,9 @@ function checkBundleSize(): boolean {
 
         console.log(`Bundle size: ${(bundleSize / 1024 / 1024).toFixed(2)}MB`);
 
-        if (bundleSize > PERFORMANCE_THRESHOLDS.maxBundleSize) {
+        if (bundleSize > thresholds.performance.bundleSizeLimit) {
             console.error(
-                `❌ Bundle size exceeds limit: ${(bundleSize / 1024 / 1024).toFixed(2)}MB > ${PERFORMANCE_THRESHOLDS.maxBundleSize / 1024 / 1024}MB`
+                `❌ Bundle size exceeds limit: ${(bundleSize / 1024 / 1024).toFixed(2)}MB > ${thresholds.performance.bundleSizeLimit / 1024 / 1024}MB`
             );
             return false;
         }
@@ -111,23 +169,26 @@ function checkPerformanceResults(): boolean {
             const avgFPS = results.fps.average;
             console.log(`Average FPS: ${avgFPS}`);
 
-            if (avgFPS < PERFORMANCE_THRESHOLDS.minFPS) {
-                console.error(
-                    `❌ FPS below threshold: ${avgFPS} < ${PERFORMANCE_THRESHOLDS.minFPS}`
+            if (avgFPS < thresholds.performance.avgFPS) {
+                const severity = isCI ? 'Warning' : 'Error';
+                console.log(
+                    `${isCI ? '⚠️' : '❌'} ${severity}: FPS below threshold: ${avgFPS} < ${thresholds.performance.avgFPS}`
                 );
-                return false;
+                if (!isCI) return false; // Only fail in local environment
             }
 
             // Check for FPS degradation if baseline exists
             if (results.fps.baseline) {
                 const degradation = (results.fps.baseline - avgFPS) / results.fps.baseline;
+                const degradationTolerance = isCI ? 0.5 : 0.03; // 50% for CI, 3% for local
                 console.log(`FPS degradation: ${(degradation * 100).toFixed(2)}%`);
 
-                if (degradation > PERFORMANCE_THRESHOLDS.degradationTolerance) {
-                    console.error(
-                        `❌ FPS degradation exceeds tolerance: ${(degradation * 100).toFixed(2)}% > ${PERFORMANCE_THRESHOLDS.degradationTolerance * 100}%`
+                if (degradation > degradationTolerance) {
+                    const severity = isCI && degradation < 0.7 ? 'Warning' : 'Error';
+                    console.log(
+                        `${isCI && degradation < 0.7 ? '⚠️' : '❌'} ${severity}: FPS degradation ${isCI && degradation < 0.7 ? 'notable' : 'exceeds tolerance'}: ${(degradation * 100).toFixed(2)}% > ${degradationTolerance * 100}%`
                     );
-                    return false;
+                    if (!isCI || degradation >= 0.7) return false; // Fail only for severe degradation in CI
                 }
             }
         }

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { writeFileSync } from 'fs';
+import { EnvironmentDetector } from '../../helpers/performance-helpers.js';
 
 /**
  * Performance tests for Phaser Game Template
@@ -7,32 +8,18 @@ import { writeFileSync } from 'fs';
  * Environment-aware thresholds for CI vs local testing
  */
 
-// Environment-aware performance thresholds
-const isCI = process.env['CI'] === 'true';
-const isMobile = process.env['PLAYWRIGHT_PROJECT']?.includes('Mobile') || false;
-const PERFORMANCE_THRESHOLDS = {
-    // FPS thresholds
-    minFPS: isCI ? 2 : 1, // Minimum FPS (very low for CI due to resource constraints)
-    avgFPS: isMobile ? 15 : 25, // Lower threshold for mobile devices
+// Get environment-aware thresholds
+const thresholds = EnvironmentDetector.getThresholds();
+const isCI = thresholds.environment === 'ci';
 
-    // FPS stability thresholds (coefficient of variation)
-    maxFPSVariation: isCI ? 4.0 : 1.5, // Max coefficient of variation (CI: 400%, Local: 150%)
-
-    // Load time thresholds
-    maxLoadTime: isCI ? 30000 : 10000, // Maximum load time in ms
-
-    // Memory thresholds
-    maxMemoryGrowth: isCI ? 150 : 50, // Maximum memory growth in MB
-
-    // Microfreeze thresholds
-    maxMicrofreezes: isCI ? 10 : 15, // Maximum acceptable microfreezes - adjusted for local development
-
-    // Bundle size thresholds
-    maxBundleSize: 2 * 1024 * 1024 // 2MB max bundle size (same for all environments)
-};
-
-console.log(`Running performance tests in ${isCI ? 'CI' : 'local'} environment`);
-console.log('Performance thresholds:', PERFORMANCE_THRESHOLDS);
+console.log(`Running performance tests in ${thresholds.environment} environment`);
+console.log('Performance thresholds:', thresholds.performance);
+console.log(
+    'Environment detection - CI:',
+    isCI,
+    'GitHub Actions:',
+    EnvironmentDetector.isGitHubActions()
+);
 
 test.describe('Game Performance Tests', () => {
     test.beforeEach(async ({ page }) => {
@@ -87,17 +74,17 @@ test.describe('Game Performance Tests', () => {
         const maxFPS = Math.max(...fpsData);
 
         // Enhanced logging for better debugging
-        console.log(`Environment: ${isCI ? 'CI' : 'Local'}`);
+        console.log(`Environment: ${thresholds.environment}`);
         console.log(
-            `Average FPS: ${avgFPS.toFixed(2)} (threshold: >${PERFORMANCE_THRESHOLDS.avgFPS})`
+            `Average FPS: ${avgFPS.toFixed(2)} (threshold: >${thresholds.performance.avgFPS})`
         );
-        console.log(`Min FPS: ${minFPS.toFixed(2)} (threshold: >${PERFORMANCE_THRESHOLDS.minFPS})`);
+        console.log(`Min FPS: ${minFPS.toFixed(2)} (threshold: >${thresholds.performance.minFPS})`);
         console.log(`Max FPS: ${maxFPS.toFixed(2)}`);
         console.log(`FPS samples collected: ${fpsData.length}`);
 
         // Environment-aware performance assertions
-        expect(avgFPS).toBeGreaterThan(PERFORMANCE_THRESHOLDS.avgFPS);
-        expect(minFPS).toBeGreaterThan(PERFORMANCE_THRESHOLDS.minFPS);
+        expect(avgFPS).toBeGreaterThan(thresholds.performance.avgFPS);
+        expect(minFPS).toBeGreaterThan(thresholds.performance.minFPS);
 
         // Additional performance analysis for CI
         if (isCI) {
@@ -114,7 +101,7 @@ test.describe('Game Performance Tests', () => {
 
             // Environment-aware FPS stability check
             const coefficientOfVariation = fpsStdDev / avgFPS;
-            expect(coefficientOfVariation).toBeLessThan(PERFORMANCE_THRESHOLDS.maxFPSVariation);
+            expect(coefficientOfVariation).toBeLessThan(thresholds.performance.maxFPSVariation);
         } else {
             // Stricter checks for local development
             const baseline = 50; // Expected baseline FPS for local development
@@ -128,14 +115,14 @@ test.describe('Game Performance Tests', () => {
                 average: avgFPS,
                 minimum: minFPS,
                 maximum: maxFPS,
-                baseline: isCI ? PERFORMANCE_THRESHOLDS.avgFPS : 50,
+                baseline: isCI ? thresholds.performance.avgFPS : 50,
                 samples: fpsData.length
             },
             microfreezes: {
-                count: fpsData.filter((fps: number) => fps < PERFORMANCE_THRESHOLDS.minFPS).length,
+                count: fpsData.filter((fps: number) => fps < thresholds.performance.minFPS).length,
                 maxDuration: 0 // Will be calculated by monitoring tools if needed
             },
-            environment: isCI ? 'ci' : 'local',
+            environment: thresholds.environment,
             timestamp: Date.now()
         };
 
@@ -153,7 +140,7 @@ test.describe('Game Performance Tests', () => {
         await page.goto('/');
 
         // Wait for game to be fully loaded (environment-aware timeouts)
-        await page.waitForSelector('canvas', { timeout: PERFORMANCE_THRESHOLDS.maxLoadTime });
+        await page.waitForSelector('canvas', { timeout: thresholds.performance.maxLoadTime });
 
         // Check if any game object exists (more flexible than specific scene)
         await page.waitForFunction(
@@ -162,18 +149,18 @@ test.describe('Game Performance Tests', () => {
                 const canvas = document.querySelector('canvas');
                 return canvas && canvas.width > 0 && canvas.height > 0;
             },
-            { timeout: PERFORMANCE_THRESHOLDS.maxLoadTime }
+            { timeout: thresholds.performance.maxLoadTime }
         );
 
         const loadTime = Date.now() - startTime;
 
-        console.log(`Environment: ${isCI ? 'CI' : 'Local'}`);
+        console.log(`Environment: ${thresholds.environment}`);
         console.log(
-            `Load time: ${loadTime}ms (threshold: <${PERFORMANCE_THRESHOLDS.maxLoadTime}ms)`
+            `Load time: ${loadTime}ms (threshold: <${thresholds.performance.maxLoadTime}ms)`
         );
 
         // Environment-aware load time assertion
-        expect(loadTime).toBeLessThan(PERFORMANCE_THRESHOLDS.maxLoadTime);
+        expect(loadTime).toBeLessThan(thresholds.performance.maxLoadTime);
 
         // Additional checks for local development
         if (!isCI && loadTime > 5000) {
@@ -205,18 +192,18 @@ test.describe('Game Performance Tests', () => {
         const finalMemoryMB = finalMemory / 1024 / 1024;
         const memoryGrowthMB = finalMemoryMB - initialMemoryMB;
 
-        console.log(`Environment: ${isCI ? 'CI' : 'Local'}`);
+        console.log(`Environment: ${thresholds.environment}`);
         console.log(`Initial memory: ${initialMemoryMB.toFixed(2)}MB`);
         console.log(`Final memory: ${finalMemoryMB.toFixed(2)}MB`);
         console.log(
-            `Memory growth: ${memoryGrowthMB.toFixed(2)}MB (threshold: <${PERFORMANCE_THRESHOLDS.maxMemoryGrowth}MB)`
+            `Memory growth: ${memoryGrowthMB.toFixed(2)}MB (threshold: <${thresholds.performance.maxMemoryGrowth}MB)`
         );
 
         // Environment-aware memory growth check
-        expect(memoryGrowthMB).toBeLessThan(PERFORMANCE_THRESHOLDS.maxMemoryGrowth);
+        expect(memoryGrowthMB).toBeLessThan(thresholds.performance.maxMemoryGrowth);
 
         // Additional checks for significant memory growth
-        if (memoryGrowthMB > PERFORMANCE_THRESHOLDS.maxMemoryGrowth * 0.8) {
+        if (memoryGrowthMB > thresholds.performance.maxMemoryGrowth * 0.8) {
             console.warn(
                 `Memory growth of ${memoryGrowthMB.toFixed(2)}MB is approaching the threshold`
             );
@@ -259,9 +246,9 @@ test.describe('Game Performance Tests', () => {
 
         const freezeCount = (microfreezes as number[]).length;
 
-        console.log(`Environment: ${isCI ? 'CI' : 'Local'}`);
+        console.log(`Environment: ${thresholds.environment}`);
         console.log(
-            `Microfreezes detected: ${freezeCount} (threshold: <${PERFORMANCE_THRESHOLDS.maxMicrofreezes})`
+            `Microfreezes detected: ${freezeCount} (threshold: <${thresholds.performance.maxMicrofreezes})`
         );
 
         if (freezeCount > 0) {
@@ -270,7 +257,7 @@ test.describe('Game Performance Tests', () => {
         }
 
         // Environment-aware microfreeze assertion
-        expect(freezeCount).toBeLessThan(PERFORMANCE_THRESHOLDS.maxMicrofreezes);
+        expect(freezeCount).toBeLessThan(thresholds.performance.maxMicrofreezes);
 
         // Additional analysis for CI environment
         if (isCI && freezeCount > 0) {
@@ -303,10 +290,11 @@ test.describe('Game Performance Tests', () => {
 
         const totalSize = resourceSizes.reduce((sum, resource) => sum + resource.size, 0);
         const totalSizeMB = totalSize / 1024 / 1024;
+        const bundleSizeLimit = 2 * 1024 * 1024; // 2MB limit for all environments
 
-        console.log(`Environment: ${isCI ? 'CI' : 'Local'}`);
+        console.log(`Environment: ${thresholds.environment}`);
         console.log(
-            `Total bundle size: ${totalSizeMB.toFixed(2)}MB (threshold: <${(PERFORMANCE_THRESHOLDS.maxBundleSize / 1024 / 1024).toFixed(2)}MB)`
+            `Total bundle size: ${totalSizeMB.toFixed(2)}MB (threshold: <${(bundleSizeLimit / 1024 / 1024).toFixed(2)}MB)`
         );
 
         // Log individual resource sizes for debugging
@@ -322,12 +310,12 @@ test.describe('Game Performance Tests', () => {
         }
 
         // Bundle size assertion (same threshold for all environments)
-        expect(totalSize).toBeLessThan(PERFORMANCE_THRESHOLDS.maxBundleSize);
+        expect(totalSize).toBeLessThan(bundleSizeLimit);
 
         // Warning for bundles approaching the limit
-        if (totalSize > PERFORMANCE_THRESHOLDS.maxBundleSize * 0.8) {
+        if (totalSize > bundleSizeLimit * 0.8) {
             console.warn(
-                `Bundle size of ${totalSizeMB.toFixed(2)}MB is approaching the ${(PERFORMANCE_THRESHOLDS.maxBundleSize / 1024 / 1024).toFixed(2)}MB limit`
+                `Bundle size of ${totalSizeMB.toFixed(2)}MB is approaching the ${(bundleSizeLimit / 1024 / 1024).toFixed(2)}MB limit`
             );
         }
     });

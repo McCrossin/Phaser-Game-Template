@@ -2,10 +2,137 @@
  * PerformanceTestHelper - Provides utilities for performance testing and benchmarking
  */
 
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
+
 export interface PerformanceTestConfig {
     iterations?: number;
     warmupIterations?: number;
     timeout?: number;
+}
+
+export interface EnvironmentAwareThresholds {
+    environment: 'local' | 'ci';
+    performance: {
+        minFPS: number;
+        avgFPS: number;
+        maxFPSVariation: number;
+        maxLoadTime: number;
+        maxMemoryGrowth: number;
+        maxMicrofreezes: number;
+    };
+    timeouts: {
+        browserLaunch: number;
+        pageLoad: number;
+        testExecution: number;
+    };
+    retry: {
+        maxAttempts: number;
+        backoffDelay: number;
+    };
+}
+
+export interface PerformanceTestResult {
+    environment: 'local' | 'ci';
+    passed: boolean;
+    metrics: {
+        fps: { average: number; minimum: number; maximum: number };
+        loadTime: number;
+        memoryGrowth: number;
+        microfreezes: number;
+    };
+    thresholds: EnvironmentAwareThresholds['performance'];
+    regressionDetected: boolean;
+}
+
+export class EnvironmentDetector {
+    static detect(): 'local' | 'ci' {
+        // Check multiple CI indicators for robust detection
+        // Only return 'ci' if CI is explicitly set to 'true' (not 'false' or empty)
+        return process.env['CI'] === 'true' ||
+            process.env['GITHUB_ACTIONS'] === 'true' ||
+            process.env['GITLAB_CI'] === 'true' ||
+            process.env['TRAVIS'] === 'true' ||
+            process.env['CIRCLECI'] === 'true' ||
+            (process.env['JENKINS_URL'] !== undefined && process.env['JENKINS_URL'] !== '') ||
+            process.env['BUILDKITE'] === 'true'
+            ? 'ci'
+            : 'local';
+    }
+
+    static getThresholds(): EnvironmentAwareThresholds {
+        const environment = this.detect();
+        const configPath = join(process.cwd(), 'config', 'ci-performance-thresholds.json');
+
+        try {
+            if (existsSync(configPath)) {
+                const config = JSON.parse(readFileSync(configPath, 'utf8'));
+                const envConfig = config.environments[environment];
+
+                if (envConfig) {
+                    return {
+                        environment,
+                        ...envConfig
+                    };
+                }
+            }
+        } catch (error) {
+            console.warn('Failed to load performance thresholds config, using defaults:', error);
+        }
+
+        // Fallback defaults
+        return this.getDefaultThresholds(environment);
+    }
+
+    static isGitHubActions(): boolean {
+        return process.env['GITHUB_ACTIONS'] === 'true';
+    }
+
+    private static getDefaultThresholds(environment: 'local' | 'ci'): EnvironmentAwareThresholds {
+        if (environment === 'ci') {
+            return {
+                environment: 'ci',
+                performance: {
+                    minFPS: 2,
+                    avgFPS: 10,
+                    maxFPSVariation: 4.0,
+                    maxLoadTime: 30000,
+                    maxMemoryGrowth: 150,
+                    maxMicrofreezes: 5
+                },
+                timeouts: {
+                    browserLaunch: 30000,
+                    pageLoad: 45000,
+                    testExecution: 120000
+                },
+                retry: {
+                    maxAttempts: 3,
+                    backoffDelay: 2000
+                }
+            };
+        }
+
+        return {
+            environment: 'local',
+            performance: {
+                minFPS: 30,
+                avgFPS: 55,
+                maxFPSVariation: 1.5,
+                maxLoadTime: 3000,
+                maxMemoryGrowth: 50,
+                maxMicrofreezes: 2
+            },
+            timeouts: {
+                browserLaunch: 10000,
+                pageLoad: 15000,
+                testExecution: 30000
+            },
+            retry: {
+                maxAttempts: 2,
+                backoffDelay: 1000
+            }
+        };
+    }
 }
 
 export interface PerformanceResult {
