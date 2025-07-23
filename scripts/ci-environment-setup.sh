@@ -6,6 +6,15 @@
 
 set -euo pipefail
 
+# Check if performance tests are disabled
+SKIP_PERFORMANCE_SETUP="${SKIP_PERFORMANCE_SETUP:-false}"
+
+if [[ "$SKIP_PERFORMANCE_SETUP" == "true" ]]; then
+    echo "🚫 Performance test setup skipped (SKIP_PERFORMANCE_SETUP=true)"
+    echo "✅ CI environment setup completed (performance tests disabled)"
+    exit 0
+fi
+
 # Color output functions
 red() { echo -e "\033[31m$*\033[0m"; }
 green() { echo -e "\033[32m$*\033[0m"; }
@@ -86,14 +95,25 @@ setup_browsers() {
         log_info "Installing Playwright browsers with system dependencies..."
         
         if command -v npx >/dev/null 2>&1; then
-            # Install Chromium only for CI to save time and space
-            npx playwright install chromium --with-deps
+            # Set Playwright home directory to a writable location
+            export PLAYWRIGHT_BROWSERS_PATH="${HOME}/.cache/ms-playwright"
+            mkdir -p "${PLAYWRIGHT_BROWSERS_PATH}"
             
-            # Verify browser installation
+            # Install Chromium only for CI to save time and space
+            log_info "Installing Chromium browser to ${PLAYWRIGHT_BROWSERS_PATH}..."
+            if npx playwright install chromium; then
+                log_success "Chromium browser installed successfully"
+            else
+                log_error "Failed to install Chromium browser"
+                return 1
+            fi
+            
+            # Install system dependencies
+            log_info "Installing system dependencies..."
             if npx playwright install-deps chromium 2>/dev/null; then
                 log_success "Browser dependencies installed successfully"
             else
-                log_warning "Browser dependency installation had warnings (this may be normal)"
+                log_warning "Browser dependency installation had warnings (this may be normal in CI)"
             fi
             
             log_success "Browsers installed for CI environment"

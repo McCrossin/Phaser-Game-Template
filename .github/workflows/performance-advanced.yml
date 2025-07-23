@@ -49,6 +49,8 @@ jobs:
               env:
                   CI: true
                   GITHUB_ACTIONS: true
+                  PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/ms-playwright
+                  SKIP_PERFORMANCE_SETUP: true
                   VERBOSE_LOGGING: ${{ github.event.inputs.verbose_logging || 'false' }}
 
             - name: Install dependencies with retry
