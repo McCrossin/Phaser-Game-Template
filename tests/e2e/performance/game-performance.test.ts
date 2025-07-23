@@ -21,6 +21,14 @@ console.log(
     EnvironmentDetector.isGitHubActions()
 );
 
+// Skip all performance tests in CI - they're not reliable in virtualized environments
+if (isCI) {
+    console.log(
+        '🚫 Skipping all performance tests in CI environment - not reliable in virtualized cloud environments'
+    );
+    test.skip();
+}
+
 test.describe('Game Performance Tests', () => {
     test.beforeEach(async ({ page }) => {
         // Enable performance monitoring

@@ -47,23 +47,44 @@ export interface PerformanceTestResult {
 
 export class EnvironmentDetector {
     static detect(): 'local' | 'ci' {
+        // Log environment variables for debugging
+        console.log('Environment Detection Debug:', {
+            CI: process.env['CI'],
+            GITHUB_ACTIONS: process.env['GITHUB_ACTIONS'],
+            GITLAB_CI: process.env['GITLAB_CI'],
+            TRAVIS: process.env['TRAVIS'],
+            CIRCLECI: process.env['CIRCLECI'],
+            JENKINS_URL: process.env['JENKINS_URL'],
+            BUILDKITE: process.env['BUILDKITE']
+        });
+
         // If CI is explicitly set to 'false' or empty string, always return 'local'
         const ciValue = process.env['CI'];
         if (ciValue === 'false' || ciValue === '') {
+            console.log('Environment: local (CI=false or empty)');
             return 'local';
         }
 
         // Check multiple CI indicators for robust detection
         // Only return 'ci' if CI is explicitly set to 'true' (not 'false' or empty)
-        return process.env['CI'] === 'true' ||
+        const isCI =
+            process.env['CI'] === 'true' ||
             process.env['GITHUB_ACTIONS'] === 'true' ||
             process.env['GITLAB_CI'] === 'true' ||
             process.env['TRAVIS'] === 'true' ||
             process.env['CIRCLECI'] === 'true' ||
             (process.env['JENKINS_URL'] !== undefined && process.env['JENKINS_URL'] !== '') ||
-            process.env['BUILDKITE'] === 'true'
-            ? 'ci'
-            : 'local';
+            process.env['BUILDKITE'] === 'true' ||
+            // Additional CI environment checks
+            process.env['CONTINUOUS_INTEGRATION'] === 'true' ||
+            process.env['CI'] === '1' ||
+            process.env['BUILD_NUMBER'] !== undefined ||
+            process.env['RUNNER_OS'] !== undefined || // GitHub Actions specific
+            process.env['GITHUB_WORKFLOW'] !== undefined;
+
+        const result = isCI ? 'ci' : 'local';
+        console.log(`Environment detected: ${result}`);
+        return result;
     }
 
     static getThresholds(): EnvironmentAwareThresholds {
