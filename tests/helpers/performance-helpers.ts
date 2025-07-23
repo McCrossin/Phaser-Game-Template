@@ -47,6 +47,12 @@ export interface PerformanceTestResult {
 
 export class EnvironmentDetector {
     static detect(): 'local' | 'ci' {
+        // If CI is explicitly set to 'false' or empty string, always return 'local'
+        const ciValue = process.env['CI'];
+        if (ciValue === 'false' || ciValue === '') {
+            return 'local';
+        }
+
         // Check multiple CI indicators for robust detection
         // Only return 'ci' if CI is explicitly set to 'true' (not 'false' or empty)
         return process.env['CI'] === 'true' ||

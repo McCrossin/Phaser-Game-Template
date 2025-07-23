@@ -7,23 +7,40 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { EnvironmentDetector } from '../../helpers/performance-helpers.js';
 
 describe('EnvironmentDetector', () => {
-    // Store original environment variables
-    const originalEnv = { ...process.env };
+    // Store original CI-related environment variables
+    const ciVariables = [
+        'CI',
+        'GITHUB_ACTIONS',
+        'GITLAB_CI',
+        'TRAVIS',
+        'CIRCLECI',
+        'JENKINS_URL',
+        'BUILDKITE'
+    ];
+    let originalCiEnv: Record<string, string | undefined> = {};
 
     beforeEach(() => {
+        // Store original values of CI variables before clearing them
+        originalCiEnv = {};
+        ciVariables.forEach(key => {
+            originalCiEnv[key] = process.env[key];
+        });
+
         // Clear all CI-related environment variables
-        delete process.env['CI'];
-        delete process.env['GITHUB_ACTIONS'];
-        delete process.env['GITLAB_CI'];
-        delete process.env['TRAVIS'];
-        delete process.env['CIRCLECI'];
-        delete process.env['JENKINS_URL'];
-        delete process.env['BUILDKITE'];
+        ciVariables.forEach(key => {
+            delete process.env[key];
+        });
     });
 
     afterEach(() => {
-        // Restore original environment
-        process.env = { ...originalEnv };
+        // Restore original CI environment variables only
+        ciVariables.forEach(key => {
+            if (originalCiEnv[key] !== undefined) {
+                process.env[key] = originalCiEnv[key];
+            } else {
+                delete process.env[key];
+            }
+        });
     });
 
     describe('detect()', () => {
