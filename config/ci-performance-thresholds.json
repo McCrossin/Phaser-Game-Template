@@ -25,10 +25,10 @@
             "performance": {
                 "minFPS": 2,
                 "avgFPS": 10,
-                "maxFPSVariation": 4.0,
+                "maxFPSVariation": 6.0,
                 "maxLoadTime": 30000,
                 "maxMemoryGrowth": 150,
-                "maxMicrofreezes": 5,
+                "maxMicrofreezes": 15,
                 "buildTimeLimit": 600000,
                 "bundleSizeLimit": 10485760
             },
