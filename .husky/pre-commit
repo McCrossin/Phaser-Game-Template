@@ -16,6 +16,6 @@ echo "🛡️  Security scan..."
 npm run security:check:local --silent
 
 echo "🧪 Fast unit tests..."
-npm run test:unit:fast --silent
+npm run test:unit:pre-commit --silent
 
 echo "✅ Pre-commit validation complete!"
