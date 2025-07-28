@@ -15,7 +15,11 @@ describe('EnvironmentDetector', () => {
         'TRAVIS',
         'CIRCLECI',
         'JENKINS_URL',
-        'BUILDKITE'
+        'BUILDKITE',
+        'CONTINUOUS_INTEGRATION',
+        'BUILD_NUMBER',
+        'RUNNER_OS',
+        'GITHUB_WORKFLOW'
     ];
     let originalCiEnv: Record<string, string | undefined> = {};
 

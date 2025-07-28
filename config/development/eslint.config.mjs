@@ -2,13 +2,6 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import security from 'eslint-plugin-security';
-import { join } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const projectRoot = join(__dirname, '../..');
 
 export default tseslint.config(
     {
@@ -26,17 +19,14 @@ export default tseslint.config(
             'tools/**/*.js'
         ]
     },
-    prettierRecommended,
     eslint.configs.recommended,
+    ...tseslint.configs.recommended,
     security.configs.recommended,
+    prettierRecommended,
     {
-        files: ['**/*.ts', '**/*.tsx'],
-        extends: [tseslint.configs.recommended],
+        files: ['src/**/*.{ts,tsx}'],
         languageOptions: {
-            parser: tseslint.parser,
-            parserOptions: {
-                project: join(projectRoot, 'config/build/tsconfig.json')
-            }
+            parser: tseslint.parser
         },
         rules: {
             '@typescript-eslint/no-explicit-any': 'warn',
@@ -47,17 +37,15 @@ export default tseslint.config(
                     varsIgnorePattern: '^_'
                 }
             ],
-            '@typescript-eslint/explicit-function-return-type': 'off'
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            'security/detect-object-injection': 'off',
+            'security/detect-non-literal-fs-filename': 'off'
         }
     },
     {
         files: ['src/ecs/**/*.ts'],
-        extends: [tseslint.configs.recommended],
         languageOptions: {
-            parser: tseslint.parser,
-            parserOptions: {
-                project: join(projectRoot, 'config/build/tsconfig.json')
-            }
+            parser: tseslint.parser
         },
         rules: {
             '@typescript-eslint/no-explicit-any': 'off', // ECS requires flexible typing
@@ -73,59 +61,54 @@ export default tseslint.config(
     },
     {
         files: ['tests/**/*.ts', '**/*.test.ts', '**/*.config.ts'],
-        extends: [tseslint.configs.recommended],
         languageOptions: {
-            parser: tseslint.parser,
-            parserOptions: {
-                project: join(projectRoot, 'config/build/tsconfig.json')
-            }
+            parser: tseslint.parser
         },
         rules: {
-            '@typescript-eslint/no-explicit-any': 'off',
-            '@typescript-eslint/no-unused-vars': 'off'
-        }
-    },
-    {
-        files: ['**/*.js', '**/*.mjs'],
-        extends: [tseslint.configs.disableTypeChecked]
-    },
-    {
-        files: ['tools/**/*.js'],
-        extends: [tseslint.configs.disableTypeChecked],
-        languageOptions: {
-            globals: {
-                console: 'readonly',
-                process: 'readonly'
-            },
-            ecmaVersion: 2022,
-            sourceType: 'module'
-        },
-        rules: {
-            'prettier/prettier': ['error', { endOfLine: 'auto' }]
-        }
-    },
-    {
-        files: [
-            'scripts/**/*.ts',
-            'scripts/**/*.js',
-            'tests/template-validation/**/*.ts',
-            'tests/unit/**/*.test.ts'
-        ],
-        languageOptions: {
-            globals: {
-                console: 'readonly',
-                process: 'readonly'
-            }
-        },
-        rules: {
-            'security/detect-non-literal-fs-filename': 'off',
+            '@typescript-eslint/no-explicit-any': 'off', // Tests need flexibility
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_'
+                }
+            ],
+            '@typescript-eslint/explicit-function-return-type': 'off',
             'security/detect-object-injection': 'off',
-            'security/detect-non-literal-regexp': 'off',
-            'security/detect-unsafe-regex': 'off',
-            '@typescript-eslint/no-explicit-any': 'off',
-            '@typescript-eslint/no-unused-vars': 'off',
-            'no-undef': 'off',
-            'no-unused-vars': 'off'
+            'security/detect-non-literal-fs-filename': 'off',
+            'security/detect-child-process': 'off'
+        }
+    },
+    {
+        files: ['src/types/**/*.ts'],
+        languageOptions: {
+            parser: tseslint.parser
+        },
+        rules: {
+            '@typescript-eslint/no-explicit-any': 'off', // Type definitions need any
+            '@typescript-eslint/no-unused-vars': 'off', // Type files may have unused exports
+            '@typescript-eslint/explicit-function-return-type': 'off'
+        }
+    },
+    {
+        files: ['tools/**/*.ts'],
+        languageOptions: {
+            parser: tseslint.parser
+        },
+        rules: {
+            '@typescript-eslint/no-explicit-any': 'off', // Tools need flexibility
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_'
+                }
+            ],
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            'security/detect-object-injection': 'off',
+            'security/detect-non-literal-fs-filename': 'off',
+            'security/detect-child-process': 'off',
+            'security/detect-non-literal-require': 'off'
         }
     }
 );

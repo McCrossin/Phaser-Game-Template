@@ -1,0 +1,149 @@
+# Game Security Scanning Pipeline
+name: Game Security Scan
+on:
+    pull_request:
+        branches: [main, develop]
+    push:
+        branches: [main, develop]
+    schedule:
+        - cron: '0 4 * * 1' # Weekly on Monday at 4 AM
+
+jobs:
+    game-code-security:
+        name: Game Code Security Analysis
+        runs-on: ubuntu-latest
+        timeout-minutes: 8
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22.17.1'
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci --prefer-offline --no-audit --no-fund
+
+            - name: Run ESLint security rules for game code
+              run: |
+                  echo "=== Running Game Code Security Analysis ==="
+                  npm run lint
+
+            - name: Check for game-specific security patterns
+              run: |
+                  echo "=== Checking for Game Security Anti-patterns ==="
+                  echo "Scanning for dangerous patterns in game code..."
+
+                  # Check for eval usage (dangerous for user input)
+                  if grep -r "eval(" src/; then
+                    echo "⚠️  Found eval() usage - review for security risks"
+                  else
+                    echo "✅ No eval() found"
+                  fi
+
+                  # Check for innerHTML (XSS risk)
+                  if grep -r "innerHTML" src/; then
+                    echo "⚠️  Found innerHTML usage - ensure proper sanitization"
+                  else
+                    echo "✅ No innerHTML found"
+                  fi
+
+                  # Check for localStorage access patterns
+                  if grep -r "localStorage" src/; then
+                    echo "ℹ️  Found localStorage usage - ensure sensitive data isn't stored"
+                  else
+                    echo "✅ No localStorage found"
+                  fi
+
+                  echo "Game security pattern check completed"
+
+    game-dependency-security:
+        name: Game Dependencies Security Check
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22.17.1'
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci --prefer-offline --no-audit --no-fund
+
+            - name: Audit game dependencies
+              run: |
+                  echo "=== Auditing Game Dependencies ==="
+                  echo "Checking Phaser, TypeScript, and game development dependencies..."
+                  npm audit --audit-level moderate
+
+            - name: Enhanced game dependency security check
+              run: |
+                  echo "=== Enhanced Game Dependency Analysis ==="
+                  npx better-npm-audit audit --level moderate
+                  echo "Game dependency security check completed"
+
+    secret-detection:
+        name: Secret Detection
+        runs-on: ubuntu-latest
+        timeout-minutes: 3
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Run secret detection for game assets
+              uses: gitleaks/gitleaks-action@v2
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+    game-container-security:
+        name: Game Container Security
+        runs-on: ubuntu-latest
+        if: github.event_name != 'schedule'
+        timeout-minutes: 8
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Build game Docker image for security scan
+              run: |
+                  echo "Building game container for security analysis..."
+                  docker build -t game-security-scan:latest .
+
+            - name: Run lightweight vulnerability scan for game container
+              uses: aquasecurity/trivy-action@master
+              with:
+                  image-ref: 'game-security-scan:latest'
+                  format: 'table'
+                  output: 'game-security-results.txt'
+                  severity: 'CRITICAL,HIGH'
+                  ignore-unfixed: true
+
+            - name: Display game security scan results
+              if: always()
+              run: |
+                  echo "=== Game Container Security Results ==="
+                  cat game-security-results.txt || echo "No critical vulnerabilities found"
+
+            - name: Upload game security scan results
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: game-security-results
+                  path: game-security-results.txt
+
+            - name: Game security summary
+              if: always()
+              run: |
+                  echo "=== Game Security Summary ==="
+                  echo "✅ Game container vulnerabilities checked"
+                  echo "✅ Focus on CRITICAL and HIGH severity issues"
+                  echo "🎮 Game-specific security validation completed"

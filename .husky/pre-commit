@@ -1,2 +1,21 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Fast local validation pipeline (target <60s total)
+echo "🔍 Running pre-commit validation..."
+
+# Stage 1: Quick quality checks (target <30s)
+echo "📋 Running lint-staged..."
 npx lint-staged
-npm run typecheck
+
+echo "🔍 Type checking..."
+npm run typecheck --silent
+
+# Stage 2: Security and unit tests (target <30s)
+echo "🛡️  Security scan..."
+npm run security:check:local --silent
+
+echo "🧪 Fast unit tests..."
+npm run test:unit:fast --silent
+
+echo "✅ Pre-commit validation complete!"

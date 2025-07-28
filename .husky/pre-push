@@ -1,1 +1,19 @@
-npm run test:run
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Comprehensive pre-push validation (target <90s)
+echo "🚀 Running pre-push validation pipeline..."
+
+# Stage 1: Full local validation
+echo "🔍 Running comprehensive validation..."
+npm run validate:comprehensive --silent
+
+# Stage 2: Build verification
+echo "🏗️  Verifying build..."
+npm run build --silent
+
+# Stage 3: Performance baseline check
+echo "⚡ Performance validation..."
+npm run performance:validate:local --silent
+
+echo "✅ Pre-push validation complete! Ready for CI."

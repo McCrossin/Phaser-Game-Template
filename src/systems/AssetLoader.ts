@@ -63,8 +63,7 @@ export class AssetLoader {
             this.manifest.categories.level,
             levelId
         )
-            ? // eslint-disable-next-line security/detect-object-injection
-              this.manifest.categories.level[levelId] || []
+            ? this.manifest.categories.level[levelId] || []
             : [];
         await this.loadAssets(levelAssets, 'level');
         console.log(`✅ Level assets loaded: ${levelId}`);
@@ -133,7 +132,6 @@ export class AssetLoader {
                 continue;
             }
 
-            // eslint-disable-next-line security/detect-object-injection
             const entry = this.manifest.entries[key];
             if (!entry) {
                 console.warn(`⚠️  Asset entry is null: ${key}`);
@@ -308,7 +306,6 @@ export class AssetLoader {
 
     private getManifestProperty<T>(obj: Record<string, T>, key: string): T | undefined {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            // eslint-disable-next-line security/detect-object-injection
             return obj[key];
         }
         return undefined;

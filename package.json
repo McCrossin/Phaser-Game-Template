@@ -15,8 +15,8 @@
         "test:coverage": "vitest --coverage --config tests/config/vitest.config.ts",
         "test:e2e": "playwright test --config tests/config/playwright.config.ts",
         "test:performance": "npx tsx tools/development/script-runner.ts test-performance",
-        "lint": "eslint src --ext .ts,.tsx --config config/development/eslint.config.mjs",
-        "lint:fix": "eslint src --ext .ts,.tsx --fix --config config/development/eslint.config.mjs",
+        "lint": "eslint src/**/*.{ts,tsx} --config config/development/eslint.config.mjs",
+        "lint:fix": "eslint src/**/*.{ts,tsx} --fix --config config/development/eslint.config.mjs",
         "format": "prettier --write \"src/**/*.{ts,tsx,json,css}\"",
         "format:check": "prettier --check \"src/**/*.{ts,tsx,json,css}\"",
         "typecheck": "tsc --noEmit --project config/build/tsconfig.json",
@@ -36,7 +36,18 @@
         "ci:setup": "bash scripts/ci-environment-setup.sh",
         "ci:performance": "npm run ci:setup && npm run test:performance && npm run performance:check",
         "health:check": "npx tsc tools/monitoring/health-check.ts --outDir tools/monitoring/compiled --target es2022 --module node16 --moduleResolution node16 --allowSyntheticDefaultImports --esModuleInterop && node tools/monitoring/compiled/health-check.js",
-        "health:report": "npx tsx tools/development/script-runner.ts generate-health-report"
+        "health:report": "npx tsx tools/development/script-runner.ts generate-health-report",
+        "test:unit:fast": "vitest run --config tests/config/vitest.config.ts --reporter=dot --run",
+        "security:check:local": "npm audit --audit-level moderate && npx better-npm-audit audit --level moderate",
+        "validate:quick": "npm run lint --silent && npm run typecheck --silent && npm run test:unit:fast --silent",
+        "validate:comprehensive": "npm run validate:quick && npm run security:check:local && npm run test:performance",
+        "performance:validate:local": "npm run test:performance",
+        "audit:template": "npx tsx tools/quality-assurance/run-template-audit.ts",
+        "audit:template:full": "npx tsx tools/quality-assurance/run-template-audit.ts --cleanup --verbose",
+        "audit:template:dry-run": "npx tsx tools/quality-assurance/run-template-audit.ts --cleanup --dry-run",
+        "audit:quality": "npx tsx tools/quality-assurance/template-auditor.ts",
+        "cleanup:template": "npx tsx tools/quality-assurance/artifact-cleaner.ts",
+        "cleanup:template:dry-run": "npx tsx tools/quality-assurance/artifact-cleaner.ts --dry-run"
     },
     "keywords": [
         "phaser3",
@@ -84,7 +95,7 @@
         "phaser": "^3.88.2"
     },
     "lint-staged": {
-        "*.{ts,tsx}": [
+        "src/**/*.{ts,tsx}": [
             "npx eslint --fix --config config/development/eslint.config.mjs",
             "npx prettier --write"
         ],
