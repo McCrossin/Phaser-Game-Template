@@ -1,0 +1,16 @@
+{
+    "game": {
+        "targetFPS": 60,
+        "maxLoadTimeMs": 3000,
+        "maxBundleSizeMB": 50
+    },
+    "development": {
+        "hotReload": true,
+        "sourceMaps": true
+    },
+    "production": {
+        "minify": true,
+        "treeshake": true,
+        "sourceMaps": false
+    }
+}

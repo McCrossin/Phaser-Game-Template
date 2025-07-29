@@ -1,0 +1,79 @@
+# Simple Game Deployment Pipeline
+name: Simple Deploy
+
+permissions:
+    contents: read
+    packages: write
+    pages: write
+    id-token: write
+
+on:
+    push:
+        branches: [main]
+        tags: ['v*']
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Target environment'
+                required: true
+                default: 'staging'
+                type: choice
+                options:
+                    - staging
+                    - production
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        environment: ${{ github.event.inputs.environment || 'staging' }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22.17.1'
+                  cache: 'npm'
+
+            - name: Cache dependencies
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.npm
+                      node_modules
+                  key: ${{ runner.os }}-deploy-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-deploy-
+
+            - name: Install dependencies
+              run: npm ci --prefer-offline --no-audit --no-fund
+
+            - name: Build game
+              run: |
+                  echo "Building game for deployment..."
+                  npm run build
+                  echo "Game build completed successfully"
+
+                  # Verify build artifacts
+                  if [ ! -d "dist" ]; then
+                      echo "Error: dist directory not found after build"
+                      exit 1
+                  fi
+
+                  if [ ! -f "dist/index.html" ]; then
+                      echo "Error: index.html not found in dist directory"
+                      exit 1
+                  fi
+
+                  echo "Build verification passed"
+                  ls -la dist/
+
+            - name: Deploy to GitHub Pages
+              if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist

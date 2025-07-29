@@ -1,5 +1,4 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
 # Fast local validation pipeline (target <60s total)
 echo "🔍 Running pre-commit validation..."

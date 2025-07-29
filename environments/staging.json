@@ -1,0 +1,28 @@
+{
+    "environment": "staging",
+    "debug": {
+        "enabled": true,
+        "showFPS": true,
+        "showBounds": false,
+        "logLevel": "info"
+    },
+    "performance": {
+        "targetFPS": 60,
+        "enableProfiling": true,
+        "maxEntities": 1000
+    },
+    "assets": {
+        "baseUrl": "./assets/",
+        "useCompression": true,
+        "enableHotReload": false
+    },
+    "api": {
+        "baseUrl": "https://staging-api.example.com",
+        "timeout": 8000
+    },
+    "build": {
+        "minify": true,
+        "sourceMaps": true,
+        "optimizeAssets": true
+    }
+}

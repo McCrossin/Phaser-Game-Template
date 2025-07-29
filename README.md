@@ -1,23 +1,8 @@
 # Phaser Game Template
 
-\*\*Professional 2D game developmen### 🎯 Next Steps
-
-1. **🚀 Start Building**: Edit `src/scenes/GameScene.ts` for your game logic
-2. **🎮 Add Assets**: Replace demo assets in `assets/` folder
-3. **🏗️ Study the Architecture**: Review `docs/development/brownfield-architecture.md`
-4. **🧪 Write Tests**: Add game-specific tests to `testing/unit/`
-5. **🚀 Deploy**: Use the included CI/CD pipeline for deployment
-
-## 📚 Game Development Documentation
-
-### 🚀 Essential Guides
-
-- **[Architecture Overview](docs/development/brownfield-architecture.md)** - Technical architecture guide
-- **[Game Development Guide](docs/development/game-development-guide.md)** - Building games with this projectmodern tooling and comprehensive documentation.\*\*
+**Professional 2D game development template with modern tooling and streamlined workflows.**
 
 [![Game CI Pipeline](https://github.com/McCrossin/Phaser-Game-Template/workflows/Game%20CI%20Pipeline/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
-[![Game Security Scan](https://github.com/McCrossin/Phaser-Game-Template/workflows/Game%20Security%20Scan/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
-[![Game Performance Monitoring](https://github.com/McCrossin/Phaser-Game-Template/workflows/Game%20Performance%20Monitoring/badge.svg)](https://github.com/McCrossin/Phaser-Game-Template/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Phaser](https://img.shields.io/badge/Phaser-3.70+-orange.svg)](https://phaser.io/)
@@ -31,13 +16,14 @@
 
 - **🎮 Phaser 3 + TypeScript**: Modern game development with full type safety
 - **⚡ Vite Build System**: Lightning-fast dev server and optimized production builds
-- **🧪 Game Testing Suite**: Unit tests, E2E tests, and game performance benchmarking
-- **🚀 Streamlined CI/CD**: Optimized game development pipeline with automated testing and deployment
-- **📊 Game Performance Monitoring**: 60 FPS validation, bundle size tracking, and load time analysis
+- **🧪 Core Testing Suite**: Essential unit tests and integration tests for game logic
+- **🚀 Simple CI/CD**: Streamlined game development pipeline with GitHub Actions
+- **📊 Game Performance Monitoring**: 60 FPS validation and basic performance tracking
 - **🎨 Asset Pipeline**: Automated texture packing and game asset optimization
-- **📱 Cross-Platform Gaming**: Desktop and mobile browser support with responsive design
-- **🛠️ Modern Game Tooling**: ESLint, Prettier, and game development best practices
-- **📚 Game Development Docs**: Complete setup, customization, and game architecture guides
+- **📱 Cross-Platform Gaming**: Desktop and mobile browser support
+- **🛠️ Modern Game Tooling**: ESLint, Prettier, and development best practices
+- **📚 Focused Documentation**: Clean setup guides and game development workflows
+- **🎯 Advanced Testing (Optional)**: E2E tests, visual regression, and performance benchmarking
 
 ## � Quick Start
 
@@ -70,19 +56,19 @@ npm run dev
 
 ### Next Steps
 
-1. **📖 Read the Setup Guide**: Check `docs/template-setup-guide.md` for detailed instructions
-2. **🎨 Customize Your Project**: Follow `docs/template-customization-guide.md`
+1. **� Start Building**: Edit `src/scenes/GameScene.ts` for your game logic
+2. **� Add Assets**: Replace demo assets in `assets/` folder
 3. **🏗️ Study the Architecture**: Review `docs/development/brownfield-architecture.md`
-4. **🚀 Start Building**: Edit `src/scenes/GameScene.ts` for your game logic
-5. **🎮 Add Assets**: Replace demo assets in `assets/` folder
+4. **🧪 Write Tests**: Add game-specific tests to `testing/core/unit/`
+5. **📖 Read Simplified Workflow**: Check `docs/development/simplified-workflow.md`
+6. **🚀 Deploy**: Use `./scripts/deploy-simple.sh` for easy deployment
 
 ## 📚 Template Documentation
 
 ### 🚀 Essential Guides
 
+- **[Simplified Workflow](docs/development/simplified-workflow.md)** - Streamlined development process
 - **[Template Setup Guide](docs/template-setup-guide.md)** - Complete setup and configuration
-- **[Template Customization Guide](docs/template-customization-guide.md)** - Adapt the template for your game
-- **[Template Usage](TEMPLATE-USAGE.md)** - Quick usage instructions
 - **[Architecture Overview](docs/development/brownfield-architecture.md)** - Technical architecture guide
 
 ### 🛠️ Development Resources
