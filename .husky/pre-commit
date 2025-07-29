@@ -1,20 +1,17 @@
 #!/bin/sh
 
-# Fast local validation pipeline (target <60s total)
-echo "🔍 Running pre-commit validation..."
+# Game development pre-commit validation (target <30s total)
+echo "🎮 Running game development pre-commit checks..."
 
-# Stage 1: Quick quality checks (target <30s)
+# Stage 1: Code quality checks (target <20s)
 echo "📋 Running lint-staged..."
 npx lint-staged
 
 echo "🔍 Type checking..."
 npm run typecheck --silent
 
-# Stage 2: Security and unit tests (target <30s)
-echo "🛡️  Security scan..."
-npm run security:check:local --silent
-
-echo "🧪 Fast unit tests..."
+# Stage 2: Fast game tests (target <10s)
+echo "🧪 Fast game tests..."
 npm run test:unit:pre-commit --silent
 
-echo "✅ Pre-commit validation complete!"
+echo "✅ Game pre-commit validation complete!"

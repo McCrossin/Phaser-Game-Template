@@ -7,7 +7,7 @@
  */
 
 import { execSync, spawn, ChildProcess } from 'child_process';
-import { existsSync, rmSync, mkdirSync, statSync, readdirSync } from 'fs';
+import { existsSync, rmSync, statSync, readdirSync } from 'fs';
 import { join, dirname, resolve } from 'path';
 import { fileURLToPath } from 'node:url';
 
@@ -237,25 +237,14 @@ const scripts = {
         });
     },
 
-    async generateHealthReport(): Promise<void> {
-        log('info', 'Generating health report...');
+    async validateGamePerformance(): Promise<void> {
+        log('info', 'Validating game performance...');
 
-        const reportDir = join(PROJECT_ROOT, 'reports/health');
-        const dateString = new Date().toISOString().replace(/[:.]/g, '-').split('T')[0];
-        const timeString = new Date().toTimeString().split(' ')[0];
-        const timestamp = `${dateString}_${timeString ? timeString.replace(/:/g, '-') : '00-00-00'}`;
-        const reportFile = join(reportDir, `health-report-${timestamp}.md`);
-
-        // Create reports directory
-        mkdirSync(reportDir, { recursive: true });
-
-        // Run health checks
         try {
-            await runCommand('npm', ['run', 'health:check']);
-            await runCommand('npm', ['run', 'health:debt']);
-            log('success', `Health report generated: ${reportFile}`);
+            await runCommand('npm', ['run', 'game:performance']);
+            log('success', 'Game performance validation completed');
         } catch (error) {
-            log('error', `Health report generation failed: ${(error as Error).message}`);
+            log('error', `Game performance validation failed: ${(error as Error).message}`);
             throw error;
         }
     }
@@ -300,8 +289,8 @@ async function main(): Promise<void> {
                 break;
             }
 
-            case 'generate-health-report':
-                await scripts.generateHealthReport();
+            case 'validate-game-performance':
+                await scripts.validateGamePerformance();
                 break;
 
             default:

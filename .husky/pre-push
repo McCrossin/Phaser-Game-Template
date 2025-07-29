@@ -1,11 +1,14 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# Comprehensive pre-push validation (target <90s)
-echo "🚀 Running pre-push validation pipeline..."
+# Game development pre-push validation (target <60s)
+echo "🚀 Running game development pre-push pipeline..."
 
-# Stage 1: Full local validation
-echo "🔍 Running comprehensive validation..."
-npm run validate:pre-push --silent
+# Full game validation and build check
+echo "🎮 Running game validation..."
+npm run game:validate --silent
 
-echo "✅ Pre-push validation complete! Ready for CI."
+echo "🔨 Testing game build..."
+npm run build --silent
+
+echo "✅ Game ready for CI! 🎮"

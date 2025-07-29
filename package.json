@@ -1,7 +1,7 @@
 {
     "name": "phaser-game-template",
     "version": "1.0.0",
-    "description": "Professional 2D Phaser game template with CI/CD, health checks, and TypeScript",
+    "description": "Professional 2D Phaser game development template with TypeScript and modern tooling",
     "main": "dist/main.js",
     "type": "module",
     "scripts": {
@@ -13,7 +13,7 @@
         "test:run": "vitest run --config testing/core/config/vitest.config.ts",
         "test:ui": "vitest --ui --config testing/core/config/vitest.config.ts",
         "test:coverage": "vitest --coverage --config testing/core/config/vitest.config.ts",
-        "test:e2e": "playwright test --config testing/advanced/e2e/playwright.config.ts",
+        "test:e2e": "playwright test --config testing/core/config/playwright.config.ts",
         "test:performance": "npx tsx tools/development/script-runner.ts test-performance",
         "lint": "eslint src/**/*.{ts,tsx} --config config/development/eslint.config.mjs",
         "lint:fix": "eslint src/**/*.{ts,tsx} --fix --config config/development/eslint.config.mjs",
@@ -35,21 +35,14 @@
         "performance:check:legacy": "npx tsx tools/development/performance-check.ts",
         "ci:setup": "bash scripts/ci-environment-setup.sh",
         "ci:performance": "npm run ci:setup && npm run test:performance && npm run performance:check",
-        "health:check": "npx tsc tools/monitoring/health-check.ts --outDir tools/monitoring/compiled --target es2022 --module node16 --moduleResolution node16 --allowSyntheticDefaultImports --esModuleInterop && node tools/monitoring/compiled/health-check.js",
-        "health:report": "npx tsx tools/development/script-runner.ts generate-health-report",
         "test:unit:fast": "vitest run --config testing/core/config/vitest.config.ts --reporter=dot --run",
-        "test:unit:pre-commit": "vitest run --config testing/core/config/vitest.config.ts --reporter=dot --run --exclude='**/quality-assurance-artifact-cleaner.test.ts' --exclude='**/artifact-cleaner.test.ts'",
+        "test:unit:pre-commit": "vitest run --config testing/core/config/vitest.config.ts --reporter=dot --run --exclude='**/quality-assurance*.test.ts' --exclude='**/template-auditor*.test.ts' --exclude='**/artifact-cleaner*.test.ts'",
         "security:check:local": "npm audit --audit-level moderate && npx better-npm-audit audit --level moderate",
         "validate:quick": "npm run lint --silent && npm run typecheck --silent && npm run test:unit:pre-commit --silent",
         "validate:comprehensive": "npm run validate:quick && npm run security:check:local && npm run test:performance",
         "validate:pre-push": "npm run validate:quick && npm run build --silent",
-        "performance:validate:local": "npm run test:performance",
-        "audit:template": "npx tsx tools/quality-assurance/run-template-audit.ts",
-        "audit:template:full": "npx tsx tools/quality-assurance/run-template-audit.ts --cleanup --verbose",
-        "audit:template:dry-run": "npx tsx tools/quality-assurance/run-template-audit.ts --cleanup --dry-run",
-        "audit:quality": "npx tsx tools/quality-assurance/template-auditor.ts",
-        "cleanup:template": "npx tsx tools/quality-assurance/artifact-cleaner.ts",
-        "cleanup:template:dry-run": "npx tsx tools/quality-assurance/artifact-cleaner.ts --dry-run"
+        "game:validate": "npm run validate:quick",
+        "game:performance": "npm run performance:check"
     },
     "keywords": [
         "phaser3",

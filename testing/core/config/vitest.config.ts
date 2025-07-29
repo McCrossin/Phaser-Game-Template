@@ -55,7 +55,7 @@ export default defineConfig({
             '**/testing/core/unit/optimization/test-isolation.test.ts',
             // Temporarily exclude tests with broken imports after restructure
             '**/testing/core/unit/quality-assurance-template-auditor.test.ts',
-            '**/testing/core/unit/template-structure.test.ts', 
+            '**/testing/core/unit/template-structure.test.ts',
             '**/testing/core/unit/typescript-migration.test.ts',
             '**/testing/core/integration/quality-assurance/template-auditor.test.ts',
             '**/testing/core/unit/systems/AssetLoader.test.ts',

@@ -6,11 +6,11 @@
         "avgFPS": 116.54768038358787,
         "minFPS": 12.578616352201259,
         "fpssamples": 169,
-        "executionTimeMs": -466
+        "executionTimeMs": -495
     },
     "errors": [
         "Performance Results Check failed after 2 attempts: Minimum FPS below threshold: 12.58 < 30"
     ],
     "environment": "local",
-    "timestamp": "2025-07-29T05:18:13.709Z"
+    "timestamp": "2025-07-29T07:01:57.833Z"
 }
