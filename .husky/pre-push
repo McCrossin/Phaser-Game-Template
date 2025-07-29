@@ -1,5 +1,4 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
 # Game development pre-push validation (target <60s)
 echo "🚀 Running game development pre-push pipeline..."
