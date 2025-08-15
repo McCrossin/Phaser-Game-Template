@@ -1,0 +1,292 @@
+{
+    "workflowResults": [
+        {
+            "workflowName": "ci.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "security-scan",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "lint-and-typecheck",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "test",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "build-and-push",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "performance-check",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": [
+                "Line 81: Node version should be quoted",
+                "Line 89: Node version should be quoted"
+            ],
+            "errors": [],
+            "duration": 2,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "deploy-production.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "deploy-production",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": ["Consider adding timeout-minutes to prevent hung jobs"],
+            "errors": [],
+            "duration": 0,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "deploy-staging.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "deploy-staging",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": ["Consider adding timeout-minutes to prevent hung jobs"],
+            "errors": [],
+            "duration": 0,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "health-monitoring.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "health-check",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "performance-baseline",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": ["Consider adding timeout-minutes to prevent hung jobs"],
+            "errors": [],
+            "duration": 0,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "performance-advanced.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "performance-advanced",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": [],
+            "errors": [],
+            "duration": 1,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "performance-test-debug.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "debug-performance",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": ["Consider adding timeout-minutes to prevent hung jobs"],
+            "errors": [],
+            "duration": 0,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "release.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "release",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": ["Consider adding timeout-minutes to prevent hung jobs"],
+            "errors": [],
+            "duration": 0,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "security-scan.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "static-analysis",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "secret-scanning",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "container-security",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "dependency-check",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": [],
+            "errors": [],
+            "duration": 1,
+            "resourceUsage": 0
+        },
+        {
+            "workflowName": "template-quality-check.yml",
+            "status": "SUCCESS",
+            "jobs": [
+                {
+                    "jobName": "runs-on ubuntu-latest",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "timeout-minutes 20",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "runs-on ubuntu-latest",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "needs template-quality-validation",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "if always()",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "runs-on ubuntu-latest",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "needs quality-gate-check",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                },
+                {
+                    "jobName": "if needs.quality-gate-check.result == 'success'",
+                    "steps": [],
+                    "status": "SUCCESS",
+                    "duration": 0
+                }
+            ],
+            "warnings": [
+                "Line 31: Node version should be quoted",
+                "Line 44: Node version should be quoted",
+                "Line 159: Node version should be quoted",
+                "Line 266: Node version should be quoted"
+            ],
+            "errors": [],
+            "duration": 1,
+            "resourceUsage": 0
+        }
+    ],
+    "stageResults": [
+        {
+            "stageName": "Lint and Type Check",
+            "status": "SUCCESS",
+            "duration": 4513,
+            "dependencies": []
+        },
+        {
+            "stageName": "Unit Tests",
+            "status": "SUCCESS",
+            "duration": 15293,
+            "dependencies": []
+        },
+        {
+            "stageName": "Build Process",
+            "status": "SUCCESS",
+            "duration": 6921,
+            "dependencies": []
+        },
+        {
+            "stageName": "Docker Build",
+            "status": "SUCCESS",
+            "duration": 14249,
+            "dependencies": []
+        }
+    ],
+    "performanceMetrics": {
+        "totalExecutionTime": 40982,
+        "averageJobTime": 0,
+        "cacheHitRate": 85,
+        "artifactSizes": {
+            "dist": 1507855,
+            "coverage": 48086633
+        },
+        "resourceEfficiency": 90
+    },
+    "issuesFound": [],
+    "fixesApplied": [],
+    "overallStatus": "PASS",
+    "executionTime": 40989,
+    "resourceUsage": {
+        "cpuTime": 40989,
+        "memoryUsage": 8783552,
+        "diskSpace": 409062457,
+        "networkTransfer": 0
+    }
+}
