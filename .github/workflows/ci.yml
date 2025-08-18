@@ -22,7 +22,7 @@ jobs:
         timeout-minutes: 5
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
@@ -52,7 +52,7 @@ jobs:
             fail-fast: false
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
 
             - name: Setup Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v4
@@ -80,7 +80,7 @@ jobs:
         needs: [code-quality, game-tests]
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
@@ -117,7 +117,7 @@ jobs:
         needs: game-build
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
